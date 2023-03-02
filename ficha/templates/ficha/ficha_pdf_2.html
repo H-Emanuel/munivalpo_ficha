@@ -26,6 +26,12 @@
                 color: black;
                 font-weight: bold;
             }
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+            }
 
             .text-center{
                 text-align: center;
@@ -36,6 +42,7 @@
             .text-right{
                 text-align: right;
             }
+            
 
             @page {
                 size: letter portrait;
@@ -106,16 +113,16 @@
                         <td colspan="4" class="bg-blue">3. FOTOGRAFÍA GENERAL </td>
                     </tr>
                     <tr>
-                        <td colspan="4">
+                        <td style="text-align: center;" colspan="4">
                             <!-- Fotografía Plano -->
                             {% if plano_ubicacion.imagen_plano %}
-                            <img src="{{ MEDIA_URL }}{{ plano_ubicacion.imagen_plano.url }}" alt="" style="width:300px;" />
+                            <img src="{{ MEDIA_URL }}{{ plano_ubicacion.imagen_plano.url }}" alt="" style="width:300px;" height="250",width="300" class="center" />
                             {% endif %}
                         </td>
-                        <td colspan="4" rowspan="3">
+                        <td colspan="4" rowspan="3" style="text-align: center;">
                             <!-- Fotografía General -->
                             {% if fotografia_general.imagen_fotografia %}
-                            <img src="{{ MEDIA_URL }}{{ fotografia_general.imagen_fotografia.url }}" alt="" style="width:300px;" />
+                            <img src="{{ MEDIA_URL }}{{ fotografia_general.imagen_fotografia.url }}" alt="" style="width:300px;" height="250",width="300" class="center" />
                             {% endif %}
                         </td>
                     </tr>
@@ -132,16 +139,16 @@
                         <td colspan="8" class="bg-blue">4. FOTOGRAFÍAS DE CONTEXTO (Relación del inmueble con el entorno)</td>
                     </tr>
                     <tr>
-                        <td colspan="4" rowspan="2">
+                        <td  style="text-align: center;" colspan="4" rowspan="2">
                             <!-- Fotografía Contexto 1 -->
                             {% if fotografia_contexto.registro_fotografico_1 %}
-                            <img src="{{ MEDIA_URL }}{{ fotografia_contexto.registro_fotografico_1.url }}" alt="" style="width:300px;" />
+                            <img src="{{ MEDIA_URL }}{{ fotografia_contexto.registro_fotografico_1.url }}" alt="" style="width:300px;" height="250",width="300" />
                             {% endif %}
                         </td>
-                        <td colspan="4">
+                        <td style="text-align: center;" colspan="4">
                             <!-- Fotografía Contexto 2 -->
                             {% if fotografia_contexto.registro_fotografico_2 %}
-                            <img src="{{ MEDIA_URL }}{{ fotografia_contexto.registro_fotografico_2.url }}" alt="" style="width:300px;" />
+                            <img src="{{ MEDIA_URL }}{{ fotografia_contexto.registro_fotografico_2.url }}" alt="" style="width:300px;"height="250",width="300"  />
                             {% endif %}
                         </td>
                     </tr>
@@ -228,7 +235,7 @@
                         <td class="text-center">{{ valoracion_atributos.valor_arquitecnico_b }}</td>
                         <td class="text-center">{{ valoracion_atributos.valor_arquitecnico_c }}</td>
                         <td class="text-center">{{ total_valor_arquitecnico }}</td>
-                        <td class="text-center" colspan="4" rowspan="4"></td>
+                        <td class="text-center" colspan="4"></td>
                     </tr>
                     <tr>
                         <td>HISTÓRICO</td>
@@ -254,14 +261,14 @@
 
         </br>
 
-        <p class="separator">&nbsp;<p>
+       <!--  <p class="separator">&nbsp;<p> -->
 
         <!-- Sección 7 -->
         <section>
             <table>
                 <tbody>
                     <tr>
-                        <td colspan="14" class="bg-blue text-right">ROL DE AVALÚO: {{ identificacion_inmueble.rol }}</td>
+                        <td colspan="14" class="bg-blue">ROL DE AVALÚO: {{ identificacion_inmueble.rol }}</td>
                     </tr>
                     <tr>
                         <td colspan="14" class="bg-blue">7. INFORMACIÓN TÉCNICA</td>
@@ -274,7 +281,7 @@
                         <td colspan="2"><b>PISO</b></td>
                         <td colspan="2"><b>ORIGINAL</b></td>
                         <td colspan="2"><b>ACTUAL</b></td>
-                        <td colspan="2" rowspan="2"><b>Anterior a 1900</b></td>
+                        <td colspan="2" > <b>previo a 1900</b></td>
                         <td rowspan="2"><b>1901 - 1920</b></td>
                         <td rowspan="2"><b>1921 - 1940</b></td>
                         <td rowspan="2"><b>1941 - 1960</b></td>
@@ -313,7 +320,7 @@
                         <td colspan="2">PARTICULAR</td>
                         <td class="text-center">{% if informacion_tecnica.tipo_propiedad|lower == "particular" %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="2">PROPIETARIO</td>
-                        <td class="text-center">{% if informacion_tecnica.tipo_usuario|lower == "propietario" %}X{% else %}&nbsp;{% endif %}1</td>
+                        <td class="text-center">{% if informacion_tecnica.tipo_usuario|lower == "propietario" %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="4"><b>INDIVIDUAL</b></td>
                         <td colspan="4"><b>COLECTIVA</b></td>
                     </tr>
@@ -338,18 +345,13 @@
                         <td class="text-center">{% if informacion_tecnica.regimen_propiedad|lower == "sucesion" %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
-                        <td colspan="8"><b>7.6 AFECTACIÓN ACTUAL</b></td>
-                        <td colspan="2" rowspan="3">
-                            <b>7.7 OBSERVACIONES</b>
-                            <p>{{ informacion_tecnica.observaciones }}</p>
-                        </td>
-                        <td colspan="2" rowspan="3"></td>
-                        <td colspan="2" rowspan="3"></td>
+                        <td colspan="5"><b>7.6 AFECTACIÓN ACTUAL</b></td>
+                        <td colspan="9"><b>7.7 OBSERVACIONES</b> </td>
                     </tr>
                     <tr>
                         <td colspan="4">DECLARACIÓN DE UTILIDAD PÚBLICA</td>
                         <td class="text-center">{% if informacion_tecnica.afectacion_actual|lower == "declaracion de utilidad publica" %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="3" rowspan="2"></td>
+                        <td colspan="9" rowspan="2"><p>{{ informacion_tecnica.observaciones }}</p></td>
                     </tr>
                     <tr>
                         <td colspan="4">ANTEJARDÍN</td>
@@ -376,51 +378,53 @@
                     </tr>
                     <tr>
                         <td colspan="4">MANZANA</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.tipologia.manzana %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.tipologia.manzana %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">ESQUINA</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.tipologia.esquina %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.tipologia.esquina %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="4" rowspan="2">AISLADO</td>
-                        <td rowspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.sistema_agrupamiento|lower == "aislado" %}X{% else %}&nbsp;{% endif %}</td>
+                        <td rowspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.sistema_agrupamiento|lower == "aislado" %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="4" rowspan="2">HORIZONTAL</td>
-                        <td rowspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.tipo_cubierta.horizontal %}X{% else %}&nbsp;{% endif %}</td>
+                        <td rowspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.tipo_cubierta.horizontal %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="3" rowspan="2">SIMPLE</td>
-                        <td colspan="2" rowspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.volumetria|lower == "simple" %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="2" rowspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.volumetria|lower == "simple" %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">ENTRE MEDIANEROS</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.tipologia.entre_medianeros %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.tipologia.entre_medianeros %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">CABEZAL</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.tipologia.cabezal %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.tipologia.cabezal %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="4" rowspan="2">PAREADO</td>
-                        <td rowspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.sistema_agrupamiento|lower == "pareado" %}X{% else %}&nbsp;{% endif %}</td>
+                        <td rowspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.sistema_agrupamiento|lower == "pareado" %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="4" rowspan="2">INCLINADA</td>
-                        <td rowspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.tipo_cubierta.inclinada %}X{% else %}&nbsp;{% endif %}</td>
+                        <td rowspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.tipo_cubierta.inclinada %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="3" rowspan="2">COMPLEJA</td>
-                        <td colspan="2" rowspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.volumetria|lower == "compleja" %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="2" rowspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.volumetria|lower == "compleja" %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">CRUCERO</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.tipologia.crucero %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.tipologia.crucero %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">DOBLE FRENTE entre medianeros</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.tipologia.doble_frente %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="4" rowspan="2">CONTINUO</td>
-                        <td rowspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.sistema_agrupamiento|lower == "continuo" %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.tipologia.doble_frente %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="4" rowspan="1">CONTINUO</td>
+                        <td rowspan="1" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.sistema_agrupamiento|lower == "continuo" %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="4">CURVA</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.tipo_cubierta.curva %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="3" rowspan="2">MIXTA</td>
-                        <td colspan="2" rowspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.volumetria|lower == "mixta" %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.tipo_cubierta.curva %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3" rowspan="1" >MIXTA</td>
+                        <td colspan="2" rowspan="1" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.volumetria|lower == "mixta" %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">ANTEJARDINES</td>
                         <td>{% if caracteristicas_morfologicas.tipologia.antejardines %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="5"> OTRO: {{ caracteristicas_morfologicas.tipo_cubierta.otro_texto }}</td>
-                        {% comment %} <td>{% if caracteristicas_morfologicas.tipo_cubierta.otro %}X{% else %}&nbsp;{% endif %}</td> {% endcomment %}
+                        <td colspan="4" rowspan="1">AISLADO SOBRE CONTINUO</td>
+                        <td rowspan="1" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.sistema_agrupamiento|lower == "aislado sobre continuidad" %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan ="4">OTRO:{{caracteristicas_morfologicas.tipo_cubierta.otro_texto}}</td>
+                        <td class="text-center" >{% if caracteristicas_morfologicas.tipo_cubierta.otro %}X{% else %}&nbsp;{% endif %}</td> 
                     </tr>
                     <tr>
                         <td colspan="5"><b>8.5 ELEMENTOS DE VALOR SIGNIFICATIVO</b></td>
@@ -428,76 +432,76 @@
                     </tr>
                     <tr>
                         <td colspan="4">CORNISAMIENTOS</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.elementos_valor_significativo.cornisamientos %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.elementos_valor_significativo.cornisamientos %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="5"><b>8.6 EXPRESIÓN DE FACHADA</b></td>
                         <td colspan="10"><b>8.7 CONTINUIDAD</b></td>
                     </tr>
                     <tr>
                         <td colspan="4">ZÓCALOS</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.elementos_valor_significativo.zocalos %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.elementos_valor_significativo.zocalos %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="4">LENGUAJE DE VANOS COMÚN</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.expresion_de_fachada.lenguaje_de_vanos_comun %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.expresion_de_fachada.lenguaje_de_vanos_comun %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="8">FACHADA</td>
-                        <td colspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.continuidad_de_edificacion.fachada %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.fachada %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">MOLDURAS RELEVANTES EN YESO</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.elementos_valor_significativo.molduras_relevantes_en_yeso %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.elementos_valor_significativo.molduras_relevantes_en_yeso %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="4">SIMETRÍA</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.expresion_de_fachada.simetria %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.expresion_de_fachada.simetria %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="8">LINEA DE REMATE SUPERIOR</td>
-                        <td colspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_remate_superior %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_remate_superior %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">ORNAMENTACIÓN EN MADERA</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.elementos_valor_significativo.ornamentacion_en_madera %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.elementos_valor_significativo.ornamentacion_en_madera %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="4">MODULACIÓN EN SERIE</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.expresion_de_fachada.modulacion_en_serie %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.expresion_de_fachada.modulacion_en_serie %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="8">LÍNEA DE ZÓCALO ESCALONADO</td>
-                        <td colspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_zocalo_escalonado %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_zocalo_escalonado %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">REMATE EN TECHUMBRE</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.elementos_valor_significativo.remate_en_techumbre %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.elementos_valor_significativo.remate_en_techumbre %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="4">TORREÓN EN ESQUINA</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.expresion_de_fachada.torreon_en_esquina %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.expresion_de_fachada.torreon_en_esquina %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="8">LÍNEA DE ZÓCALO CONTINUO</td>
-                        <td colspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_zocalo_continuo %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_zocalo_continuo %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">OTRO: {{ caracteristicas_morfologicas.elementos_valor_significativo.otro_texto }}</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.elementos_valor_significativo.otro %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.elementos_valor_significativo.otro %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="4">OTRO: {{ caracteristicas_morfologicas.expresion_de_fachada.otro_texto }}</td>
-                        <td style="width: 30px;">{% if caracteristicas_morfologicas.expresion_de_fachada.otro %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.expresion_de_fachada.otro %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="8">REALCE HORIZONTAL PREDOMINANTE</td>
-                        <td colspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.continuidad_de_edificacion.realce_horizontal_prodominante %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.realce_horizontal_prodominante %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="10" rowspan="2">OBSERVACIONES: En este campo indicar si tiene publicidad, por ej. <p>{{ caracteristicas_morfologicas.observaciones }}</p></td>
                         <td colspan="8">ZÓCALO DE MAMPOSTERÍA</td>
-                        <td colspan="2" style="width: 30px;">{% if caracteristicas_morfologicas.continuidad_de_edificacion.zocalo_de_mamposteria %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.zocalo_de_mamposteria %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="8">OTRO: {{ caracteristicas_morfologicas.continuidad_de_edificacion.otro_texto }}</td>
-                        <td colspan="2">{% if caracteristicas_morfologicas.continuidad_de_edificacion.otro %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="2" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.otro %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
-                        <td colspan="20"><b>8.8 FOTOGRAFÍAS DE DETALLES (Elementos de valor significativo – expresión de fachada – detalles constructivos)</b></td>
+                        <td colspan="20" ><b>8.8 FOTOGRAFÍAS DE DETALLES (Elementos de valor significativo – expresión de fachada – detalles constructivos)</b></td>
                     </tr>
                     <tr>
-                        <td colspan="7">
+                        <td style="text-align: center;" colspan="7">
                             {% if caracteristicas_morfologicas.fotografia_valor_significativo %}
-                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_valor_significativo.url }}" alt="" style="width:300px;" />
+                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_valor_significativo.url }}" alt="" style="width:300px;" height="250",width="300"  />
                             {% endif %}
                         </td>
-                        <td colspan="7">
+                        <td style="text-align: center;" colspan="7">
                             {% if caracteristicas_morfologicas.fotografia_expresion_fachada %}
-                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_expresion_fachada.url }}" alt="" style="width:300px;" />
+                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_expresion_fachada.url }}" alt="" style="width:300px;" height="250",width="300"  />
                             {% endif %}
                         </td>
-                        <td colspan="6">
+                        <td style="text-align: center;" colspan="6">
                             {% if caracteristicas_morfologicas.fotografia_detalles_constructivos %}
-                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_detalles_constructivos.url }}" alt="" style="width:300px;" />
+                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_detalles_constructivos.url }}" alt="" style="width:300px;" height="250",width="300"  />
                             {% endif %}
                         </td>
                     </tr>
@@ -533,6 +537,12 @@
                         <td colspan="2">FRENTE 2</td>
                         <td colspan="2">{{ caracteristicas_morfologicas.antejardin_frente_2 }}</td>
                     </tr>
+                    <tr>
+                        <td colspan="20"><b>8.11 DESCRIPCION DEL INMUEBLES</b></td>
+                    </tr>
+                    <tr> 
+                        <td colspan="20">{{caracteristicas_morfologicas.descripcion_del_inmubebles}}</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
@@ -549,7 +559,7 @@
                         <td colspan="3" class="bg-blue">11. APTITUD DE REHABILITACIÓN</td>
                     </tr>
                     <tr>
-                        <td style="width:80px;"></td>
+                        <td style="width:60px;"></td>
                         <td><b>INMUEBLE (ES)</b></td>
                         <td><b>ENTORNO</b></td>
                         <td colspan="2"><b>FACHADA</b></td>
@@ -596,14 +606,14 @@
 
         </br>
 
-        <p class="separator">&nbsp;<p>
+        <!-- <p class="separator">&nbsp;<p> -->
 
         <!-- Sección 12 -->
         <section>
             <table>
                 <tbody>
                     <tr>
-                        <td colspan="8" class="bg-blue text-right">ROL DE AVALÚO: {{ identificacion_inmueble.rol }}</td>
+                        <td colspan="8" class="bg-blue">ROL DE AVALÚO: {{ identificacion_inmueble.rol }}</td>
                     </tr>
                     <tr>
                         <td colspan="8" class="bg-blue">12. RELACIÓN DEL INMUEBLE CON EL ENTORNO</td>
@@ -621,7 +631,7 @@
                         <td style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.forma_parte_de_un_conjunto %}X{% else %}&nbsp;{% endif %}</td>
                         <td>COLINDA</td>
                         <td style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.espacio_publico|lower == "colinda" %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="2" rowspan="2">(Ej. Placas en fachada, escultura, monumento público, entre otros)</td>
+                        <td colspan="2" rowspan="2">{{ relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial }}</td>
                     </tr>
                     <tr>
                         <td>POR SINGULARIDAD</td>

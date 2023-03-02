@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-rq03f9#zjbdt6aap7krhq^g*2o8#3hep$%^e7r7va2bt^mmz)4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '192.168.12.207', 'localhost', 'ficha-munivalpo.herokuapp.com', '*']
+ALLOWED_HOSTS =  ['127.0.0.1', '192.168.12.207', 'localhost', 'ficha-munivalpo.herokuapp.com', '*']
 
 
 # Application definition
@@ -80,16 +80,27 @@ WSGI_APPLICATION = 'munivalpo_ficha.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'muni_valpo_ficha',
+#         'USER': 'muni_valpo_ficha',
+#         'PASSWORD': 'munivalpoficha2022',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'muni_valpo_ficha',
-        'USER': 'muni_valpo_ficha',
-        'PASSWORD': 'munivalpoficha2022',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+         'ENGINE': 'django.db.backends.postgresql',
+         'NAME': 'muni_valpo_ficha',
+         'USER': 'postgres',
+         'PASSWORD': '1234',
+         'HOST': 'localhost',
+         'PORT': '5432',
+     }
+ }
 
 # DATABASES = {
 #     'default': {

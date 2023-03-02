@@ -52,9 +52,11 @@ def editar_ficha(request, id = 0):
 
 
     OPTIONS = {
+        'PLAN_CERRO_POBLACION': PLAN_CERRO_POBLACION,
         'REGION_CHOICES': REGION_CHOICES,
         'COMUNA_CHOICES': COMUNA_CHOICES,
         'PERIODOS_CONSTRUCCION': PERIODOS_CONSTRUCCION,
+        'TIPO_DESTINO_INMUEBLE': TIPO_DESTINO_INMUEBLE,
         'TIPO_PROPIEDAD': TIPO_PROPIEDAD,
         'TIPO_USUARIO': TIPO_USUARIO,
         'REGIMEN_PROPIEDAD': REGIMEN_PROPIEDAD,
@@ -71,6 +73,8 @@ def editar_ficha(request, id = 0):
         'GRADO_ALTERACION': GRADO_ALTERACION,
         'ESPACIO_PUBLICO': ESPACIO_PUBLICO,
         'INMUEBLES_PATRIMONIALES': INMUEBLES_PATRIMONIALES,
+        'PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL': PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL,
+        'MATERIALIDAD_REVESTIMIENTO': MATERIALIDAD_REVESTIMIENTO,
     }
 
     # Sección 6
@@ -350,6 +354,8 @@ def editar_ficha(request, id = 0):
         caracteristicas_morfologicas.materialidad_cubierta = request.POST.get('materialidad_cubierta')
         caracteristicas_morfologicas.materialidad_revestimientos = request.POST.get('materialidad_revestimientos')
 
+        caracteristicas_morfologicas.descripcion_del_inmubebles = request.POST.get('descripcion_del_inmubebles')
+
         caracteristicas_morfologicas.save()
 
         # Sección 9
@@ -449,6 +455,7 @@ def editar_ficha(request, id = 0):
             relacion_del_inmueble_con_el_terreno.inm_con_his_relacion_visual = True
 
         relacion_del_inmueble_con_el_terreno.observaciones = request.POST.get('espacio_publico_observaciones')
+        relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial = request.POST.get('Otros_elementos_patrimonial')
         relacion_del_inmueble_con_el_terreno.save()
 
         # Sección 13

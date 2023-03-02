@@ -12,6 +12,11 @@ COMUNA_CHOICES = [
     ('PLACILLA', 'Placilla'),
     ('PLAYA ANCHA', 'Playa Ancha'),
 ]
+PLAN_CERRO_POBLACION = [
+    ('PLAN', 'Plan'),
+    ('CERRO', 'Cerro'),
+    ('POBLACION', 'Poblacion'),
+]
 
 # Sección 1
 class IdentificacionInmueble(models.Model):
@@ -22,7 +27,7 @@ class IdentificacionInmueble(models.Model):
     comuna = models.CharField(max_length=50, choices=COMUNA_CHOICES, default='VALPARAÍSO')
     calle = models.CharField(max_length=255, blank=True, default='')
     numero = models.CharField(max_length=50, blank=True, default='')
-    plan_cerro_poblacion = models.CharField(max_length=255, blank=True, default='')
+    plan_cerro_poblacion = models.CharField(max_length=255, blank=True,choices=PLAN_CERRO_POBLACION, default='PLAN')
     denominacion_inmueble = models.CharField(max_length=255, blank=True, default='')
     autor = models.CharField(max_length=255, blank=True, default='Se desconoce')
     created = models.DateTimeField(auto_now_add=True)
@@ -155,6 +160,21 @@ TIPO_PROPIEDAD = [
     ('MUNICIPAL', 'Municipal'),
 ]
 
+TIPO_DESTINO_INMUEBLE = [
+    ('', ''),
+    ('VIVIENDA', 'Vivienda'),
+    ('COMERCIO', 'Comercio'),
+    ('SERVICIO', 'Servicio'),
+    ('EDUCACION', 'Educacion'),
+    ('SALUD', 'Salud'),
+    ('DEPORTE', 'Deporte'),
+    ('RECREACION', 'Recreacion'),
+    ('CULTURA', 'Cultura'),
+    ('CULTO', 'Culto'),
+    ('INDUSTRIA', 'Industria'),
+    ('BODEGA', 'Bodega'),
+]
+
 TIPO_USUARIO = [
     ('PROPIETARIO', 'Propietario'),
     ('ARRENDATARIO', 'Arrendatario'),
@@ -178,12 +198,12 @@ AFECTACION_ACTUAL = [
 ]
 
 class InformacionTecnica(models.Model):
-    piso_original_subterraneo = models.CharField(max_length=255, blank=True, default='')
-    piso_original_primer_piso = models.CharField(max_length=255, blank=True, default='')
-    piso_original_pisos_superiores = models.CharField(max_length=255, blank=True, default='')
-    piso_actual_subterraneo = models.CharField(max_length=255, blank=True, default='')
-    piso_actual_primer_piso = models.CharField(max_length=255, blank=True, default='')
-    piso_actual_pisos_superiores = models.CharField(max_length=255, blank=True, default='')
+    piso_original_subterraneo = models.CharField(max_length=255,choices=TIPO_DESTINO_INMUEBLE, default='VIVIENDA',blank=True,)
+    piso_original_primer_piso = models.CharField(max_length=255, blank=True,choices=TIPO_DESTINO_INMUEBLE, default='VIVIENDA')
+    piso_original_pisos_superiores = models.CharField(max_length=255, blank=True,choices=TIPO_DESTINO_INMUEBLE, default='VIVIENDA')
+    piso_actual_subterraneo = models.CharField(max_length=255, blank=True,choices=TIPO_DESTINO_INMUEBLE, default='VIVIENDA')
+    piso_actual_primer_piso = models.CharField(max_length=255, blank=True,choices=TIPO_DESTINO_INMUEBLE, default='VIVIENDA')
+    piso_actual_pisos_superiores = models.CharField(max_length=255, blank=True,choices=TIPO_DESTINO_INMUEBLE, default='VIVIENDA')
 
     anio_construccion = models.CharField(max_length=50, choices=PERIODOS_CONSTRUCCION, default='ANTERIOR A 1900', blank=True)
 
@@ -232,7 +252,12 @@ MATERIALIDAD_CUBIERTA = [
     ('TEJAS', 'Tejas'),
     ('TEJUELA (ZINC)', 'Tejuela (Zinc)'),
     ('ACERO GALVANIZADO', 'Acero Galvanizado'),
-    ('OTROS', 'Otros'),
+]
+MATERIALIDAD_REVESTIMIENTO = [
+    ('ENLUCIDO/ESTUCO', 'Enlucido/estuco'),
+    ('MADERA', 'Madera'),
+    ('PLACHA TOLENADA', 'Placha tolenada'),
+    ('HORMIGON ', 'Hormigo a la vista'),
 ]
 
 class Tipologias(models.Model):
@@ -358,7 +383,9 @@ class CaracteristicasMorfologicas(models.Model):
 
     materialidad_estructura = models.CharField(max_length=50, choices=MATERIALIDAD_ESTRUCTURA, default='ACERO', blank=True)
     materialidad_cubierta = models.CharField(max_length=50, choices=MATERIALIDAD_CUBIERTA, default='ACERO', blank=True)
-    materialidad_revestimientos = models.CharField(max_length=255, default='', blank=True)
+    materialidad_revestimientos = models.CharField(max_length=255,choices= MATERIALIDAD_REVESTIMIENTO, default='ENLUCIDO/ESTUCO', blank=True)
+
+    descripcion_del_inmubebles= models.CharField(max_length=255, blank=True, default='')
 
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
@@ -434,6 +461,12 @@ INMUEBLES_PATRIMONIALES = [
     ('MANZANA ENFRENTE', 'Manzana enfrente'),
     ('RELACION VISUAL', 'Relacion visual'),
 ]
+PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL = [
+    ('PLACA EN FACHADA', 'Placa en fachada'),
+    ('ESCULTURA', 'Escultura'),
+    ('MONUMENTOS PUBLICOS', 'Monumentos publicos'),
+    ('RELACION VISUAL', 'Relacion visual'),
+]
 
 class RelacionDelInmuebleConElTerreno(models.Model):
     imagen_urbana_relevante_por_ubicacion = models.BooleanField(default=False)
@@ -456,7 +489,7 @@ class RelacionDelInmuebleConElTerreno(models.Model):
     inm_con_his_manzana = models.BooleanField(default=False)
     inm_con_his_manzana_enfrente = models.BooleanField(default=False)
     inm_con_his_relacion_visual = models.BooleanField(default=False)
-
+    Otros_elementos_patrimonial = models.TextField(blank=True, default='PLACA EN FACHADA',choices=PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL)
     observaciones = models.TextField(blank=True, default='')
 
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)

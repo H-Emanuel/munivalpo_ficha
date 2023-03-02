@@ -75,7 +75,12 @@
     scroll-behavior: smooth;
   }
 }
-
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);
