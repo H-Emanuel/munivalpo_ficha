@@ -6,11 +6,13 @@
             table , td, th {
                 border: 1px solid #595959;
                 border-collapse: collapse;
+                line-height: 1;
+                vertical-align: middle;
+                
             }
            
             td, th {
                 padding: 3px;
-                
             }
 
             table {
@@ -18,7 +20,7 @@
             }
 
             .special > tbody > tr > td, th {
-                width: 100%;
+                width: 80%;
             }
             
             .bg-blue{
@@ -35,6 +37,7 @@
 
             .text-center{
                 text-align: center;
+                
             }
             .text-left{
                 text-align: left;
@@ -75,9 +78,10 @@
                     </tr>
                     <tr>
                         <td colspan="5" class="bg-blue text-left">1. IDENTIFICACIÓN DEL INMUEBLE</td>
+                       
                     </tr>
                     <tr>
-                        <td><b>REGIÓN</b></td>
+                        <td class="text-center" ><b>REGIÓN</b></td>
                         <td><b>COMUNA</b></td>
                         <td><b>CALLE</b></td>
                         <td><b>NÚMERO</b></td>
@@ -116,13 +120,15 @@
                         <td style="text-align: center;" colspan="4">
                             <!-- Fotografía Plano -->
                             {% if plano_ubicacion.imagen_plano %}
-                            <img src="{{ MEDIA_URL }}{{ plano_ubicacion.imagen_plano.url }}" alt="" style="width:300px;" height="250",width="300" class="center" />
+                            <img src="{{ MEDIA_URL }}{{ plano_ubicacion.imagen_plano.url }}" alt="" style="width:300px;" height="300",width="300" class="center" />
                             {% endif %}
                         </td>
                         <td colspan="4" rowspan="3" style="text-align: center;">
                             <!-- Fotografía General -->
                             {% if fotografia_general.imagen_fotografia %}
-                            <img src="{{ MEDIA_URL }}{{ fotografia_general.imagen_fotografia.url }}" alt="" style="width:300px;" height="250",width="300" class="center" />
+                            <img src="{{ MEDIA_URL }}{{ fotografia_general.imagen_fotografia.url }}" alt="" style="width:300px;" height="300",width="300" class="center" />
+                            {% else %}
+                            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                             {% endif %}
                         </td>
                     </tr>
@@ -142,13 +148,20 @@
                         <td  style="text-align: center;" colspan="4" rowspan="2">
                             <!-- Fotografía Contexto 1 -->
                             {% if fotografia_contexto.registro_fotografico_1 %}
-                            <img src="{{ MEDIA_URL }}{{ fotografia_contexto.registro_fotografico_1.url }}" alt="" style="width:300px;" height="250",width="300" />
+                            <img src="{{ MEDIA_URL }}{{ fotografia_contexto.registro_fotografico_1.url }}" alt="" style="width:300px;" height="300",width="300" />
+                            {% else %}
+                            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
                             {% endif %}
                         </td>
                         <td style="text-align: center;" colspan="4">
                             <!-- Fotografía Contexto 2 -->
                             {% if fotografia_contexto.registro_fotografico_2 %}
-                            <img src="{{ MEDIA_URL }}{{ fotografia_contexto.registro_fotografico_2.url }}" alt="" style="width:300px;"height="250",width="300"  />
+                            <img src="{{ MEDIA_URL }}{{ fotografia_contexto.registro_fotografico_2.url }}" alt="" style="width:300px;"height="300",width="300" />
+                            {% else %}
+                            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            
                             {% endif %}
                         </td>
                     </tr>
@@ -281,7 +294,7 @@
                         <td colspan="2"><b>PISO</b></td>
                         <td colspan="2"><b>ORIGINAL</b></td>
                         <td colspan="2"><b>ACTUAL</b></td>
-                        <td colspan="2" > <b>previo a 1900</b></td>
+                        <td colspan="2" rowspan="2" > <b>previo a 1900</b></td>
                         <td rowspan="2"><b>1901 - 1920</b></td>
                         <td rowspan="2"><b>1921 - 1940</b></td>
                         <td rowspan="2"><b>1941 - 1960</b></td>
@@ -491,17 +504,95 @@
                     <tr>
                         <td style="text-align: center;" colspan="7">
                             {% if caracteristicas_morfologicas.fotografia_valor_significativo %}
-                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_valor_significativo.url }}" alt="" style="width:300px;" height="250",width="300"  />
+                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_valor_significativo.url }}" alt="" style="width:300px;" height="325",width="300" />
+                            {% else %}
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
                             {% endif %}
                         </td>
                         <td style="text-align: center;" colspan="7">
                             {% if caracteristicas_morfologicas.fotografia_expresion_fachada %}
-                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_expresion_fachada.url }}" alt="" style="width:300px;" height="250",width="300"  />
+                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_expresion_fachada.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            {% else %}
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
                             {% endif %}
                         </td>
                         <td style="text-align: center;" colspan="6">
                             {% if caracteristicas_morfologicas.fotografia_detalles_constructivos %}
-                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_detalles_constructivos.url }}" alt="" style="width:300px;" height="250",width="300"  />
+                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_detalles_constructivos.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            {% else %}
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
                             {% endif %}
                         </td>
                     </tr>
