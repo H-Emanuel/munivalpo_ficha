@@ -49,7 +49,7 @@ def content_file_name_plano(instance, filename):
 
 class PlanoUbicacion(models.Model):
     # imagen_plano = models.ImageField(upload_to="plano_ubicacion", blank=True, default='')
-    imagen_plano = models.ImageField(upload_to=content_file_name_plano, blank=True, default='')
+    imagen_plano = models.ImageField(upload_to=content_file_name_plano, blank=True, default='',null=True)
     latitud = models.CharField(max_length=100, blank=True, default='')
     longitud = models.CharField(max_length=100, blank=True, default='')
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)

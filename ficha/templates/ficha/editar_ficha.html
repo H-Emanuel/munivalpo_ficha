@@ -20,7 +20,7 @@
                 <div class="accordion" id="accordionExample">
                     <form action="{% url 'editar_ficha' identificacion_inmueble.id_plano %}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                    
+
                     <!-- 1.- Identificación del Inmueble -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
@@ -61,6 +61,7 @@
                                         <select class="form-control" id="region" name="region" >
                                             <option value="{{ identificacion_inmueble.region }}" selected>{{ identificacion_inmueble.region }}</option>
                                             {% for region in OPTIONS.REGION_CHOICES %}
+
                                                 <option value="{{ region.0 }}">{{ region.1 }}</option>
                                             {% endfor %}
                                         </select>
@@ -84,7 +85,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="calle"><b>Calle</b></label>
-                                        
+
                                         <input type="text" class="form-control" id="calle" name="calle" value="{{ identificacion_inmueble.calle }}" >
                                     </div>
                                 </div>
@@ -126,11 +127,11 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                       </div>
                     </div>
-    
+
                     <!-- 2.- Plano ubicación -->
                     <!-- 3.- Fotografía general -->
                     <!-- 4.- Fotografía de contexto -->
@@ -328,7 +329,7 @@
                         </div>
                       </div>
                     </div>
-    
+
                     <!-- 5.- Reseña de valores y atributos patrimoniales -->
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingThree">
@@ -373,7 +374,7 @@
                         </div>
                       </div>
                     </div>
-    
+
                     <!-- 6.- Resumen valoración de atributos -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFour">
@@ -436,7 +437,7 @@
                                                         <input type="number" class="form-control" id="valor_historico_b" name="valor_historico_b" min="0" value="{{ valoracion_atributos.valor_historico_b }}">
                                                     </td>
                                                     <td>
-                                                        
+
                                                     </td>
                                                     <td>
                                                         <span>{{ total_valor_historico }}</span>
@@ -488,7 +489,7 @@
                           </div>
                         </div>
                     </div>
-    
+
                     <!-- 7.- Información técnicas -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-5">
@@ -647,7 +648,7 @@
                           </div>
                         </div>
                     </div>
-                    
+
                     <!-- 8.- Caracteristicas morfológicas -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-6">
@@ -1172,7 +1173,7 @@
                                                 <td>Estructura</td>
                                                 <td>Cubierta</td>
                                                 <td>
-                                                Revestimientos</td>
+                                                    Revestimientos</td>
                                             </tr>
                                             <tr>
                                                 <td>
@@ -1196,7 +1197,7 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                
+
                                                 <div class="form-group">
                                                     <select class="form-control" id="materialidad_revestimientos" name="materialidad_revestimientos" >
                                                         <option value="{{ caracteristicas_morfologicas.materialidad_revestimientos }}" selected>{{ caracteristicas_morfologicas.materialidad_revestimientos }}</option>
@@ -1206,7 +1207,7 @@
                                                     </select>
                                                     <!-- <br>
                                                     <input type="text" class="form-control" id="materialidad_revestimientos_text" name="materialidad_revestimientos_text" value="{{ caracteristicas_morfologicas.materialidad_revestimientos}}" disabled> -->
-                                                
+
                                                 </div>
                                                 </td>
                                             </tr>
@@ -1225,7 +1226,7 @@
                           </div>
                         </div>
                     </div>
-    
+
                     <!-- 9.- Estado de conservación -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-7">
@@ -1264,7 +1265,7 @@
                           </div>
                         </div>
                     </div>
-    
+
                     <!-- 10.- Grado de alteración -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-8">
@@ -1303,7 +1304,7 @@
                           </div>
                         </div>
                     </div>
-    
+
                     <!-- 11.- Aptitud de rehabilitación -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-9">
@@ -1363,7 +1364,7 @@
                           </div>
                         </div>
                     </div>
-    
+
                     <!-- 12.- Relación del inmueble con el entorno -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-10">
@@ -1514,7 +1515,7 @@
                                             <tr>
                                                 <td>Relación visual:</td>
                                                 <td>
-                                                    
+
                                                     <div class="form-check d-flex justify-content-center">
                                                         <input type="checkbox" class="form-check-input" id="inm_con_his_relacion_visual" name="inm_con_his_relacion_visual" value="1" {% if relacion_del_inmueble_con_el_terreno.inm_con_his_relacion_visual %}checked{% endif %}>
                                                     </div>
@@ -1535,7 +1536,7 @@
                           </div>
                         </div>
                     </div>
-    
+
                     <!-- 13.- Categoría de acuerdo a su uso -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-11">
@@ -1567,14 +1568,14 @@
                                             <option value="15">INSTALACIONES MILITARES Y DE DEFENSA</option>
                                             <option value="16">LUGARES DE VALOR SOCIAL / SIMBOLICO O HISTORICO</option>
                                             <option value="17">MERCADOS</option>
-                                        </select>                                        
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                           </div>
                         </div>
                     </div>
-    
+
                     <!-- 14.- Conclusiones o remendaciones para su intervencion -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-12">
@@ -1595,7 +1596,7 @@
                           </div>
                         </div>
                     </div>
-    
+
                     <!-- 15.- Fuentes referenciales y bibliográficas -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-13">
@@ -1623,44 +1624,50 @@
                             <a href="{% url 'exportar_pdf' identificacion_inmueble.id_plano %}" target="_blank" class="btn btn-danger">Generar PDF</a>
                         </div>
                     </div>
-                    
+
                     </form>
                 </div>
             </div>
         </div>
 
-        
+
     </div>
 </section>
 {% endblock main_content %}
 
 {% block custom_js %}
-<!-- EN PRODUCCION 
-<script>
-      if (document.getElementById("materialidad_revestimientos").options[document.getElementById("materialidad_revestimientos").selectedIndex].value != "OTROS")
-      {
-        document.getElementById("materialidad_revestimientos_text").value =  "";
-        document.getElementById("materialidad_revestimientos_text").disabled =  true;
-    }
-    else{
-        document.getElementById("materialidad_revestimientos_text").disabled =  false;
-        
+<!-- EN PRODUCCION -->
+<!-- DESACTIVAR O ACTIVAR INSERT DE OTROS -->
+<!-- <script>
+    var Lista = document.getElementById("materialidad_revestimientos");
+    for(i = 1; i < Lista.length; i++){
+        if (i < Lista.length-1) {
+            if (Lista[0].value  == Lista[i].value){
+            document.getElementById("materialidad_revestimientos_text").value =  "";
+            document.getElementById("materialidad_revestimientos_text").disabled =  true;
+            { break; }
+            }
+            else{
+                document.getElementById("materialidad_revestimientos_text").disabled =  false;
+            }
+        }
     };
     const myselect = document.getElementById("materialidad_revestimientos");
     myselect.addEventListener("change",(e) =>{
-        alert(myselect.options[myselect.selectedIndex].value);
-    if (myselect.options[myselect.selectedIndex].value != "OTROS"){
-        document.getElementById("materialidad_revestimientos_text").disabled =  true;
-    }
-    else{
-        document.getElementById("materialidad_revestimientos_text").disabled =  false;
-        
+        for(i = 1; i < Lista.length; i++){
+        if (i < Lista.length-1) {
+            if (document.getElementById("materialidad_revestimientos").value  == Lista[i].value){
+            document.getElementById("materialidad_revestimientos_text").disabled =  true;
+            { break; }
+            }
+            else{
+                document.getElementById("materialidad_revestimientos_text").disabled =  false;
+            }
+        }
     };
     });
-    alert("HELLO 1");
+ </script> -->
 
- </script>
--->
 
 <script>
     document.getElementById("getLocation").addEventListener("click", function(event){
@@ -1673,7 +1680,7 @@
             });
         } else {
             alert('No se puede acceder a la geolocalización');
-           
+
         }
     });
 </script>
