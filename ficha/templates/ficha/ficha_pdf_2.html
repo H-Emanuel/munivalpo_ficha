@@ -688,7 +688,7 @@
                         <td class="text-center">{% if estado_de_conservacion.entorno|lower == "malo" %}X{% else %}&nbsp;{% endif %}</td>
                         <td>MUY MODIFICADO</td>
                         <td class="text-center">{% if grado_de_alteracion.fachada|lower == "muy modificado" %}X{% else %}&nbsp;{% endif %}</td>
-                        <td class="text-center">MUY MODIFICADO</td>
+                        <td >MUY MODIFICADO</td>
                         <td class="text-center">{% if grado_de_alteracion.cubierta|lower == "muy modificado" %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="2">OTRO: {{ aptitud_de_rehabilitacion.otro_texto }}</td>
                         <td class="text-center">{% if aptitud_de_rehabilitacion.otro %}X{% else %}&nbsp;{% endif %}</td>
@@ -802,7 +802,7 @@
                         <td colspan="4">Fecha de elaboración ficha: {{ current_time|date:"j-m-Y" }}</td>
                     </tr>
                     <tr>
-                        <td colspan="4">Nombre autor: {{ current_user.first_name }} {{ current_user.last_name }}</td>
+                        <td colspan="4">Nombre autor:{{ current_user.first_name }} {{ current_user.last_name }}</td>
                     </tr>
                 </tbody>
             </table>

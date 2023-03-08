@@ -225,6 +225,7 @@ def editar_ficha(request, id = 0):
         tipo_cubierta.save()
 
         # Elementos de valor Significativo
+
         if not request.POST.get('cornisamientos'):
             elementos_valor_significativo.cornisamientos = False
         elif request.POST.get('cornisamientos') and request.POST.get('cornisamientos') == '1':
@@ -352,7 +353,12 @@ def editar_ficha(request, id = 0):
 
         caracteristicas_morfologicas.materialidad_estructura = request.POST.get('materialidad_estructura')
         caracteristicas_morfologicas.materialidad_cubierta = request.POST.get('materialidad_cubierta')
-        caracteristicas_morfologicas.materialidad_revestimientos = request.POST.get('materialidad_revestimientos')
+
+        
+        if request.POST.get('materialidad_revestimientos') == "OTRO":
+            caracteristicas_morfologicas.materialidad_revestimientos =  request.POST.get('materialidad_revestimientos_text')
+        else:
+            caracteristicas_morfologicas.materialidad_revestimientos =  request.POST.get('materialidad_revestimientos')
 
         caracteristicas_morfologicas.descripcion_del_inmubebles = request.POST.get('descripcion_del_inmubebles')
 

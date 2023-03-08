@@ -162,17 +162,17 @@ TIPO_PROPIEDAD = [
 
 TIPO_DESTINO_INMUEBLE = [
     ('', ''),
-    ('VIVIENDA', 'Vivienda'),
-    ('COMERCIO', 'Comercio'),
-    ('SERVICIO', 'Servicio'),
-    ('EDUCACION', 'Educacion'),
-    ('SALUD', 'Salud'),
-    ('DEPORTE', 'Deporte'),
-    ('RECREACION', 'Recreacion'),
-    ('CULTURA', 'Cultura'),
-    ('CULTO', 'Culto'),
-    ('INDUSTRIA', 'Industria'),
-    ('BODEGA', 'Bodega'),
+    ('1 - VIVIENDA', '1 - Vivienda'),
+    ('2 - COMERCIO', '2 - Comercio'),
+    ('3 - SERVICIO', '3 - Servicio'),
+    ('4 - EDUCACION', '4 - Educacion'),
+    ('5 - SALUD', '5 - Salud'),
+    ('6 - DEPORTE', '6 - Deporte'),
+    ('7 - RECREACION', '7 - Recreacion'),
+    ('8 - CULTURA', '8 - Cultura'),
+    ('9 - CULTO', '9 - Culto'),
+    ('10 - INDUSTRIA', '10 - Industria'),
+    ('11 - BODEGA', '11 - Bodega'),
 ]
 
 TIPO_USUARIO = [
@@ -258,6 +258,7 @@ MATERIALIDAD_REVESTIMIENTO = [
     ('MADERA', 'Madera'),
     ('PLACHA TOLENADA', 'Placha tolenada'),
     ('HORMIGON ', 'Hormigo a la vista'),
+    ('OTRO', 'Otro'),
 ]
 
 class Tipologias(models.Model):

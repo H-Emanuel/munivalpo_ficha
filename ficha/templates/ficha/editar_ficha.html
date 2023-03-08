@@ -1204,9 +1204,11 @@
                                                         {% for materialidad_revestimientos in OPTIONS.MATERIALIDAD_REVESTIMIENTO %}
                                                             <option value="{{ materialidad_revestimientos.0 }}">{{ materialidad_revestimientos.1 }}</option>
                                                         {% endfor %}
+                                                        
                                                     </select>
-                                                    <!-- <br>
-                                                    <input type="text" class="form-control" id="materialidad_revestimientos_text" name="materialidad_revestimientos_text" value="{{ caracteristicas_morfologicas.materialidad_revestimientos}}" disabled> -->
+                                                    <br>
+                                                    Otro
+                                                    <input type="text" class="form-control" id="materialidad_revestimientos_text" name="materialidad_revestimientos_text" value="{{ caracteristicas_morfologicas.materialidad_revestimientos}}" disabled>
 
                                                 </div>
                                                 </td>
@@ -1636,13 +1638,12 @@
 {% endblock main_content %}
 
 {% block custom_js %}
-<!-- EN PRODUCCION -->
 <!-- DESACTIVAR O ACTIVAR INSERT DE OTROS -->
-<!-- <script>
+<script>
     var Lista = document.getElementById("materialidad_revestimientos");
-    for(i = 1; i < Lista.length; i++){
+    for(i = 0; i < Lista.length; i++){
         if (i < Lista.length-1) {
-            if (Lista[0].value  == Lista[i].value){
+            if (Lista[0].value.toUpperCase()  == Lista[i].value.toUpperCase()){
             document.getElementById("materialidad_revestimientos_text").value =  "";
             document.getElementById("materialidad_revestimientos_text").disabled =  true;
             { break; }
@@ -1654,7 +1655,7 @@
     };
     const myselect = document.getElementById("materialidad_revestimientos");
     myselect.addEventListener("change",(e) =>{
-        for(i = 1; i < Lista.length; i++){
+        for(i = 0; i < Lista.length; i++){
         if (i < Lista.length-1) {
             if (document.getElementById("materialidad_revestimientos").value  == Lista[i].value){
             document.getElementById("materialidad_revestimientos_text").disabled =  true;
@@ -1666,7 +1667,7 @@
         }
     };
     });
- </script> -->
+ </script>
 
 
 <script>
