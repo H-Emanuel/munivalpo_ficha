@@ -21,7 +21,7 @@ PLAN_CERRO_POBLACION = [
 # Sección 1
 class IdentificacionInmueble(models.Model):
     id_plano = models.BigAutoField(primary_key=True)
-    rol = models.CharField(max_length=100, blank=True, default='')
+    rol = models.CharField(max_length=100, blank=True, default='00000-00000')
     unidad_vecinal = models.CharField(max_length=255, blank=True, default='')
     region = models.CharField(max_length=50, choices=REGION_CHOICES, default='VALPARAÍSO')
     comuna = models.CharField(max_length=50, choices=COMUNA_CHOICES, default='VALPARAÍSO')
@@ -37,9 +37,12 @@ class IdentificacionInmueble(models.Model):
         verbose_name = "identificacion_inmueble"
         verbose_name_plural = "identificaciones_inmuebles"
 
+    def __int__(self):
+        return int (self.id_plano) +1 
+
     def __str__(self):
         return str(self.id_plano) + ' - ' + self.rol
-
+    
 # Sección 2
 def content_file_name_plano(instance, filename):
     ext = filename.split('.')[-1]
@@ -93,7 +96,7 @@ def content_file_name_contexto_2(instance, filename):
 class FotografiaContexto(models.Model):
     registro_fotografico_1 = models.ImageField(upload_to=content_file_name_contexto_1, blank=True, default='')
     registro_fotografico_2 = models.ImageField(upload_to=content_file_name_contexto_2, blank=True, default='')
-    fecha_registro_fotografico = models.DateField()
+    fecha_registro_fotografico = models.DateField(auto_now=True)
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)

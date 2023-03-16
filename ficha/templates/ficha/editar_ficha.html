@@ -24,7 +24,10 @@
                     <!-- 1.- Identificación del Inmueble -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <button class="accordion-button collapsed" 
+                            onfocusout="Verificar_rol()" type="button" 
+                            data-bs-toggle="collapse" data-bs-target="#collapseOne" 
+                            aria-expanded="false" aria-controls="collapseOne">
                                 1.- Identificación del Inmueble
                             </button>
                         </h2>
@@ -42,7 +45,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="rol"><b>Rol</b></label>
-                                        <input type="text" class="form-control" id="rol" name="rol" value="{{ identificacion_inmueble.rol }}" >
+                                        <input type="text" oninput="this.value = this.value.replace(/[^0-9.,-]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="rol" name="rol" value="{{ identificacion_inmueble.rol }}"  >
                                     </div>
                                 </div>
                             </div>
@@ -1667,9 +1670,17 @@
         }
     };
     });
- </script>
-
-
+</script>
+<script>
+function Verificar_rol(){
+    let rol = document.getElementById("rol");
+    rol.addEventListener("focusout",(e) =>{
+    if (document.getElementById("rol").value.length != 11 ){
+        alert("El Formato del rol es incorreto \n El fomarto debe ser 00000-00000")
+    }
+    })
+};
+</script>
 <script>
     document.getElementById("getLocation").addEventListener("click", function(event){
         event.preventDefault();

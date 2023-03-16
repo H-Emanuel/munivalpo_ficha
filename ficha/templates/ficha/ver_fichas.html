@@ -23,6 +23,7 @@
                         <td>{{ ficha.calle }}, {{ficha.numero}}, {{ ficha.comuna }}</td>
                         <td>
                             {% comment %} <a href="{% url 'ver_ficha' ficha.id_plano %}" class="btn btn-primary">Ver</a> {% endcomment %}
+                            <a class="btn btn-danger" onclick="return ConfirmaEliminar();" href="{% url 'eliminar' ficha.id_plano %}">Eliminar</a>
                             <a href="{% url 'editar_ficha' ficha.id_plano %}" class="btn btn-warning">Editar</a>
                             <a href="{% url 'exportar_pdf' ficha.id_plano %}" target="_blank" class="btn btn-danger">PDF</a>
                         </td>
@@ -55,6 +56,16 @@
             }
         });
     } );
-    
+</script>
+<script>
+    function ConfirmaEliminar(){
+        if(confirm("!!ALERTA!! !\nEsta seguro de eliminar esta ficha?\nUna vez ELIMINADA NO SE VOLVERA A RECUPERAR ")){
+            alert("Fue eliminada esta ficha")
+            return true
+        }else{
+            alert("Fue cancelada esta eliminacion de ficha")
+            return false
+        }
+    }
 </script>
 {% endblock custom_js %}
