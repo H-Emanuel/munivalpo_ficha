@@ -4,8 +4,1671 @@
 
 {% block main_content %}
 
+
+<section>
+    <div class="container mt-3">
+
+        <div class="row m-3">
+            <div class="col-md-12">
+                <h1 class="text-center">Ficha de Valoración Inmueble de Conservación Histórica</h1>
+                <h2 class="text-center">Plan Regulador Comunal de Valparaíso</h2>
+            </div>
+        </div>
+
+        <div class="row m-3">
+            <div class="col-12">
+                <div class="accordion" id="accordionExample">
+                    <form action="{% url 'crear_ficha' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+
+                    <!-- 1.- Identificación del Inmueble -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                1.- Identificación del Inmueble
+                            </button>
+                        </h2>
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="id_plano"><b>ID Plano</b></label>
+                                        <input type="text" class="form-control" id="id_plano" name="id_plano" placeholder="{{ identificacion_inmueble.id_plano }}" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="rol"><b>Rol</b></label>
+                                        <input type="text" class="form-control" id="rol" name="rol" value="{{ identificacion_inmueble.rol }}" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="unidad_vecinal"><b>Unidad Vecinal</b></label>
+                                        <input type="text" class="form-control" id="unidad_vecinal" name="unidad_vecinal" value="{{ identificacion_inmueble.unidad_vecinal }}" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="region"><b>Región</b></label>
+                                        <select class="form-control" id="region" name="region" >
+                                            <option value="{{ identificacion_inmueble.region }}" selected>{{ identificacion_inmueble.region }}</option>
+                                            {% for region in OPTIONS.REGION_CHOICES %}
+
+                                                <option value="{{ region.0 }}">{{ region.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="comuna"><b>Comuna</b></label>
+                                        <select class="form-control" id="comuna" name="comuna" >
+                                            <option value="{{ identificacion_inmueble.comuna }}" selected>{{ identificacion_inmueble.comuna }}</option>
+                                            {% for comuna in OPTIONS.COMUNA_CHOICES %}
+                                                <option value="{{ comuna.0 }}">{{ comuna.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="calle"><b>Calle</b></label>
+
+                                        <input type="text" class="form-control" id="calle" name="calle" value="{{ identificacion_inmueble.calle }}" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="numero"><b>Número</b></label>
+                                        <input type="text" class="form-control" id="numero" name="numero" value="{{ identificacion_inmueble.numero }}" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="plan_cerro_poblacion"><b>Plan/Cerro/Población</b></label>
+                                        <select class="form-control" id="plan_cerro_poblacion" name="plan_cerro_poblacion" >
+                                            <option value="{{ identificacion_inmueble.plan_cerro_poblacion }}" selected>{{ identificacion_inmueble.plan_cerro_poblacion }}</option>
+                                            {% for plan_cerro_poblacion in OPTIONS.PLAN_CERRO_POBLACION %}
+                                                <option value="{{ plan_cerro_poblacion.0 }}">{{ plan_cerro_poblacion.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="denominacion_inmueble"><b>Denominación inmueble</b></label>
+                                        <input type="text" class="form-control" id="denominacion_inmueble" name="denominacion_inmueble" value="{{ identificacion_inmueble.denominacion_inmueble }}" >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="autor"><b>Autor</b></label>
+                                        <input type="text" class="form-control" id="autor" name="autor" value="{{ identificacion_inmueble.autor }}" >
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- 2.- Plano ubicación -->
+                    <!-- 3.- Fotografía general -->
+                    <!-- 4.- Fotografía de contexto -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Fotografías
+                        </button>
+                      </h2>
+                      <div id="collapseTwo" class="accordion-collapse collapse " aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="plano_ubicacion"><b>2.- Plano Ubicación</b></label>
+                                        <input type="file" class="form-control" id="imagen_plano" name="imagen_plano" accept="image/*">
+                                        <br>
+                                        {% if plano_ubicacion.imagen_plano %}
+                                            <img src="{{ plano_ubicacion.imagen_plano.url }}" alt="imagen_plano" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_plano_ubicacion">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="imagen_plano" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Plano ubicacion -->
+                                        <div class="modal" tabindex="-1" id="modal_plano_ubicacion" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Plano Ubicación</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if plano_ubicacion.imagen_plano %}
+                                                                <img src="{{ plano_ubicacion.imagen_plano.url }}" alt="plano_ubicacion" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="plano_ubicacion" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Plano ubicacion -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <table class="table">
+                                            <tr>
+                                                <td>
+                                                    <label class="form-label" for="latitud"><b>Latitud</b></label>
+                                                    <input type="text" class="form-control" id="latitud" name="latitud" value="{{ plano_ubicacion.latitud }}" >
+                                                </td>
+                                                <td>
+                                                    <label class="form-label" for="longitud"><b>Longitud</b></label>
+                                                    <input type="text" class="form-control" id="longitud" name="longitud" value="{{ plano_ubicacion.longitud }}" >
+                                                </td>
+                                            </tr>
+                                            <tr class="text-center">
+                                                <td colspan="2">
+                                                    <a href="#" class="btn btn-primary" id="getLocation">Obtener coordenadas</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="imagen_fotografia"><b>3.- Fotografía de general</b></label>
+                                        <input type="file" class="form-control" id="imagen_fotografia" name="imagen_fotografia" accept="image/*">
+                                        <br>
+                                        {% if fotografia_general.imagen_fotografia %}
+                                            <img src="{{ fotografia_general.imagen_fotografia.url }}" alt="imagen_fotografia" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_imagen_fotografia">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="imagen_fotografia" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Fotografía General -->
+                                        <div class="modal" tabindex="-1" id="modal_imagen_fotografia" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Fotografía de general</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if fotografia_general.imagen_fotografia %}
+                                                                <img src="{{ fotografia_general.imagen_fotografia.url }}" alt="imagen_fotografia" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="imagen_fotografia" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Fotografía General -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="registro_fotografico_1"><b>4.- Fotografía de contexto 1</b></label>
+                                        <input type="file" class="form-control" id="registro_fotografico_1" name="registro_fotografico_1" accept="image/*">
+                                        <br>
+                                        {% if fotografia_contexto.registro_fotografico_1 %}
+                                            <img src="{{ fotografia_contexto.registro_fotografico_1.url }}" alt="registro_fotografico_1" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_registro_fotografico_1">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="registro_fotografico_1" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Fotografía Contexto 1 -->
+                                        <div class="modal" tabindex="-1" id="modal_registro_fotografico_1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Fotografía de contexto 1</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if fotografia_contexto.registro_fotografico_1 %}
+                                                                <img src="{{ fotografia_contexto.registro_fotografico_1.url }}" alt="registro_fotografico_1" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="registro_fotografico_1" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Fotografía Contexto 1 -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="registro_fotografico_2"><b>Fotografía de contexto 2</b></label>
+                                        <input type="file" class="form-control" id="registro_fotografico_2" name="registro_fotografico_2" accept="image/*">
+                                        <br>
+                                        {% if fotografia_contexto.registro_fotografico_2 %}
+                                            <img src="{{ fotografia_contexto.registro_fotografico_2.url }}" alt="registro_fotografico_2" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_registro_fotografico_2">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="registro_fotografico_2" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                        <div class="modal" tabindex="-1" id="modal_registro_fotografico_2" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Fotografía de contexto 2</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if fotografia_contexto.registro_fotografico_2 %}
+                                                                <img src="{{ fotografia_contexto.registro_fotografico_2.url }}" alt="registro_fotografico_2" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="registro_fotografico_2" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fecha_registro_fotografico"><b>Fecha Registro Fotográfico</b></label>
+                                        <input type="date" class="form-control" id="fecha_registro_fotografico" name="fecha_registro_fotografico" min="1900-01-01" value="{{ fotografia_contexto.fecha_registro_fotografico|date:"Y-m-d" }}" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- 5.- Reseña de valores y atributos patrimoniales -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            5.- Reseña de valores y atributos patrimoniales
+                        </button>
+                      </h2>
+                      <div id="collapseThree" class="accordion-collapse collapse " aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="valor_urbano"><b>5.1 Valor Urbano</b></label>
+                                        <textarea class="form-control" id="valor_urbano" name="valor_urbano" rows="3">{{ resena_patrimonial.valor_urbano }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="valor_arquitecnico"><b>5.2 Valor Arquitectónico</b></label>
+                                        <textarea class="form-control" id="valor_arquitecnico" name="valor_arquitecnico" rows="3">{{ resena_patrimonial.valor_arquitecnico }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="valor_historico"><b>5.3 Valor Histórico</b></label>
+                                        <textarea class="form-control" id="valor_historico" name="valor_historico" rows="3">{{ resena_patrimonial.valor_historico }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="valor_economico_social"><b>5.4 Valor Económico / Social</b></label>
+                                        <textarea class="form-control" id="valor_economico_social" name="valor_economico_social" rows="3">{{ resena_patrimonial.valor_economico_social }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- 6.- Resumen valoración de atributos -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                6.- Resumen valoración de atributos
+                          </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse " aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <table class="table table-bordered table-sm">
+                                                <tr>
+                                                    <th rowspan="2">Valor</th>
+                                                    <th colspan="3">Atributos</th>
+                                                    <th rowspan="2">Puntos</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>A</th>
+                                                    <th>B</th>
+                                                    <th>C</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>URBANO</td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="valor_urbano_a" name="valor_urbano_a" min="0" value="{{ valoracion_atributos.valor_urbano_a }}">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="valor_urbano_b" name="valor_urbano_b" min="0" value="{{ valoracion_atributos.valor_urbano_b }}">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="valor_urbano_c" name="valor_urbano_c" min="0" value="{{ valoracion_atributos.valor_urbano_c }}">
+                                                    </td>
+                                                    <td>
+                                                        <span>{{ total_valor_urbano }}</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>ARQUITECTÓNICO</td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="valor_arquitecnico_a" name="valor_arquitecnico_a" min="0" value="{{ valoracion_atributos.valor_arquitecnico_a }}">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="valor_arquitecnico_b" name="valor_arquitecnico_b" min="0" value="{{ valoracion_atributos.valor_arquitecnico_b }}">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="valor_arquitecnico_c" name="valor_arquitecnico_c" min="0" value="{{ valoracion_atributos.valor_arquitecnico_c }}">
+                                                    </td>
+                                                    <td>
+                                                        <span>{{ total_valor_arquitecnico }}</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>HISTÓRICO</td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="valor_historico_a" name="valor_historico_a" min="0" value="{{ valoracion_atributos.valor_historico_a }}">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="valor_historico_b" name="valor_historico_b" min="0" value="{{ valoracion_atributos.valor_historico_b }}">
+                                                    </td>
+                                                    <td>
+
+                                                    </td>
+                                                    <td>
+                                                        <span>{{ total_valor_historico }}</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>ECONÓMICO/SOCIAL</td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="valor_economico_social_a" name="valor_economico_social_a" min="0" value="{{ valoracion_atributos.valor_economico_social_a }}">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="valor_economico_social_b" name="valor_economico_social_b" min="0" value="{{ valoracion_atributos.valor_economico_social_b }}">
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" class="form-control" id="valor_economico_social_c" name="valor_economico_social_c" min="0" value="{{ valoracion_atributos.valor_economico_social_c }}">
+                                                    </td>
+                                                    <td>
+                                                        <span>{{ total_valor_economico_social }}</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="4">Puntaje Total</td>
+                                                    <td>
+                                                        <span>{{ total_valoracion }}</span>
+                                                    </td>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="zona_conservacion"><b>Inserto en Zona de Conservación Histórica (LGUC) o Zona Típica (Ley 17.288)</b></label>
+                                            <select class="form-select" id="zona_de_conservacion" name="zona_de_conservacion">
+                                                <option value="1">Si</option>
+                                                <option value="0">No</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="valor_urbano"><b>Identificación ZCH o ZT</b></label>
+                                            <input type="text" class="form-control" id="identificacion_zch" name="identificacion_zch" value="{{ valoracion_atributos.identificacion_zch }}">
+                                        </div>
+                                    </div>
+                                </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- 7.- Información técnicas -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-5">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
+                                7.- Información técnicas
+                          </button>
+                        </h2>
+                        <div id="collapse-5" class="accordion-collapse collapse " aria-labelledby="heading-5" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <span class="form-label"><b>7.1 Destino del Inmueble</b></span>
+                                            <table class="table table-bordered table-sm">
+                                                <tr>
+                                                    <th>Piso</th>
+                                                    <th>Original</th>
+                                                    <th>Actual</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>Subsuelo</td>
+                                                    <td>
+                                                        <select class="form-control" id="piso_original_subterraneo" name="piso_original_subterraneo" >
+                                                            <option value="{{ informacion_tecnica.piso_original_subterraneo }}" selected>{{ informacion_tecnica.piso_original_subterraneo }}</option>
+                                                            {% for piso_original_subterraneo in OPTIONS.TIPO_DESTINO_INMUEBLE %}
+                                                                <option value="{{ piso_original_subterraneo.0 }}">{{ piso_original_subterraneo.1 }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" id="piso_actual_subterraneo" name="piso_actual_subterraneo" >
+                                                            <option value="{{ informacion_tecnica.piso_actual_subterraneo }}" selected>{{ informacion_tecnica.piso_actual_subterraneo }}</option>
+                                                            {% for piso_actual_subterraneo in OPTIONS.TIPO_DESTINO_INMUEBLE %}
+                                                                <option value="{{ piso_actual_subterraneo.0 }}">{{ piso_actual_subterraneo.1 }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Primer piso</td>
+                                                    <td>
+                                                        <select class="form-control" id="piso_original_primer_piso" name="piso_original_primer_piso" >
+                                                            <option value="{{ informacion_tecnica.piso_original_primer_piso }}" selected>{{ informacion_tecnica.piso_original_primer_piso }}</option>
+                                                            {% for piso_original_primer_piso in OPTIONS.TIPO_DESTINO_INMUEBLE %}
+                                                                <option value="{{ piso_original_primer_piso.0 }}">{{ piso_original_primer_piso.1 }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" id="piso_actual_primer_piso" name="piso_actual_primer_piso" >
+                                                            <option value="{{ informacion_tecnica.piso_actual_primer_piso }}" selected>{{ informacion_tecnica.piso_actual_primer_piso }}</option>
+                                                            {% for piso_actual_primer_piso in OPTIONS.TIPO_DESTINO_INMUEBLE %}
+                                                                <option value="{{ piso_actual_primer_piso.0 }}">{{ piso_actual_primer_piso.1 }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Pisos superiores</td>
+                                                    <td>
+                                                        <select class="form-control" id="piso_original_pisos_superiores" name="piso_original_pisos_superiores" >
+                                                            <option value="{{ informacion_tecnica.piso_original_pisos_superiores }}" selected>{{ informacion_tecnica.piso_original_pisos_superiores }}</option>
+                                                            {% for piso_original_pisos_superiores in OPTIONS.TIPO_DESTINO_INMUEBLE %}
+                                                                <option value="{{ piso_original_pisos_superiores.0 }}">{{ piso_original_pisos_superiores.1 }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select class="form-control" id="piso_actual_pisos_superiores" name="piso_actual_pisos_superiores" >
+                                                            <option value="{{ informacion_tecnica.piso_actual_pisos_superiores }}" selected>{{ informacion_tecnica.piso_actual_pisos_superiores }}</option>
+                                                            {% for piso_actual_pisos_superiores in OPTIONS.TIPO_DESTINO_INMUEBLE %}
+                                                                <option value="{{ piso_actual_pisos_superiores.0 }}">{{ piso_actual_pisos_superiores.1 }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="tipo_propiedad"><b>7.2 Año de Construcción</b></label>
+                                            <select class="form-control" id="anio_construccion" name="anio_construccion" >
+                                                <option value="{{ informacion_tecnica.anio_construccion }}" selected>{{ informacion_tecnica.anio_construccion }}</option>
+                                                {% for anio_construccion in OPTIONS.PERIODOS_CONSTRUCCION %}
+                                                    <option value="{{ anio_construccion.0 }}">{{ anio_construccion.1 }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="tipo_propiedad"><b>7.3 Tipo de Propiedad</b></label>
+                                            <select class="form-control" id="tipo_propiedad" name="tipo_propiedad" >
+                                                <option value="{{ informacion_tecnica.tipo_propiedad }}" selected>{{ informacion_tecnica.tipo_propiedad }}</option>
+                                                {% for tipo_propiedad in OPTIONS.TIPO_PROPIEDAD %}
+                                                    <option value="{{ tipo_propiedad.0 }}">{{ tipo_propiedad.1 }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="tipo_usuario"><b>7.4 Tipo de Usuario</b></label>
+                                            <select class="form-control" id="tipo_usuario" name="tipo_usuario" >
+                                                <option value="{{ informacion_tecnica.tipo_usuario }}" selected>{{ informacion_tecnica.tipo_usuario }}</option>
+                                                {% for tipo_usuario in OPTIONS.TIPO_USUARIO %}
+                                                    <option value="{{ tipo_usuario.0 }}">{{ tipo_usuario.1 }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="regimen_propiedad"><b>7.5 Regimen de Propiedad</b></label>
+                                            <select class="form-control" id="regimen_propiedad" name="regimen_propiedad" >
+                                                <option value="{{ informacion_tecnica.regimen_propiedad }}" selected>{{ informacion_tecnica.regimen_propiedad }}</option>
+                                                {% for tipo_regimen in OPTIONS.REGIMEN_PROPIEDAD %}
+                                                    {% for regimen_propiedad in tipo_regimen.1 %}
+                                                        <option value="{{ regimen_propiedad.0 }}">{{ regimen_propiedad.1 }}</option>
+                                                    {% endfor %}
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="afectacion_actual"><b>7.6 Afectación Actual</b></label>
+                                            <select class="form-control" id="afectacion_actual" name="afectacion_actual" >
+                                                <option value="{{ informacion_tecnica.afectacion_actual }}" selected>{{ informacion_tecnica.afectacion_actual }}</option>
+                                                {% for afectacion_actual in OPTIONS.AFECTACION_ACTUAL %}
+                                                    <option value="{{ afectacion_actual.0 }}">{{ afectacion_actual.1 }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label class="form-label" for="informacion_tecnica_observaciones"><b>7.7 Observaciones</b></label>
+                                            <textarea class="form-control" id="informacion_tecnica_observaciones" name="informacion_tecnica_observaciones" rows="3">{{ informacion_tecnica.observaciones }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- 8.- Caracteristicas morfológicas -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-6">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-6" aria-expanded="false" aria-controls="collapse-6">
+                                8.- Caracteristicas morfológicas
+                          </button>
+                        </h2>
+                        <div id="collapse-6" class="accordion-collapse collapse" aria-labelledby="heading-6" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="row bg-light">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="tipologia"><b>8.1 Tipología (Emplazamiento en manzana)</b></label>
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>Manzana:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="manzana" name="manzana" value="1" {% if tipologia.manzana %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Esquina:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="esquina" name="esquina" value="1" {% if tipologia.esquina %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Entre medianeros:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="entre_medianeros" name="entre_medianeros" value="1" {% if tipologia.entre_medianeros %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cabezal:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="cabezal" name="cabezal" value="1" {% if tipologia.cabezal %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Crucero:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="crucero" name="crucero" value="1" {% if tipologia.crucero %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Doble frente:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="doble_frente" name="doble_frente" value="1" {% if tipologia.doble_frente %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Antejardines:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="antejardines" name="antejardines" value="1" {% if tipologia.antejardines %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="sistema_agrupamiento"><b>8.2 Sistema de Agrupamiento</b></label>
+                                        <select class="form-control" id="sistema_agrupamiento" name="sistema_agrupamiento" >
+                                            <option value="{{ caracteristicas_morfologicas.sistema_agrupamiento }}" selected>{{ caracteristicas_morfologicas.sistema_agrupamiento }}</option>
+                                            {% for sistema_agrupamiento in OPTIONS.SISTEMA_AGRUPAMIENTO %}
+                                                <option value="{{ sistema_agrupamiento.0 }}">{{ sistema_agrupamiento.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row bg-light">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="tipo_cubierta"><b>8.3 Tipo de Cubierta</b></label>
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>Horizontal:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="horizontal" name="horizontal" value="1" {% if tipo_cubierta.horizontal %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Inclinada:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="inclinada" name="inclinada" value="1" {% if tipo_cubierta.inclinada %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Curva:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="curva" name="curva" value="1" {% if tipo_cubierta.curva %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Otro:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="tipo_cubierta_otro" name="tipo_cubierta_otro" value="1" {% if tipo_cubierta.otro %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Otro Texto:</td>
+                                                <td>
+                                                    <input type="text" class="form-control" id="tipo_cubierta_otro_texto" name="tipo_cubierta_otro_texto" value="{{ tipo_cubierta.otro_texto }}">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="volumetria"><b>8.4 Volumetría</b></label>
+                                        <select class="form-control" id="volumetria" name="volumetria">
+                                            <option value="{{ caracteristicas_morfologicas.volumetria }}" selected>{{ caracteristicas_morfologicas.volumetria }}</option>
+                                            {% for volumetria in OPTIONS.VOLUMETRIA %}
+                                                <option value="{{ volumetria.0 }}">{{ volumetria.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row bg-light">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="elementos_valor_significativo"><b>8.5 Elementos de Valor Significativo</b></label>
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>Cornisamientos:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="cornisamientos" name="cornisamientos" value="1" {% if elementos_valor_significativo.cornisamientos %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Zócalos:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="zocalos" name="zocalos" value="1" {% if elementos_valor_significativo.zocalos %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Molduras relevantes en yeso:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="molduras_relevantes_en_yeso" name="molduras_relevantes_en_yeso" value="1" {% if elementos_valor_significativo.molduras_relevantes_en_yeso %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Ornamentación en madera:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="ornamentacion_en_madera" name="ornamentacion_en_madera" value="1" {% if elementos_valor_significativo.ornamentacion_en_madera %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Remate en techumbre:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="remate_en_techumbre" name="remate_en_techumbre" value="1" {% if elementos_valor_significativo.remate_en_techumbre %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Otro:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="elementos_valor_significativo_otro" name="elementos_valor_significativo_otro" value="1" {% if elementos_valor_significativo.otro %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Otro Texto:</td>
+                                                <td>
+                                                    <input type="text" class="form-control" id="elementos_valor_significativo_otro_texto" name="elementos_valor_significativo_otro_texto" value="{{ elementos_valor_significativo.otro_texto }}">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="expresion_fachada"><b>8.6 Expresión de Fachada</b></label>
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>Lenguaje de vanos comun:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="lenguaje_de_vanos_comun" name="lenguaje_de_vanos_comun" value="1" {% if expresion_fachada.lenguaje_de_vanos_comun %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Simetría:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="simetria" name="simetria" value="1" {% if expresion_fachada.simetria %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Modulación en serie:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="modulacion_en_serie" name="modulacion_en_serie" value="1" {% if expresion_fachada.modulacion_en_serie %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Torreón en esquina:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="torreon_en_esquina" name="torreon_en_esquina" value="1" {% if expresion_fachada.torreon_en_esquina %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Otro:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="expresion_fachada_otro" name="expresion_fachada_otro" value="1" {% if expresion_fachada.otro %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Otro Texto:</td>
+                                                <td>
+                                                    <input type="text" class="form-control" id="expresion_fachada_otro_texto" name="expresion_fachada_otro_texto" value="{{ expresion_fachada.otro_texto }}">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row bg-light">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="continuidad_edificacion"><b>8.7 Continuidad de Edificación</b></label>
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>Fachada:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="fachada" name="fachada" value="1" {% if continuidad_edificacion.fachada %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Línea de remate superior:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="linea_de_remate_superior" name="linea_de_remate_superior" value="1" {% if continuidad_edificacion.linea_de_remate_superior %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Línea de zócalo escalonado:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="linea_de_zocalo_escalonado" name="linea_de_zocalo_escalonado" value="1" {% if continuidad_edificacion.linea_de_zocalo_escalonado %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Línea de zócalo continuo:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="linea_de_zocalo_continuo" name="linea_de_zocalo_continuo" value="1" {% if continuidad_edificacion.linea_de_zocalo_continuo %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Realce horizontal predominante:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="realce_horizontal_prodominante" name="realce_horizontal_prodominante" value="1" {% if continuidad_edificacion.realce_horizontal_prodominante %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Zócalo de mampostería:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="zocalo_de_mamposteria" name="zocalo_de_mamposteria" value="1" {% if continuidad_edificacion.zocalo_de_mamposteria %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Otro:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="continuidad_edificacion_otro" name="continuidad_edificacion_otro" value="1" {% if continuidad_edificacion.otro %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Otro Texto:</td>
+                                                <td>
+                                                    <input type="text" class="form-control" id="continuidad_edificacion_otro_texto" name="continuidad_edificacion_otro_texto" value="{{ continuidad_edificacion.otro_texto }}">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="caracteristicas_morfologicas_observaciones"><b>Observaciones</b></label>
+                                        <textarea class="form-control" id="caracteristicas_morfologicas_observaciones" name="caracteristicas_morfologicas_observaciones" rows="3">{{ caracteristicas_morfologicas.observaciones }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row bg-light">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fotografia_valor_significativo"><b>Registro Fotográfico Valor Significativo</b></label>
+                                        <input type="file" class="form-control" id="fotografia_valor_significativo" name="fotografia_valor_significativo" accept="image/*">
+                                        <br>
+                                        {% if caracteristicas_morfologicas.fotografia_valor_significativo %}
+                                            <img src="{{ caracteristicas_morfologicas.fotografia_valor_significativo.url }}" alt="fotografia_valor_significativo" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_fotografia_valor_significativo">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="fotografia_valor_significativo" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Registro Fotográfico Valor Significativo -->
+                                        <div class="modal" tabindex="-1" id="modal_fotografia_valor_significativo" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Registro Fotográfico Valor Significativo</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if caracteristicas_morfologicas.fotografia_valor_significativo %}
+                                                                <img src="{{ caracteristicas_morfologicas.fotografia_valor_significativo.url }}" alt="fotografia_valor_significativo" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="fotografia_valor_significativo" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Registro Fotográfico Valor Significativo -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fotografia_expresion_fachada"><b>Registro Fotográfico Expresión Fachada</b></label>
+                                        <input type="file" class="form-control" id="fotografia_expresion_fachada" name="fotografia_expresion_fachada" accept="image/*">
+                                        <br>
+                                        {% if caracteristicas_morfologicas.fotografia_expresion_fachada %}
+                                            <img src="{{ caracteristicas_morfologicas.fotografia_expresion_fachada.url }}" alt="fotografia_expresion_fachada" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_fotografia_expresion_fachada">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="fotografia_expresion_fachada" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Registro Fotográfico Expresión Fachada -->
+                                        <div class="modal" tabindex="-1" id="modal_fotografia_expresion_fachada" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Registro Fotográfico Expresión Fachada</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if caracteristicas_morfologicas.fotografia_expresion_fachada %}
+                                                                <img src="{{ caracteristicas_morfologicas.fotografia_expresion_fachada.url }}" alt="fotografia_expresion_fachada" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="fotografia_expresion_fachada" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Registro Fotográfico Expresión Fachada -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row bg-light">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fotografia_detalles_constructivos"><b>Registro Fotográfico Detalles constructivos</b></label>
+                                        <input type="file" class="form-control" id="fotografia_detalles_constructivos" name="fotografia_detalles_constructivos" accept="image/*">
+                                        <br>
+                                        {% if caracteristicas_morfologicas.fotografia_detalles_constructivos %}
+                                            <img src="{{ caracteristicas_morfologicas.fotografia_detalles_constructivos.url }}" alt="fotografia_detalles_constructivos" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_fotografia_detalles_constructivos">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="fotografia_detalles_constructivos" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Registro Fotográfico Detalles constructivos -->
+                                        <div class="modal" tabindex="-1" id="modal_fotografia_detalles_constructivos" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Registro Fotográfico Detalles constructivos</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if caracteristicas_morfologicas.fotografia_detalles_constructivos %}
+                                                                <img src="{{ caracteristicas_morfologicas.fotografia_detalles_constructivos.url }}" alt="fotografia_detalles_constructivos" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="fotografia_detalles_constructivos" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Registro Fotográfico Detalles constructivos -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="continuidad_edificacion"><b>8.9 Superficies y Dimensiones</b></label>
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>Terreno</td>
+                                                <td>
+                                                    <input type="number" class="form-control" id="terreno" name="terreno" value="{{ caracteristicas_morfologicas.terreno }}" step="0.01">
+                                                </td>
+                                                <th colspan="2">
+                                                    Altura
+                                                </th>
+                                                <th colspan="2">
+                                                    Antejardín
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <td>Edificada</td>
+                                                <td>
+                                                    <input type="number" class="form-control" id="edificada" name="edificada" value="{{ caracteristicas_morfologicas.edificada }}" step="0.01">
+                                                </td>
+                                                <td>
+                                                    En pisos
+                                                </td>
+                                                <td>
+                                                    <input type="number" class="form-control" id="altura_en_pisos" name="altura_en_pisos" value="{{ caracteristicas_morfologicas.altura_en_pisos }}" step="0.01">
+                                                </td>
+                                                <td>
+                                                    Frente 1
+                                                </td>
+                                                <td>
+                                                    <input type="number" class="form-control" id="antejardin_frente_1" name="antejardin_frente_1" value="{{ caracteristicas_morfologicas.antejardin_frente_1 }}" step="0.01">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Protegida</td>
+                                                <td>
+                                                    <input type="number" class="form-control" id="protegida" name="protegida" value="{{ caracteristicas_morfologicas.protegida }}" step="0.01">
+                                                </td>
+                                                <td>
+                                                    En metros
+                                                </td>
+                                                <td>
+                                                    <input type="number" class="form-control" id="altura_en_metros" name="altura_en_metros" value="{{ caracteristicas_morfologicas.altura_en_metros }}" step="0.01">
+                                                </td>
+                                                <td>
+                                                    Frente 2
+                                                </td>
+                                                <td>
+                                                    <input type="number" class="form-control" id="antejardin_frente_2" name="antejardin_frente_2" value="{{ caracteristicas_morfologicas.antejardin_frente_2 }}" step="0.01">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row bg-light">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="materialidad"><b>8.10 Materialidad</b></label>
+                                        <table class="table table-bordered table-sm">
+                                            <tr>
+                                                <td>Estructura</td>
+                                                <td>Cubierta</td>
+                                                <td>
+                                                    Revestimientos</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <select class="form-control" id="materialidad_estructura" name="materialidad_estructura" >
+                                                            <option value="{{ caracteristicas_morfologicas.materialidad_estructura }}" selected>{{ caracteristicas_morfologicas.materialidad_estructura }}</option>
+                                                            {% for materialidad_estructura in OPTIONS.MATERIALIDAD_ESTRUCTURA %}
+                                                                <option value="{{ materialidad_estructura.0 }}">{{ materialidad_estructura.1 }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <select class="form-control" id="materialidad_cubierta" name="materialidad_cubierta" >
+                                                            <option value="{{ caracteristicas_morfologicas.materialidad_cubierta }}" selected>{{ caracteristicas_morfologicas.materialidad_cubierta }}</option>
+                                                            {% for materialidad_cubierta in OPTIONS.MATERIALIDAD_CUBIERTA %}
+                                                                <option value="{{ materialidad_cubierta.0 }}">{{ materialidad_cubierta.1 }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+
+                                                <div class="form-group">
+                                                    <select class="form-control" id="materialidad_revestimientos" name="materialidad_revestimientos" >
+                                                        <option value="{{ caracteristicas_morfologicas.materialidad_revestimientos }}" selected>{{ caracteristicas_morfologicas.materialidad_revestimientos }}</option>
+                                                        {% for materialidad_revestimientos in OPTIONS.MATERIALIDAD_REVESTIMIENTO %}
+                                                            <option value="{{ materialidad_revestimientos.0 }}">{{ materialidad_revestimientos.1 }}</option>
+                                                        {% endfor %}
+                                                        
+                                                    </select>
+                                                    <br>
+                                                    Otro
+                                                    <input type="text" class="form-control" id="materialidad_revestimientos_text" name="materialidad_revestimientos_text" value="{{ caracteristicas_morfologicas.materialidad_revestimientos}}" disabled>
+
+                                                </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="descripcion_del_inmubebles"><b>8.11 descripcion del inmubebles</b></label>
+                                        <textarea class="form-control" id="descripcion_del_inmubebles" name="descripcion_del_inmubebles" rows="3">{{ caracteristicas_morfologicas.descripcion_del_inmubebles}}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- 9.- Estado de conservación -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-7">
+                          <button  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-7" aria-expanded="false" aria-controls="collapse-7">
+                                9.- Estado de conservación
+                          </button>
+                        </h2>
+                        <div id="collapse-7" class="accordion-collapse collapse" aria-labelledby="heading-7" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="inmueble"><b>Inmueble</b></label>
+                                        <select class="form-control" id="inmueble" name="inmueble" >
+                                            <option value="{{ estado_de_conservacion.inmueble }}" selected>{{ estado_de_conservacion.inmueble }}</option>
+                                            {% for inmueble in OPTIONS.ESTADO_CONSERVACION %}
+                                                <option value="{{ inmueble.0 }}">{{ inmueble.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="entorno"><b>Entorno</b></label>
+                                        <select class="form-control" id="entorno" name="entorno" >
+                                            <option value="{{ estado_de_conservacion.entorno }}" selected>{{ estado_de_conservacion.entorno }}</option>
+                                            {% for entorno in OPTIONS.ESTADO_CONSERVACION %}
+                                                <option value="{{ entorno.0 }}">{{ entorno.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- 10.- Grado de alteración -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-8">
+                          <button  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-8" aria-expanded="false" aria-controls="collapse-8">
+                                10.- Grado de alteración
+                          </button>
+                        </h2>
+                        <div id="collapse-8" class="accordion-collapse collapse" aria-labelledby="heading-8" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="grado_de_alteracion_fachada"><b>Fachada</b></label>
+                                        <select class="form-control" id="grado_de_alteracion_fachada" name="grado_de_alteracion_fachada" >
+                                            <option value="{{ grado_de_alteracion.fachada }}" selected>{{ grado_de_alteracion.fachada }}</option>
+                                            {% for fachada in OPTIONS.GRADO_ALTERACION %}
+                                                <option value="{{ fachada.0 }}">{{ fachada.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="grado_de_alteracion_cubierta"><b>Cubierta</b></label>
+                                        <select class="form-control" id="grado_de_alteracion_cubierta" name="grado_de_alteracion_cubierta" >
+                                            <option value="{{ grado_de_alteracion.cubierta }}" selected>{{ grado_de_alteracion.cubierta }}</option>
+                                            {% for cubierta in OPTIONS.GRADO_ALTERACION %}
+                                                <option value="{{ cubierta.0 }}">{{ cubierta.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- 11.- Aptitud de rehabilitación -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-9">
+                          <button  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-9" aria-expanded="false" aria-controls="collapse-9">
+                                11.- Aptitud de rehabilitación
+                          </button>
+                        </h2>
+                        <div id="collapse-9" class="accordion-collapse collapse" aria-labelledby="heading-9" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="grado_de_alteracion_cubierta"></label>
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>Vivienda:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="vivienda" name="vivienda" value="1" {% if aptitud_de_rehabilitacion.vivienda %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Equipamiento:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="equipamiento" name="equipamiento" value="1" {% if aptitud_de_rehabilitacion.equipamiento %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Comercio:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="comercio" name="comercio" value="1" {% if aptitud_de_rehabilitacion.comercio %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Otro:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="aptitud_de_rehabilitacion_otro" name="aptitud_de_rehabilitacion_otro" value="1" {% if aptitud_de_rehabilitacion.otro %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Otro Texto:</td>
+                                                <td>
+                                                    <input type="text" class="form-control" id="aptitud_de_rehabilitacion_otro_texto" name="aptitud_de_rehabilitacion_otro_texto" value="{{ aptitud_de_rehabilitacion.otro_texto }}">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- 12.- Relación del inmueble con el entorno -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-10">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-10" aria-expanded="false" aria-controls="collapse-10">
+                                12.- Relación del inmueble con el entorno
+                          </button>
+                        </h2>
+                        <div id="collapse-10" class="accordion-collapse collapse" aria-labelledby="heading-10" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="grado_de_alteracion_cubierta"><b>12.1 Imagen Urbana Relevante</b></label>
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>Por ubicación:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="imagen_urbana_relevante_por_ubicacion" name="imagen_urbana_relevante_por_ubicacion" value="1" {% if relacion_del_inmueble_con_el_terreno.imagen_urbana_relevante_por_ubicacion %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Por Singularidad:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="imagen_urbana_relevante_por_singularidad" name="imagen_urbana_relevante_por_singularidad" value="1" {% if relacion_del_inmueble_con_el_terreno.imagen_urbana_relevante_por_singularidad %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="grado_de_alteracion_cubierta"><b>12.2 Forma Parte de un Conjunto</b></label>
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>Forma Parte de un Conjunto:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="forma_parte_de_un_conjunto" name="forma_parte_de_un_conjunto" value="1" {% if relacion_del_inmueble_con_el_terreno.forma_parte_de_un_conjunto %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="espacio_publico"><b>12.3 Espacio Público</b></label>
+                                        <select class="form-control" id="espacio_publico" name="espacio_publico" >
+                                            <option value="{{ relacion_del_inmueble_con_el_terreno.espacio_publico }}" selected>{{ relacion_del_inmueble_con_el_terreno.espacio_publico }}</option>
+                                            {% for espacio_publico in OPTIONS.ESPACIO_PUBLICO %}
+                                                <option value="{{ espacio_publico.0 }}">{{ espacio_publico.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="Otros_elementos_patrimonial"><b>12.4 Otros elementos de valor patrimonial</b></label>
+                                        <select class="form-control" id="Otros_elementos_patrimonial" name="Otros_elementos_patrimonial" >
+                                            <option value="{{ relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial }}" selected>{{ relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial }}</option>
+                                            {% for Otros_elementos_patrimonial in OPTIONS.PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL %}
+                                                <option value="{{ Otros_elementos_patrimonial.0 }}">{{ Otros_elementos_patrimonial.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label"><b>12.5 Monumentos Históricos</b></label>
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>Predio contiguo:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="mon_his_predio_contiguo" name="mon_his_predio_contiguo" value="1" {% if relacion_del_inmueble_con_el_terreno.mon_his_predio_contiguo %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Manzana:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="mon_his_manzana" name="mon_his_manzana" value="1" {% if relacion_del_inmueble_con_el_terreno.mon_his_manzana %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Manzana enfrente:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="mon_his_manzana_enfrente" name="mon_his_manzana_enfrente" value="1" {% if relacion_del_inmueble_con_el_terreno.mon_his_manzana_enfrente %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Relación visual:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="mon_his_relacion_visual" name="mon_his_relacion_visual" value="1" {% if relacion_del_inmueble_con_el_terreno.mon_his_relacion_visual %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label"><b>12.5 Inmuebles de Conservación Histórica</b></label>
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>Predio contiguo:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="inm_con_his_predio_contiguo" name="inm_con_his_predio_contiguo" value="1" {% if relacion_del_inmueble_con_el_terreno.inm_con_his_predio_contiguo %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Manzana:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="inm_con_his_manzana" name="inm_con_his_manzana" value="1" {% if relacion_del_inmueble_con_el_terreno.inm_con_his_manzana %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Manzana enfrente:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="inm_con_his_manzana_enfrente" name="inm_con_his_manzana_enfrente" value="1" {% if relacion_del_inmueble_con_el_terreno.inm_con_his_manzana_enfrente %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Relación visual:</td>
+                                                <td>
+
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="inm_con_his_relacion_visual" name="inm_con_his_relacion_visual" value="1" {% if relacion_del_inmueble_con_el_terreno.inm_con_his_relacion_visual %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="espacio_publico_observaciones"><b>12.6 Observaciones Contexto Urbano / Condiciones Geográficas</b></label>
+                                        <textarea class="form-control" id="espacio_publico_observaciones" name="espacio_publico_observaciones" rows="3">{{ relacion_del_inmueble_con_el_terreno.observaciones }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- 13.- Categoría de acuerdo a su uso -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-11">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-11" aria-expanded="false" aria-controls="collapse-11">
+                                13.- Categoría de acuerdo a su uso
+                          </button>
+                        </h2>
+                        <div id="collapse-11" class="accordion-collapse collapse" aria-labelledby="heading-11" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="categoria_acuerdo_uso"><b>Categoría de acuerdo de uso</b></label>
+                                        <select class="form-control" id="categoria_acuerdo_uso" name="categoria_acuerdo_uso">
+                                            <option value="1">CONJUNTOS DE INMUEBLES/ VIVIENDAS UNIFAMILIARES</option>
+                                            <option value="2">COPROPIEDADES / VIVIENDAS PLURIFAMILIARES</option>
+                                            <option value="3">EDIFICACIONES DE EDUCACIÓN</option>
+                                            <option value="4">IGLESIAS / CONJUNTOS RELIGIOSOS</option>
+                                            <option value="5">INDUSTRIAS Y BODEGAS</option>
+                                            <option value="6">POBLACIONES DE VIVIENDAS/ VIVIENDAS UNIFAMILIARES</option>
+                                            <option value="7">VILLAS, PALACIOS Y CASONAS / VIVIENDAS UNIFAMILIARES</option>
+                                            <option value="8">VIVIENDAS COLECTIVAS / VIVIENDAS PLURIFAMILIARES</option>
+                                            <option value="9">TEATROS / EDIFICIOS EMBLEMÁTICOS</option>
+                                            <option value="10">ANTIGUOS HOTELES /RESTAURANTES /CAFES</option>
+                                            <option value="11">EDIFICACIONES DE SALUD</option>
+                                            <option value="12">EDIFICIOS DE SERVICIOS PUBLICOS</option>
+                                            <option value="13">GRANDES EMPRESAS Y OFICINAS</option>
+                                            <option value="14">INSTALACIONES  DEPORTIVAS</option>
+                                            <option value="15">INSTALACIONES MILITARES Y DE DEFENSA</option>
+                                            <option value="16">LUGARES DE VALOR SOCIAL / SIMBOLICO O HISTORICO</option>
+                                            <option value="17">MERCADOS</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- 14.- Conclusiones o remendaciones para su intervencion -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-12">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-12" aria-expanded="false" aria-controls="collapse-12">
+                                14.- Conclusiones o remendaciones para su intervención
+                          </button>
+                        </h2>
+                        <div id="collapse-12" class="accordion-collapse collapse" aria-labelledby="heading-12" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="conclusiones"><b>Conclusiones o remendaciones para su intervención</b></label>
+                                        <textarea class="form-control" id="conclusiones" name="conclusiones" rows="3">{{ conclusiones.conclusiones }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- 15.- Fuentes referenciales y bibliográficas -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-13">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-13" aria-expanded="false" aria-controls="collapse-13">
+                                15.- Fuentes referenciales y bibliográficas
+                          </button>
+                        </h2>
+                        <div id="collapse-13" class="accordion-collapse collapse" aria-labelledby="heading-13" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fuentes_referenciales_y_bibliograficas"><b>Indicar si cuenta con antecedentes e información en Archivo Histórico y/o DOM</b></label>
+                                        <textarea class="form-control" id="fuentes_referenciales_y_bibliograficas" name="fuentes_referenciales_y_bibliograficas" rows="3">{{ fuentes_referenciales_y_bibliograficas.fuentes_referenciales_y_bibliograficas }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="row m-3">
+                        <div class="col-12">
+                            <a href="{% url 'ver_fichas' %}" target="_self"class="btn btn-primary" type="button">Guardar</a>
+                            <a href="{% url 'exportar_pdf' identificacion_inmueble.id_plano %}" target="_blank" class="btn btn-danger">Generar PDF</a>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
 {% endblock main_content %}
 
 {% block custom_js %}
+<!-- DESACTIVAR O ACTIVAR INSERT DE OTROS -->
+<script>
+    
+</script>
+
+
+<script>
+    document.getElementById("getLocation").addEventListener("click", function(event){
+        event.preventDefault();
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                document.getElementById('latitud').value = position.coords.latitude;
+                document.getElementById('longitud').value = position.coords.longitude;
+            });
+
+        } else {
+            alert('No se puede acceder a la geolocalización');
+
+        }
+    });
+</script>
+
+<script>
+function Verificar_rol(){
+    let rol = document.getElementById("rol");
+    rol.addEventListener("focusout",(e) =>{
+    if (document.getElementById("rol").value.length != 11 ){
+        alert("El Formato del rol es incorreto \n El fomarto debe ser 00000-00000")
+    }
+    })
+};
+</script>
 
 {% endblock custom_js %}
