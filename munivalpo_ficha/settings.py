@@ -80,27 +80,27 @@ WSGI_APPLICATION = 'munivalpo_ficha.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
-# DATABASES = {
-#      'default': {
-#          'ENGINE': 'django.db.backends.postgresql',
-#          'NAME': 'muni_valpo_ficha',
-#          'USER': 'muni_valpo_ficha',
-#          'PASSWORD': 'munivalpoficha2022',
-#          'HOST': 'localhost',
-#          'PORT': '5432',
-#      }
-#  }
-
 DATABASES = {
-    'default': {
+     'default': {
          'ENGINE': 'django.db.backends.postgresql',
          'NAME': 'muni_valpo_ficha',
-         'USER': 'postgres',
-         'PASSWORD': '1234',
+         'USER': 'muni_valpo_ficha',
+         'PASSWORD': 'munivalpoficha2022',
          'HOST': 'localhost',
          'PORT': '5432',
      }
  }
+
+# DATABASES = {
+#     'default': {
+#          'ENGINE': 'django.db.backends.postgresql',
+#          'NAME': 'muni_valpo_ficha',
+#          'USER': 'postgres',
+#          'PASSWORD': '1234',
+#          'HOST': 'localhost',
+#          'PORT': '5432',
+#      }
+#  }
 
 # DATABASES = {
 #     'default': {
