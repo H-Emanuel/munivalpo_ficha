@@ -20,7 +20,7 @@ PLAN_CERRO_POBLACION = [
 
 # Sección 1
 class IdentificacionInmueble(models.Model):
-    id_plano = models.BigAutoField(primary_key=True)
+    id_plano = models.BigAutoField(primary_key=True, unique=True)
     rol = models.CharField(max_length=100, blank=True, default='00000-00000')
     unidad_vecinal = models.CharField(max_length=255, blank=True, default='')
     region = models.CharField(max_length=50, choices=REGION_CHOICES, default='VALPARAÍSO')
@@ -41,7 +41,7 @@ class IdentificacionInmueble(models.Model):
         return int (self.id_plano) +1 
 
     def __str__(self):
-        return str(self.id_plano) + ' - ' + self.rol
+        return str(self.id_plano) + ' - ' + self.rol  
     
 # Sección 2
 def content_file_name_plano(instance, filename):

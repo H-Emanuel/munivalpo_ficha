@@ -18,7 +18,7 @@
         <div class="row m-3">
             <div class="col-12">
                 <div class="accordion" id="accordionExample">
-                    <form action="{% url 'crear_ficha' %}" method="post" enctype="multipart/form-data">
+                    <form action="#" method='POST' enctype="multipart/form-data">
                         {% csrf_token %}
 
                     <!-- 1.- Identificación del Inmueble -->
@@ -34,7 +34,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="id_plano"><b>ID Plano</b></label>
-                                        <input type="text" class="form-control" id="id_plano" name="id_plano" placeholder="{{ identificacion_inmueble.id_plano }}" disabled>
+                                        <input type="text" class="form-control" id="id_plano" name="id_plano" placeholder="{{ id_plano }}" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="rol"><b>Rol</b></label>
-                                        <input type="text" class="form-control" id="rol" name="rol" value="{{ identificacion_inmueble.rol }}" >
+                                        <input type="text" class="form-control" id="rol" name="rol" value="00000-00000" >
                                     </div>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="unidad_vecinal"><b>Unidad Vecinal</b></label>
-                                        <input type="text" class="form-control" id="unidad_vecinal" name="unidad_vecinal" value="{{ identificacion_inmueble.unidad_vecinal }}" >
+                                        <input type="text" class="form-control" id="unidad_vecinal" name="unidad_vecinal" value="" >
                                     </div>
                                 </div>
                             </div>
@@ -401,13 +401,13 @@
                                                 <tr>
                                                     <td>URBANO</td>
                                                     <td>
-                                                        <input type="number" class="form-control" id="valor_urbano_a" name="valor_urbano_a" min="0" value="{{ valoracion_atributos.valor_urbano_a }}">
+                                                        <input type="number" class="form-control" id="valor_urbano_a" name="valor_urbano_a" min="0" value="0">
                                                     </td>
                                                     <td>
-                                                        <input type="number" class="form-control" id="valor_urbano_b" name="valor_urbano_b" min="0" value="{{ valoracion_atributos.valor_urbano_b }}">
+                                                        <input type="number" class="form-control" id="valor_urbano_b" name="valor_urbano_b" min="0" value="0">
                                                     </td>
                                                     <td>
-                                                        <input type="number" class="form-control" id="valor_urbano_c" name="valor_urbano_c" min="0" value="{{ valoracion_atributos.valor_urbano_c }}">
+                                                        <input type="number" class="form-control" id="valor_urbano_c" name="valor_urbano_c" min="0" value="0">
                                                     </td>
                                                     <td>
                                                         <span>{{ total_valor_urbano }}</span>
@@ -416,13 +416,13 @@
                                                 <tr>
                                                     <td>ARQUITECTÓNICO</td>
                                                     <td>
-                                                        <input type="number" class="form-control" id="valor_arquitecnico_a" name="valor_arquitecnico_a" min="0" value="{{ valoracion_atributos.valor_arquitecnico_a }}">
+                                                        <input type="number" class="form-control" id="valor_arquitecnico_a" name="valor_arquitecnico_a" min="0" value="0">
                                                     </td>
                                                     <td>
-                                                        <input type="number" class="form-control" id="valor_arquitecnico_b" name="valor_arquitecnico_b" min="0" value="{{ valoracion_atributos.valor_arquitecnico_b }}">
+                                                        <input type="number" class="form-control" id="valor_arquitecnico_b" name="valor_arquitecnico_b" min="0" value="0">
                                                     </td>
                                                     <td>
-                                                        <input type="number" class="form-control" id="valor_arquitecnico_c" name="valor_arquitecnico_c" min="0" value="{{ valoracion_atributos.valor_arquitecnico_c }}">
+                                                        <input type="number" class="form-control" id="valor_arquitecnico_c" name="valor_arquitecnico_c" min="0" value="0">
                                                     </td>
                                                     <td>
                                                         <span>{{ total_valor_arquitecnico }}</span>
@@ -431,10 +431,10 @@
                                                 <tr>
                                                     <td>HISTÓRICO</td>
                                                     <td>
-                                                        <input type="number" class="form-control" id="valor_historico_a" name="valor_historico_a" min="0" value="{{ valoracion_atributos.valor_historico_a }}">
+                                                        <input type="number" class="form-control" id="valor_historico_a" name="valor_historico_a" min="0" value="0">
                                                     </td>
                                                     <td>
-                                                        <input type="number" class="form-control" id="valor_historico_b" name="valor_historico_b" min="0" value="{{ valoracion_atributos.valor_historico_b }}">
+                                                        <input type="number" class="form-control" id="valor_historico_b" name="valor_historico_b" min="0" value="0">
                                                     </td>
                                                     <td>
 
@@ -446,13 +446,13 @@
                                                 <tr>
                                                     <td>ECONÓMICO/SOCIAL</td>
                                                     <td>
-                                                        <input type="number" class="form-control" id="valor_economico_social_a" name="valor_economico_social_a" min="0" value="{{ valoracion_atributos.valor_economico_social_a }}">
+                                                        <input type="number" class="form-control" id="valor_economico_social_a" name="valor_economico_social_a" min="0" value="0">
                                                     </td>
                                                     <td>
-                                                        <input type="number" class="form-control" id="valor_economico_social_b" name="valor_economico_social_b" min="0" value="{{ valoracion_atributos.valor_economico_social_b }}">
+                                                        <input type="number" class="form-control" id="valor_economico_social_b" name="valor_economico_social_b" min="0" value="0">
                                                     </td>
                                                     <td>
-                                                        <input type="number" class="form-control" id="valor_economico_social_c" name="valor_economico_social_c" min="0" value="{{ valoracion_atributos.valor_economico_social_c }}">
+                                                        <input type="number" class="form-control" id="valor_economico_social_c" name="valor_economico_social_c" min="0" value="0">
                                                     </td>
                                                     <td>
                                                         <span>{{ total_valor_economico_social }}</span>
@@ -641,7 +641,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label class="form-label" for="informacion_tecnica_observaciones"><b>7.7 Observaciones</b></label>
-                                            <textarea class="form-control" id="informacion_tecnica_observaciones" name="informacion_tecnica_observaciones" rows="3">{{ informacion_tecnica.observaciones }}</textarea>
+                                            <textarea class="form-control" id="informacion_tecnica_observaciones" name="informacion_tecnica_observaciones" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -1115,7 +1115,7 @@
                                             <tr>
                                                 <td>Terreno</td>
                                                 <td>
-                                                    <input type="number" class="form-control" id="terreno" name="terreno" value="{{ caracteristicas_morfologicas.terreno }}" step="0.01">
+                                                    <input type="number" class="form-control" id="terreno" name="terreno" value="0" step="0.01">
                                                 </td>
                                                 <th colspan="2">
                                                     Altura
@@ -1127,37 +1127,37 @@
                                             <tr>
                                                 <td>Edificada</td>
                                                 <td>
-                                                    <input type="number" class="form-control" id="edificada" name="edificada" value="{{ caracteristicas_morfologicas.edificada }}" step="0.01">
+                                                    <input type="number" class="form-control" id="edificada" name="edificada" value="0" step="0.01">
                                                 </td>
                                                 <td>
                                                     En pisos
                                                 </td>
                                                 <td>
-                                                    <input type="number" class="form-control" id="altura_en_pisos" name="altura_en_pisos" value="{{ caracteristicas_morfologicas.altura_en_pisos }}" step="0.01">
+                                                    <input type="number" class="form-control" id="altura_en_pisos" name="altura_en_pisos" value="0" step="0.01">
                                                 </td>
                                                 <td>
                                                     Frente 1
                                                 </td>
                                                 <td>
-                                                    <input type="number" class="form-control" id="antejardin_frente_1" name="antejardin_frente_1" value="{{ caracteristicas_morfologicas.antejardin_frente_1 }}" step="0.01">
+                                                    <input type="number" class="form-control" id="antejardin_frente_1" name="antejardin_frente_1" value="0" step="0.01">
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>Protegida</td>
                                                 <td>
-                                                    <input type="number" class="form-control" id="protegida" name="protegida" value="{{ caracteristicas_morfologicas.protegida }}" step="0.01">
+                                                    <input type="number" class="form-control" id="protegida" name="protegida" value="0" step="0.01">
                                                 </td>
                                                 <td>
                                                     En metros
                                                 </td>
                                                 <td>
-                                                    <input type="number" class="form-control" id="altura_en_metros" name="altura_en_metros" value="{{ caracteristicas_morfologicas.altura_en_metros }}" step="0.01">
+                                                    <input type="number" class="form-control" id="altura_en_metros" name="altura_en_metros" value="0" step="0.01">
                                                 </td>
                                                 <td>
                                                     Frente 2
                                                 </td>
                                                 <td>
-                                                    <input type="number" class="form-control" id="antejardin_frente_2" name="antejardin_frente_2" value="{{ caracteristicas_morfologicas.antejardin_frente_2 }}" step="0.01">
+                                                    <input type="number" class="form-control" id="antejardin_frente_2" name="antejardin_frente_2" value="0" step="0.01">
                                                 </td>
                                             </tr>
                                         </table>
@@ -1622,8 +1622,8 @@
 
                     <div class="row m-3">
                         <div class="col-12">
-                            <a href="{% url 'ver_fichas' %}" target="_self"class="btn btn-primary" type="button">Guardar</a>
-                            <a href="{% url 'exportar_pdf' identificacion_inmueble.id_plano %}" target="_blank" class="btn btn-danger">Generar PDF</a>
+                            <a href="{% url 'ver_fichas' %}" type="submit" class="btn btn-primary">PDF</a>
+                            <button hr class="btn btn-primary" type="submit">Crear ficha nueva</button>
                         </div>
                     </div>
                     </form>
