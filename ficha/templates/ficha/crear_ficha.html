@@ -1622,7 +1622,6 @@
 
                     <div class="row m-3">
                         <div class="col-12">
-                            <a href="{% url 'ver_fichas' %}" type="submit" class="btn btn-primary">PDF</a>
                             <button hr class="btn btn-primary" type="submit">Crear ficha nueva</button>
                         </div>
                     </div>
@@ -1639,7 +1638,33 @@
 {% block custom_js %}
 <!-- DESACTIVAR O ACTIVAR INSERT DE OTROS -->
 <script>
-    
+    var Lista = document.getElementById("materialidad_revestimientos");
+    for(i = 0; i < Lista.length; i++){
+        if (i < Lista.length-1) {
+            if (Lista[0].value.toUpperCase()  == Lista[i].value.toUpperCase()){
+            document.getElementById("materialidad_revestimientos_text").value =  "";
+            document.getElementById("materialidad_revestimientos_text").disabled =  true;
+            { break; }
+            }
+            else{
+                document.getElementById("materialidad_revestimientos_text").disabled =  false;
+            }
+        }
+    };
+    const myselect = document.getElementById("materialidad_revestimientos");
+    myselect.addEventListener("change",(e) =>{
+        for(i = 0; i < Lista.length; i++){
+        if (i < Lista.length-1) {
+            if (document.getElementById("materialidad_revestimientos").value  == Lista[i].value){
+            document.getElementById("materialidad_revestimientos_text").disabled =  true;
+            { break; }
+            }
+            else{
+                document.getElementById("materialidad_revestimientos_text").disabled =  false;
+            }
+        }
+    };
+    });
 </script>
 
 
