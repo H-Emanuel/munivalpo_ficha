@@ -418,8 +418,10 @@ def crear_ficha(request):
 
         materialidad_estructura = request.POST['materialidad_estructura']
         materialidad_cubierta = request.POST['materialidad_cubierta']
-        materialidad_revestimientos = request.POST['materialidad_revestimientos']
-
+        if request.POST.get('materialidad_revestimientos') == "OTRO":
+            materialidad_revestimientos =  request.POST['materialidad_revestimientos_text']
+        else:
+            materialidad_revestimientos =  request.POST['materialidad_revestimientos']
         descripcion_del_inmubebles= request.POST['descripcion_del_inmubebles']
 
         CaracteristicasMorfologicas.objects.create(id_plano = identificacioninmueble,
