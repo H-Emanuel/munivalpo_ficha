@@ -42,7 +42,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="rol"><b>Rol</b></label>
-                                        <input type="text" class="form-control" id="rol" name="rol" value="00000-00000" >
+                                        <input type="text" oninput="this.value = this.value.replace(/[^0-9.,-]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="rol" name="rol" value="{{ identificacion_inmueble.rol }}"  >
                                     </div>
                                 </div>
                             </div>
