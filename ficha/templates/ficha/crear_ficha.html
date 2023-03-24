@@ -187,12 +187,12 @@
                                         <table class="table">
                                             <tr>
                                                 <td>
-                                                    <label class="form-label" for="latitud"><b>Latitud</b></label>
-                                                    <input type="text" class="form-control" id="latitud" name="latitud" value="{{ plano_ubicacion.latitud }}" >
+                                                    <label class="form-label" for="latitud"><b>Este UTM</b></label>
+                                                    <input type="text" class="form-control" id="latitud" name="latitud" value="0" >
                                                 </td>
                                                 <td>
-                                                    <label class="form-label" for="longitud"><b>Longitud</b></label>
-                                                    <input type="text" class="form-control" id="longitud" name="longitud" value="{{ plano_ubicacion.longitud }}" >
+                                                    <label class="form-label" for="longitud"><b>Norte UTM</b></label>
+                                                    <input type="text" class="form-control" id="longitud" name="longitud" value="0" >
                                                 </td>
                                             </tr>
                                             <tr class="text-center">
@@ -1674,10 +1674,23 @@
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                document.getElementById('latitud').value = position.coords.latitude;
-                document.getElementById('longitud').value = position.coords.longitude;
-            });
-
+                var formData = new FormData();
+                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+                formData.append('latitud', position.coords.latitude);
+                formData.append('longitud', position.coords.longitude);
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', '{% url "get_location" %}');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        var response = JSON.parse(xhr.responseText);
+                        document.getElementById('latitud').value = response.easting;
+                        document.getElementById('longitud').value = response.northing;
+                    } else {
+                        alert('No se pudo obtener la ubicación.');
+                    }
+                };
+                xhr.send(formData);              
+                });
         } else {
             alert('No se puede acceder a la geolocalización');
 

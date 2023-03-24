@@ -10,4 +10,5 @@ urlpatterns = [
     path('eliminar/<int:id>', views.eliminar, name="eliminar"),
     path('exportar_pdf/<int:id>', views.exportar_pdf, name="exportar_pdf"),
     path('test_pdf/<int:id>', views.test_pdf, name="test_pdf"),
+    path('get_location/', views.get_location, name="get_location"),
 ]

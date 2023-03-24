@@ -5,10 +5,11 @@ from .models import *
 from django.http import HttpResponse
 from django.http import FileResponse
 from django.conf import settings
-
+from pyproj import Proj, transform 
 from .helpers import save_pdf, save_pdf_2
 from datetime import datetime
 from datetime import date
+from django.http import JsonResponse,HttpResponseBadRequest
 
 
 # Create your views here.
@@ -78,8 +79,13 @@ def crear_ficha(request):
             imagen_plano = request.FILES['imagen_plano']
         except:
             imagen_plano = ""
-        latitud = request.POST['latitud']
-        longitud = request.POST['longitud']
+        if request.POST['latitud'] == "0" and request.POST['longitud'] == "0":
+            longitud = 0
+            latitud = 0
+        else:
+            longitud = request.POST['longitud']
+            latitud = request.POST['latitud']
+
         planoubicacion = PlanoUbicacion.objects.create(id_plano = identificacioninmueble,
                                       imagen_plano = imagen_plano,
                                       latitud = latitud,
@@ -1248,4 +1254,30 @@ def eliminar(request,id):
     identificacion_inmueble = IdentificacionInmueble.objects.get(id_plano = id)
     identificacion_inmueble.delete()
     return redirect('/ficha/ver_fichas')
-    
+
+@login_required(login_url='/login/')
+def get_location(request):
+    if request.method == 'POST':
+        print(request.POST['latitud'])
+        print(request.POST['longitud'])
+        lat = float(request.POST['latitud'])
+        lon = float(request.POST['longitud'])
+
+        in_proj = Proj(init='epsg:4326')  # sistema de coordenadas geográficas
+        out_proj = Proj(init='epsg:32719')  # sistema de coordenadas UTM (zona 17 del hemisferio sur)
+
+        easting, northing = transform(in_proj, out_proj, lon, lat)
+
+        # redondeamos las coordenadas a dos decimales
+        easting = round(easting, 2)
+        northing = round(northing, 2)
+
+        # creamos un diccionario con las coordenadas redondeadas
+        response_data = {
+            'easting': easting,
+            'northing': northing
+        }
+
+        # devolvemos la respuesta en formato JSON
+        return JsonResponse(response_data)
+    return HttpResponseBadRequest('La petición no es válida.')
