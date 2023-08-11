@@ -12,6 +12,7 @@ COMUNA_CHOICES = [
     ('PLACILLA', 'Placilla'),
     ('PLAYA ANCHA', 'Playa Ancha'),
 ]
+
 PLAN_CERRO_POBLACION = [
     ('PLAN', 'Plan'),
     ('CERRO', 'Cerro'),
@@ -30,6 +31,7 @@ class IdentificacionInmueble(models.Model):
     plan_cerro_poblacion = models.CharField(max_length=255, blank=True,choices=PLAN_CERRO_POBLACION, default='PLAN')
     denominacion_inmueble = models.CharField(max_length=255, blank=True, default='')
     autor = models.CharField(max_length=255, blank=True, default='Se desconoce')
+    
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -110,7 +112,8 @@ class ResenaPatrimonial(models.Model):
     valor_urbano = models.TextField(blank=True, default='')
     valor_arquitecnico = models.TextField(blank=True, default='')
     valor_historico = models.TextField(blank=True, default='')
-    valor_economico_social = models.TextField(blank=True, default='')
+    valor_economico = models.TextField(blank=True, default='')
+    valor_social = models.TextField(blank=True, default='')
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -131,11 +134,14 @@ class ValoracionAtributos(models.Model):
 
     valor_historico_a = models.PositiveSmallIntegerField(default=0, blank=True)
     valor_historico_b = models.PositiveSmallIntegerField(default=0, blank=True)
+    valor_historico_c = models.PositiveSmallIntegerField(default=0, blank=True)
 
-    valor_economico_social_a = models.PositiveSmallIntegerField(default=0, blank=True)
-    valor_economico_social_b = models.PositiveSmallIntegerField(default=0, blank=True)
-    valor_economico_social_c = models.PositiveSmallIntegerField(default=0, blank=True)
+    valor_economico_a = models.PositiveSmallIntegerField(default=0, blank=True)
+    valor_economico_b = models.PositiveSmallIntegerField(default=0, blank=True)
 
+    valor_social_a = models.PositiveSmallIntegerField(default=0, blank=True)
+    
+    valor_resumen  = models.PositiveSmallIntegerField(default=0, blank=True)
     zona_de_conservacion = models.CharField(max_length=255, blank=True, default='')
     identificacion_zch = models.CharField(max_length=100, blank=True, default='')
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
@@ -364,6 +370,7 @@ def content_file_name_constructivos(instance, filename):
     folder = "assets_ficha/" + str(instance.id_plano.id_plano)
     return os.path.join(folder, filename)
 
+
 class CaracteristicasMorfologicas(models.Model):
     tipologia = models.ForeignKey(Tipologias, on_delete=models.CASCADE)
     sistema_agrupamiento = models.CharField(max_length=50, choices=SISTEMA_AGRUPAMIENTO, default='AISLADO', blank=True)
@@ -465,6 +472,7 @@ INMUEBLES_PATRIMONIALES = [
     ('MANZANA ENFRENTE', 'Manzana enfrente'),
     ('RELACION VISUAL', 'Relacion visual'),
 ]
+
 PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL = [
     ('PLACA EN FACHADA', 'Placa en fachada'),
     ('ESCULTURA', 'Escultura'),

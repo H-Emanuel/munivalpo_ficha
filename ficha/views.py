@@ -118,13 +118,15 @@ def crear_ficha(request):
         valor_urbano = request.POST['valor_urbano']
         valor_arquitecnico = request.POST['valor_arquitecnico']
         valor_historico = request.POST['valor_historico']
-        valor_economico_social = request.POST['valor_economico_social']
+        valor_economico = request.POST['valor_economico']
+        valor_social = request.POST['valor_social']
 
         ResenaPatrimonial.objects.create(id_plano = identificacioninmueble,
                                          valor_urbano = valor_urbano,
                                          valor_arquitecnico = valor_arquitecnico,
                                          valor_historico = valor_historico,
-                                         valor_economico_social = valor_economico_social)
+                                         valor_economico = valor_economico,
+                                         valor_social = valor_social)
         # Sección 6
         
         valor_urbano_a = request.POST['valor_urbano_a']
@@ -137,11 +139,14 @@ def crear_ficha(request):
 
         valor_historico_a = request.POST['valor_historico_a']
         valor_historico_b = request.POST['valor_historico_b']
+        valor_historico_c = request.POST['valor_historico_c']
 
-        valor_economico_social_a = request.POST['valor_economico_social_a']
-        valor_economico_social_b = request.POST['valor_economico_social_b']
-        valor_economico_social_c = request.POST['valor_economico_social_c']
+        valor_economico_a = request.POST['valor_economico_a']
+        valor_economico_b = request.POST['valor_economico_b']
+        
 
+        valor_social_a = request.POST['valor_social_a']
+       
         zona_de_conservacion = request.POST['zona_de_conservacion']
         identificacion_zch = request.POST['identificacion_zch']
         
@@ -154,9 +159,12 @@ def crear_ficha(request):
                                            valor_urbano_b = valor_urbano_b,
                                            valor_historico_a = valor_historico_a,
                                            valor_historico_b = valor_historico_b,
-                                           valor_economico_social_a = valor_economico_social_a,
-                                           valor_economico_social_b = valor_economico_social_b,
-                                           valor_economico_social_c = valor_economico_social_c,
+                                           valor_historico_c = valor_historico_c,
+                                           valor_economico_a = valor_economico_a,
+                                           valor_economico_b = valor_economico_b,
+                                           
+                                           valor_social_a = valor_social_a,
+                                       
                                            zona_de_conservacion = zona_de_conservacion,
                                            identificacion_zch = identificacion_zch)
 
@@ -647,9 +655,11 @@ def editar_ficha(request, id = 0):
     # Sección 6
     total_valor_urbano = valoracion_atributos.valor_urbano_a + valoracion_atributos.valor_urbano_b + valoracion_atributos.valor_urbano_c
     total_valor_arquitecnico = valoracion_atributos.valor_arquitecnico_a + valoracion_atributos.valor_arquitecnico_b + valoracion_atributos.valor_arquitecnico_c
-    total_valor_historico = valoracion_atributos.valor_historico_a + valoracion_atributos.valor_historico_b
-    total_valor_economico_social = valoracion_atributos.valor_economico_social_a + valoracion_atributos.valor_economico_social_b + valoracion_atributos.valor_economico_social_c
-    total_valoracion = total_valor_urbano + total_valor_arquitecnico + total_valor_historico + total_valor_economico_social
+    total_valor_historico = valoracion_atributos.valor_historico_a + valoracion_atributos.valor_historico_b + valoracion_atributos.valor_historico_c
+    total_valor_economico = valoracion_atributos.valor_economico_a + valoracion_atributos.valor_economico_b 
+    total_valor_social = valoracion_atributos.valor_social_a 
+    
+    total_valoracion = total_valor_urbano + total_valor_arquitecnico + total_valor_historico + total_valor_economico + total_valor_social
     if request.method == 'POST':
         # Sección 1
         identificacion_inmueble.rol = request.POST.get('rol')
@@ -692,7 +702,8 @@ def editar_ficha(request, id = 0):
         resena_patrimonial.valor_urbano = request.POST.get('valor_urbano')
         resena_patrimonial.valor_arquitecnico = request.POST.get('valor_arquitecnico')
         resena_patrimonial.valor_historico = request.POST.get('valor_historico')
-        resena_patrimonial.valor_economico_social = request.POST.get('valor_economico_social')
+        resena_patrimonial.valor_economico = request.POST.get('valor_economico')
+        resena_patrimonial.valor_social = request.POST.get('valor_economico')
         resena_patrimonial.save()
 
         # Sección 6
@@ -704,9 +715,14 @@ def editar_ficha(request, id = 0):
         valoracion_atributos.valor_arquitecnico_c = request.POST.get('valor_arquitecnico_c')
         valoracion_atributos.valor_historico_a = request.POST.get('valor_historico_a')
         valoracion_atributos.valor_historico_b = request.POST.get('valor_historico_b')
-        valoracion_atributos.valor_economico_social_a = request.POST.get('valor_economico_social_a')
-        valoracion_atributos.valor_economico_social_b = request.POST.get('valor_economico_social_b')
-        valoracion_atributos.valor_economico_social_c = request.POST.get('valor_economico_social_c')
+        valoracion_atributos.valor_historico_c = request.POST.get('valor_historico_c')
+
+        valoracion_atributos.valor_economico_a = request.POST.get('valor_economico_a')
+        valoracion_atributos.valor_economico_b = request.POST.get('valor_economico_b')
+        
+
+        valoracion_atributos.valor_social_a = request.POST.get('valor_social_a')
+        
         valoracion_atributos.zona_de_conservacion = request.POST.get('zona_de_conservacion')
         valoracion_atributos.identificacion_zch = request.POST.get('identificacion_zch')
         valoracion_atributos.save()
@@ -1073,7 +1089,7 @@ def editar_ficha(request, id = 0):
         'total_valor_urbano': total_valor_urbano,
         'total_valor_arquitecnico': total_valor_arquitecnico,
         'total_valor_historico': total_valor_historico,
-        'total_valor_economico_social': total_valor_economico_social,
+        'total_valor_economico': total_valor_economico,
         'total_valoracion': total_valoracion,
 
         'MEDIA_URL': settings.MEDIA_URL,
@@ -1128,8 +1144,8 @@ def exportar_pdf(request, id):
     total_valor_urbano = valoracion_atributos.valor_urbano_a + valoracion_atributos.valor_urbano_b + valoracion_atributos.valor_urbano_c
     total_valor_arquitecnico = valoracion_atributos.valor_arquitecnico_a + valoracion_atributos.valor_arquitecnico_b + valoracion_atributos.valor_arquitecnico_c
     total_valor_historico = valoracion_atributos.valor_historico_a + valoracion_atributos.valor_historico_b
-    total_valor_economico_social = valoracion_atributos.valor_economico_social_a + valoracion_atributos.valor_economico_social_b + valoracion_atributos.valor_economico_social_c
-    total_valoracion = total_valor_urbano + total_valor_arquitecnico + total_valor_historico + total_valor_economico_social
+    total_valor_economico = valoracion_atributos.valor_economico_a + valoracion_atributos.valor_economico_b + valoracion_atributos.valor_economico_c
+    total_valoracion = total_valor_urbano + total_valor_arquitecnico + total_valor_historico + total_valor_economico
 
     now = datetime.now()
     current_time = now.strftime("%d-%m-%Y_%H-%M-%S")
@@ -1161,7 +1177,7 @@ def exportar_pdf(request, id):
         'total_valor_urbano': total_valor_urbano,
         'total_valor_arquitecnico': total_valor_arquitecnico,
         'total_valor_historico': total_valor_historico,
-        'total_valor_economico_social': total_valor_economico_social,
+        'total_valor_economico': total_valor_economico,
         'total_valoracion': total_valoracion,
 
         'MEDIA_URL': request.build_absolute_uri('/')[:-1],
@@ -1213,8 +1229,8 @@ def test_pdf(request, id):
     total_valor_urbano = valoracion_atributos.valor_urbano_a + valoracion_atributos.valor_urbano_b + valoracion_atributos.valor_urbano_c
     total_valor_arquitecnico = valoracion_atributos.valor_arquitecnico_a + valoracion_atributos.valor_arquitecnico_b + valoracion_atributos.valor_arquitecnico_c
     total_valor_historico = valoracion_atributos.valor_historico_a + valoracion_atributos.valor_historico_b
-    total_valor_economico_social = valoracion_atributos.valor_economico_social_a + valoracion_atributos.valor_economico_social_b + valoracion_atributos.valor_economico_social_c
-    total_valoracion = total_valor_urbano + total_valor_arquitecnico + total_valor_historico + total_valor_economico_social
+    total_valor_economico = valoracion_atributos.valor_economico_a + valoracion_atributos.valor_economico_b + valoracion_atributos.valor_economico_c
+    total_valoracion = total_valor_urbano + total_valor_arquitecnico + total_valor_historico + total_valor_economico
 
     data = {
         'identificacion_inmueble': identificacion_inmueble,
@@ -1242,7 +1258,7 @@ def test_pdf(request, id):
         'total_valor_urbano': total_valor_urbano,
         'total_valor_arquitecnico': total_valor_arquitecnico,
         'total_valor_historico': total_valor_historico,
-        'total_valor_economico_social': total_valor_economico_social,
+        'total_valor_economico': total_valor_economico,
         'total_valoracion': total_valoracion,
 
         'MEDIA_URL': request.build_absolute_uri('/')[:-1],
@@ -1264,7 +1280,7 @@ def get_location(request):
         lon = float(request.POST['longitud'])
 
         in_proj = Proj(init='epsg:4326')  # sistema de coordenadas geográficas
-        out_proj = Proj(init='epsg:32719')  # sistema de coordenadas UTM (zona 17 del hemisferio sur)
+        out_proj = Proj(init='epsg:32719')  # sistema de coordenadas UTM (zona 19)
 
         easting, northing = transform(in_proj, out_proj, lon, lat)
 

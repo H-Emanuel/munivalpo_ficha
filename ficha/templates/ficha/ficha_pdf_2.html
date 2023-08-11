@@ -202,10 +202,16 @@
                         <td colspan="9">{{ resena_patrimonial.valor_historico }}</td>
                     </tr>
                     <tr>
-                        <td colspan="9"><b>5.4 VALOR ECONÓMICO / SOCIAL</b></td>
+                        <td colspan="9"><b>5.4 VALOR ECONÓMICO</b></td>
                     </tr>
                     <tr>
-                        <td colspan="9">{{ resena_patrimonial.valor_economico_social }}</td>
+                        <td colspan="9">{{ resena_patrimonial.valor_economico }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="9"><b>5.5 VALOR ECONÓMICO</b></td>
+                    </tr>
+                    <tr>
+                        <td colspan="9">{{ resena_patrimonial.valor_social }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -260,11 +266,18 @@
                         <td class="text-center">{{ total_valor_historico }}</td>
                     </tr>
                     <tr>
-                        <td>ECONÓMICO/SOCIAL</td>
-                        <td class="text-center">{{ valoracion_atributos.valor_economico_social_a }}</td>
-                        <td class="text-center">{{ valoracion_atributos.valor_economico_social_b }}</td>
-                        <td class="text-center">{{ valoracion_atributos.valor_economico_social_c }}</td>
-                        <td class="text-center">{{ total_valor_economico_social }}</td>
+                        <td>ECONÓMICO</td>
+                        <td class="text-center">{{ valoracion_atributos.valor_economico_a }}</td>
+                        <td class="text-center">{{ valoracion_atributos.valor_economico_b }}</td>
+                        <td class="text-center">{{ valoracion_atributos.valor_economico_c }}</td>
+                        <td class="text-center">{{ total_valor_economico }}</td>
+                    </tr>
+                    <tr>
+                        <td>SOCIAL</td>
+                        <td class="text-center">{{ valoracion_atributos.valor_social_a }}</td>
+                        <td class="text-center">{{ valoracion_atributos.valor_social_b }}</td>
+                        <td class="text-center">{{ valoracion_atributos.valor_social_c }}</td>
+                        <td class="text-center">{{ total_valor_economico }}</td>
                     </tr>
                     <tr>
                         <td colspan="4" class="bg-blue text-right">PUNTAJE TOTAL</td>
@@ -804,6 +817,26 @@
                     <tr>
                         <td colspan="4">Nombre autor:{{ current_user.first_name }} {{ current_user.last_name }}</td>
                     </tr>
+                </tbody>
+            </table>
+        </section>
+    </br>
+        <section>
+            <table>
+                <tbody>
+                <tr>
+                    <td colspan="12">TABLA DE VALORACION PARA INMUEBLES DE CONSERVACION HISTORICA
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1">VALOR</td>
+                    <td colspan="3">ATRIBUTOS</td>
+                    <td colspan="7">CONCEPTO</td>
+                    <td colspan="1">PUNTOS  (DE 2 A 0)</td>
+                </tr>
+
+
+
                 </tbody>
             </table>
         </section>

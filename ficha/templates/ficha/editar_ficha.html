@@ -369,8 +369,16 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="valor_economico_social"><b>5.4 Valor Económico / Social</b></label>
-                                        <textarea class="form-control" id="valor_economico_social" name="valor_economico_social" rows="3">{{ resena_patrimonial.valor_economico_social }}</textarea>
+                                        <label class="form-label" for="valor_economico"><b>5.4 Valor Económico </b></label>
+                                        <textarea class="form-control" id="valor_economico" name="valor_economico" rows="3">{{ resena_patrimonial.valor_economico }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="valor_social"><b>5.5 Valor Social</b></label>
+                                        <textarea class="form-control" id="valor_social" name="valor_social" rows="3">{{ resena_patrimonial.valor_economico }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -385,88 +393,397 @@
                                 6.- Resumen valoración de atributos
                           </button>
                         </h2>
+
                         <div id="collapseFour" class="accordion-collapse collapse " aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                           <div class="accordion-body">
                                 <div class="row">
+
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <table class="table table-bordered table-sm">
-                                                <tr>
-                                                    <th rowspan="2">Valor</th>
-                                                    <th colspan="3">Atributos</th>
-                                                    <th rowspan="2">Puntos</th>
-                                                </tr>
-                                                <tr>
-                                                    <th>A</th>
-                                                    <th>B</th>
-                                                    <th>C</th>
-                                                </tr>
-                                                <tr>
-                                                    <td>URBANO</td>
-                                                    <td>
-                                                        <input type="number" class="form-control" id="valor_urbano_a" name="valor_urbano_a" min="0" value="{{ valoracion_atributos.valor_urbano_a }}">
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" class="form-control" id="valor_urbano_b" name="valor_urbano_b" min="0" value="{{ valoracion_atributos.valor_urbano_b }}">
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" class="form-control" id="valor_urbano_c" name="valor_urbano_c" min="0" value="{{ valoracion_atributos.valor_urbano_c }}">
-                                                    </td>
-                                                    <td>
-                                                        <span>{{ total_valor_urbano }}</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>ARQUITECTÓNICO</td>
-                                                    <td>
-                                                        <input type="number" class="form-control" id="valor_arquitecnico_a" name="valor_arquitecnico_a" min="0" value="{{ valoracion_atributos.valor_arquitecnico_a }}">
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" class="form-control" id="valor_arquitecnico_b" name="valor_arquitecnico_b" min="0" value="{{ valoracion_atributos.valor_arquitecnico_b }}">
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" class="form-control" id="valor_arquitecnico_c" name="valor_arquitecnico_c" min="0" value="{{ valoracion_atributos.valor_arquitecnico_c }}">
-                                                    </td>
-                                                    <td>
-                                                        <span>{{ total_valor_arquitecnico }}</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>HISTÓRICO</td>
-                                                    <td>
-                                                        <input type="number" class="form-control" id="valor_historico_a" name="valor_historico_a" min="0" value="{{ valoracion_atributos.valor_historico_a }}">
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" class="form-control" id="valor_historico_b" name="valor_historico_b" min="0" value="{{ valoracion_atributos.valor_historico_b }}">
-                                                    </td>
-                                                    <td>
 
-                                                    </td>
-                                                    <td>
-                                                        <span>{{ total_valor_historico }}</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>ECONÓMICO/SOCIAL</td>
-                                                    <td>
-                                                        <input type="number" class="form-control" id="valor_economico_social_a" name="valor_economico_social_a" min="0" value="{{ valoracion_atributos.valor_economico_social_a }}">
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" class="form-control" id="valor_economico_social_b" name="valor_economico_social_b" min="0" value="{{ valoracion_atributos.valor_economico_social_b }}">
-                                                    </td>
-                                                    <td>
-                                                        <input type="number" class="form-control" id="valor_economico_social_c" name="valor_economico_social_c" min="0" value="{{ valoracion_atributos.valor_economico_social_c }}">
-                                                    </td>
-                                                    <td>
-                                                        <span>{{ total_valor_economico_social }}</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="4">Puntaje Total</td>
-                                                    <td>
-                                                        <span>{{ total_valoracion }}</span>
-                                                    </td>
-                                            </table>
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="Headurbano">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Urbano" aria-expanded="false" aria-controls="Urbano">  
+                                                    URBANO
+                                                </button>
+                                                </h2>
+                                                <div id = "Urbano" class=" accordion-collapse collapse" aria-labelledby="Headurbano" data-bs-target="#Urbano">
+                                                    <div class="accordion-body">
+                                                        <div class="row">
+                                                            <div class="col-12">    
+                                                                <div class="form-group">
+                                                                <table class="table table-bordered table-sm">
+                                                                <tr>
+                                                                    <th colspan="11">CONCEPTOS - IMAGEN (A) </th>
+                                                                    <th colspan="1">PUNTOS </th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Se Destasca por su aporte a la estructura, paisaje urbano</th>
+                                                                    <th class="text-center">2</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Contribuye a la estructura o paisaje urbano</th>
+                                                                    <th class="text-center">1</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">No aporta a la estructura o imagen Urbana</th>
+                                                                    <th class="text-center">0</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Respuesta</th>
+                                                                    <th><input type="number" class="form-control" id="valor_urbano_a" name="valor_urbano_a" min="0" value="{{ valoracion_atributos.valor_urbano_a }}"></th>
+                                                                </tr>
+                                                                </table>
+                                                                <table class="table table-bordered table-sm">
+                                                                    <tr>
+                                                                        <th colspan="11">CONCEPTOS - CONJUNTO (B)  </th>
+                                                                        <th colspan="1">PUNTOS </th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">Articula y es determinante en un conjunto o zona de valor patrimonial</th>
+                                                                        <th class="text-center">2</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">Forma parte de un conjunto o zona de valor patrimonial.</th>
+                                                                        <th class="text-center">1</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">No forma parte de un conjunto o zona de valor patrimonial.</th>
+                                                                        <th class="text-center">0</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">Respuesta</th>
+                                                                        <th>
+                                                                            <input type="number" class="form-control" id="valor_urbano_b" name="valor_urbano_b" min="0" max="2" value="{{ valoracion_atributos.valor_urbano_b }}">                                                                        </th>
+                                                                    </tr>
+                                                                    </table>
+
+                                                                    <table class="table table-bordered table-sm">
+                                                                        <tr>
+                                                                            <th colspan="11">CONCEPTOS - ENTORNO PATRIMONIAL (C)  </th>
+                                                                            <th colspan="1">PUNTOS </th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th colspan="11">Se Destasca por valorizar al inmueble.</th>
+                                                                            <th class="text-center">2</th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th colspan="11">No afecta al inmueble.</th>
+                                                                            <th class="text-center">1</th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th colspan="11">Desvaloriza el inmueble.</th>
+                                                                            <th class="text-center">0</th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th colspan="11">Respuesta</th>
+                                                                            <th>
+                                                                                <input type="number" class="form-control" id="valor_urbano_c" name="valor_urbano_c" min="0" value="{{ valoracion_atributos.valor_urbano_c }}">                                                                            </th>
+                                                                        </tr>
+                                                                        </table>
+        
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="Headarquitecto">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Arquitecto" aria-expanded="false" aria-controls="Arquitecto">  
+                                                    ARQUITECTÓNICO
+                                                </button>
+                                                </h2>
+                                                <div id = "Arquitecto" class=" accordion-collapse collapse" aria-labelledby="Headarquitecto" data-bs-target="#Arquitecto">
+                                                    <div class="accordion-body">
+                                                        <div class="row">
+                                                            <div class="col-12">    
+                                                                <div class="form-group">
+                                                                <table class="table table-bordered table-sm">
+                                                                <tr>
+                                                                    <th colspan="11">CONCEPTOS - REPRESENTATIVIDAD (A) </th>
+                                                                    <th colspan="1">PUNTOS </th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Es un referente o es plonero de un estilo o tipología arquitectónica, o es obra de un autor reconocido.</th>
+                                                                    <th class="text-center">2</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Es característico de un estilo o tipología.</th>
+                                                                    <th class="text-center">1</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">No es característica de un estilo o tipología.</th>
+                                                                    <th class="text-center">0</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Respuesta</th>
+                                                                    <th>
+                                                                        <input type="number" class="form-control" id="valor_arquitecnico_a" name="valor_arquitecnico_a" min="0" value="{{ valoracion_atributos.valor_arquitecnico_a }}">
+                                                                    </th>
+                                                                </tr>
+                                                                </table>
+                                                                <table class="table table-bordered table-sm">
+                                                                    <tr>
+                                                                        <th colspan="11">CONCEPTOS - SINGULARIDAD (B)  </th>
+                                                                        <th colspan="1">PUNTOS </th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">Es un inmueble único es su estilo o tipología</th>
+                                                                        <th class="text-center">2</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">Es un ejemplo escaso de un estilo o tipología.</th>
+                                                                        <th class="text-center">1</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">No es singular.</th>
+                                                                        <th class="text-center">0</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">Respuesta</th>
+                                                                        <th>
+                                                                            <input type="number" class="form-control" id="valor_arquitecnico_b" name="valor_arquitecnico_b" min="0" value="{{ valoracion_atributos.valor_arquitecnico_b }}">
+                                                                        </th>
+                                                                    </tr>
+                                                                    </table>
+
+                                                                    <table class="table table-bordered table-sm">
+                                                                        <tr>
+                                                                            <th colspan="11">CONCEPTOS - MORFOLOGIA (C)  </th>
+                                                                            <th colspan="1">PUNTOS </th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th colspan="11">Es un inmueble de gran calidad estética y arquitectónica.</th>
+                                                                            <th class="text-center">2</th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th colspan="11">Es un inmueble de calidad estética y arquitectónica.</th>
+                                                                            <th class="text-center">1</th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th colspan="11">No es un inmueble de calidad estética y arquitectónica.</th>
+                                                                            <th class="text-center">0</th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th colspan="11">Respuesta</th>
+                                                                            <th>
+                                                                                <input type="number" class="form-control" id="valor_arquitecnico_c" name="valor_arquitecnico_c" min="0" value="{{ valoracion_atributos.valor_arquitecnico_c }}">
+                                                                            </th>
+                                                                        </tr>
+                                                                        </table>
+        
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="Headhistorico">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Historico" aria-expanded="false" aria-controls="Historico">  
+                                                    HISTÓRICO
+                                                </button>
+                                                </h2>
+                                                <div id = "Historico" class=" accordion-collapse collapse" aria-labelledby="Headhistorico" data-bs-target="#Historico">
+                                                    <div class="accordion-body">
+                                                        <div class="row">
+                                                            <div class="col-12">    
+                                                                <div class="form-group">
+                                                                <table class="table table-bordered table-sm">
+                                                                <tr>
+                                                                    <th colspan="11">CONCEPTOS - REVELANCIA (A) </th>
+                                                                    <th colspan="1">PUNTOS </th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Vinculado a un acontecimiento histórico relevante de la historia nacional.</th>
+                                                                    <th class="text-center">2</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Vinculado a un acontecimiento de la historia local</th>
+                                                                    <th class="text-center">1</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">No está vinculado a hechos históricos.</th>
+                                                                    <th class="text-center">0</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Respuesta</th>
+                                                                    <th><input type="number" class="form-control" id="valor_historico_a" name="valor_historico_a" min="0" value="{{ valoracion_atributos.valor_historico_a }}"></th>
+                                                                </tr>
+                                                                </table>
+                                                                <table class="table table-bordered table-sm">
+                                                                    <tr>
+                                                                        <th colspan="11">CONCEPTOS - PROTECCION LEGAL (B) </th>
+                                                                        <th colspan="1">PUNTOS </th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">se encuentra inserto en una zona típica</th>
+                                                                        <th class="text-center">2</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">Se encuentra inserto en una zona con convervación histórica.</th>
+                                                                        <th class="text-center">1</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">No se localiza en una zona patrimonial con protección oficial.</th>
+                                                                        <th class="text-center">0</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">Respuesta</th>
+                                                                        <th>
+                                                                            <input type="number" class="form-control" id="valor_historico_b" name="valor_historico_b" min="0" value="{{ valoracion_atributos.valor_historico_b }}">                                                                  </tr>
+                                                                        </th>    
+                                                                        </table>
+
+                                                                    <table class="table table-bordered table-sm">
+                                                                        <tr>
+                                                                            <th colspan="11">CONCEPTOS - REGISTRADO POR ESPECIALISTA (C)  </th>
+                                                                            <th colspan="1">PUNTOS </th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th colspan="11">Inmueble que por la calidad relevante de su tipología y/o sistema constructivo, está publicado
+                                                                                (libros, revista, entre otros), o puede contribuira genera estudio o investigaciones.
+                                                                            </th>
+                                                                            <th class="text-center">2</th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th colspan="11">Inmueble que al presentar alguna característica formal significativa, puede contribuira generar
+                                                                                estudios o investigaciones.
+                                                                            </th>
+                                                                            <th class="text-center">1</th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th colspan="11">Conjunto que no presenta interes alguno para su estudio.</th>
+                                                                            <th class="text-center">0</th>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th colspan="11">Respuesta</th>
+                                                                            <th>
+                                                                                <input type="number" class="form-control" id="valor_historico_c" name="valor_historico_c" min="0" value="{{ valoracion_atributos.valor_historico_c }}">                                                                        </tr>
+                                                                        </table>
+        
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="Headeconomico">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Economico" aria-expanded="false" aria-controls="Economico">  
+                                                    ECONÓMICO
+                                                </button>
+                                                </h2>
+                                                <div id = "Economico" class=" accordion-collapse collapse" aria-labelledby="Headeconomico" data-bs-target="#Economico">
+                                                    <div class="accordion-body">
+                                                        <div class="row">
+                                                            <div class="col-12">    
+                                                                <div class="form-group">
+                                                                <table class="table table-bordered table-sm">
+                                                                <tr>
+                                                                    <th colspan="11">CONCEPTOS - IMPACTO DEL INMUEBLE EN EL ENTORNO (A)</th>
+                                                                    <th colspan="1">PUNTOS </th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Inmuebel que independiente de su estado de conservación, genera un alto impacto positivo en su entorno inmediato, el 
+                                                                        cual puede propiciar acciones para su recuperación o revitalización.
+                                                                    </th>
+                                                                    <th class="text-center">2</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Inmueble que independiente de su estado de conservacion,genera un independiente de su estado de conservacíon, genera un alto impacto positivo en su entorno inmediato.</th>
+                                                                    <th class="text-center">1</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">No genera impacto positivo en su entorno</th>
+                                                                    <th class="text-center">0</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Respuesta</th>
+                                                                    <th><input type="number" class="form-control" id="valor_economico_a" name="valor_economico_a" min="0" value="{{ valoracion_atributos.valor_economico_a }}"></th>
+                                                                </tr>
+                                                                </table>
+                                                                <table class="table table-bordered table-sm">
+                                                                    <tr>
+                                                                        <th colspan="11">CONCEPTOS - ESTADO DE CONSERVACION DEL ENTORNO (B)</th>
+                                                                        <th colspan="1">PUNTOS </th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">Las construcciones que se encuentra en su entorno inmediato estan en buen estado de conservaciones y puede contribuir a 
+                                                                        potenciar el valor patrimonial del Inmueble.
+                                                                        </th>
+                                                                        <th class="text-center">2</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">Las construcciones que se encuentran en su entorno inmediato, independiente de su estado de convervación, son susceptibles a procesos de recuperacíon rentable.
+                                                                        </th>
+                                                                        <th class="text-center">1</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">Las contrucciones que se encuentran en su entorno inmediato, presentan un gran deterioro y su recuperacíon no es rentable.</th>
+                                                                        <th class="text-center">0</th>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th colspan="11">Respuesta</th>
+                                                                        <th><input type="number" class="form-control" id="valor_economico_b" name="valor_economico_b" min="0" value="{{ valoracion_atributos.valor_economico_b }}"></tr>
+                                                                    
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header" id="Headsocial">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#Social" aria-expanded="false" aria-controls="Social">  
+                                                    SOCIAL
+                                                </button>
+                                                </h2>
+                                                <div id = "Social" class=" accordion-collapse collapse" aria-labelledby="Headsocial" data-bs-target="#Social">
+                                                    <div class="accordion-body">
+                                                        <div class="row">
+                                                            <div class="col-12">    
+                                                                <div class="form-group">
+                                                                <table class="table table-bordered table-sm">
+                                                                <tr>
+                                                                    <th colspan="11">CONCEPTOS - PERCEPCION DE LA COMUNIDAD (A) </th>
+                                                                    <th colspan="1">PUNTOS </th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Es identifcado y valorado como patrimonio importante.</th>
+                                                                    <th class="text-center">2</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Es mencionado como patrimonio.</th>
+                                                                    <th class="text-center">1</th>
+                                                                </tr>   
+                                                                <tr>
+                                                                    <th colspan="11">No es mencionado.</th>
+                                                                    <th class="text-center">0</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th colspan="11">Respuesta</th>
+                                                                    <th>
+                                                                        <input type="number" class="form-control" id="valor_social_a" name="valor_social_a" min="0" value="{{ valoracion_atributos.valor_social_a }}">                                                                    </th>
+                                                                </tr>
+                                                                </table>
+                                                          
+        
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
                                         </div>
                                     </div>
                                 </div>
