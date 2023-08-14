@@ -1,6 +1,7 @@
 from django.db import models
 import os
 from auditlog.registry import auditlog
+from django.contrib.auth.models import User
 
 REGION_CHOICES = [
     ('VALPARAÍSO', 'Valparaíso'),
@@ -22,6 +23,7 @@ PLAN_CERRO_POBLACION = [
 # Sección 1
 class IdentificacionInmueble(models.Model):
     id_plano = models.BigAutoField(primary_key=True, unique=True)
+    
     rol = models.CharField(max_length=100, blank=True, default='00000-00000')
     unidad_vecinal = models.CharField(max_length=255, blank=True, default='')
     region = models.CharField(max_length=50, choices=REGION_CHOICES, default='VALPARAÍSO')
@@ -32,6 +34,8 @@ class IdentificacionInmueble(models.Model):
     denominacion_inmueble = models.CharField(max_length=255, blank=True, default='')
     autor = models.CharField(max_length=255, blank=True, default='Se desconoce')
     
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True )
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

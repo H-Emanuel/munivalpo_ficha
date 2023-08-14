@@ -80,8 +80,18 @@
         padding-top: 40px;
         padding-bottom: 40px;
         background-color: #f5f5f5;
+        background-image: url("/static/core/assets/img/fondo.jpg");
         }
-
+        body::before{
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.233); /* Cambia el valor al color deseado y ajusta la opacidad */
+          z-index: -1;
+        }
         .form-signin {
         max-width: 330px;
         padding: 15px;
@@ -102,16 +112,26 @@
         border-top-left-radius: 0;
         border-top-right-radius: 0;
         }
+        .imagen-pequena {
+        position: absolute;
+        top: 10px; /* Ajusta la posición vertical según tu diseño */
+        left: 10px; /* Ajusta la posición horizontal según tu diseño */
+        width: 300px; /* Ajusta el ancho de la imagen */
+        height: 200px; /* Ajusta la altura de la imagen */
+        z-index: 1; /* Asegura que la imagen esté en frente del fondo */
+        }
       </style>
 </head>
 <body class="text-center">
-
+    <div>
+      <img src="/static/core/assets/img/alc1-removebg-preview.png" alt="Imagen pequeña" class="imagen-pequena">
+    </div>
     <main class="form-signin w-100 m-auto">
         <form action="{% url 'core_login' %}" method="POST">
             {% csrf_token %}
             
-            <h1 class="h3 mb-3 fw-normal">Iniciar sesión</h1>
-            <p>
+            <h1 class="h1 mb-3 fw-normal" style="color: #f5f5f5;">Iniciar sesión</h1>
+            <p style="color: #f5f5f5;">
                 FICHA DE VALORACIÓN INMUEBLE DE CONSERVACIÓN HISTÓRICA - Plan Regulador Comunal de Valparaíso
             </p>
         

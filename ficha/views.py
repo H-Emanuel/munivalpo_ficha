@@ -63,6 +63,7 @@ def crear_ficha(request):
         numero = request.POST['numero']
         plan_cerro_poblacion = request.POST['plan_cerro_poblacion']
         denominacion_inmueble = request.POST['denominacion_inmueble']
+        
         autor = request.POST['autor']
         identificacioninmueble  = IdentificacionInmueble.objects.create(
                                               rol = rol,
@@ -73,7 +74,8 @@ def crear_ficha(request):
                                               numero = numero,
                                               plan_cerro_poblacion = plan_cerro_poblacion,
                                               denominacion_inmueble = denominacion_inmueble,
-                                              autor = autor)
+                                              autor = autor,
+                                              usuario = request.user)
         # Sección 2
         try: 
             imagen_plano = request.FILES['imagen_plano']
@@ -1098,7 +1100,12 @@ def editar_ficha(request, id = 0):
 
 @login_required(login_url='/login/')
 def ver_fichas(request):
-    identificacion_inmueble = IdentificacionInmueble.objects.all()
+    if request.user.is_staff:
+        identificacion_inmueble = IdentificacionInmueble.objects.all()
+    else:
+        identificacion_inmueble = IdentificacionInmueble.objects.filter(usuario=request.user)
+
+
 
     data = {
         'fichas': identificacion_inmueble

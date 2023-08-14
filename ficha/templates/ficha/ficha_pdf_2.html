@@ -611,6 +611,107 @@
                             {% endif %}
                         </td>
                     </tr>
+                    <!-- <tr>
+                        <-- CAMBIAR 
+                        <td style="text-align: center;" colspan="7">
+                            {% if caracteristicas_morfologicas.fotografia_valor_significativo %}
+                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_valor_significativo.url }}" alt="" style="width:300px;" height="325",width="300" />
+                            {% else %}
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                            {% endif %}
+                        </td>
+                        <-- CAMBIAR 
+                        <td style="text-align: center;" colspan="7">
+                            {% if caracteristicas_morfologicas.fotografia_expresion_fachada %}
+                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_expresion_fachada.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            {% else %}
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                            {% endif %}
+                        </td>
+                        <-- CAMBIAR 
+                        <td style="text-align: center;" colspan="6">
+                            {% if caracteristicas_morfologicas.fotografia_detalles_constructivos %}
+                            <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_detalles_constructivos.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            {% else %}
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                            {% endif %}
+                        </td>
+                    </tr> -->
                     <tr>
                         <td colspan="11"><b>8.9 SUPERFICIES Y DIMENSIONES</b></td>
                         <td colspan="9"><b>8.10 MATERIALIDAD</b></td>
@@ -820,26 +921,229 @@
                 </tbody>
             </table>
         </section>
-    </br>
-        <section>
+    <br>
+        <!-- <section>
             <table>
                 <tbody>
                 <tr>
-                    <td colspan="12">TABLA DE VALORACION PARA INMUEBLES DE CONSERVACION HISTORICA
-                    </td>
+                    <td colspan="12">TABLA DE VALORACION PARA INMUEBLES DE CONSERVACIÓN HISTÓRICA</td>
+
                 </tr>
                 <tr>
                     <td colspan="1">VALOR</td>
                     <td colspan="3">ATRIBUTOS</td>
-                    <td colspan="7">CONCEPTO</td>
-                    <td colspan="1">PUNTOS  (DE 2 A 0)</td>
+                    <td colspan="7">CONCEPTOS</td>
+                    <td colspan="1">PUNTOS ( DE 2 A 0 )</td>
                 </tr>
+            primera columna  
+            <tr>
+                <td rowspan="9" colspan="1">URBANO</td>
+                <td colspan="3" rowspan="3"> (A) IMAGEN</td>
+                <td colspan="7">Se destasca por su aporte a la estructura, paisaje urbano.</td>
+                <td colspan="1">2</td>
+            </tr>
+            <tr>
+                <td colspan="7">Constribuye a la estructura o paisaje urbano</td>
+                <td colspan="1">1</td>
+            </tr>
+            <tr>
+                <td colspan="7">No aporta a la estructura o imagen urbana</td>
+                <td colspan="1">0</td>
+            </tr>
+            <tr>
+                <td colspan="3" rowspan="3"> CONJUNTO</td>
+                <td colspan="7"> (B) CONCEPTOS</td>
+                <td colspan="1">2</td>
+            </tr>
+            <tr>
+                <td colspan="7">CONCEPTOS</td>
+                <td colspan="1">1</td>
+            </tr>
+            <tr>
+                <td colspan="7">CONCEPTOS</td>
+                <td colspan="1">0</td>
+            </tr>
+            <tr>
+                <td colspan="3" rowspan="3"> (C) ENTORNO PATRIMONIAL</td>
+                <td colspan="7">CONCEPTOS</td>
+                <td colspan="1">2</td>
+            </tr>
+            <tr>
+                <td colspan="7">CONCEPTOS</td>
+                <td colspan="1">1</td>
+            </tr>
+            <tr>
+                <td colspan="7">CONCEPTOS</td>
+                <td colspan="1">0</td>
+            </tr>
+        primera columna  
+        <tr>
+            <td rowspan="9" colspan="1">URBANO</td>
+            <td colspan="3" rowspan="3"> (A) IMAGEN</td>
+            <td colspan="7">Se destasca por su aporte a la estructura, paisaje urbano.</td>
+            <td colspan="1">2</td>
+        </tr>
+        <tr>
+            <td colspan="7">Constribuye a la estructura o paisaje urbano</td>
+            <td colspan="1">1</td>
+        </tr>
+        <tr>
+            <td colspan="7">No aporta a la estructura o imagen urbana</td>
+            <td colspan="1">0</td>
+        </tr>
+        <tr>
+            <td colspan="3" rowspan="3"> CONJUNTO</td>
+            <td colspan="7"> (B) CONCEPTOS</td>
+            <td colspan="1">2</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">1</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">0</td>
+        </tr>
+        <tr>
+            <td colspan="3" rowspan="3"> (C) ENTORNO PATRIMONIAL</td>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">2</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">1</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">0</td>
+        </tr>
+         primera columna 
+        <tr>
+            <td rowspan="9" colspan="1">URBANO</td>
+            <td colspan="3" rowspan="3"> (A) IMAGEN</td>
+            <td colspan="7">Se destasca por su aporte a la estructura, paisaje urbano.</td>
+            <td colspan="1">2</td>
+        </tr>
+        <tr>
+            <td colspan="7">Constribuye a la estructura o paisaje urbano</td>
+            <td colspan="1">1</td>
+        </tr>
+        <tr>
+            <td colspan="7">No aporta a la estructura o imagen urbana</td>
+            <td colspan="1">0</td>
+        </tr>
+        <tr>
+            <td colspan="3" rowspan="3"> CONJUNTO</td>
+            <td colspan="7"> (B) CONCEPTOS</td>
+            <td colspan="1">2</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">1</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">0</td>
+        </tr>
+        <tr>
+            <td colspan="3" rowspan="3"> (C) ENTORNO PATRIMONIAL</td>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">2</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">1</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">0</td>
+        </tr>
+        primera columna 
+        <tr>
+            <td rowspan="9" colspan="1">URBANO</td>
+            <td colspan="3" rowspan="3"> (A) IMAGEN</td>
+            <td colspan="7">Se destasca por su aporte a la estructura, paisaje urbano.</td>
+            <td colspan="1">2</td>
+        </tr>
+        <tr>
+            <td colspan="7">Constribuye a la estructura o paisaje urbano</td>
+            <td colspan="1">1</td>
+        </tr>
+        <tr>
+            <td colspan="7">No aporta a la estructura o imagen urbana</td>
+            <td colspan="1">0</td>
+        </tr>
+        <tr>
+            <td colspan="3" rowspan="3"> CONJUNTO</td>
+            <td colspan="7"> (B) CONCEPTOS</td>
+            <td colspan="1">2</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">1</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">0</td>
+        </tr>
+        <tr>
+            <td colspan="3" rowspan="3"> (C) ENTORNO PATRIMONIAL</td>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">2</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">1</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">0</td>
+        </tr>
+         primera columna  
+        <tr>
+            <td rowspan="9" colspan="1">URBANO</td>
+            <td colspan="3" rowspan="3"> (A) IMAGEN</td>
+            <td colspan="7">Se destasca por su aporte a la estructura, paisaje urbano.</td>
+            <td colspan="1">2</td>
+        </tr>
+        <tr>
+            <td colspan="7">Constribuye a la estructura o paisaje urbano</td>
+            <td colspan="1">1</td>
+        </tr>
+        <tr>
+            <td colspan="7">No aporta a la estructura o imagen urbana</td>
+            <td colspan="1">0</td>
+        </tr>
+        <tr>
+            <td colspan="3" rowspan="3"> CONJUNTO</td>
+            <td colspan="7"> (B) CONCEPTOS</td>
+            <td colspan="1">2</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">1</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">0</td>
+        </tr>
+        <tr>
+            <td colspan="3" rowspan="3"> (C) ENTORNO PATRIMONIAL</td>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">2</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">1</td>
+        </tr>
+        <tr>
+            <td colspan="7">CONCEPTOS</td>
+            <td colspan="1">0</td>
+        </tr>
 
-
-
-                </tbody>
+            </tbody>
             </table>
-        </section>
+        </section> -->
 
     </body>
 </html>
