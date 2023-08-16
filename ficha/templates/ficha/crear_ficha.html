@@ -42,7 +42,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="rol"><b>Rol</b></label>
-                                        <input type="text" oninput="this.value = this.value.replace(/[^0-9.,-]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="rol" name="rol" value="00000-00000"  >
+                                        <input type="text" oninput="this.value = this.value.replace(/[^0-9.,-/]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="rol" name="rol" value="00000-00000"  >
                                     </div>
                                 </div>
                             </div>
@@ -428,7 +428,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
-                                                                    <th><input type="number" class="form-control" id="valor_urbano_a" name="valor_urbano_a" min="0" value="0"></th>
+                                                                    <th><input type="number" class="form-control" id="valor_urbano_a" name="valor_urbano_a" min="0" max="2" value="0"></th>
                                                                 </tr>
                                                                 </table>
                                                                 <table class="table table-bordered table-sm">
@@ -475,7 +475,7 @@
                                                                         <tr>
                                                                             <th colspan="11">Respuesta</th>
                                                                             <th>
-                                                                                <input type="number" class="form-control" id="valor_urbano_c" name="valor_urbano_c" min="0" value="0">                                                                            </th>
+                                                                                <input type="number" class="form-control" id="valor_urbano_c" name="valor_urbano_c" min="0" max="2" value="0">                                                                            </th>
                                                                         </tr>
                                                                         </table>
         
@@ -517,7 +517,7 @@
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
                                                                     <th>
-                                                                        <input type="number" class="form-control" id="valor_arquitecnico_a" name="valor_arquitecnico_a" min="0" value="0">
+                                                                        <input type="number" class="form-control" id="valor_arquitecnico_a" name="valor_arquitecnico_a" min="0" max="2" value="0">
                                                                     </th>
                                                                 </tr>
                                                                 </table>
@@ -541,7 +541,7 @@
                                                                     <tr>
                                                                         <th colspan="11">Respuesta</th>
                                                                         <th>
-                                                                            <input type="number" class="form-control" id="valor_arquitecnico_b" name="valor_arquitecnico_b" min="0" value="0">
+                                                                            <input type="number" class="form-control" id="valor_arquitecnico_b" name="valor_arquitecnico_b" min="0" max="2" value="0">
                                                                         </th>
                                                                     </tr>
                                                                     </table>
@@ -566,7 +566,7 @@
                                                                         <tr>
                                                                             <th colspan="11">Respuesta</th>
                                                                             <th>
-                                                                                <input type="number" class="form-control" id="valor_arquitecnico_c" name="valor_arquitecnico_c" min="0" value="0">
+                                                                                <input type="number" class="form-control" id="valor_arquitecnico_c" name="valor_arquitecnico_c" min="0" max="2" value="0">
                                                                             </th>
                                                                         </tr>
                                                                         </table>
@@ -608,7 +608,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
-                                                                    <th><input type="number" class="form-control" id="valor_historico_a" name="valor_historico_a" min="0" value="0"></th>
+                                                                    <th><input type="number" class="form-control" id="valor_historico_a" name="valor_historico_a" min="0" max="2" value="0"></th>
                                                                 </tr>
                                                                 </table>
                                                                 <table class="table table-bordered table-sm">
@@ -631,7 +631,7 @@
                                                                     <tr>
                                                                         <th colspan="11">Respuesta</th>
                                                                         <th>
-                                                                            <input type="number" class="form-control" id="valor_historico_b" name="valor_historico_b" min="0" value="0">                                                                  
+                                                                            <input type="number" class="form-control" id="valor_historico_b" name="valor_historico_b" min="0" max="2" value="0">                                                                  
                                                                         </tr>
                                                                         </th>    
                                                                         </table>
@@ -660,7 +660,7 @@
                                                                         <tr>
                                                                             <th colspan="11">Respuesta</th>
                                                                             <th>
-                                                                                <input type="number" class="form-control" id="valor_historico_c" name="valor_historico_c" min="0" value="0">                                                                        
+                                                                                <input type="number" class="form-control" id="valor_historico_c" name="valor_historico_c" min="0" max="2" value="0">                                                                        
                                                                             </tr>
                                                                         </table>
         
@@ -703,7 +703,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
-                                                                    <th><input type="number" class="form-control" id="valor_economico_a" name="valor_economico_a" min="0" value="0"></th>
+                                                                    <th><input type="number" class="form-control" id="valor_economico_a" name="valor_economico_a" min="0" max="2" value="0"></th>
                                                                 </tr>
                                                                 </table>
                                                                 <table class="table table-bordered table-sm">
@@ -1426,6 +1426,125 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <div class="row bg-light">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fotografia_contexto_1"><b>Registro Fotográfico Contexto 1</b></label>
+                                        <input type="file" class="form-control" id="fotografia_contexto_1" name="fotografia_contexto_1" accept="image/*">
+                                        <br>
+                                        {% if caracteristicas_morfologicas.fotografia_contexto_1 %}
+                                            <img src="{{ caracteristicas_morfologicas.fotografia_contexto_1.url }}" alt="fotografia_contexto_1" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_fotografia_contexto_1">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="fotografia_contexto_1" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Registro fotografia contexto 1 -->
+                                        <div class="modal" tabindex="-1" id="modal_fotografia_contexto_1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Registro Fotográfico Contexto 1</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if caracteristicas_morfologicas.fotografia_contexto_1 %}
+                                                                <img src="{{ caracteristicas_morfologicas.fotografia_contexto_1.url }}" alt="fotografia_contexto_1" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="fotografia_contexto_1" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Registro Fotográfico Detalles constructivos -->
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row bg-light">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fotografia_contexto_2"><b>Registro Fotográfico Contexto 2</b></label>
+                                        <input type="file" class="form-control" id="fotografia_contexto_2" name="fotografia_contexto_2" accept="image/*">
+                                        <br>
+                                        {% if caracteristicas_morfologicas.fotografia_contexto_2 %}
+                                            <img src="{{ caracteristicas_morfologicas.fotografia_contexto_2.url }}" alt="fotografia_contexto_2" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_fotografia_contexto_2">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="fotografia_contexto_2" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Registro Fotográfico Contexto 2 -->
+                                        <div class="modal" tabindex="-1" id="modal_fotografia_contexto_2" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Registro Fotográfico Detalles constructivos</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if caracteristicas_morfologicas.fotografia_contexto_2 %}
+                                                                <img src="{{ caracteristicas_morfologicas.fotografia_contexto_2.url }}" alt="fotografia_contexto_2" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="fotografia_contexto_2" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Registro Fotográfico Detalles constructivos -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row bg-light">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fotografia_contexto_3"><b>Registro Fotográfico Contexto 3</b></label>
+                                        <input type="file" class="form-control" id="fotografia_contexto_3" name="fotografia_contexto_3" accept="image/*">
+                                        <br>
+                                        {% if caracteristicas_morfologicas.fotografia_contexto_3 %}
+                                            <img src="{{ caracteristicas_morfologicas.fotografia_contexto_3.url }}" alt="fotografia_contexto_3" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_fotografia_contexto_3">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="fotografia_contexto_3" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Registro Fotográfico Contexto 3 -->
+                                        <div class="modal" tabindex="-1" id="fotografia_contexto_3" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Registro Fotográfico Contexto 3</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if caracteristicas_morfologicas.fotografia_contexto_3 %}
+                                                                <img src="{{ caracteristicas_morfologicas.fotografia_contexto_3.url }}" alt="fotografia_contexto_3" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="fotografia_contexto_3" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Registro Fotográfico Detalles constructivos -->
+                                    </div>
+                                </div>
+                            </div>
+                            
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">

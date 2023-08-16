@@ -374,6 +374,23 @@ def content_file_name_constructivos(instance, filename):
     folder = "assets_ficha/" + str(instance.id_plano.id_plano)
     return os.path.join(folder, filename)
 
+def content_file_name_contexto_1(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % ('detalle_4', ext)
+    folder = "assets_ficha/" + str(instance.id_plano.id_plano)
+    return os.path.join(folder, filename)
+
+def content_file_name_contexto_2(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % ('detalle_5', ext)
+    folder = "assets_ficha/" + str(instance.id_plano.id_plano)
+    return os.path.join(folder, filename)
+
+def content_file_name_contexto_3(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % ('detalle_6', ext)
+    folder = "assets_ficha/" + str(instance.id_plano.id_plano)
+    return os.path.join(folder, filename)
 
 class CaracteristicasMorfologicas(models.Model):
     tipologia = models.ForeignKey(Tipologias, on_delete=models.CASCADE)
@@ -384,9 +401,15 @@ class CaracteristicasMorfologicas(models.Model):
     expresion_de_fachada = models.ForeignKey(ExpresionDeFachada, on_delete=models.CASCADE)
     continuidad_de_edificacion = models.ForeignKey(ContinuidadDeEdificacion, on_delete=models.CASCADE)
     observaciones = models.TextField(blank=True, default='')
+
     fotografia_valor_significativo = models.ImageField(upload_to=content_file_name_significativo, blank=True, null=True)
     fotografia_expresion_fachada = models.ImageField(upload_to=content_file_name_fachada, blank=True, null=True)
     fotografia_detalles_constructivos = models.ImageField(upload_to=content_file_name_constructivos, blank=True, null=True)
+
+    fotografia_contexto_1 = models.ImageField(upload_to=content_file_name_contexto_1, blank=True, null=True)
+    fotografia_contexto_2 = models.ImageField(upload_to=content_file_name_contexto_2, blank=True, null=True)
+    fotografia_contexto_3 = models.ImageField(upload_to=content_file_name_contexto_3, blank=True, null=True)
+
 
     terreno = models.FloatField(default=0, blank=True)
     edificada = models.FloatField(default=0, blank=True)
@@ -551,6 +574,26 @@ class FuentesReferencialesYBibliograficas(models.Model):
     class Meta:
         verbose_name = "fuentes_referenciales_y_bibliograficas"
         verbose_name_plural = "fuentes_referenciales_y_bibliograficas"
+
+# Sección Extras
+class Verificacion(models.Model):
+    aprobado = models.BooleanField(blank=True, default=False)
+    aprobado_revisor = models.BooleanField(blank=True, default=False)
+    observacion = models.TextField(blank=True ,default="")
+
+
+    id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
+    usuario_trabajador = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True )
+    usuario_revisor = models.TextField(blank=True ,default="")
+
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "verificacion"
+        verbose_name_plural = "verificaciones"
+
+
 
 auditlog.register(IdentificacionInmueble)
 auditlog.register(PlanoUbicacion)

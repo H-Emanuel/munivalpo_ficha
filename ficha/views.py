@@ -420,9 +420,26 @@ def crear_ficha(request):
             fotografia_expresion_fachada  = ""
 
         try:
-            fotografia_detalles_constructivos  = request.FILES['otografia_detalles_constructivos']
+            fotografia_detalles_constructivos  = request.FILES['fotografia_detalles_constructivos']
         except:
             fotografia_detalles_constructivos  = ""
+
+        try:
+            fotografia_contexto_1  = request.FILES['fotografia_contexto_1']
+        except:
+            fotografia_contexto_1  = ""
+
+        try:
+            fotografia_contexto_2  = request.FILES['fotografia_contexto_2']
+        except:
+            fotografia_contexto_2  = ""
+
+        try:
+            fotografia_contexto_3  = request.FILES['fotografia_contexto_3']
+        except:
+            fotografia_contexto_3  = ""
+
+
 
         terreno = request.POST['terreno']
         edificada = request.POST['edificada']
@@ -452,6 +469,9 @@ def crear_ficha(request):
                                                    fotografia_valor_significativo = fotografia_valor_significativo,
                                                    fotografia_expresion_fachada = fotografia_expresion_fachada,
                                                    fotografia_detalles_constructivos = fotografia_detalles_constructivos,
+                                                   fotografia_contexto_1 = fotografia_contexto_1,
+                                                   fotografia_contexto_2 = fotografia_contexto_2,
+                                                   fotografia_contexto_3 = fotografia_contexto_3,
                                                    terreno = terreno,
                                                    edificada = edificada,
                                                    protegida = protegida,
@@ -926,6 +946,15 @@ def editar_ficha(request, id = 0):
 
         if request.FILES.get('fotografia_detalles_constructivos'):
             caracteristicas_morfologicas.fotografia_detalles_constructivos = request.FILES.get('fotografia_detalles_constructivos')
+
+        if request.FILES.get('fotografia_contexto_1'):
+            caracteristicas_morfologicas.fotografia_contexto_1 = request.FILES.get('fotografia_contexto_1')
+
+        if request.FILES.get('fotografia_contexto_2'):
+            caracteristicas_morfologicas.fotografia_contexto_2 = request.FILES.get('fotografia_contexto_2')
+
+        if request.FILES.get('fotografia_contexto_3'):
+            caracteristicas_morfologicas.fotografia_contexto_3 = request.FILES.get('fotografia_contexto_3')
 
         caracteristicas_morfologicas.terreno = request.POST.get('terreno')
         caracteristicas_morfologicas.edificada = request.POST.get('edificada')

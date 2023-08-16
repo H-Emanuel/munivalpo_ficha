@@ -116,8 +116,16 @@
         position: absolute;
         top: 10px; /* Ajusta la posición vertical según tu diseño */
         left: 10px; /* Ajusta la posición horizontal según tu diseño */
-        width: 300px; /* Ajusta el ancho de la imagen */
-        height: 200px; /* Ajusta la altura de la imagen */
+        width: 200px; /* Ajusta el ancho de la imagen */
+        height: 90; /* Ajusta la altura de la imagen */
+        z-index: 1; /* Asegura que la imagen esté en frente del fondo */
+        }
+        .imagen-pequena-2 {
+        position: absolute;
+        top: 10px; /* Ajusta la posición vertical según tu diseño */
+        left: 20%; /* Ajusta la posición horizontal según tu diseño */
+        width: 230px; /* Ajusta el ancho de la imagen */
+        height: 90; /* Ajusta la altura de la imagen */
         z-index: 1; /* Asegura que la imagen esté en frente del fondo */
         }
       </style>
@@ -125,6 +133,8 @@
 <body class="text-center">
     <div>
       <img src="/static/core/assets/img/alc1-removebg-preview.png" alt="Imagen pequeña" class="imagen-pequena">
+      <img src="/static/core/assets/img/logosig.png" alt="Imagen pequeña" class="imagen-pequena-2">
+
     </div>
     <main class="form-signin w-100 m-auto">
         <form action="{% url 'core_login' %}" method="POST">
