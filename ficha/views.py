@@ -622,8 +622,6 @@ def crear_ficha(request):
         
         extra  = request.POST['observacion']
 
-        observacion.objects.create(id_plano = identificacioninmueble,
-                                   descripcion = extra)
         
         return redirect('/ficha/ver_fichas')
     return render(request, 'ficha/crear_ficha.html',data)
