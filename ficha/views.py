@@ -646,7 +646,7 @@ def editar_ficha(request, id = 0):
     elementos_valor_significativo = ElementosValorSignificativo.objects.get(id_plano_id = id)
     expresion_fachada = ExpresionDeFachada.objects.get(id_plano_id = id)
     continuidad_edificacion = ContinuidadDeEdificacion.objects.get(id_plano_id = id)
-
+    extra = observacion.objects.get(id_plano_id = id)
 
     OPTIONS = {
         'PLAN_CERRO_POBLACION': PLAN_CERRO_POBLACION,
@@ -1088,9 +1088,9 @@ def editar_ficha(request, id = 0):
         # Sección 15
         fuentes_referenciales_y_bibliograficas.fuentes_referenciales_y_bibliograficas = request.POST.get('fuentes_referenciales_y_bibliograficas')
         fuentes_referenciales_y_bibliograficas.save()
-
-
-
+        
+        extra.observacion = request.POST.get('observacion')
+        extra.save()
 
     data = {
         'identificacion_inmueble': identificacion_inmueble,
@@ -1108,7 +1108,7 @@ def editar_ficha(request, id = 0):
         'categoria_de_acuerdo_a_su_uso': categoria_de_acuerdo_a_su_uso,
         'conclusiones': conclusiones,
         'fuentes_referenciales_y_bibliograficas': fuentes_referenciales_y_bibliograficas,
-
+        'observacion':extra,
         'tipologia': tipologia,
         'tipo_cubierta': tipo_cubierta,
         'elementos_valor_significativo': elementos_valor_significativo,

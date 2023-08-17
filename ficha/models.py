@@ -583,15 +583,15 @@ class observacion(models.Model):
 
 
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
-    usuario_trabajador = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True )
-    usuario_revisor = models.TextField(blank=True ,default="")
+    usuario_trabajador = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='observaciones_trabajador')
+    usuario_revisor = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='observaciones_revisor')
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:
-        verbose_name = "verificacion"
-        verbose_name_plural = "verificaciones"
+        verbose_name = "observacion"
+        verbose_name_plural = "observaciones"
 
 
 
@@ -615,3 +615,4 @@ auditlog.register(RelacionDelInmuebleConElTerreno)
 auditlog.register(CategoriaDeAcuerdoASuUso)
 auditlog.register(Conclusiones)
 auditlog.register(FuentesReferencialesYBibliograficas)
+auditlog.register(observacion)

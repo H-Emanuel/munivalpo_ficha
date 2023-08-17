@@ -141,6 +141,12 @@ class FuentesReferencialesYBibliograficasAdmin(admin.ModelAdmin):
     search_fields = ('id_plano__id_plano', 'id_plano__rol', 'created', 'updated')
     ordering = ('id_plano', 'updated')
     readonly_fields = ('id_plano', 'created', 'updated')
+class ObservacionAdmin(admin.ModelAdmin):
+    list_display = ('id_plano', 'created', 'updated')
+    list_filter = ('created', 'updated')
+    search_fields = ('id_plano__id_plano', 'id_plano__rol', 'created', 'updated')
+    ordering = ('id_plano', 'updated')
+    readonly_fields = ('id_plano', 'created', 'updated')
 
 admin.site.register(IdentificacionInmueble, IdentificacionInmuebleAdmin)
 admin.site.register(PlanoUbicacion, PlanoUbicacionAdmin)
@@ -162,4 +168,5 @@ admin.site.register(RelacionDelInmuebleConElTerreno, RelacionDelInmuebleConElTer
 admin.site.register(CategoriaDeAcuerdoASuUso, CategoriaDeAcuerdoASuUsoAdmin)
 admin.site.register(Conclusiones, ConclusionesAdmin)
 admin.site.register(FuentesReferencialesYBibliograficas, FuentesReferencialesYBibliograficasAdmin)
+admin.site.register(observacion, ObservacionAdmin)
 
