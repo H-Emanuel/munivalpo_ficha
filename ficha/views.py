@@ -623,7 +623,7 @@ def crear_ficha(request):
         extra  = request.POST['observacion']
 
         observacion.objects.create(id_plano = identificacioninmueble,
-                                   observacion = extra)
+                                   descripcion = extra)
         
         return redirect('/ficha/ver_fichas')
     return render(request, 'ficha/crear_ficha.html',data)
@@ -1095,7 +1095,7 @@ def editar_ficha(request, id = 0):
         fuentes_referenciales_y_bibliograficas.fuentes_referenciales_y_bibliograficas = request.POST.get('fuentes_referenciales_y_bibliograficas')
         fuentes_referenciales_y_bibliograficas.save()
         
-        extra.observacion = request.POST.get('observacion')
+        extra.descripcion = request.POST.get('observacion')
         extra.save()
 
     data = {

@@ -579,7 +579,7 @@ class FuentesReferencialesYBibliograficas(models.Model):
 class observacion(models.Model):
     aprobado = models.BooleanField(blank=True, default=False)
     aprobado_revisor = models.BooleanField(blank=True, default=False)
-    observacion = models.TextField(blank=True ,default="")
+    descripcion = models.TextField(blank=True ,default="")
 
 
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
