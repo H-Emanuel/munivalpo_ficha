@@ -1095,6 +1095,7 @@ def editar_ficha(request, id = 0):
         fuentes_referenciales_y_bibliograficas.fuentes_referenciales_y_bibliograficas = request.POST.get('fuentes_referenciales_y_bibliograficas')
         fuentes_referenciales_y_bibliograficas.save()
         
+        extra.descripcion = request.POST.get('observacion')
         extra.save()
 
     data = {
