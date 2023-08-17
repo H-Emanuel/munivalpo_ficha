@@ -576,7 +576,7 @@ class FuentesReferencialesYBibliograficas(models.Model):
         verbose_name_plural = "fuentes_referenciales_y_bibliograficas"
 
 # Sección Extras
-class Verificacion(models.Model):
+class observacion(models.Model):
     aprobado = models.BooleanField(blank=True, default=False)
     aprobado_revisor = models.BooleanField(blank=True, default=False)
     observacion = models.TextField(blank=True ,default="")
