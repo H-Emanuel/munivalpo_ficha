@@ -1135,17 +1135,26 @@ def editar_ficha(request, id = 0):
 
 @login_required(login_url='/login/')
 def ver_fichas(request):
+
     if request.user.is_staff:
         identificacion_inmueble = IdentificacionInmueble.objects.all()
     else:
         identificacion_inmueble = IdentificacionInmueble.objects.filter(usuario=request.user)
 
+    observaciones = observacion.objects.filter(id_plano__in=identificacion_inmueble.values('id_plano'))
 
+    fichas_con_observaciones = []
+
+    for ficha in identificacion_inmueble:
+        obs = observaciones.filter(id_plano=ficha.id_plano).first()
+        fichas_con_observaciones.append({'ficha': ficha, 'observacion': obs})
 
     data = {
-        'fichas': identificacion_inmueble
+        'fichas_con_observaciones': fichas_con_observaciones,
     }
+
     return render(request, 'ficha/ver_fichas.html', data)
+
 
 @login_required(login_url='/login/')
 def ver_ficha(request, id):
@@ -1175,6 +1184,7 @@ def exportar_pdf(request, id):
     categoria_de_acuerdo_a_su_uso = CategoriaDeAcuerdoASuUso.objects.get(id_plano = id)
     conclusiones = Conclusiones.objects.get(id_plano = id)
     fuentes_referenciales_y_bibliograficas = FuentesReferencialesYBibliograficas.objects.get(id_plano = id)
+    obs = observacion.objects.get(id_plano = id)
 
     tipologia = Tipologias.objects.get(id_plano_id = id)
     tipo_cubierta = TipoCubierta.objects.get(id_plano_id = id)
@@ -1209,6 +1219,7 @@ def exportar_pdf(request, id):
         'categoria_de_acuerdo_a_su_uso': categoria_de_acuerdo_a_su_uso,
         'conclusiones': conclusiones,
         'fuentes_referenciales_y_bibliograficas': fuentes_referenciales_y_bibliograficas,
+        
 
         'tipologia': tipologia,
         'tipo_cubierta': tipo_cubierta,
@@ -1339,3 +1350,31 @@ def get_location(request):
         # devolvemos la respuesta en formato JSON
         return JsonResponse(response_data)
     return HttpResponseBadRequest('La petición no es válida.')
+
+def actualizar_observacion(request, id_plano):
+    if request.method == 'POST':
+        checkbox_value = request.POST.get('checkbox_value')  # Asegúrate de que el nombre sea el mismo en tu formulario HTML
+        obs = observacion.objects.get(id_plano_id=id_plano)
+        
+        if checkbox_value == 'on':
+            obs.aprobado = True
+        else:
+            obs.aprobado = False
+        
+        obs.save()
+
+        return redirect('ver_fichas')
+
+def actualizar_observacion_staff(request, id_plano):
+    if request.method == 'POST':
+        if 'aprobar' in request.POST:
+            obs = observacion.objects.get(id_plano_id=id_plano)
+            obs.aprobado_revisor = True
+            obs.usuario_revisor = request.user
+            obs.save()
+        elif 'denegar' in request.POST:
+            obs = observacion.objects.get(id_plano_id=id_plano)
+            obs.aprobado = False
+            obs.save()
+
+    return redirect('ver_fichas')

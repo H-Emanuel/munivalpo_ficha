@@ -16,25 +16,44 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for ficha in fichas %}
-                    <tr>
-                        <td>{{ ficha.id_plano }}</td>
-                        <td>{{ ficha.rol }}</td>
-                        <td>{{ ficha.calle }}, {{ficha.numero}}, {{ ficha.comuna }}</td>
-                        <td>
-                            {% comment %} <a href="{% url 'ver_ficha' ficha.id_plano %}" class="btn btn-primary">Ver</a> {% endcomment %}
-                            {% comment %} <a class="btn btn-danger" onclick="return ConfirmaEliminar();" href="{% url 'eliminar' ficha.id_plano %}">Eliminar</a> {% endcomment %}
-                            <a href="{% url 'editar_ficha' ficha.id_plano %}" class="btn btn-warning">Editar</a>
-                            <a href="{% url 'exportar_pdf' ficha.id_plano %}" target="_blank" class="btn btn-danger">PDF</a>
-                        </td>
-                    </tr>
+                    {% for item in fichas_con_observaciones %}
+                        <tr>
+                            <td>{{ item.ficha.id_plano }}</td>
+                            <td>{{ item.ficha.rol }}</td>
+                            <td>{{ item.ficha.calle }}, {{ item.ficha.numero }}, {{ item.ficha.comuna }}</td>
+                            <td>
+                                <a href="{% url 'editar_ficha' item.ficha.id_plano %}" class="btn btn-warning">Editar</a>
+                                <a href="{% url 'exportar_pdf' item.ficha.id_plano %}" target="_blank" class="btn btn-danger">PDF</a> 
+                                {% if not user.is_staff %}
+                                    {% if not item.observacion.aprobado %}
+                                        <form method="post" action="{% url 'actualizar_observacion' item.ficha.id_plano %}">
+                                            {% csrf_token %}
+                                            <input type="checkbox" name="checkbox_value" id="checkbox_{{ item.ficha.id_plano }}" {% if item.observacion.aprobado %} checked {% endif %}>
+                                            <label for="checkbox_{{ item.ficha.id_plano }}">Esta listo ?</label>
+                                            <button type="submit">Guardar Cambios</button>
+                                        </form>
+                                    {% endif %}
+                                {% endif %}
+                                {% if item.observacion.aprobado and user.is_staff and not item.observacion.aprobado_revisor %}
+                                    <form method="post" action="{% url 'actualizar_observacion_staff' item.ficha.id_plano %}">
+                                        {% csrf_token %}
+                                        <br>
+                                        <button class="btn btn-secondary" type="submit" name="aprobar">Aprobar</button>
+                                        <span class="mx-0.1"></span>
+                                        <button class="btn btn-danger" type="submit" name="denegar">Denegar</button>
+                                    </form>
+                                    <br>
+                                {% endif %}   
+                                                        
+                            </td>
+                        </tr>
                     {% empty %}
-                    <tr>
-                        <td>No hay datos</td>
-                        <td>No hay datos</td>
-                        <td>No hay datos</td>
-                        <td>No hay datos</td>
-                    </tr>
+                        <tr>
+                            <td>No hay datos</td>
+                            <td>No hay datos</td>
+                            <td>No hay datos</td>
+                            <td>No hay datos</td>
+                        </tr>
                     {% endfor %}
                 </tbody>
             </table>
@@ -68,4 +87,13 @@
         }
     }
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var checkbox = document.getElementById('checkbox_{{ ficha.id_plano }}');
+        checkbox.addEventListener('change', function() {
+            this.closest('form').submit();
+        });
+    });
+</script>
+
 {% endblock custom_js %}

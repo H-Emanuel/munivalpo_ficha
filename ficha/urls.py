@@ -11,4 +11,7 @@ urlpatterns = [
     path('exportar_pdf/<int:id>', views.exportar_pdf, name="exportar_pdf"),
     path('test_pdf/<int:id>', views.test_pdf, name="test_pdf"),
     path('get_location/', views.get_location, name="get_location"),
+    path('actualizar_observacion/<int:id_plano>/', views.actualizar_observacion, name='actualizar_observacion'),
+    path('actualizar_observacion_staff/<int:id_plano>/', views.actualizar_observacion_staff, name='actualizar_observacion_staff'),
+
 ]

@@ -45,7 +45,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="rol"><b>Rol</b></label>
-                                        <input type="text" oninput="this.value = this.value.replace(/[^0-9.,/-]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="rol" name="rol" value="{{ identificacion_inmueble.rol }}"  >
+                                        <input type="text" oninput="this.value = this.value.replace(/[^0-9.,\-/a-zA-Z ]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" id="rol" name="rol" value="{{ identificacion_inmueble.rol }}">
                                     </div>
                                 </div>
                             </div>
@@ -2160,7 +2160,7 @@ function Verificar_rol(){
     let rol = document.getElementById("rol");
     rol.addEventListener("focusout",(e) =>{
     if (document.getElementById("rol").value.length != 11 ){
-        alert("El Formato del rol es incorreto \n El fomarto debe ser 00000-00000")
+        alert("El Formato del rol es irregular \n El fomarto por defecto es 00000-00000")
     }
     })
 };

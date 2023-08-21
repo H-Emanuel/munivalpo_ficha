@@ -583,7 +583,6 @@ class observacion(models.Model):
 
 
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
-    usuario_trabajador = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='observaciones_trabajador')
     usuario_revisor = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='observaciones_revisor')
 
     created = models.DateTimeField(auto_now_add=True)
