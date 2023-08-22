@@ -24,6 +24,8 @@
                             <td>
                                 <a href="{% url 'editar_ficha' item.ficha.id_plano %}" class="btn btn-warning">Editar</a>
                                 <a href="{% url 'exportar_pdf' item.ficha.id_plano %}" target="_blank" class="btn btn-danger">PDF</a> 
+                                <a href="{% url 'exportar_pdf_valoracion' item.ficha.id_plano %}" target="_blank" class="btn btn-secondary">PDF De Valoracion</a> 
+
                                 {% if not user.is_staff %}
                                     {% if not item.observacion.aprobado %}
                                         <form method="post" action="{% url 'actualizar_observacion' item.ficha.id_plano %}">

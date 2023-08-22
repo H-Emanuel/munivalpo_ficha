@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from django.http import FileResponse
 from django.conf import settings
 from pyproj import Proj, transform 
-from .helpers import save_pdf, save_pdf_2
+from .helpers import save_pdf_3, save_pdf_2
 from datetime import datetime
 from datetime import date
 from django.http import JsonResponse,HttpResponseBadRequest
@@ -1254,7 +1254,44 @@ def exportar_pdf(request, id):
     # return HttpResponse(file_name)
     return FileResponse(open(file_name, 'rb'), content_type='application/pdf', filename=nombre_archivo, as_attachment=True)
 
+def exportar_pdf_valoracion(request, id):
     
+    identificacion_inmueble = IdentificacionInmueble.objects.get(id_plano = id)
+    
+    valoracion_atributos = ValoracionAtributos.objects.get(id_plano = id)
+    
+
+    # Sección 6
+
+    now = datetime.now()
+    current_time = now.strftime("%d-%m-%Y_%H-%M-%S")
+    current_user = request.user
+
+    data = {
+
+        'MEDIA_URL': request.build_absolute_uri('/')[:-1],
+
+        'current_time': now,
+        'current_user': current_user,
+    }
+    
+    nombre_ficha = "tabla_" + str(identificacion_inmueble.id_plano) + "_" + current_time
+
+    file_name, status = save_pdf_3(data, nombre_ficha)
+
+    if not status:
+        print("----------------")
+        print("Error al generar PDF")
+        print("----------------")
+        return HttpResponse("Error al generar PDF")
+
+    nombre_archivo = nombre_ficha + ".pdf"
+
+    # return HttpResponse(file_name)
+    return FileResponse(open(file_name, 'rb'), content_type='application/pdf', filename=nombre_archivo, as_attachment=True)
+
+
+
 def test_pdf(request, id):
     identificacion_inmueble = IdentificacionInmueble.objects.get(id_plano = id)
     plano_ubicacion = PlanoUbicacion.objects.get(id_plano = id)
