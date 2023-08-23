@@ -445,20 +445,20 @@
                                                                     <th colspan="1">PUNTOS </th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Se Destasca por su aporte a la estructura, paisaje urbano</th>
+                                                                    <th colspan="11">Se Destasca por su aporte a la estructura, paisaje urbano.</th>
                                                                     <th class="text-center">2</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Contribuye a la estructura o paisaje urbano</th>
+                                                                    <th colspan="11">Contribuye a la estructura o paisaje urbano.</th>
                                                                     <th class="text-center">1</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">No aporta a la estructura o imagen Urbana</th>
+                                                                    <th colspan="11">No aporta a la estructura o imagen Urbana.</th>
                                                                     <th class="text-center">0</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
-                                                                    <th><input type="number" class="form-control" id="valor_urbano_a" name="valor_urbano_a" min="0" max="2" value="{{ valoracion_atributos.valor_urbano_a }}"></th>
+                                                                    <th><input type="number" class="form-control" id="valor_urbano_a" name="valor_urbano_a" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_urbano_a }}"></th>
                                                                 </tr>
                                                                 </table>
                                                                 <table class="table table-bordered table-sm">
@@ -467,7 +467,7 @@
                                                                         <th colspan="1">PUNTOS </th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Articula y es determinante en un conjunto o zona de valor patrimonial</th>
+                                                                        <th colspan="11">Articula y es determinante en un conjunto o zona de valor patrimonial.</th>
                                                                         <th class="text-center">2</th>
                                                                     </tr>
                                                                     <tr>
@@ -481,7 +481,7 @@
                                                                     <tr>
                                                                         <th colspan="11">Respuesta</th>
                                                                         <th>
-                                                                            <input type="number" class="form-control" id="valor_urbano_b" name="valor_urbano_b" min="0" max="2" value="{{ valoracion_atributos.valor_urbano_b }}">                                                                        </th>
+                                                                            <input type="number" class="form-control" id="valor_urbano_b" name="valor_urbano_b" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_urbano_b }}">                                                                        </th>
                                                                     </tr>
                                                                     </table>
 
@@ -505,7 +505,7 @@
                                                                         <tr>
                                                                             <th colspan="11">Respuesta</th>
                                                                             <th>
-                                                                                <input type="number" class="form-control" id="valor_urbano_c" name="valor_urbano_c" min="0" max="2" value="{{ valoracion_atributos.valor_urbano_c }}">                                                                            </th>
+                                                                                <input type="number" class="form-control" id="valor_urbano_c" name="valor_urbano_c" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_urbano_c }}">                                                                            </th>
                                                                         </tr>
                                                                         </table>
         
@@ -547,7 +547,7 @@
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
                                                                     <th>
-                                                                        <input type="number" class="form-control" id="valor_arquitecnico_a" name="valor_arquitecnico_a" min="0" max="2"  value="{{ valoracion_atributos.valor_arquitecnico_a }}">
+                                                                        <input type="number" class="form-control" id="valor_arquitecnico_a" name="valor_arquitecnico_a" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_arquitecnico_a }}">
                                                                     </th>
                                                                 </tr>
                                                                 </table>
@@ -557,7 +557,7 @@
                                                                         <th colspan="1">PUNTOS </th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Es un inmueble único es su estilo o tipología</th>
+                                                                        <th colspan="11">Es un inmueble único es su estilo o tipología.</th>
                                                                         <th class="text-center">2</th>
                                                                     </tr>
                                                                     <tr>
@@ -571,7 +571,7 @@
                                                                     <tr>
                                                                         <th colspan="11">Respuesta</th>
                                                                         <th>
-                                                                            <input type="number" class="form-control" id="valor_arquitecnico_b" name="valor_arquitecnico_b" min="0" max="2"  value="{{ valoracion_atributos.valor_arquitecnico_b }}">
+                                                                            <input type="number" class="form-control" id="valor_arquitecnico_b" name="valor_arquitecnico_b" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_arquitecnico_b }}">
                                                                         </th>
                                                                     </tr>
                                                                     </table>
@@ -596,7 +596,7 @@
                                                                         <tr>
                                                                             <th colspan="11">Respuesta</th>
                                                                             <th>
-                                                                                <input type="number" class="form-control" id="valor_arquitecnico_c" name="valor_arquitecnico_c" min="0" max="2" value="{{ valoracion_atributos.valor_arquitecnico_c }}">
+                                                                                <input type="number" class="form-control" id="valor_arquitecnico_c" name="valor_arquitecnico_c" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_arquitecnico_c }}">
                                                                             </th>
                                                                         </tr>
                                                                         </table>
@@ -638,7 +638,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
-                                                                    <th><input type="number" class="form-control" id="valor_historico_a" name="valor_historico_a" min="0" max="2" value="{{ valoracion_atributos.valor_historico_a }}"></th>
+                                                                    <th><input type="number" class="form-control" id="valor_historico_a" name="valor_historico_a" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_historico_a }}"></th>
                                                                 </tr>
                                                                 </table>
                                                                 <table class="table table-bordered table-sm">
@@ -647,11 +647,11 @@
                                                                         <th colspan="1">PUNTOS </th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">se encuentra inserto en una zona típica</th>
+                                                                        <th colspan="11">Se encuentra inserto en una zona típica.</th>
                                                                         <th class="text-center">2</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Se encuentra inserto en una zona con convervación histórica.</th>
+                                                                        <th colspan="11">Se encuentra inserto en una zona con conservación histórica.</th>
                                                                         <th class="text-center">1</th>
                                                                     </tr>
                                                                     <tr>
@@ -661,7 +661,7 @@
                                                                     <tr>
                                                                         <th colspan="11">Respuesta</th>
                                                                         <th>
-                                                                            <input type="number" class="form-control" id="valor_historico_b" name="valor_historico_b" min="0" max="2" value="{{ valoracion_atributos.valor_historico_b }}">                                                                  </tr>
+                                                                            <input type="number" class="form-control" id="valor_historico_b" name="valor_historico_b" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_historico_b }}">                                                                  </tr>
                                                                         </th>    
                                                                         </table>
 
@@ -689,7 +689,7 @@
                                                                         <tr>
                                                                             <th colspan="11">Respuesta</th>
                                                                             <th>
-                                                                                <input type="number" class="form-control" id="valor_historico_c" name="valor_historico_c" min="0" max="2" value="{{ valoracion_atributos.valor_historico_c }}">                                                                        </tr>
+                                                                                <input type="number" class="form-control" id="valor_historico_c" name="valor_historico_c" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_historico_c }}">                                                                        </tr>
                                                                         </table>
         
                                                                 </div>
@@ -722,16 +722,16 @@
                                                                     <th class="text-center">2</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Inmueble que independiente de su estado de conservacion,genera un independiente de su estado de conservacíon, genera un alto impacto positivo en su entorno inmediato.</th>
+                                                                    <th colspan="11">Inmueble que independiente de su estado de conservación, genera un impacto positivo en su entorno inmediato.</th>
                                                                     <th class="text-center">1</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">No genera impacto positivo en su entorno</th>
+                                                                    <th colspan="11">No genera impacto positivo en su entorno.</th>
                                                                     <th class="text-center">0</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
-                                                                    <th><input type="number" class="form-control" id="valor_economico_a" name="valor_economico_a" min="0" max="2" value="{{ valoracion_atributos.valor_economico_a }}"></th>
+                                                                    <th><input type="number" class="form-control" id="valor_economico_a" name="valor_economico_a" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_economico_a }}"></th>
                                                                 </tr>
                                                                 </table>
                                                                 <table class="table table-bordered table-sm">
@@ -740,7 +740,7 @@
                                                                         <th colspan="1">PUNTOS </th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Las construcciones que se encuentra en su entorno inmediato estan en buen estado de conservaciones y puede contribuir a 
+                                                                        <th colspan="11">Las construcciones que se encuentra en su entorno inmediato estan en buen estado de conservación, y pueden contribuir a 
                                                                         potenciar el valor patrimonial del Inmueble.
                                                                         </th>
                                                                         <th class="text-center">2</th>
@@ -756,7 +756,7 @@
                                                                     </tr>
                                                                     <tr>
                                                                         <th colspan="11">Respuesta</th>
-                                                                        <th><input type="number" class="form-control" id="valor_economico_b" name="valor_economico_b" min="0" max="2" value="{{ valoracion_atributos.valor_economico_b }}"></tr>
+                                                                        <th><input type="number" class="form-control" id="valor_economico_b" name="valor_economico_b" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_economico_b }}"></tr>
                                                                     
                                                                     </table>
                                                                 </div>
@@ -783,7 +783,7 @@
                                                                     <th colspan="1">PUNTOS </th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Es identifcado y valorado como patrimonio importante.</th>
+                                                                    <th colspan="11">Es identificado y valorado como patrimonio importante.</th>
                                                                     <th class="text-center">2</th>
                                                                 </tr>
                                                                 <tr>
@@ -797,7 +797,7 @@
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
                                                                     <th>
-                                                                        <input type="number" class="form-control" id="valor_social_a" name="valor_social_a" min="0" max="2" value="{{ valoracion_atributos.valor_social_a }}">                                                                    </th>
+                                                                        <input type="number" class="form-control" id="valor_social_a" name="valor_social_a" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_social_a }}">                                                                    </th>
                                                                 </tr>
                                                                 </table>
                                                           
