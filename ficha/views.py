@@ -131,23 +131,23 @@ def crear_ficha(request):
                                          valor_social = valor_social)
         # Sección 6
         
-        valor_urbano_a = request.POST['valor_urbano_a']
-        valor_urbano_b = request.POST['valor_urbano_b']
-        valor_urbano_c = request.POST['valor_urbano_c']
+        valor_urbano_a = request.POST['valor_urbano_a'] if request.POST['valor_urbano_a'] != '' else '0'
+        valor_urbano_b = request.POST['valor_urbano_b'] if request.POST['valor_urbano_b'] != '' else '0'
+        valor_urbano_c = request.POST['valor_urbano_c'] if request.POST['valor_urbano_c'] != '' else '0'
 
-        valor_arquitecnico_a = request.POST['valor_arquitecnico_a']
-        valor_arquitecnico_b  = request.POST['valor_arquitecnico_b']
-        valor_arquitecnico_c  = request.POST['valor_arquitecnico_c']
+        valor_arquitecnico_a = request.POST['valor_arquitecnico_a'] if request.POST['valor_arquitecnico_a'] != '' else '0'
+        valor_arquitecnico_b = request.POST['valor_arquitecnico_b'] if request.POST['valor_arquitecnico_b'] != '' else '0'
+        valor_arquitecnico_c = request.POST['valor_arquitecnico_c'] if request.POST['valor_arquitecnico_c'] != '' else '0'
 
-        valor_historico_a = request.POST['valor_historico_a']
-        valor_historico_b = request.POST['valor_historico_b']
-        valor_historico_c = request.POST['valor_historico_c']
+        valor_historico_a = request.POST['valor_historico_a'] if request.POST['valor_historico_a'] != '' else '0'
+        valor_historico_b = request.POST['valor_historico_b'] if request.POST['valor_historico_b'] != '' else '0'
+        valor_historico_c = request.POST['valor_historico_c'] if request.POST['valor_historico_c'] != '' else '0'
 
-        valor_economico_a = request.POST['valor_economico_a']
-        valor_economico_b = request.POST['valor_economico_b']
-        
+        valor_economico_a = request.POST['valor_economico_a'] if request.POST['valor_economico_a'] != '' else '0'
+        valor_economico_b = request.POST['valor_economico_b'] if request.POST['valor_economico_b'] != '' else '0'
 
-        valor_social_a = request.POST['valor_social_a']
+        valor_social_a = request.POST['valor_social_a'] if request.POST['valor_social_a'] != '' else '0'
+
        
         zona_de_conservacion = request.POST['zona_de_conservacion']
         identificacion_zch = request.POST['identificacion_zch']
@@ -735,21 +735,23 @@ def editar_ficha(request, id = 0):
         resena_patrimonial.save()
 
         # Sección 6
-        valoracion_atributos.valor_urbano_a = request.POST.get('valor_urbano_a')
-        valoracion_atributos.valor_urbano_b = request.POST.get('valor_urbano_b')
-        valoracion_atributos.valor_urbano_c = request.POST.get('valor_urbano_c')
-        valoracion_atributos.valor_arquitecnico_a = request.POST.get('valor_arquitecnico_a')
-        valoracion_atributos.valor_arquitecnico_b = request.POST.get('valor_arquitecnico_b')
-        valoracion_atributos.valor_arquitecnico_c = request.POST.get('valor_arquitecnico_c')
-        valoracion_atributos.valor_historico_a = request.POST.get('valor_historico_a')
-        valoracion_atributos.valor_historico_b = request.POST.get('valor_historico_b')
-        valoracion_atributos.valor_historico_c = request.POST.get('valor_historico_c')
+        valoracion_atributos.valor_urbano_a = request.POST.get('valor_urbano_a', '0')
+        valoracion_atributos.valor_urbano_b = request.POST.get('valor_urbano_b', '0')
+        valoracion_atributos.valor_urbano_c = request.POST.get('valor_urbano_c', '0')
 
-        valoracion_atributos.valor_economico_a = request.POST.get('valor_economico_a')
-        valoracion_atributos.valor_economico_b = request.POST.get('valor_economico_b')
-        
+        valoracion_atributos.valor_arquitecnico_a = request.POST.get('valor_arquitecnico_a', '0')
+        valoracion_atributos.valor_arquitecnico_b = request.POST.get('valor_arquitecnico_b', '0')
+        valoracion_atributos.valor_arquitecnico_c = request.POST.get('valor_arquitecnico_c', '0')
 
-        valoracion_atributos.valor_social_a = request.POST.get('valor_social_a')
+        valoracion_atributos.valor_historico_a = request.POST.get('valor_historico_a', '0')
+        valoracion_atributos.valor_historico_b = request.POST.get('valor_historico_b', '0')
+        valoracion_atributos.valor_historico_c = request.POST.get('valor_historico_c', '0')
+
+        valoracion_atributos.valor_economico_a = request.POST.get('valor_economico_a', '0')
+        valoracion_atributos.valor_economico_b = request.POST.get('valor_economico_b', '0')
+                
+
+        valoracion_atributos.valor_social_a = request.POST.get('valor_social_a', '0')
         
         valoracion_atributos.zona_de_conservacion = request.POST.get('zona_de_conservacion')
         valoracion_atributos.identificacion_zch = request.POST.get('identificacion_zch')
@@ -1268,7 +1270,7 @@ def exportar_pdf_valoracion(request, id):
     current_user = request.user
 
     data = {
-
+        'valoracion_atributos':valoracion_atributos,
         'MEDIA_URL': request.build_absolute_uri('/')[:-1],
 
         'current_time': now,

@@ -72,164 +72,163 @@
                     <td colspan="1">PUNTOS ( DE 2 A 0 )</td>
                 </tr>
                 <tr>
-                    <td colspan="1" rowspan="9" class="text-center">
+                    <td colspan="1" rowspan="3" class="text-center">
                         U<br />R <br />B <br />A <br />N <br />O
                     </td>
-                    <td colspan="3" rowspan="3">(A) IMAGEN</td>
+                    <td colspan="3">(A) IMAGEN</td>
+                    {% if valoracion_atributos.valor_urbano_a == 2 %}
+
                     <td colspan="7">Se destaca por su aporte a la estructura, paisaje urbano.</td>
                     <td colspan="1">2</td>  
-                </tr>
-                <tr>
-
+                    {% elif valoracion_atributos.valor_urbano_a == 1 %}
                     <td colspan="7">Contribuye a la estructura o paisaje urbano.</td>
                     <td colspan="1">1</td>  
-                </tr>
-                <tr>
-                    
+
+                    {% else %}
                     <td colspan="7">No aporta a la estructura o imagen urbana.</td>
                     <td colspan="1">0</td>  
+                    {% endif %}   
                 </tr>
-                 <!-- 1 -->
+    
                 <tr>
-                    <td colspan="3" rowspan="3">(B) Conjunto</td>
-                    <td colspan="7">Articula y es determinante en un conjunto o zona de valor patrimonial.</td>
-                    <td colspan="1">2</td>  
-                </tr>
-                <tr>
+                    <td colspan="3">(B) Conjunto</td>
+                    {% if valoracion_atributos.valor_urbano_b == 2 %}
 
+                    <td colspan="7">Articula y es determinante en un conjunto o zona de valor patrimonial.</td>
+                    <td colspan="1">2</td>
+                    {% elif valoracion_atributos.valor_urbano_b == 1 %}
                     <td colspan="7">Forma parte de un conjunto o zona de valor patrimonial.</td>
                     <td colspan="1">1</td>  
-                </tr>
-                <tr>
-                    
+
+                    {% else %}
                     <td colspan="7">No forma parte de un conjunto o zona de valor patrimonial.</td>
                     <td colspan="1">0</td>  
+                    {% endif %}   
                 </tr>
-                 <!-- 1 -->
+            
 
                 <tr>
-                    <td colspan="3" rowspan="3">(C) ENTORNO PATRIMONIAL</td>
+                    <td colspan="3">(C) ENTORNO PATRIMONIAL</td>
+                    {% if valoracion_atributos.valor_urbano_c == 2 %}
+
                     <td colspan="7">Se destaca por valorizar al inmubebles.</td>
                     <td colspan="1">2</td>  
-                </tr>
-                <tr>
-
+                    {% elif valoracion_atributos.valor_urbano_c == 1 %}
                     <td colspan="7">No afecta al inmueble.</td>
                     <td colspan="1">1</td>  
-                </tr>
-                <tr>
-                    
+                    {% else %}
                     <td colspan="7">Desvaloriza el inmueble.</td>
                     <td colspan="1">0</td>  
+                    {% endif %} 
                 </tr>
-                <!-- 2 -->
+
                 <tr>
-                    <td colspan="1" rowspan="9" class="text-center">
+                    <td colspan="1" rowspan="3" class="text-center">
                         A<br />R <br />Q <br />U <br />I <br />T <br />E<br />C<br />T<br />Ó<br />N<br />I<br />C<br />O
                     </td>
-                    <td colspan="3" rowspan="3">(A) REPRESENTATIVIDAD</td>
-                    <td colspan="7">Es un referente o es plonero de un estilo o tipología arquitectónica, o es obra de un autor reconocido.</td>
-                    <td colspan="1">2</td>  
-                </tr>
-                <tr>
+                    <td colspan="3" >(A) REPRESENTATIVIDAD</td>
+                    {% if valoracion_atributos.valor_arquitecnico_a == 2 %}
 
+                    <td colspan="7">Es un referente o es plonero de un estilo o tipología arquitectónica, o es obra de un autor reconocido.</td>
+                    <td colspan="1">2</td> 
+                    {% elif valoracion_atributos.valor_arquitecnico_a == 1 %}
                     <td colspan="7">Es característico de un estilo o tipología.</td>
                     <td colspan="1">1</td>  
-                </tr>
-                <tr>
-                    
+
+                    {% else %}
                     <td colspan="7">No es característico. </td>
                     <td colspan="1">0</td>  
+                    {% endif %} 
                 </tr>
                  <!-- 1 -->
                 <tr>
-                    <td colspan="3" rowspan="3">(B) SINGULARIDAD</td>
+                    <td colspan="3">(B) SINGULARIDAD</td>
+                    {% if valoracion_atributos.valor_arquitecnico_b == 2 %}
+
                     <td colspan="7">Es un inmuble único en su estilo o tipología.</td>
                     <td colspan="1">2</td>  
-                </tr>
-                <tr>
 
+                    {% elif valoracion_atributos.valor_arquitecnico_b == 1 %}
                     <td colspan="7">Es un ejemplo escaso de un estilo o tipología.</td>
                     <td colspan="1">1</td>  
-                </tr>
-                <tr>
-                    
+
+                    {% else %}
                     <td colspan="7">No es singular.</td>
-                    <td colspan="1">0</td>  
+                    <td colspan="1">0</td>
+                    {% endif %}
+
                 </tr>
-                 <!-- 1 -->
+   
 
                 <tr>
-                    <td colspan="3" rowspan="3">(C) MORFOLOGIA</td>
+                    <td colspan="3">(C) MORFOLOGIA</td>
+                    {% if valoracion_atributos.valor_arquitecnico_c == 2 %}
+
                     <td colspan="7">Es un inmueble de gran calidad estética y arquitectónica.</td>
                     <td colspan="1">2</td>  
-                </tr>
-                <tr>
 
+                    {% elif valoracion_atributos.valor_arquitecnico_c == 1 %}
                     <td colspan="7">Es un inmueble de cakuda estética y arquitectónica.</td>
                     <td colspan="1">1</td>  
-                </tr>
-                <tr>
-                    
+
+                    {% else %}
                     <td colspan="7">No es un inmueble de calidad estética y arquitectónica.</td>
                     <td colspan="1">0</td>  
+                    {% endif %}
                 </tr>
-                <!-- 2 -->
+
             </tr>
             <!-- 1 -->
             <tr>
-                <td colspan="1" rowspan="9" class="text-center">
+                <td colspan="1" rowspan="3" class="text-center">
                     H<br />I <br />S <br />T <br />Ó <br />R <br />I<br />C<br />O
                 </td>
-                <td colspan="3" rowspan="3">(A) RELEVANCIA</td>
-                <td colspan="7">Vinculado a un acontecimiento histórico relevante de la historia nacional.</td>
-                <td colspan="1">2</td>  
-            </tr>
-            <tr>
-
-                <td colspan="7">Vincualdo a un acontecimiento de la hisoria local.</td>
-                <td colspan="1">1</td>  
-            </tr>
-            <tr>
+                <td colspan="3">(A) RELEVANCIA</td>
+                {% if valoracion_atributos.valor_historico_a == 2 %}
+                    <td colspan="7">Vinculado a un acontecimiento histórico relevante de la historia nacional.</td>
+                    <td colspan="1">2</td>  
+                {% elif valoracion_atributos.valor_historico_a == 1 %}
+                    <td colspan="7">Vincualdo a un acontecimiento de la hisoria local.</td>
+                    <td colspan="1">1</td>  
+                {% else %}
+                    <td colspan="7">No está vinculado a hechos históricos.</td>
+                    <td colspan="1">0</td>  
+                {% endif %}
                 
-                <td colspan="7">No está vinculado a hechos históricos.</td>
-                <td colspan="1">0</td>  
             </tr>
-             <!-- 1 -->
+
             <tr>
-                <td colspan="3" rowspan="3">(B) PROTECCION LEGAL</td>
+                <td colspan="3" >(B) PROTECCION LEGAL</td>
+                {% if valoracion_atributos.valor_historico_b == 2 %}
+
                 <td colspan="7">Se encuentra inserto en una zona Típica.</td>
                 <td colspan="1">2</td>  
-            </tr>
-            <tr>
-
+                {% elif valoracion_atributos.valor_historico_b == 1 %}
                 <td colspan="7">Se encuentra inserto en una zona de Conservación Histórica.</td>
                 <td colspan="1">1</td>  
-            </tr>
-            <tr>
-                
+                {% else %}
                 <td colspan="7">No se localiza en una Zona patrimonial con protección oficial.</td>
                 <td colspan="1">0</td>  
+                {% endif %}
             </tr>
-             <!-- 1 -->
+
 
             <tr>
-                <td colspan="3" rowspan="3">(C) REGISTRADO POR ESPECIALISTA</td>
-                <td colspan="7">Inmueble que por la calidad relevante de su tipología y/o sistema contructivo, está publicado
-                    (libros, revista, entre otros), o puede contribuir a generar estudios o investigaciones.
-                </td>
-                <td colspan="1">2</td>  
-            </tr>
-            <tr>
+                <td colspan="3" >(C) REGISTRADO POR ESPECIALISTA</td>
+                {% if valoracion_atributos.valor_historico_c == 2 %}
 
-                <td colspan="7">Inmueble que al presentar alguna característica formal significativa, puede contribuir a generar estudios o investigaciones.</td>
-                <td colspan="1">1</td>  
+                    <td colspan="7">Inmueble que por la calidad relevante de su tipología y/o sistema contructivo, está publicado
+                        (libros, revista, entre otros), o puede contribuir a generar estudios o investigaciones.
+                    </td>
+                    <td colspan="1">2</td>
+                {% elif valoracion_atributos.valor_historico_c == 1 %}
+                    <td colspan="7">Inmueble que al presentar alguna característica formal significativa, puede contribuir a generar estudios o investigaciones.</td>
+                    <td colspan="1">1</td>  
+                {% else %}
+                    <td colspan="7">Conjunto que no presenta interes alguno para su estudio.</td>
+                    <td colspan="1">0</td>  
+                {% endif %}
             </tr>
-            <tr>
-                
-                <td colspan="7">Conjunto que no presenta interes alguno para su estudio.</td>
-                <td colspan="1">0</td>  
-            </tr>    
             </tbody>
             </table>
         </section>
@@ -237,63 +236,61 @@
             <table>
                 <tbody>
                     <tr>
-                        <td colspan="1" rowspan="6" class="text-center">
+                        <td colspan="1" rowspan="2"  class="text-center">
                             E<br />C <br />O <br />N <br />Ó <br />M <br />I<br />C<br />O
 
                         </td>
-                        <td colspan="3" rowspan="3">(A) IMPACTO DEL INMUEBLES EN EL ENTORNO</td>
+                        <td colspan="3" >(A) IMPACTO DEL INMUEBLES EN EL ENTORNO</td>
+                        {% if valoracion_atributos.valor_economico_a == 2 %}
                         <td colspan="7">Inmueble que independiente de su estado de conservación, genera un alto impacto positivo
                             en su entorno inmediato, el cual puede propiciar acciones para su recuperación o revitalización.
                         </td>
                         <td colspan="1">2</td>  
-                    </tr>
-                    <tr>
-        
+                        {% elif valoracion_atributos.valor_economico_a == 1 %}
                         <td colspan="7">Inmueble que independiente de su estado de conservación, genera un impacto positivo en su entorno inmediato.</td>
                         <td colspan="1">1</td>  
-                    </tr>
-                    <tr>
-                        
+                        {% else %}
                         <td colspan="7">No genera impacto positivo en su entorno.</td>
                         <td colspan="1">0</td>  
+                        {% endif %}
+
                     </tr>
-                     <!-- 1 -->
+
                     <tr>
-                        <td colspan="3" rowspan="3">(B) ESTADO DE CONSERVACIÓN DEL ENTORNO</td>
+                        <td colspan="3" >(B) ESTADO DE CONSERVACIÓN DEL ENTORNO</td>
+                        {% if valoracion_atributos.valor_economico_b == 2 %}
+
                         <td colspan="7">Las construcciones que se encuentran en su entorno inmediato estan en un buen estado de conservación, 
                             y pueden contribuir a potenciar el valor 
                             patrimonial del inmuebles.
                         </td>
-                        <td colspan="1">2</td>  
-                    </tr>
-                    <tr>
-        
+                        <td colspan="1">2</td>
+                        {% elif valoracion_atributos.valor_economico_b == 1 %}
                         <td colspan="7">Las construcciones que se encuentran en su entorno inmediato, independiente de su estado de conservación, 
-                            son susceptibles a procesos de recuperación rentable. </td>
+                                        son susceptibles a procesos de recuperación rentable. </td>
                         <td colspan="1">1</td>  
-                    </tr>
-                    <tr>
-                        
+                        {% else %}
                         <td colspan="7">las construcciones que se encuentran en su entorno inmediato, presentan un gran deterioro y su recuperación no es rentable.</td>
                         <td colspan="1">0</td>  
+                        {% endif %}
                     </tr>
+
                     <tr>
-                        <td colspan="1" rowspan="3" class="text-center">
+                        <td colspan="1"class="text-center">
                             S<br />O <br />C <br />I <br />A <br />L
                         </td>
-                        <td colspan="3" rowspan="3">(A) PERCEPCION DE LA COMUNIDAD</td>
+                        <td colspan="3">(A) PERCEPCION DE LA COMUNIDAD</td>
+                        {% if valoracion_atributos.valor_social_a == 2 %}
                         <td colspan="7">Es identifcado y valorado como patrimonio importante.</td>
                         <td colspan="1">2</td>  
-                    </tr>
-                    <tr>
-        
+                        {% elif valoracion_atributos.valor_social_a == 1 %}
                         <td colspan="7">Es mencionado como patrimonio.</td>
                         <td colspan="1">1</td>  
-                    </tr>
-                    <tr>
-                        
-                        <td colspan="7">No es mencionado.</td>
-                        <td colspan="1">0</td>  
+                        {% else %}
+                        <td colspan="7">No es identificado ni valorado como patrimonio.</td>
+                        <td colspan="1">0</td>
+                        {% endif %}
+
                     </tr>
                 </tbody>
             </table>
