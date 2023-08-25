@@ -59,7 +59,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="region"><b>Región</b></label>
                                         <select class="form-control" id="region" name="region" >
-                                            <option value="Valparaíso" selected disabled>Valparaíso</option>
+                                            <option value="Valparaíso" selected>Valparaíso</option>
                                             {% for region in OPTIONS.REGION_CHOICES %}
                                                 <option value="{{ region.0 }}">{{ region.1 }}</option>
                                             {% endfor %}
@@ -72,7 +72,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="comuna"><b>Comuna</b></label>
                                         <select class="form-control" id="comuna" name="comuna" >
-                                            <option value="Valparaíso" selected disabled>Valparaíso</option>
+                                            <option value="Valparaíso" selected>Valparaíso</option>
                                             {% for comuna in OPTIONS.COMUNA_CHOICES %}
                                                 <option value="{{ comuna.0 }}">{{ comuna.1 }}</option>
                                             {% endfor %}
