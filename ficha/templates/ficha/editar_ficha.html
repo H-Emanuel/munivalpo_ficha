@@ -62,7 +62,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="region"><b>Región</b></label>
                                         <select class="form-control" id="region" name="region" >
-                                            <option value="{{ identificacion_inmueble.region }}" selected disabled>{{ identificacion_inmueble.region }}</option>
+                                            <option value="{{ identificacion_inmueble.region }}" selected>{{ identificacion_inmueble.region }}</option>
                                             {% for region in OPTIONS.REGION_CHOICES %}
 
                                                 <option value="{{ region.0 }}">{{ region.1 }}</option>
@@ -76,7 +76,7 @@
                                     <div class="form-group">
                                         <label class="form-label" for="comuna"><b>Comuna</b></label>
                                         <select class="form-control" id="comuna" name="comuna" >
-                                            <option value="{{ identificacion_inmueble.comuna }}" selected disabled>{{ identificacion_inmueble.comuna }}</option>
+                                            <option value="{{ identificacion_inmueble.comuna }}" selected>{{ identificacion_inmueble.comuna }}</option>
                                             {% for comuna in OPTIONS.COMUNA_CHOICES %}
                                                 <option value="{{ comuna.0 }}">{{ comuna.1 }}</option>
                                             {% endfor %}
@@ -104,7 +104,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="plan_cerro_poblacion"><b>Plan/Cerro/Población</b></label>
+                                        <label class="form-label" for="plan_cerro_poblacion"><b>Plan/Cerro/Localidad</b></label>
                                         <select class="form-control" id="plan_cerro_poblacion" name="plan_cerro_poblacion" >
                                             <option value="{{ identificacion_inmueble.plan_cerro_poblacion }}" selected>{{ identificacion_inmueble.plan_cerro_poblacion }}</option>
                                             {% for plan_cerro_poblacion in OPTIONS.PLAN_CERRO_POBLACION %}
