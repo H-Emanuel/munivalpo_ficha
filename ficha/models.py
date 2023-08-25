@@ -17,7 +17,7 @@ COMUNA_CHOICES = [
 PLAN_CERRO_POBLACION = [
     ('PLAN', 'Plan'),
     ('CERRO', 'Cerro'),
-    ('POBLACION', 'Poblacion'),
+    ('LOCACIÓN', 'locación'),
 ]
 
 # Sección 1
