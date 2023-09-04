@@ -1234,6 +1234,7 @@ def exportar_pdf(request, id):
         'total_valor_historico': total_valor_historico,
         'total_valor_economico': total_valor_economico,
         'total_valoracion': total_valoracion,
+        'observacion':obs,
 
         'MEDIA_URL': request.build_absolute_uri('/')[:-1],
 
