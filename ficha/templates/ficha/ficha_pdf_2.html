@@ -62,7 +62,9 @@
             <table class="special">
                 <tbody>
                     <tr>
-                        <td colspan="3" rowspan="4" class="bg-blue text-center">FICHA DE VALORACIÓN INMUEBLE DE CONSERVACIÓN HISTÓRICA Plan Regulador Comunal de Valparaíso</td>
+                        <td colspan="3" rowspan="4" class="bg-blue text-center">FICHA DE VALORACIÓN INMUEBLE DE CONSERVACIÓN HISTÓRICA <br>
+                            Plan Regulador Comunal de Valparaíso</td>
+
                         <td colspan="2" class="bg-blue text-center">ROL DE AVALÚO</td>
                     </tr>
                     <tr>
@@ -81,7 +83,7 @@
                        
                     </tr>
                     <tr>
-                        <td class="text-center" ><b>REGIÓN</b></td>
+                        <td><b>REGIÓN</b></td>
                         <td><b>COMUNA</b></td>
                         <td><b>CALLE</b></td>
                         <td><b>NÚMERO</b></td>
@@ -208,7 +210,7 @@
                         <td colspan="9">{{ resena_patrimonial.valor_economico }}</td>
                     </tr>
                     <tr>
-                        <td colspan="9"><b>5.5 VALOR ECONÓMICO</b></td>
+                        <td colspan="9"><b>5.5 VALOR SOCIAL</b></td>
                     </tr>
                     <tr>
                         <td colspan="9">{{ resena_patrimonial.valor_social }}</td>
@@ -248,7 +250,7 @@
                         <td class="text-center">{{ valoracion_atributos.valor_urbano_b }}</td>
                         <td class="text-center">{{ valoracion_atributos.valor_urbano_c }}</td>
                         <td class="text-center">{{ total_valor_urbano }}</td>
-                        <td class="text-center" colspan="4">{{ valoracion_atributos.identificacion_zch }}</td>
+                        <td class="text-center" colspan="4" rowspan="6">{{ valoracion_atributos.identificacion_zch }}</td>
                     </tr>
                     <tr>
                         <td>ARQUITECTÓNICO</td>
@@ -256,7 +258,6 @@
                         <td class="text-center">{{ valoracion_atributos.valor_arquitecnico_b }}</td>
                         <td class="text-center">{{ valoracion_atributos.valor_arquitecnico_c }}</td>
                         <td class="text-center">{{ total_valor_arquitecnico }}</td>
-                        <td class="text-center" colspan="4"></td>
                     </tr>
                     <tr>
                         <td>HISTÓRICO</td>
@@ -280,7 +281,7 @@
                         <td class="text-center">{{ valoracion_atributos.valor_social_a }}</td>
                     </tr>
                     <tr>
-                        <td colspan="4" class="bg-blue text-right">PUNTAJE TOTAL</td>
+                        <td colspan="2" class="bg-blue text-right">PUNTAJE TOTAL</td>
                         <td class="text-center">{{ total_valoracion }}</td>
                     </tr>
                 </tbody>
@@ -451,7 +452,7 @@
                         <td>{% if caracteristicas_morfologicas.tipologia.antejardines %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="4" rowspan="1">AISLADO SOBRE CONTINUO</td>
                         <td rowspan="1" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.sistema_agrupamiento|lower == "aislado sobre continuidad" %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan ="4">OTRO:{{caracteristicas_morfologicas.tipo_cubierta.otro_texto}}</td>
+                        <td colspan ="4">OTRO: {{caracteristicas_morfologicas.tipo_cubierta.otro_texto}}</td>
                         <td class="text-center" >{% if caracteristicas_morfologicas.tipo_cubierta.otro %}X{% else %}&nbsp;{% endif %}</td> 
                     </tr>
                     <tr>
@@ -777,6 +778,7 @@
                         <td  class="text-center">{% if estado_de_conservacion.entorno|lower == "bueno" %}X{% else %}&nbsp;{% endif %}</td>
                         <td style="width: 100px;">SIN MODIFICACIÓN</td>
                         <td class="text-center">{% if grado_de_alteracion.fachada|lower == "sin modificacion" %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 100px;">SIN MODIFICACIÓN</td>
                         <td class="text-center">{% if grado_de_alteracion.cubierta|lower == "sin modificacion" %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="2">EQUIPAMIENTO</td>
                         <td class="text-center">{% if aptitud_de_rehabilitacion.equipamiento %}X{% else %}&nbsp;{% endif %}</td>
@@ -860,7 +862,7 @@
                         <td colspan="8"><b>12.5 INMUEBLES PATRIMONIALES CON PROTECCIÓN OFICIAL EN EL ENTORNO</b></td>
                     </tr>
                     <tr>
-                        <td colspan="4">MONUMENTOS HISTÓRICOS (Ley 17.288)</td>
+                        <td colspan="4" class="bg-blue">MONUMENTOS HISTÓRICOS (Ley 17.288)</td>
                         <td colspan="4">INMUEBLES DE CONSERVACIÓN HISTÓRICA (LGUC)</td>
                     </tr>
                     <tr>
@@ -921,10 +923,10 @@
                     </tr>
                     <tr>
                         <td colspan="4" rowspan="2"></td>
-                        <td colspan="4">Fecha de elaboración ficha: {{ current_time|date:"j-m-Y" }}</td>
+                        <td colspan="4">Fecha de elaboración ficha: {{ current_time }}</td>
                     </tr>
                     <tr>
-                        <td colspan="4">Nombre autor:{{ current_user.first_name }} {{ current_user.last_name }}</td>
+                        <td colspan="4">Nombre autor: {{ current_user.first_name }} {{ current_user.last_name }}</td>
                     </tr>
                 </tbody>
             </table>

@@ -174,7 +174,7 @@ TIPO_PROPIEDAD = [
 ]
 
 TIPO_DESTINO_INMUEBLE = [
-    ('', ''),
+    ('0 - NO EXISTE', '0 - NO EXISTE'),
     ('1 - VIVIENDA', '1 - Vivienda'),
     ('2 - COMERCIO', '2 - Comercio'),
     ('3 - SERVICIO', '3 - Servicio'),
