@@ -731,7 +731,7 @@ def editar_ficha(request, id = 0):
         resena_patrimonial.valor_arquitecnico = request.POST.get('valor_arquitecnico')
         resena_patrimonial.valor_historico = request.POST.get('valor_historico')
         resena_patrimonial.valor_economico = request.POST.get('valor_economico')
-        resena_patrimonial.valor_social = request.POST.get('valor_economico')
+        resena_patrimonial.valor_social = request.POST.get('valor_social')
         resena_patrimonial.save()
 
         # Sección 6
