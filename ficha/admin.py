@@ -3,7 +3,7 @@ from .models import *
 
 
 class IdentificacionInmuebleAdmin(admin.ModelAdmin):
-    list_display = ('id_plano', 'rol', 'unidad_vecinal', 'comuna', 'plan_cerro_poblacion', 'denominacion_inmueble', 'autor', 'created', 'updated')
+    list_display = ('id_plano', 'rol', 'unidad_vecinal', 'comuna', 'plan_cerro_poblacion', 'denominacion_inmueble', 'autor','usuario', 'created', 'updated')
     list_filter = ('unidad_vecinal', 'comuna', 'plan_cerro_poblacion', 'autor', 'created', 'updated')
     search_fields = ('id_plano', 'rol', 'unidad_vecinal', 'comuna', 'plan_cerro_poblacion', 'denominacion_inmueble', 'autor', 'created', 'updated')
     ordering = ('id_plano', 'updated')
