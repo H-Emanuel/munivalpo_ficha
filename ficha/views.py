@@ -1089,8 +1089,8 @@ def editar_ficha(request, id = 0):
         relacion_del_inmueble_con_el_terreno.save()
 
         # Sección 13
-        # categoria_de_acuerdo_a_su_uso.observaciones = request.POST.get('categoria_de_acuerdo_a_su_uso_observaciones')
-        # categoria_de_acuerdo_a_su_uso.save()
+        categoria_de_acuerdo_a_su_uso.observaciones = request.POST.get('categoria_acuerdo_uso')
+        categoria_de_acuerdo_a_su_uso.save()
 
         # Sección 14
         conclusiones.conclusiones = request.POST.get('conclusiones')
