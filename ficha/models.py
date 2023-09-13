@@ -423,7 +423,7 @@ class CaracteristicasMorfologicas(models.Model):
     materialidad_cubierta = models.CharField(max_length=50, choices=MATERIALIDAD_CUBIERTA, default='ACERO', blank=True)
     materialidad_revestimientos = models.CharField(max_length=255,choices= MATERIALIDAD_REVESTIMIENTO, default='ENLUCIDO/ESTUCO', blank=True)
 
-    descripcion_del_inmubebles= models.CharField(max_length=255, blank=True, default='')
+    descripcion_del_inmubebles= models.TextField(blank=True, default='')
 
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
