@@ -9,9 +9,9 @@ REGION_CHOICES = [
 
 COMUNA_CHOICES = [
     ('VALPARAÍSO', 'Valparaíso'),
-    ('LAGUNA VERDE', 'Laguna Verde'),
-    ('PLACILLA', 'Placilla'),
-    ('PLAYA ANCHA', 'Playa Ancha'),
+    # ('LAGUNA VERDE', 'Laguna Verde'),
+    # ('PLACILLA', 'Placilla'),
+    # ('PLAYA ANCHA', 'Playa Ancha'),
 ]
 
 PLAN_CERRO_POBLACION = [
@@ -174,14 +174,14 @@ TIPO_PROPIEDAD = [
 ]
 
 TIPO_DESTINO_INMUEBLE = [
-    ('0 - NO EXISTE', '0 - NO EXISTE'),
+    ('0 - NO EXISTE', '0 - No existe'),
     ('1 - VIVIENDA', '1 - Vivienda'),
     ('2 - COMERCIO', '2 - Comercio'),
     ('3 - SERVICIO', '3 - Servicio'),
-    ('4 - EDUCACION', '4 - Educacion'),
+    ('4 - EDUCACIÓN', '4 - Educación'),
     ('5 - SALUD', '5 - Salud'),
     ('6 - DEPORTE', '6 - Deporte'),
-    ('7 - RECREACION', '7 - Recreacion'),
+    ('7 - RECREACIÓN', '7 - Recreación'),
     ('8 - CULTURA', '8 - Cultura'),
     ('9 - CULTO', '9 - Culto'),
     ('10 - INDUSTRIA', '10 - Industria'),
@@ -197,7 +197,7 @@ TIPO_USUARIO = [
 REGIMEN_PROPIEDAD = [
     ('INDIVIDUAL', [
         ('PERSONA NATURAL', 'Persona Natural'),
-        ('PERSONA JURIDICA', 'Persona Jurídica'),
+        ('PERSONA JURÍDICA', 'Persona Jurídica'),
     ]),
     ('COLECTIVA', [
         ('COMUNIDAD', 'Comunidad'),
@@ -207,7 +207,7 @@ REGIMEN_PROPIEDAD = [
 
 AFECTACION_ACTUAL = [
     ('DECLARACION DE UTILIDAD PUBLICA', 'Declaración de Utilidad Pública'),
-    ('ANTEJARDIN', 'Antejardín'),
+    ('ANTEJARDÍN', 'Antejardín'),
 ]
 
 class InformacionTecnica(models.Model):
@@ -253,8 +253,8 @@ VOLUMETRIA = [
 
 MATERIALIDAD_ESTRUCTURA = [
     ('ACERO', 'Acero'),
-    ('HORMIGON ARMADO', 'Hormigón Armado'),
-    ('ALBAÑILERIA', 'Albañilería'),
+    ('HORMIGÓN ARMADO', 'Hormigón Armado'),
+    ('ALBAÑILERÍA', 'Albañilería'),
     ('PIEDRA', 'Piedra'),
     ('MADERA', 'Madera'),
     ('ADOBE', 'Adobe'),
@@ -270,7 +270,7 @@ MATERIALIDAD_REVESTIMIENTO = [
     ('ENLUCIDO/ESTUCO', 'Enlucido/estuco'),
     ('MADERA', 'Madera'),
     ('PLACHA TOLENADA', 'Placha tolenada'),
-    ('HORMIGON ', 'Hormigo a la vista'),
+    ('HORMIGÓN A LA VISTA ', 'Hormigón a la vista'),
     ('OTRO', 'Otro'),
 ]
 
@@ -454,7 +454,7 @@ class EstadoDeConservacion(models.Model):
     
 # Sección 10
 GRADO_ALTERACION = [
-    ('SIN MODIFICACION', 'Sin modificacion'),
+    ('SIN MODIFICACIÓN', 'Sin modificación'),
     ('POCO MODIFICADO', 'Poco modificado'),
     ('MUY MODIFICADO', 'Muy modificado'),
 ]
@@ -503,8 +503,8 @@ INMUEBLES_PATRIMONIALES = [
 PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL = [
     ('PLACA EN FACHADA', 'Placa en fachada'),
     ('ESCULTURA', 'Escultura'),
-    ('MONUMENTOS PUBLICOS', 'Monumentos publicos'),
-    ('RELACION VISUAL', 'Relacion visual'),
+    ('MONUMENTOS PÚBLICOS', 'Monumentos públicos'),
+    ('RELACIÓN VISUAL', 'Relación visual'),
 ]
 
 class RelacionDelInmuebleConElTerreno(models.Model):

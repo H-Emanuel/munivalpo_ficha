@@ -104,7 +104,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="plan_cerro_poblacion"><b>Plan/Cerro/Localidad</b></label>
+                                        <label class="form-label" for="plan_cerro_poblacion"><b>Plan/ Cerro/ Localidad</b></label>
                                         <select class="form-control" id="plan_cerro_poblacion" name="plan_cerro_poblacion" >
                                             <option value="{{ identificacion_inmueble.plan_cerro_poblacion }}" selected>{{ identificacion_inmueble.plan_cerro_poblacion }}</option>
                                             {% for plan_cerro_poblacion in OPTIONS.PLAN_CERRO_POBLACION %}
@@ -117,7 +117,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="denominacion_inmueble"><b>Denominación inmueble</b></label>
+                                        <label class="form-label" for="denominacion_inmueble"><b>Denominación Inmueble</b></label>
                                         <input type="text" class="form-control" id="denominacion_inmueble" name="denominacion_inmueble" value="{{ identificacion_inmueble.denominacion_inmueble }}" >
                                     </div>
                                 </div>
@@ -149,7 +149,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="plano_ubicacion"><b>2.- Plano Ubicación</b></label>
+                                        <label class="form-label" for="plano_ubicacion"><b>Plano Ubicación</b></label>
                                         <input type="file" class="form-control" id="imagen_plano" name="imagen_plano" accept="image/*">
                                         <br>
                                         {% if plano_ubicacion.imagen_plano %}
@@ -223,7 +223,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="imagen_fotografia"><b>3.- Fotografía de general</b></label>
+                                        <label class="form-label" for="imagen_fotografia"><b>Fotografía de general</b></label>
                                         <input type="file" class="form-control" id="imagen_fotografia" name="imagen_fotografia" accept="image/*">
                                         <br>
                                         {% if fotografia_general.imagen_fotografia %}
@@ -275,7 +275,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="registro_fotografico_1"><b>4.- Fotografía de contexto 1</b></label>
+                                        <label class="form-label" for="registro_fotografico_1"><b>Fotografía de contexto 1</b></label>
                                         <input type="file" class="form-control" id="registro_fotografico_1" name="registro_fotografico_1" accept="image/*">
                                         <br>
                                         {% if fotografia_contexto.registro_fotografico_1 %}
@@ -434,6 +434,7 @@
                                                     URBANO
                                                 </button>
                                                 </h2>
+                                                <!-- quitar el negrito a los atributos -->
                                                 <div id = "Urbano" class=" accordion-collapse collapse" aria-labelledby="Headurbano" data-bs-target="#Urbano">
                                                     <div class="accordion-body">
                                                         <div class="row">
@@ -441,19 +442,19 @@
                                                                 <div class="form-group">
                                                                 <table class="table table-bordered table-sm">
                                                                 <tr>
-                                                                    <th colspan="11">ATRIBUTOS - IMAGEN (A) </th>
+                                                                    <th st colspan="11">ATRIBUTOS - IMAGEN (A) </th>
                                                                     <th colspan="1">PUNTOS </th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Se Destasca por su aporte a la estructura, paisaje urbano.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Se destaca por su aporte a la estructura o paisaje urbano.</th>
                                                                     <th class="text-center">2</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Contribuye a la estructura o paisaje urbano.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Contribuye a la estructura o paisaje urbano.</th>
                                                                     <th class="text-center">1</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">No aporta a la estructura o imagen Urbana.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">No aporta a la estructura o imagen urbana.</th>
                                                                     <th class="text-center">0</th>
                                                                 </tr>
                                                                 <tr>
@@ -467,15 +468,15 @@
                                                                         <th colspan="1">PUNTOS </th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Articula y es determinante en un conjunto o zona de valor patrimonial.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Articula y es determinante en un conjunto o zona de valor patrimonial.</th>
                                                                         <th class="text-center">2</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Forma parte de un conjunto o zona de valor patrimonial.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Forma parte de un conjunto o zona de valor patrimonial.</th>
                                                                         <th class="text-center">1</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">No forma parte de un conjunto o zona de valor patrimonial.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">No forma parte de un conjunto o zona de valor patrimonial.</th>
                                                                         <th class="text-center">0</th>
                                                                     </tr>
                                                                     <tr>
@@ -491,19 +492,19 @@
                                                                             <th colspan="1">PUNTOS </th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Se Destasca por valorizar al inmueble.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">Se destaca por valorizar al inmueble.</th>
                                                                             <th class="text-center">2</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">No afecta al inmueble.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">No afecta al inmueble.</th>
                                                                             <th class="text-center">1</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Desvaloriza el inmueble.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">Desvaloriza el inmueble.</th>
                                                                             <th class="text-center">0</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Respuesta</th>
+                                                                            <th stcolspan="11">Respuesta</th>
                                                                             <th>
                                                                                 <input type="number" class="form-control" id="valor_urbano_c" name="valor_urbano_c" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_urbano_c }}">                                                                            </th>
                                                                         </tr>
@@ -533,15 +534,15 @@
                                                                     <th colspan="1">PUNTOS </th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Es un referente o es plonero de un estilo o tipología arquitectónica, o es obra de un autor reconocido.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Es un referente o es pionero de un estilo o tipología arquitectónica o es obra de un autor reconocido.</th>
                                                                     <th class="text-center">2</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Es característico de un estilo o tipología.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Es característico de un estilo o tipología.</th>
                                                                     <th class="text-center">1</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">No es característica de un estilo o tipología.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">No es característico de un estilo o tipología.</th>
                                                                     <th class="text-center">0</th>
                                                                 </tr>
                                                                 <tr>
@@ -557,15 +558,15 @@
                                                                         <th colspan="1">PUNTOS </th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Es un inmueble único es su estilo o tipología.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Es un inmueble único en su estilo o tipología.</th>
                                                                         <th class="text-center">2</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Es un ejemplo escaso de un estilo o tipología.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Es un ejemplo escaso en un estilo o tipología.</th>
                                                                         <th class="text-center">1</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">No es singular.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">No es singular.</th>
                                                                         <th class="text-center">0</th>
                                                                     </tr>
                                                                     <tr>
@@ -578,19 +579,19 @@
 
                                                                     <table class="table table-bordered table-sm">
                                                                         <tr>
-                                                                            <th colspan="11">ATRIBUTOS - MORFOLOGIA (C)  </th>
+                                                                            <th colspan="11">ATRIBUTOS - MORFOLOGÍA (C)  </th>
                                                                             <th colspan="1">PUNTOS </th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Es un inmueble de gran calidad estética y arquitectónica.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">Es un inmueble de gran calidad estética y arquitectónica.</th>
                                                                             <th class="text-center">2</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Es un inmueble de calidad estética y arquitectónica.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">Es un inmueble de calidad estética y arquitectónica.</th>
                                                                             <th class="text-center">1</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">No es un inmueble de calidad estética y arquitectónica.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">No es un inmueble de calidad estética y arquitectónica.</th>
                                                                             <th class="text-center">0</th>
                                                                         </tr>
                                                                         <tr>
@@ -621,19 +622,19 @@
                                                                 <div class="form-group">
                                                                 <table class="table table-bordered table-sm">
                                                                 <tr>
-                                                                    <th colspan="11">ATRIBUTOS - REVELANCIA (A) </th>
+                                                                    <th colspan="11">ATRIBUTOS - RELEVANCIA (A) </th>
                                                                     <th colspan="1">PUNTOS </th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Vinculado a un acontecimiento histórico relevante de la historia nacional.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Vinculado a un acontecimiento histórico relevante de la historia nacional.</th>
                                                                     <th class="text-center">2</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Vinculado a un acontecimiento de la historia local</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Vinculado a un acontecimiento de la historia local.</th>
                                                                     <th class="text-center">1</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">No está vinculado a hechos históricos.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">No está vinculado a hechos históricos.</th>
                                                                     <th class="text-center">0</th>
                                                                 </tr>
                                                                 <tr>
@@ -643,19 +644,19 @@
                                                                 </table>
                                                                 <table class="table table-bordered table-sm">
                                                                     <tr>
-                                                                        <th colspan="11">ATRIBUTOS - PROTECCION LEGAL (B) </th>
+                                                                        <th colspan="11">ATRIBUTOS - PROTECCIÓN LEGAL (B) </th>
                                                                         <th colspan="1">PUNTOS </th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Se encuentra inserto en una zona típica.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Se encuentra inserto en una zona típica.</th>
                                                                         <th class="text-center">2</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Se encuentra inserto en una zona con conservación histórica.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Se encuentra inserto en una zona con conservación histórica.</th>
                                                                         <th class="text-center">1</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">No se localiza en una zona patrimonial con protección oficial.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">No se localiza en una zona patrimonial con protección oficial.</th>
                                                                         <th class="text-center">0</th>
                                                                     </tr>
                                                                     <tr>
@@ -671,19 +672,19 @@
                                                                             <th colspan="1">PUNTOS </th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Inmueble que por la calidad relevante de su tipología y/o sistema constructivo, está publicado
-                                                                                (libros, revista, entre otros), o puede contribuira genera estudio o investigaciones.
+                                                                            <th colspan="11" style="font-weight: normal;">Inmueble que por la calidad relevante de su tipología y/o sistema constructivo, está publicado
+                                                                                (libros, revista, entre otros) o puede contribuir a generar estudios o investigaciones.
                                                                             </th>
                                                                             <th class="text-center">2</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Inmueble que al presentar alguna característica formal significativa, puede contribuira generar
+                                                                            <th colspan="11" style="font-weight: normal;">Inmueble que al presentar alguna característica formal significativa, puede contribuir a generar
                                                                                 estudios o investigaciones.
                                                                             </th>
                                                                             <th class="text-center">1</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Conjunto que no presenta interes alguno para su estudio.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">Conjunto que no presenta interés alguno para su estudio.</th>
                                                                             <th class="text-center">0</th>
                                                                         </tr>
                                                                         <tr>
@@ -716,17 +717,17 @@
                                                                     <th colspan="1">PUNTOS </th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Inmuebel que independiente de su estado de conservación, genera un alto impacto positivo en su entorno inmediato, el 
+                                                                    <th colspan="11" style="font-weight: normal;">Inmueble que independiente de su estado de conservación, genera un alto impacto positivo en su entorno inmediato, el 
                                                                         cual puede propiciar acciones para su recuperación o revitalización.
                                                                     </th>
                                                                     <th class="text-center">2</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Inmueble que independiente de su estado de conservación, genera un impacto positivo en su entorno inmediato.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Inmueble que independiente de su estado de conservación, genera un impacto positivo en su entorno inmediato.</th>
                                                                     <th class="text-center">1</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">No genera impacto positivo en su entorno.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">No genera impacto positivo en su entorno.</th>
                                                                     <th class="text-center">0</th>
                                                                 </tr>
                                                                 <tr>
@@ -736,22 +737,22 @@
                                                                 </table>
                                                                 <table class="table table-bordered table-sm">
                                                                     <tr>
-                                                                        <th colspan="11">ATRIBUTOS - ESTADO DE CONSERVACION DEL ENTORNO (B)</th>
+                                                                        <th colspan="11">ATRIBUTOS - ESTADO DE CONSERVACIÓN DEL ENTORNO (B)</th>
                                                                         <th colspan="1">PUNTOS </th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Las construcciones que se encuentra en su entorno inmediato estan en buen estado de conservación, y pueden contribuir a 
+                                                                        <th colspan="11" style="font-weight: normal;">Las construcciones que se encuentran en su entorno inmediato están en buen estado de conservación y pueden contribuir a 
                                                                         potenciar el valor patrimonial del Inmueble.
                                                                         </th>
                                                                         <th class="text-center">2</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Las construcciones que se encuentran en su entorno inmediato, independiente de su estado de convervación, son susceptibles a procesos de recuperacíon rentable.
+                                                                        <th colspan="11" style="font-weight: normal;">Las construcciones que se encuentran en su entorno inmediato, independiente de su estado de convervación, son susceptibles a procesos de recuperación rentable.
                                                                         </th>
                                                                         <th class="text-center">1</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Las contrucciones que se encuentran en su entorno inmediato, presentan un gran deterioro y su recuperacíon no es rentable.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Las contrucciones que se encuentran en su entorno inmediato, presentan un gran deterioro y su recuperación no es rentable.</th>
                                                                         <th class="text-center">0</th>
                                                                     </tr>
                                                                     <tr>
@@ -779,19 +780,19 @@
                                                                 <div class="form-group">
                                                                 <table class="table table-bordered table-sm">
                                                                 <tr>
-                                                                    <th colspan="11">ATRIBUTOS - PERCEPCION DE LA COMUNIDAD (A) </th>
+                                                                    <th colspan="11">ATRIBUTOS - PERCEPCIÓN DE LA COMUNIDAD (A) </th>
                                                                     <th colspan="1">PUNTOS </th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Es identificado y valorado como patrimonio importante.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Es identificado y valorado como patrimonio importante.</th>
                                                                     <th class="text-center">2</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Es mencionado como patrimonio.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Es mencionado como patrimonio.</th>
                                                                     <th class="text-center">1</th>
                                                                 </tr>   
                                                                 <tr>
-                                                                    <th colspan="11">No es mencionado.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">No es mencionado.</th>
                                                                     <th class="text-center">0</th>
                                                                 </tr>
                                                                 <tr>
@@ -841,7 +842,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-5">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
-                                7.- Información técnicas
+                                7.- Información técnica
                           </button>
                         </h2>
                         <div id="collapse-5" class="accordion-collapse collapse " aria-labelledby="heading-5" data-bs-parent="#accordionExample">
@@ -959,7 +960,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label class="form-label" for="regimen_propiedad"><b>7.5 Regimen de Propiedad</b></label>
+                                            <label class="form-label" for="regimen_propiedad"><b>7.5 Régimen de Propiedad</b></label>
                                             <select class="form-control" id="regimen_propiedad" name="regimen_propiedad" >
                                                 <option value="{{ informacion_tecnica.regimen_propiedad }}" selected>{{ informacion_tecnica.regimen_propiedad }}</option>
                                                 {% for tipo_regimen in OPTIONS.REGIMEN_PROPIEDAD %}
@@ -1000,7 +1001,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-6">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-6" aria-expanded="false" aria-controls="collapse-6">
-                                8.- Caracteristicas morfológicas
+                                8.- Características morfológicas
                           </button>
                         </h2>
                         <div id="collapse-6" class="accordion-collapse collapse" aria-labelledby="heading-6" data-bs-parent="#accordionExample">
@@ -1212,7 +1213,7 @@
                                         <label class="form-label" for="expresion_fachada"><b>8.6 Expresión de Fachada</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
-                                                <td>Lenguaje de vanos comun:</td>
+                                                <td>Lenguaje de vanos común:</td>
                                                 <td>
                                                     <div class="form-check d-flex justify-content-center">
                                                         <input type="checkbox" class="form-check-input" id="lenguaje_de_vanos_comun" name="lenguaje_de_vanos_comun" value="1" {% if expresion_fachada.lenguaje_de_vanos_comun %}checked{% endif %}>
@@ -1433,7 +1434,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Registro Fotográfico Detalles constructivos</h5>
+                                                        <h5 class="modal-title">Registro Fotográfico Detalles constructivos 1</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -1459,7 +1460,7 @@
                             <div class="row bg-light">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="fotografia_contexto_1"><b>Registro Fotográfico Contexto 1</b></label>
+                                        <label class="form-label" for="fotografia_contexto_1"><b>Registro Fotográfico Detalles constructivos 2</b></label>
                                         <input type="file" class="form-control" id="fotografia_contexto_1" name="fotografia_contexto_1" accept="image/*">
                                         <br>
                                         {% if caracteristicas_morfologicas.fotografia_contexto_1 %}
@@ -1472,7 +1473,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Registro Fotográfico Contexto 1</h5>
+                                                        <h5 class="modal-title">Registro Fotográfico Detalles constructivos 3</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -1499,7 +1500,7 @@
                             <div class="row bg-light">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="fotografia_contexto_2"><b>Registro Fotográfico Contexto 2</b></label>
+                                        <label class="form-label" for="fotografia_contexto_2"><b>Registro Fotográfico Detalles constructivos 4</b></label>
                                         <input type="file" class="form-control" id="fotografia_contexto_2" name="fotografia_contexto_2" accept="image/*">
                                         <br>
                                         {% if caracteristicas_morfologicas.fotografia_contexto_2 %}
@@ -1687,7 +1688,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="descripcion_del_inmubebles"><b>8.11 descripcion del inmubebles</b></label>
+                                        <label class="form-label" for="descripcion_del_inmubebles"><b>8.11 Descripción del Inmueble</b></label>
                                         <textarea class="form-control" id="descripcion_del_inmubebles" name="descripcion_del_inmubebles" rows="3">{{ caracteristicas_morfologicas.descripcion_del_inmubebles}}</textarea>
                                     </div>
                                 </div>
@@ -1857,7 +1858,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Por Singularidad:</td>
+                                                <td>Por singularidad:</td>
                                                 <td>
                                                     <div class="form-check d-flex justify-content-center">
                                                         <input type="checkbox" class="form-check-input" id="imagen_urbana_relevante_por_singularidad" name="imagen_urbana_relevante_por_singularidad" value="1" {% if relacion_del_inmueble_con_el_terreno.imagen_urbana_relevante_por_singularidad %}checked{% endif %}>
@@ -1871,10 +1872,10 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="grado_de_alteracion_cubierta"><b>12.2 Forma Parte de un Conjunto</b></label>
+                                        <label class="form-label" for="grado_de_alteracion_cubierta"><b>12.2 Forma parte de un Conjunto</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
-                                                <td>Forma Parte de un Conjunto:</td>
+                                                <td>Forma parte de un Conjunto:</td>
                                                 <td>
                                                     <div class="form-check d-flex justify-content-center">
                                                         <input type="checkbox" class="form-check-input" id="forma_parte_de_un_conjunto" name="forma_parte_de_un_conjunto" value="1" {% if relacion_del_inmueble_con_el_terreno.forma_parte_de_un_conjunto %}checked{% endif %}>
@@ -1901,7 +1902,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="Otros_elementos_patrimonial"><b>12.4 Otros elementos de valor patrimonial</b></label>
+                                        <label class="form-label" for="Otros_elementos_patrimonial"><b>12.4 Otros elementos de Valor Patrimonial</b></label>
                                         <select class="form-control" id="Otros_elementos_patrimonial" name="Otros_elementos_patrimonial" >
                                             <option value="{{ relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial }}" selected>{{ relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial }}</option>
                                             {% for Otros_elementos_patrimonial in OPTIONS.PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL %}
@@ -1914,7 +1915,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label"><b>12.5 Monumentos Históricos</b></label>
+                                        <label class="form-label"><b>A. 12.5 Monumentos Históricos</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
                                                 <td>Predio contiguo:</td>
@@ -1955,7 +1956,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label"><b>12.5 Inmuebles de Conservación Histórica</b></label>
+                                        <label class="form-label"><b>B. 12.5 Inmuebles de Conservación Histórica</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
                                                 <td>Predio contiguo:</td>
@@ -1997,7 +1998,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="espacio_publico_observaciones"><b>12.6 Observaciones Contexto Urbano / Condiciones Geográficas</b></label>
+                                        <label class="form-label" for="espacio_publico_observaciones"><b>12.6 Observaciones de Contexto Urbano / Condiciones Geográficas</b></label>
                                         <textarea class="form-control" id="espacio_publico_observaciones" name="espacio_publico_observaciones" rows="3">{{ relacion_del_inmueble_con_el_terreno.observaciones }}</textarea>
                                     </div>
                                 </div>
@@ -2022,21 +2023,21 @@
                                         <select class="form-control" id="categoria_acuerdo_uso" name="categoria_acuerdo_uso">
                                             <option value="{{ categoria_de_acuerdo_a_su_uso.observaciones }}" selected>{{ categoria_de_acuerdo_a_su_uso.observaciones }}</option>
                                             <option value="CONJUNTOS DE INMUEBLES/ VIVIENDAS UNIFAMILIARES">CONJUNTOS DE INMUEBLES/ VIVIENDAS UNIFAMILIARES</option>
-                                            <option value="COPROPIEDADES / VIVIENDAS PLURIFAMILIARES">COPROPIEDADES / VIVIENDAS PLURIFAMILIARES</option>
+                                            <option value="COPROPIEDADES/ VIVIENDAS PLURIFAMILIARES">COPROPIEDADES/ VIVIENDAS PLURIFAMILIARES</option>
                                             <option value="EDIFICACIONES DE EDUCACIÓN">EDIFICACIONES DE EDUCACIÓN</option>
-                                            <option value="IGLESIAS / CONJUNTOS RELIGIOSOS">IGLESIAS / CONJUNTOS RELIGIOSOS</option>
+                                            <option value="IGLESIAS/ CONJUNTOS RELIGIOSOS">IGLESIAS/ CONJUNTOS RELIGIOSOS</option>
                                             <option value="INDUSTRIAS Y BODEGAS">INDUSTRIAS Y BODEGAS</option>
                                             <option value="POBLACIONES DE VIVIENDAS/ VIVIENDAS UNIFAMILIARES">POBLACIONES DE VIVIENDAS/ VIVIENDAS UNIFAMILIARES</option>
-                                            <option value="VILLAS, PALACIOS Y CASONAS / VIVIENDAS UNIFAMILIARES">VILLAS, PALACIOS Y CASONAS / VIVIENDAS UNIFAMILIARES</option>
-                                            <option value="VIVIENDAS COLECTIVAS / VIVIENDAS PLURIFAMILIARES">VIVIENDAS COLECTIVAS / VIVIENDAS PLURIFAMILIARES</option>
-                                            <option value="TEATROS / EDIFICIOS EMBLEMÁTICOS">TEATROS / EDIFICIOS EMBLEMÁTICOS</option>
-                                            <option value="ANTIGUOS HOTELES /RESTAURANTES /CAFES">ANTIGUOS HOTELES /RESTAURANTES /CAFES</option>
+                                            <option value="VILLAS, PALACIOS Y CASONAS/ VIVIENDAS UNIFAMILIARES">VILLAS, PALACIOS Y CASONAS/ VIVIENDAS UNIFAMILIARES</option>
+                                            <option value="VIVIENDAS COLECTIVAS/ VIVIENDAS PLURIFAMILIARES">VIVIENDAS COLECTIVAS/ VIVIENDAS PLURIFAMILIARES</option>
+                                            <option value="TEATROS/ EDIFICIOS EMBLEMÁTICOS">TEATROS/ EDIFICIOS EMBLEMÁTICOS</option>
+                                            <option value="ANTIGUOS HOTELES/ RESTAURANTES/ CAFÉS">ANTIGUOS HOTELES/ RESTAURANTES /CAFÉS</option>
                                             <option value="EDIFICACIONES DE SALUD">EDIFICACIONES DE SALUD</option>
-                                            <option value="EDIFICIOS DE SERVICIOS PUBLICOS">EDIFICIOS DE SERVICIOS PUBLICOS</option>
+                                            <option value="EDIFICIOS DE SERVICIOS PÚBLICOS">EDIFICIOS DE SERVICIOS PÚBLICOS</option>
                                             <option value="GRANDES EMPRESAS Y OFICINAS">GRANDES EMPRESAS Y OFICINAS</option>
-                                            <option value="INSTALACIONES  DEPORTIVAS">INSTALACIONES  DEPORTIVAS</option>
+                                            <option value="INSTALACIONES DEPORTIVAS">INSTALACIONES DEPORTIVAS</option>
                                             <option value="INSTALACIONES MILITARES Y DE DEFENSA">INSTALACIONES MILITARES Y DE DEFENSA</option>
-                                            <option value="LUGARES DE VALOR SOCIAL / SIMBOLICO O HISTORICO">LUGARES DE VALOR SOCIAL / SIMBOLICO O HISTORICO</option>
+                                            <option value="LUGARES DE VALOR SOCIAL/ SIMBÓLICO O HISTÓRICO">LUGARES DE VALOR SOCIAL/ SIMBÓLICO O HISTÓRICO</option>
                                             <option value="MERCADOS">MERCADOS</option>
                                         </select>
                                     </div>
@@ -2050,7 +2051,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-12">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-12" aria-expanded="false" aria-controls="collapse-12">
-                                14.- Conclusiones o remendaciones para su intervención
+                                14.- Conclusiones o Recomendaciones para su intervención
                           </button>
                         </h2>
                         <div id="collapse-12" class="accordion-collapse collapse" aria-labelledby="heading-12" data-bs-parent="#accordionExample">
@@ -2058,7 +2059,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="conclusiones"><b>Conclusiones o remendaciones para su intervención</b></label>
+                                        <label class="form-label" for="conclusiones"><b>Conclusiones o Recomendaciones para su intervención</b></label>
                                         <textarea class="form-control" id="conclusiones" name="conclusiones" rows="3">{{ conclusiones.conclusiones }}</textarea>
                                     </div>
                                 </div>
