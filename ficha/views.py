@@ -351,6 +351,7 @@ def crear_ficha(request):
                                                                 otro_texto = otro_texto_elementos_valor_significativ,
                                                                 torreon_en_esquina = torreon_en_esquina
         )
+        print("x")
         if  request.POST.get('fachada'):
             fachada   = True
         else:
@@ -381,8 +382,10 @@ def crear_ficha(request):
 
         if  request.POST.get('zocalo_de_mamposteria'):
             zocalo_de_mamposteria = True
+            print("dasdsadsa")
         else:
             zocalo_de_mamposteria = False
+            print("falso")
 
         if  request.POST.get('continuidad_edificacion_otro'):
             otro  = True
@@ -875,7 +878,7 @@ def editar_ficha(request, id = 0):
         # Expresión de Fachada
         if not request.POST.get('lenguaje_de_vanos_comun'):
             expresion_fachada.lenguaje_de_vanos_comun = False
-        elif request.POST.get('lenguaje_de_vanos_comun') and request.POST.get('lenguaje_de_vanos_comun') == '1':
+        elif request.POST.get('lenguaje_de_vanos_comun') and request.POST.get('lenguaje_de_vanos_comun') == '1':   
             expresion_fachada.lenguaje_de_vanos_comun = True
 
         if not request.POST.get('simetria'):
@@ -904,34 +907,34 @@ def editar_ficha(request, id = 0):
 
         # Continuidad de Edificación
         if not request.POST.get('fachada'):
-            continuidad_edificacion.otro = False
+            continuidad_edificacion.fachada = False
         elif request.POST.get('fachada') and request.POST.get('fachada') == '1':
-            continuidad_edificacion.otro = True
+            continuidad_edificacion.fachada = True
 
         if not request.POST.get('linea_de_remate_superior'):
-            continuidad_edificacion.otro = False
+            continuidad_edificacion.linea_de_remate_superior = False
         elif request.POST.get('linea_de_remate_superior') and request.POST.get('linea_de_remate_superior') == '1':
-            continuidad_edificacion.otro = True
+            continuidad_edificacion.linea_de_remate_superior = True
 
         if not request.POST.get('linea_de_zocalo_escalonado'):
-            continuidad_edificacion.otro = False
+            continuidad_edificacion.linea_de_zocalo_escalonado = False
         elif request.POST.get('linea_de_zocalo_escalonado') and request.POST.get('linea_de_zocalo_escalonado') == '1':
-            continuidad_edificacion.otro = True
+            continuidad_edificacion.linea_de_zocalo_escalonado = True
 
         if not request.POST.get('linea_de_zocalo_continuo'):
-            continuidad_edificacion.otro = False
+            continuidad_edificacion.linea_de_zocalo_continuo = False
         elif request.POST.get('linea_de_zocalo_continuo') and request.POST.get('linea_de_zocalo_continuo') == '1':
-            continuidad_edificacion.otro = True
+            continuidad_edificacion.linea_de_zocalo_continuo = True
 
         if not request.POST.get('realce_horizontal_prodominante'):
-            continuidad_edificacion.otro = False
+            continuidad_edificacion.realce_horizontal_prodominante = False
         elif request.POST.get('realce_horizontal_prodominante') and request.POST.get('realce_horizontal_prodominante') == '1':
-            continuidad_edificacion.otro = True
+            continuidad_edificacion.realce_horizontal_prodominante = True
 
         if not request.POST.get('zocalo_de_mamposteria'):
-            continuidad_edificacion.otro = False
+            continuidad_edificacion.zocalo_de_mamposteria = False
         elif request.POST.get('zocalo_de_mamposteria') and request.POST.get('zocalo_de_mamposteria') == '1':
-            continuidad_edificacion.otro = True
+            continuidad_edificacion.zocalo_de_mamposteria = True
 
         if not request.POST.get('continuidad_edificacion_otro'):
             continuidad_edificacion.otro = False
