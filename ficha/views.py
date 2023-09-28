@@ -1108,7 +1108,7 @@ def editar_ficha(request, id = 0):
             plano_y_planimetria.save()
         
         plano_y_planimetria.observaciones_planos = request.POST.get('observaciones_planos')
-
+        plano_y_planimetria.save()
 
 
         # Sección 16
