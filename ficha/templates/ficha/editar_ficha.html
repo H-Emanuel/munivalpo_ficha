@@ -105,12 +105,8 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="plan_cerro_poblacion"><b>Plan/ Cerro/ Localidad</b></label>
-                                        <select class="form-control" id="plan_cerro_poblacion" name="plan_cerro_poblacion" >
-                                            <option value="{{ identificacion_inmueble.plan_cerro_poblacion }}" selected>{{ identificacion_inmueble.plan_cerro_poblacion }}</option>
-                                            {% for plan_cerro_poblacion in OPTIONS.PLAN_CERRO_POBLACION %}
-                                                <option value="{{ plan_cerro_poblacion.0 }}">{{ plan_cerro_poblacion.1 }}</option>
-                                            {% endfor %}
-                                        </select>
+                                        <input type="text" class="form-control" id="plan_cerro_poblacion" name="plan_cerro_poblacion" value="{{ identificacion_inmueble.plan_cerro_poblacion }}" >
+
                                     </div>
                                 </div>
                             </div>
@@ -2067,12 +2063,108 @@
                           </div>
                         </div>
                     </div>
-
                     <!-- 15.- Fuentes referenciales y bibliográficas -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-20">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-20" aria-expanded="false" aria-controls="collapse-20">
+                              15.- Planimetría y planos de los inmuebles
+                          </button>
+                        </h2>
+                        <div id="collapse-20" class="accordion-collapse collapse" aria-labelledby="heading-20" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="plano_contexto_1"><b>Planimetría</b></label>
+                                        <input type="file" class="form-control" id="plano_contexto_1" name="plano_contexto_1" accept="image/*">
+                                        <br>
+                                        {% if plano_y_planimetria.plano_contexto_1 %}
+                                            <img src="{{ plano_y_planimetria.plano_contexto_1.url }}" alt="plano_contexto_1" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_registro_fotografico_2">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="plano_contexto_1" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                        <div class="modal" tabindex="-1" id="modal_plano_contexto_1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Planimetría</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if plano_y_planimetria.plano_contexto_1 %}
+                                                                <img src="{{ plano_y_planimetria.plano_contexto_1.url }}" alt="plano_contexto_1" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="plano_contexto_1" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="plano_contexto_2"><b>Plano del inmueble </b></label>
+                                        <input type="file" class="form-control" id="plano_contexto_2" name="plano_contexto_2" accept="image/*">
+                                        <br>
+                                        {% if plano_y_planimetria.plano_contexto_2 %}
+                                            <img src="{{ plano_y_planimetria.plano_contexto_2.url }}" alt="plano_contexto_2" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_registro_fotografico_2">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="plano_contexto_2" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                        <div class="modal" tabindex="-1" id="plano_contexto_2" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Plano del inmueble</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if fotografia_contexto.registro_fotografico_2 %}
+                                                                <img src="{{ plano_y_planimetria.registro_fotografico_2.url }}" alt="plano_contexto_2" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="plano_contexto_2" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="observaciones_planos"><b>Indicar si hay consideraciones importantes u observaciones generales.</b></label>
+                                        <textarea class="form-control" id="observaciones_planos" name="observaciones_planos" rows="3">{{ plano_y_planimetria.observaciones_planos }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- 16.- Fuentes referenciales y bibliográficas -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-13">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-13" aria-expanded="false" aria-controls="collapse-13">
-                                15.- Fuentes referenciales y bibliográficas
+                                16.- Fuentes referenciales y bibliográficas
                           </button>
                         </h2>
                         <div id="collapse-13" class="accordion-collapse collapse" aria-labelledby="heading-13" data-bs-parent="#accordionExample">

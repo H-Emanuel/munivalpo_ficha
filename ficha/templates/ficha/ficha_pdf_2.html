@@ -397,13 +397,13 @@
             <table>
                 <tbody>
                     <tr>
-                        <td colspan="20" class="bg-blue">8. CARACTERÍSTICAS MORFOLÓGICAS Y ARQUITECTÓNICAS DEL INMUEBLE</td>
+                        <td colspan="21" class="bg-blue">8. CARACTERÍSTICAS MORFOLÓGICAS Y ARQUITECTÓNICAS DEL INMUEBLE</td>
                     </tr>
                     <tr>
                         <td colspan="5"><b>8.1 TIPOLOGÍA (Emplazamiento en manzana)</b></td>
                         <td colspan="5" rowspan="2"><b>8.2 SISTEMA DE AGRUPAMIENTO</b></td>
                         <td colspan="5" rowspan="2"><b>8.3 TIPO DE CUBIERTA</b></td>
-                        <td colspan="5" rowspan="2"><b>8.4 VOLUMETRÍA</b></td>
+                        <td colspan="6" rowspan="2"><b>8.4 VOLUMETRÍA</b></td>
                     </tr>
                     <tr>
                         <td colspan="4">MANZANA</td>
@@ -417,7 +417,7 @@
                         <td colspan="4" rowspan="2">HORIZONTAL</td>
                         <td rowspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.tipo_cubierta.horizontal %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="3" rowspan="2">SIMPLE</td>
-                        <td colspan="2" rowspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.volumetria|lower == "simple" %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3" rowspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.volumetria|lower == "simple" %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">ENTRE MEDIANEROS</td>
@@ -431,7 +431,7 @@
                         <td colspan="4" rowspan="2">INCLINADA</td>
                         <td rowspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.tipo_cubierta.inclinada %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="3" rowspan="2">COMPLEJA</td>
-                        <td colspan="2" rowspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.volumetria|lower == "compleja" %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3" rowspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.volumetria|lower == "compleja" %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">CRUCERO</td>
@@ -445,7 +445,7 @@
                         <td colspan="4">CURVA</td>
                         <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.tipo_cubierta.curva %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="3" rowspan="1" >MIXTA</td>
-                        <td colspan="2" rowspan="1" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.volumetria|lower == "mixta" %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3" rowspan="1" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.volumetria|lower == "mixta" %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">ANTEJARDINES</td>
@@ -457,13 +457,13 @@
                     </tr>
                     <tr>
                         <td colspan="5"><b>8.5 ELEMENTOS DE VALOR SIGNIFICATIVO</b></td>
-                        <td colspan="15"><b>INMUEBLE Y SU RELACIÓN CONTEXTUAL (Conjuntos de inmuebles)</b></td>
+                        <td colspan="16"><b>INMUEBLE Y SU RELACIÓN CONTEXTUAL (Conjuntos de inmuebles)</b></td>
                     </tr>
                     <tr>
                         <td colspan="4">CORNISAMIENTOS</td>
                         <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.elementos_valor_significativo.cornisamientos %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="5"><b>8.6 EXPRESIÓN DE FACHADA</b></td>
-                        <td colspan="10"><b>8.7 CONTINUIDAD</b></td>
+                        <td colspan="11"><b>8.7 CONTINUIDAD</b></td>
                     </tr>
                     <tr>
                         <td colspan="4">ZÓCALOS</td>
@@ -471,7 +471,7 @@
                         <td colspan="4">LENGUAJE DE VANOS COMÚN</td>
                         <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.expresion_de_fachada.lenguaje_de_vanos_comun %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="8">FACHADA</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.fachada %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.fachada %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">MOLDURAS RELEVANTES EN YESO</td>
@@ -479,7 +479,7 @@
                         <td colspan="4">SIMETRÍA</td>
                         <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.expresion_de_fachada.simetria %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="8">LINEA DE REMATE SUPERIOR</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_remate_superior %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_remate_superior %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">ORNAMENTACIÓN EN MADERA</td>
@@ -487,7 +487,7 @@
                         <td colspan="4">MODULACIÓN EN SERIE</td>
                         <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.expresion_de_fachada.modulacion_en_serie %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="8">LÍNEA DE ZÓCALO ESCALONADO</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_zocalo_escalonado %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_zocalo_escalonado %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">REMATE EN TECHUMBRE</td>
@@ -495,7 +495,7 @@
                         <td colspan="4">TORREÓN EN ESQUINA</td>
                         <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.expresion_de_fachada.torreon_en_esquina %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="8">LÍNEA DE ZÓCALO CONTINUO</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_zocalo_continuo %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_zocalo_continuo %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="4">OTRO: {{ caracteristicas_morfologicas.elementos_valor_significativo.otro_texto }}</td>
@@ -503,19 +503,19 @@
                         <td colspan="4">OTRO: {{ caracteristicas_morfologicas.expresion_de_fachada.otro_texto }}</td>
                         <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.expresion_de_fachada.otro %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="8">REALCE HORIZONTAL PREDOMINANTE</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.realce_horizontal_prodominante %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.realce_horizontal_prodominante %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="10" rowspan="2">OBSERVACIONES: En este campo indicar si tiene publicidad, por ej. <p>{{ caracteristicas_morfologicas.observaciones }}</p></td>
                         <td colspan="8">ZÓCALO DE MAMPOSTERÍA</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.zocalo_de_mamposteria %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.zocalo_de_mamposteria %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
                         <td colspan="8">OTRO: {{ caracteristicas_morfologicas.continuidad_de_edificacion.otro_texto }}</td>
-                        <td colspan="2" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.otro %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.otro %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
-                        <td colspan="20" ><b>8.8 FOTOGRAFÍAS DE DETALLES (Elementos de valor significativo – expresión de fachada – detalles constructivos)</b></td>
+                        <td colspan="21" ><b>8.8 FOTOGRAFÍAS DE DETALLES (Elementos de valor significativo – expresión de fachada – detalles constructivos)</b></td>
                     </tr>
                     <tr>
                         <td style="text-align: center;" colspan="7">
@@ -580,7 +580,7 @@
                            <br>
                             {% endif %}
                         </td>
-                        <td style="text-align: center;" colspan="6">
+                        <td style="text-align: center;" colspan="7">
                             {% if caracteristicas_morfologicas.fotografia_detalles_constructivos %}
                             <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_detalles_constructivos.url }}" alt="" style="width:300px;" height="325",width="300"  />
                             {% else %}
@@ -677,7 +677,7 @@
                            <br>
                             {% endif %}
                         </td>
-                        <td style="text-align: center;" colspan="6">
+                        <td style="text-align: center;" colspan="7">
                             {% if caracteristicas_morfologicas.fotografia_contexto_3 %}
                             <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_contexto_3.url }}" alt="" style="width:300px;" height="325",width="300"  />
                             {% else %}
@@ -712,7 +712,7 @@
                     </tr>
                     <tr>
                         <td colspan="11"><b>8.9 SUPERFICIES Y DIMENSIONES</b></td>
-                        <td colspan="9"><b>8.10 MATERIALIDAD</b></td>
+                        <td colspan="10"><b>8.10 MATERIALIDAD</b></td>
                     </tr>
                     <tr>
                         <td colspan="2">TERRENO</td>
@@ -721,7 +721,7 @@
                         <td colspan="4"><b>ANTEJARDÍN</b></td>
                         <td colspan="3">ESTRUCTURA</td>
                         <td colspan="3">CUBIERTA</td>
-                        <td colspan="3">REVESTIMIENTOS</td>
+                        <td colspan="4">REVESTIMIENTOS</td>
                     </tr>
                     <tr>
                         <td colspan="2">EDIFICADA</td>
@@ -732,7 +732,7 @@
                         <td colspan="2">{{ caracteristicas_morfologicas.antejardin_frente_1 }}</td>
                         <td colspan="3" rowspan="2">{{ caracteristicas_morfologicas.materialidad_estructura }}</td>
                         <td colspan="3" rowspan="2">{{ caracteristicas_morfologicas.materialidad_cubierta }}</td>
-                        <td colspan="3" rowspan="2">{{ caracteristicas_morfologicas.materialidad_revestimientos }}</td>
+                        <td colspan="4" rowspan="2">{{ caracteristicas_morfologicas.materialidad_revestimientos }}</td>
                     </tr>
                     <tr>
                         <td colspan="2">PROTEGIDA</td>
@@ -743,10 +743,10 @@
                         <td colspan="2">{{ caracteristicas_morfologicas.antejardin_frente_2 }}</td>
                     </tr>
                     <tr>
-                        <td colspan="20"><b>8.11 DESCRIPCIÓN DEL INMUEBLES</b></td>
+                        <td colspan="21"><b>8.11 DESCRIPCIÓN DEL INMUEBLES</b></td>
                     </tr>
                     <tr> 
-                        <td colspan="20">{{caracteristicas_morfologicas.descripcion_del_inmubebles}}</td>
+                        <td colspan="21">{{caracteristicas_morfologicas.descripcion_del_inmubebles}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -830,330 +830,182 @@
             <table>
                 <tbody>
                     <tr>
-                        <td colspan="8" class="bg-blue">ROL DE AVALÚO: {{ identificacion_inmueble.rol }}</td>
+                        <td colspan="14" class="bg-blue">ROL DE AVALÚO: {{ identificacion_inmueble.rol }}</td>
                     </tr>
                     <tr>
-                        <td colspan="8" class="bg-blue">12. RELACIÓN DEL INMUEBLE CON EL ENTORNO</td>
+                        <td colspan="14" class="bg-blue">12. RELACIÓN DEL INMUEBLE CON EL ENTORNO</td>
                     </tr>
                     <tr>
-                        <td colspan="2"><b>12.1 IMAGEN URBANA RELEVANTE</b></td>
-                        <td colspan="2"><b>12.2 FORMA PARTE DE UN CONJUNTO</b></td>
-                        <td colspan="2"><b>12.3 ESPACIO PÚBLICO</b></td>
-                        <td colspan="2"><b>12.4 PRESENCIA DE OTROS ELEMENTOS DE VALOR PATRIMONIAL</b></td>
+                        <td colspan="4"><b>12.1 IMAGEN URBANA RELEVANTE</b></td>
+                        <td colspan="4"><b>12.2 FORMA PARTE DE UN CONJUNTO</b></td>
+                        <td colspan="3"><b>12.3 ESPACIO PÚBLICO</b></td>
+                        <td colspan="3"><b>12.4 PRESENCIA DE OTROS ELEMENTOS DE VALOR PATRIMONIAL</b></td>
                     </tr>
                     <tr>
-                        <td>POR UBICACIÓN</td>
+                        <td colspan="2">POR UBICACIÓN </td>
                         <td style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.imagen_urbana_relevante_por_ubicacion %}X{% else %}&nbsp;{% endif %}</td>
                         <td>SI</td>
                         <td style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.forma_parte_de_un_conjunto %}X{% else %}&nbsp;{% endif %}</td>
-                        <td>COLINDA</td>
+                        <td colspan="2">COLINDA</td>
                         <td style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.espacio_publico|lower == "colinda" %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="2" rowspan="2">{{ relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial }}</td>
+                        <td colspan="6" rowspan="2">{{ relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial }}</td>
                     </tr>
                     <tr>
-                        <td>POR SINGULARIDAD</td>
+                        <td colspan="2">POR SINGULARIDAD </td>
                         <td style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.imagen_urbana_relevante_por_singularidad %}X{% else %}&nbsp;{% endif %}</td>
                         <td>NO</td>
                         <td style="width: 30px;" class="text-center">{% if not relacion_del_inmueble_con_el_terreno.forma_parte_de_un_conjunto %}X{% else %}&nbsp;{% endif %}</td>
-                        <td>ENFRENTA</td>
+                        <td colspan="2">ENFRENTA </td>
                         <td style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.espacio_publico|lower == "enfrenta" %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
-                        <td colspan="8"><b>12.5 INMUEBLES PATRIMONIALES CON PROTECCIÓN OFICIAL EN EL ENTORNO</b></td>
+                        <td colspan="14"><b>12.5 INMUEBLES PATRIMONIALES CON PROTECCIÓN OFICIAL EN EL ENTORNO</b></td>
                     </tr>
                     <tr>
-                        <td colspan="4" ><b>MONUMENTOS HISTÓRICOS (Ley 17.288)</b></td>
-                        <td colspan="4" ><b>INMUEBLES DE CONSERVACIÓN HISTÓRICA (LGUC)</b></td>
+                        <td colspan="7" ><b>MONUMENTOS HISTÓRICOS (Ley 17.288)</b></td>
+                        <td colspan="7" ><b>INMUEBLES DE CONSERVACIÓN HISTÓRICA (LGUC)</b></td>
                     </tr>
                     <tr>
-                        <td colspan="2">PREDIO CONTIGUO</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.mon_his_predio_contiguo %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="2">PREDIO CONTIGUO</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.inm_con_his_predio_contiguo %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="4">PREDIO CONTIGUO</td>
+                        <td colspan="4" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.mon_his_predio_contiguo %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3">PREDIO CONTIGUO</td>
+                        <td colspan="3" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.inm_con_his_predio_contiguo %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">MANZANA</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.mon_his_manzana %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="2">MANZANA</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.inm_con_his_manzana %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="4">MANZANA</td>
+                        <td colspan="4" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.mon_his_manzana %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3">MANZANA</td>
+                        <td colspan="3" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.inm_con_his_manzana %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">MANZANA ENFRENTE</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.mon_his_manzana_enfrente %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="2">MANZANA ENFRENTE</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.inm_con_his_manzana_enfrente %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="4">MANZANA ENFRENTE</td>
+                        <td colspan="4" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.mon_his_manzana_enfrente %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3">MANZANA ENFRENTE</td>
+                        <td colspan="3" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.inm_con_his_manzana_enfrente %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">RELACIÓN VISUAL</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.mon_his_relacion_visual %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="2">RELACIÓN VISUAL</td>
-                        <td colspan="2" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.inm_con_his_relacion_visual %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="4">RELACIÓN VISUAL</td>
+                        <td colspan="4" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.mon_his_relacion_visual %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="3">RELACIÓN VISUAL</td>
+                        <td colspan="3" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.inm_con_his_relacion_visual %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
-                        <td colspan="8"><b>12.6 OBSERVACIONES CONTEXTO URBANO / CONDICIONES GEOGRÁFICAS</b></td>
+                        <td colspan="14"><b>12.6 OBSERVACIONES CONTEXTO URBANO / CONDICIONES GEOGRÁFICAS</b></td>
                     </tr>
                     <tr>
-                        <td colspan="8">
+                        <td colspan="14">
                             <p>{{ relacion_del_inmueble_con_el_terreno.observaciones }}</p>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="8" class="bg-blue">13. CATEGORÍA DE ACUERDO A SU USO</td>
+                        <td colspan="14" class="bg-blue">13. CATEGORÍA DE ACUERDO A SU USO</td>
                     </tr>
                     <tr>
-                        <td colspan="8">
+                        <td colspan="14">
                             <p>{{ categoria_de_acuerdo_a_su_uso.observaciones }}</p>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="8" class="bg-blue">14. CONCLUSIONES O RECOMENDACIONES PARA SU INTERVENCIÓN</td>
+                        <td colspan="14" class="bg-blue">14. CONCLUSIONES O RECOMENDACIONES PARA SU INTERVENCIÓN</td>
                     </tr>
                     <tr>
-                        <td colspan="8">
+                        <td colspan="14">
                             <p>{{ conclusiones.conclusiones }}</p>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="8" class="bg-blue">15. FUENTES REFERENCIALES Y BIBLIOGRÁFICAS</td>
+                        <td colspan="14" class="bg-blue">15. PLANIMETRÍA Y PLANOS DE LOS INMUEBLES</td>
                     </tr>
                     <tr>
-                        <td colspan="8">Indicar si cuenta con antecedentes e información en Archivo Histórico y/o DOM.
+                        <td colspan="7">
+                            {% if plano_y_planimetria.plano_contexto_1 %}
+                            <img src="{{ MEDIA_URL }}{{ plano_y_planimetria.plano_contexto_1.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            {% else %}
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           {% endif %}
+                        </td>
+                        <td colspan="7">
+                            {% if plano_y_planimetria.plano_contexto_2 %}
+                            <img src="{{ MEDIA_URL }}{{ plano_y_planimetria.plano_contexto_2.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            {% else %}
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="14"><b>OBSERVACIONES</b> </td>
+                    </tr>
+                    <tr>
+                        <td colspan="14">{{ plano_y_planimetria.observaciones_planos }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="14" class="bg-blue">16. FUENTES REFERENCIALES Y BIBLIOGRÁFICAS</td>
+                    </tr>
+                    <tr>
+                        <td colspan="14">Indicar si cuenta con antecedentes e información en Archivo Histórico y/o DOM.
                             <p>{{ fuentes_referenciales_y_bibliograficas.fuentes_referenciales_y_bibliograficas }}</p>
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="4" rowspan="2"></td>
-                        <td colspan="4">Fecha de elaboración ficha: {{ current_time }}</td>
+                        <td colspan="7" rowspan="2"></td>
+                        <td colspan="7">Fecha de elaboración ficha: {{ current_time }}</td>
                     </tr>
                     <tr>
-                        <td colspan="4">Nombre autor: {{ current_user.first_name }} {{ current_user.last_name }}</td>
+                        <td colspan="7">Nombre autor: {{ current_user.first_name }} {{ current_user.last_name }}</td>
                     </tr>
                 </tbody>
             </table>
         </section>
     <br>
-        <!-- <section>
-            <table>
-                <tbody>
-                <tr>
-                    <td colspan="12">TABLA DE VALORACION PARA INMUEBLES DE CONSERVACIÓN HISTÓRICA</td>
-
-                </tr>
-                <tr>
-                    <td colspan="1">VALOR</td>
-                    <td colspan="3">ATRIBUTOS</td>
-                    <td colspan="7">CONCEPTOS</td>
-                    <td colspan="1">PUNTOS ( DE 2 A 0 )</td>
-                </tr>
-            primera columna  
-            <tr>
-                <td rowspan="9" colspan="1">URBANO</td>
-                <td colspan="3" rowspan="3"> (A) IMAGEN</td>
-                <td colspan="7">Se destasca por su aporte a la estructura, paisaje urbano.</td>
-                <td colspan="1">2</td>
-            </tr>
-            <tr>
-                <td colspan="7">Constribuye a la estructura o paisaje urbano</td>
-                <td colspan="1">1</td>
-            </tr>
-            <tr>
-                <td colspan="7">No aporta a la estructura o imagen urbana</td>
-                <td colspan="1">0</td>
-            </tr>
-            <tr>
-                <td colspan="3" rowspan="3"> CONJUNTO</td>
-                <td colspan="7"> (B) CONCEPTOS</td>
-                <td colspan="1">2</td>
-            </tr>
-            <tr>
-                <td colspan="7">CONCEPTOS</td>
-                <td colspan="1">1</td>
-            </tr>
-            <tr>
-                <td colspan="7">CONCEPTOS</td>
-                <td colspan="1">0</td>
-            </tr>
-            <tr>
-                <td colspan="3" rowspan="3"> (C) ENTORNO PATRIMONIAL</td>
-                <td colspan="7">CONCEPTOS</td>
-                <td colspan="1">2</td>
-            </tr>
-            <tr>
-                <td colspan="7">CONCEPTOS</td>
-                <td colspan="1">1</td>
-            </tr>
-            <tr>
-                <td colspan="7">CONCEPTOS</td>
-                <td colspan="1">0</td>
-            </tr>
-        primera columna  
-        <tr>
-            <td rowspan="9" colspan="1">URBANO</td>
-            <td colspan="3" rowspan="3"> (A) IMAGEN</td>
-            <td colspan="7">Se destasca por su aporte a la estructura, paisaje urbano.</td>
-            <td colspan="1">2</td>
-        </tr>
-        <tr>
-            <td colspan="7">Constribuye a la estructura o paisaje urbano</td>
-            <td colspan="1">1</td>
-        </tr>
-        <tr>
-            <td colspan="7">No aporta a la estructura o imagen urbana</td>
-            <td colspan="1">0</td>
-        </tr>
-        <tr>
-            <td colspan="3" rowspan="3"> CONJUNTO</td>
-            <td colspan="7"> (B) CONCEPTOS</td>
-            <td colspan="1">2</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">1</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">0</td>
-        </tr>
-        <tr>
-            <td colspan="3" rowspan="3"> (C) ENTORNO PATRIMONIAL</td>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">2</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">1</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">0</td>
-        </tr>
-         primera columna 
-        <tr>
-            <td rowspan="9" colspan="1">URBANO</td>
-            <td colspan="3" rowspan="3"> (A) IMAGEN</td>
-            <td colspan="7">Se destasca por su aporte a la estructura, paisaje urbano.</td>
-            <td colspan="1">2</td>
-        </tr>
-        <tr>
-            <td colspan="7">Constribuye a la estructura o paisaje urbano</td>
-            <td colspan="1">1</td>
-        </tr>
-        <tr>
-            <td colspan="7">No aporta a la estructura o imagen urbana</td>
-            <td colspan="1">0</td>
-        </tr>
-        <tr>
-            <td colspan="3" rowspan="3"> CONJUNTO</td>
-            <td colspan="7"> (B) CONCEPTOS</td>
-            <td colspan="1">2</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">1</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">0</td>
-        </tr>
-        <tr>
-            <td colspan="3" rowspan="3"> (C) ENTORNO PATRIMONIAL</td>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">2</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">1</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">0</td>
-        </tr>
-        primera columna 
-        <tr>
-            <td rowspan="9" colspan="1">URBANO</td>
-            <td colspan="3" rowspan="3"> (A) IMAGEN</td>
-            <td colspan="7">Se destasca por su aporte a la estructura, paisaje urbano.</td>
-            <td colspan="1">2</td>
-        </tr>
-        <tr>
-            <td colspan="7">Constribuye a la estructura o paisaje urbano</td>
-            <td colspan="1">1</td>
-        </tr>
-        <tr>
-            <td colspan="7">No aporta a la estructura o imagen urbana</td>
-            <td colspan="1">0</td>
-        </tr>
-        <tr>
-            <td colspan="3" rowspan="3"> CONJUNTO</td>
-            <td colspan="7"> (B) CONCEPTOS</td>
-            <td colspan="1">2</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">1</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">0</td>
-        </tr>
-        <tr>
-            <td colspan="3" rowspan="3"> (C) ENTORNO PATRIMONIAL</td>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">2</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">1</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">0</td>
-        </tr>
-         primera columna  
-        <tr>
-            <td rowspan="9" colspan="1">URBANO</td>
-            <td colspan="3" rowspan="3"> (A) IMAGEN</td>
-            <td colspan="7">Se destasca por su aporte a la estructura, paisaje urbano.</td>
-            <td colspan="1">2</td>
-        </tr>
-        <tr>
-            <td colspan="7">Constribuye a la estructura o paisaje urbano</td>
-            <td colspan="1">1</td>
-        </tr>
-        <tr>
-            <td colspan="7">No aporta a la estructura o imagen urbana</td>
-            <td colspan="1">0</td>
-        </tr>
-        <tr>
-            <td colspan="3" rowspan="3"> CONJUNTO</td>
-            <td colspan="7"> (B) CONCEPTOS</td>
-            <td colspan="1">2</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">1</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">0</td>
-        </tr>
-        <tr>
-            <td colspan="3" rowspan="3"> (C) ENTORNO PATRIMONIAL</td>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">2</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">1</td>
-        </tr>
-        <tr>
-            <td colspan="7">CONCEPTOS</td>
-            <td colspan="1">0</td>
-        </tr>
-
-            </tbody>
-            </table>
-        </section> -->
-
     </body>
 </html>

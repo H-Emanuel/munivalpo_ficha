@@ -14,11 +14,11 @@ COMUNA_CHOICES = [
     # ('PLAYA ANCHA', 'Playa Ancha'),
 ]
 
-PLAN_CERRO_POBLACION = [
-    ('Plan', 'Plan'),
-    ('Cerro', 'Cerro'),
-    ('Localidad', 'Localidad'),
-]
+# PLAN_CERRO_POBLACION = [
+#     ('Plan', 'Plan'),
+#     ('Cerro', 'Cerro'),
+#     ('Localidad', 'Localidad'),
+# ]
 
 # Sección 1
 class IdentificacionInmueble(models.Model):
@@ -30,7 +30,7 @@ class IdentificacionInmueble(models.Model):
     comuna = models.CharField(max_length=50, choices=COMUNA_CHOICES, default='VALPARAÍSO')
     calle = models.CharField(max_length=255, blank=True, default='')
     numero = models.CharField(max_length=50, blank=True, default='')
-    plan_cerro_poblacion = models.CharField(max_length=255, blank=True,choices=PLAN_CERRO_POBLACION, default='PLAN')
+    plan_cerro_poblacion = models.CharField(max_length=255, blank=True, default='')
     denominacion_inmueble = models.CharField(max_length=255, blank=True, default='')
     autor = models.CharField(max_length=255, blank=True, default='Se desconoce')
     
@@ -564,6 +564,33 @@ class Conclusiones(models.Model):
         verbose_name_plural = "conclusiones"
 
 # Sección 15
+def content_file_name_plano_1(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % ('plano_1', ext)
+    folder = "assets_ficha/" + str(instance.id_plano.id_plano)
+    return os.path.join(folder, filename)
+
+def content_file_name_plano_2(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % ('plano_2', ext)
+    folder = "assets_ficha/" + str(instance.id_plano.id_plano)
+    return os.path.join(folder, filename)
+
+class Planoyplanimetria(models.Model):    
+    plano_contexto_1 = models.ImageField(upload_to=content_file_name_plano_1, blank=True, null=True)
+    plano_contexto_2 = models.ImageField(upload_to=content_file_name_plano_2, blank=True, null=True)
+
+    observaciones_planos = models.TextField(blank=True,null=True,default='')
+    id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True,null=True)
+    updated = models.DateTimeField(auto_now=True,null=True)
+
+    class Meta:
+        verbose_name = "Plano_y_Planimetria"
+        verbose_name_plural = "Planos_y_Planimetrias"
+
+
+# Sección 16
 class FuentesReferencialesYBibliograficas(models.Model):
     fuentes_referenciales_y_bibliograficas = models.TextField(blank=True, default='')
 

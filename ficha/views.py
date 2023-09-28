@@ -27,7 +27,7 @@ def ficha_home(request):
 def crear_ficha(request):
     last_id =  IdentificacionInmueble.objects.latest('id_plano').__int__
     OPTIONS = {
-        'PLAN_CERRO_POBLACION': PLAN_CERRO_POBLACION,
+        # 'PLAN_CERRO_POBLACION': PLAN_CERRO_POBLACION,
         'REGION_CHOICES': REGION_CHOICES,
         'COMUNA_CHOICES': COMUNA_CHOICES,
         'PERIODOS_CONSTRUCCION': PERIODOS_CONSTRUCCION,
@@ -654,11 +654,13 @@ def editar_ficha(request, id = 0):
     tipo_cubierta = TipoCubierta.objects.get(id_plano_id = id)
     elementos_valor_significativo = ElementosValorSignificativo.objects.get(id_plano_id = id)
     expresion_fachada = ExpresionDeFachada.objects.get(id_plano_id = id)
+    
     continuidad_edificacion = ContinuidadDeEdificacion.objects.get(id_plano_id = id)
+    plano_y_planimetria= Planoyplanimetria.objects.get(id_plano_id = id)
     extra = observacion.objects.get(id_plano_id = id)
 
     OPTIONS = {
-        'PLAN_CERRO_POBLACION': PLAN_CERRO_POBLACION,
+        # 'PLAN_CERRO_POBLACION': PLAN_CERRO_POBLACION,
         'REGION_CHOICES': REGION_CHOICES,
         'COMUNA_CHOICES': COMUNA_CHOICES,
         'PERIODOS_CONSTRUCCION': PERIODOS_CONSTRUCCION,
@@ -1097,6 +1099,19 @@ def editar_ficha(request, id = 0):
         conclusiones.save()
 
         # Sección 15
+        if request.FILES.get('plano_contexto_1'):
+            plano_y_planimetria.plano_contexto_1 = request.FILES.get('plano_contexto_1')
+            plano_y_planimetria.save()
+        
+        if request.FILES.get('plano_contexto_2'):
+            plano_y_planimetria.plano_contexto_2 = request.FILES.get('plano_contexto_2')
+            plano_y_planimetria.save()
+        
+        plano_y_planimetria.observaciones_planos = request.POST.get('observaciones_planos')
+
+
+
+        # Sección 16
         fuentes_referenciales_y_bibliograficas.fuentes_referenciales_y_bibliograficas = request.POST.get('fuentes_referenciales_y_bibliograficas')
         fuentes_referenciales_y_bibliograficas.save()
         
@@ -1124,8 +1139,9 @@ def editar_ficha(request, id = 0):
         'tipo_cubierta': tipo_cubierta,
         'elementos_valor_significativo': elementos_valor_significativo,
         'expresion_fachada': expresion_fachada,
+        'plano_y_planimetria':plano_y_planimetria,
         'continuidad_edificacion': continuidad_edificacion,
-
+       
         'OPTIONS': OPTIONS,
 
         'total_valor_urbano': total_valor_urbano,
@@ -1189,6 +1205,7 @@ def exportar_pdf(request, id):
     categoria_de_acuerdo_a_su_uso = CategoriaDeAcuerdoASuUso.objects.get(id_plano = id)
     conclusiones = Conclusiones.objects.get(id_plano = id)
     fuentes_referenciales_y_bibliograficas = FuentesReferencialesYBibliograficas.objects.get(id_plano = id)
+    plano_y_planimetria = Planoyplanimetria.objects.get(id_plano = id)
     obs = observacion.objects.get(id_plano = id)
 
     tipologia = Tipologias.objects.get(id_plano_id = id)
@@ -1224,7 +1241,7 @@ def exportar_pdf(request, id):
         'categoria_de_acuerdo_a_su_uso': categoria_de_acuerdo_a_su_uso,
         'conclusiones': conclusiones,
         'fuentes_referenciales_y_bibliograficas': fuentes_referenciales_y_bibliograficas,
-        
+        'plano_y_planimetria':plano_y_planimetria,
 
         'tipologia': tipologia,
         'tipo_cubierta': tipo_cubierta,
