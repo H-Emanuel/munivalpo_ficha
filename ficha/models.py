@@ -580,7 +580,7 @@ class Planoyplanimetria(models.Model):
     plano_contexto_1 = models.ImageField(upload_to=content_file_name_plano_1, blank=True, null=True)
     plano_contexto_2 = models.ImageField(upload_to=content_file_name_plano_2, blank=True, null=True)
 
-    observaciones_planos = models.TextField(blank=True,null=True,default='')
+    observaciones_planos = models.TextField(blank=True,default='')
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True,null=True)
     updated = models.DateTimeField(auto_now=True,null=True)
