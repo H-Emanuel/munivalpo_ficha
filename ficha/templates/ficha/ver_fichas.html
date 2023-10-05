@@ -10,8 +10,12 @@
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Fichero</th>
                         <th>Rol</th>
                         <th>Identificación inmueble</th>
+                        <th>Revisor</th>
+                        <th>Estado</th>
+                        <th>Observaciones</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -19,8 +23,36 @@
                     {% for item in fichas_con_observaciones %}
                         <tr>
                             <td>{{ item.ficha.id_plano }}</td>
+                            <td>{{ item.ficha.usuario|default:"Sin Fichero" }}</td>
                             <td>{{ item.ficha.rol }}</td>
                             <td>{{ item.ficha.calle }}, {{ item.ficha.numero }}, {{ item.ficha.comuna }}</td>
+                            <td>{{ item.observacion.usuario_revisor|default:"Sin Revisor" }}</td>
+                            <td>{{ item.observacion.estado|default:"Pendiente" }}</td>
+                            <td>  
+                            {% if not user.is_staff  %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <textarea disabled class="form-control" id="observacion_revisor" name="observacion_revisor" rows="3">{{ item.ficha.observacion_revisor }}</textarea>
+                                    </div>
+                                </div>
+                            </td>
+                            {% else %}
+                            <form method="POST" action="{% url 'guarda_observaciones' item.ficha.id_plano %}">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <textarea class="form-control" id="observacion_revisor" name="observacion_revisor" rows="3">{{ item.ficha.observacion_revisor }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <button class="btn btn-secondary" type="submit" name="aprobar">Guardar Observacion</button>
+                            </form>
+                            
+                            </td>
+                            {% endif %}
                             <td>
                                 <a href="{% url 'editar_ficha' item.ficha.id_plano %}" class="btn btn-warning">Editar</a>
                                 <a href="{% url 'exportar_pdf' item.ficha.id_plano %}" target="_blank" class="btn btn-danger">PDF</a> 

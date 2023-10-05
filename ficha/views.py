@@ -1155,26 +1155,32 @@ def editar_ficha(request, id = 0):
     return render(request, 'ficha/editar_ficha.html', data)
 
 @login_required(login_url='/login/')
-def ver_fichas(request):
 
+
+def ver_fichas(request):
     if request.user.is_staff:
         identificacion_inmueble = IdentificacionInmueble.objects.all()
     else:
         identificacion_inmueble = IdentificacionInmueble.objects.filter(usuario=request.user)
 
-    observaciones = observacion.objects.filter(id_plano__in=identificacion_inmueble.values('id_plano'))
+    observaciones = observacion.objects.filter(id_plano__in=identificacion_inmueble.values('id_plano')).select_related('usuario_revisor')
 
     fichas_con_observaciones = []
 
     for ficha in identificacion_inmueble:
         obs = observaciones.filter(id_plano=ficha.id_plano).first()
-        fichas_con_observaciones.append({'ficha': ficha, 'observacion': obs})
+        
+        # Verificar si obs no es None antes de acceder a usuario_revisor
+        if obs and (request.user.is_staff or obs.estado != "APROBADO"):
+            fichas_con_observaciones.append({'ficha': ficha, 'observacion': obs, 'usuario_revisor': obs.usuario_revisor})
 
     data = {
         'fichas_con_observaciones': fichas_con_observaciones,
     }
 
     return render(request, 'ficha/ver_fichas.html', data)
+
+
 
 
 @login_required(login_url='/login/')
@@ -1418,6 +1424,7 @@ def actualizar_observacion(request, id_plano):
         
         if checkbox_value == 'on':
             obs.aprobado = True
+            obs.estado = "En espera de revision"
         else:
             obs.aprobado = False
         
@@ -1430,11 +1437,24 @@ def actualizar_observacion_staff(request, id_plano):
         if 'aprobar' in request.POST:
             obs = observacion.objects.get(id_plano_id=id_plano)
             obs.aprobado_revisor = True
+            obs.estado = "APROBADO"
             obs.usuario_revisor = request.user
             obs.save()
         elif 'denegar' in request.POST:
             obs = observacion.objects.get(id_plano_id=id_plano)
             obs.aprobado = False
+            obs.usuario_revisor = request.user
+            obs.estado = "OBJECTADO"
             obs.save()
+
+    return redirect('ver_fichas')
+
+def guarda_observaciones(request, id):
+    if request.method == 'POST':
+            identificacionInmueble = IdentificacionInmueble.objects.get(id_plano=id)
+            identificacionInmueble.observacion_revisor = request.POST.get('observacion_revisor')
+           
+            identificacionInmueble.save()
+
 
     return redirect('ver_fichas')

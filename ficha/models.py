@@ -36,6 +36,8 @@ class IdentificacionInmueble(models.Model):
     
     usuario = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True )
 
+    observacion_revisor = models.TextField(blank=True, default='')
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -606,6 +608,8 @@ class FuentesReferencialesYBibliograficas(models.Model):
 class observacion(models.Model):
     aprobado = models.BooleanField(blank=True, default=False)
     aprobado_revisor = models.BooleanField(blank=True, default=False)
+    estado = models.CharField(max_length=25, blank=True, default='pediente')
+
     descripcion = models.TextField(blank=True ,default="")
 
 

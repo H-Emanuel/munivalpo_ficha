@@ -14,5 +14,6 @@ urlpatterns = [
     path('actualizar_observacion/<int:id_plano>/', views.actualizar_observacion, name='actualizar_observacion'),
     path('actualizar_observacion_staff/<int:id_plano>/', views.actualizar_observacion_staff, name='actualizar_observacion_staff'),
     path('exportar_pdf_valoracion/<int:id>/', views.exportar_pdf_valoracion, name="exportar_pdf_valoracion"),
+    path('guarda_observaciones/<int:id>/', views.guarda_observaciones, name="guarda_observaciones"),
 
 ]
