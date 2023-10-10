@@ -10,6 +10,8 @@ from .helpers import save_pdf_3, save_pdf_2
 from datetime import datetime
 from datetime import date
 from django.http import JsonResponse,HttpResponseBadRequest
+import fitz
+from django.core.files.base import ContentFile
 
 
 # Create your views here.
@@ -706,9 +708,25 @@ def editar_ficha(request, id = 0):
         identificacion_inmueble.autor = request.POST.get('autor')
         identificacion_inmueble.save()
 
-        # Sección 2
         if request.FILES.get('imagen_plano'):
-            plano_ubicacion.imagen_plano = request.FILES.get('imagen_plano')
+            archivo = request.FILES['imagen_plano']
+            
+            if archivo.content_type.startswith('image'):
+                plano_ubicacion.imagen_plano = archivo
+            elif archivo.content_type == 'application/pdf':
+                # Lee el contenido del archivo PDF
+                pdf_content = archivo.read()
+
+                # Convierte el PDF en una lista de imágenes
+                pdf_document = fitz.open(stream=pdf_content, filetype='pdf')
+                pages = pdf_document.load_page(0)  # Carga la primera página del PDF
+
+                # Guarda la primera página como una imagen (ajusta según tus necesidades)
+                if pages:
+                    first_page_image = pages.get_pixmap()
+                    # Asigna la imagen al campo imagen_plano del modelo PlanoUbicacion
+                    plano_ubicacion.imagen_plano.save(f'imagen_plano_{id}.jpg', ContentFile(first_page_image.tobytes()), save=False)
+                    
         plano_ubicacion.latitud = request.POST.get('latitud')
         plano_ubicacion.longitud = request.POST.get('longitud')
         plano_ubicacion.save()

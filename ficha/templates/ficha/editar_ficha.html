@@ -146,7 +146,7 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="plano_ubicacion"><b>Plano Ubicación</b></label>
-                                        <input type="file" class="form-control" id="imagen_plano" name="imagen_plano" accept="image/*">
+                                        <input type="file" class="form-control" id="imagen_plano" name="imagen_plano" accept="image/*, .pdf">
                                         <br>
                                         {% if plano_ubicacion.imagen_plano %}
                                             <img src="{{ plano_ubicacion.imagen_plano.url }}" alt="imagen_plano" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_plano_ubicacion">
