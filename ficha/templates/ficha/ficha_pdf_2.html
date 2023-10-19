@@ -54,16 +54,40 @@
             table { -pdf-keep-with-next: true; }
             section { -pdf-keep-with-next: true; }
             p.separator { -pdf-keep-with-next: false; font-size: 6pt; }
+            
+
+            .image-and-text-container {
+                overflow: hidden; /* Limpia el float */
+            }
+
+            .text-content {
+                float: left; /* Hace que el texto flote a la izquierda */
+                width: 70%; /* Establece el ancho del texto (ajusta según sea necesario) */
+            }
+
+            .right-aligned-image {
+                float: right; /* Hace que la imagen flote a la derecha */
+                width: 30%; /* Establece el ancho de la imagen (ajusta según sea necesario) */
+            }
+
         </style>
     </head>
     <body>
         <!-- Sección 1 -->
+
+        <!-- ARREGLAR LA IMAGEN DEL ICONO TIENE QUE ESTAR LA IMAGEN EN LA DERECHA Y EL TEXTO ALADO DE LA IMAGNE -->
         <section>
             <table class="special">
                 <tbody>
                     <tr>
-                        <td colspan="3" rowspan="4" class="bg-blue text-center">FICHA DE VALORACIÓN INMUEBLE DE CONSERVACIÓN HISTÓRICA <br>
-                            Plan Regulador Comunal de Valparaíso</td>
+                        <td colspan="3" rowspan="5" class="bg-blue text-center">
+                                <img src="media/image/ico_ficha.png" style="height: 55px; width: 95px;">
+                                <span>
+                                    FICHA DE VALORACIÓN INMUEBLE DE CONSERVACIÓN HISTÓRICA <br>
+                                    Plan Regulador Comunal de Valparaíso
+                                </span>
+                        </td>
+                        
 
                         <td colspan="2" class="bg-blue text-center">ROL DE AVALÚO</td>
                     </tr>
@@ -73,6 +97,10 @@
                     <tr>
                         <td class="bg-blue text-center">ID PLANO</td>
                         <td>{{ identificacion_inmueble.id_plano }}</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-blue text-center">CODIGO</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td class="bg-blue text-center">UNIDAD VECINAL</td>
@@ -227,22 +255,22 @@
                 <tbody>
                     <tr>
                         <td colspan="5" class="bg-blue">6. RESUMEN VALORACIÓN DE ATRIBUTOS</td>
-                        <td colspan="4" class="bg-blue">INSERTO EN ZONA DE CONSERVACIÓN HISTÓRICA (LGUC) o ZONA TÍPICA (LEY 17.288)</td>
+                        <!-- <td colspan="4" class="bg-blue">INSERTO EN ZONA DE CONSERVACIÓN HISTÓRICA (LGUC) o ZONA TÍPICA (LEY 17.288)</td> -->
                     </tr>
                     <tr>
                         <td rowspan="2" class="bg-blue" style="width: 150px;">VALOR</td>
                         <td colspan="3" class="bg-blue">ATRIBUTOS</td>
                         <td rowspan="2" class="bg-blue">PUNTOS</td>
-                        <td>SI</td>
+                        <!-- <td>SI</td>
                         <td style="width: 50px;" class="text-center">{% if valoracion_atributos.zona_de_conservacion %}X{% else %}&nbsp;{% endif %}</td>
                         <td>NO</td>
-                        <td style="width: 50px;" class="text-center">{% if not valoracion_atributos.zona_de_conservacion %}X{% else %}&nbsp;{% endif %}</td>
+                        <td style="width: 50px;" class="text-center">{% if not valoracion_atributos.zona_de_conservacion %}X{% else %}&nbsp;{% endif %}</td> -->
                     </tr>
                     <tr>
                         <td class="bg-blue text-center">A</td>
                         <td class="bg-blue text-center">B</td>
                         <td class="bg-blue text-center">C</td>
-                        <td colspan="4" class="bg-blue">IDENTIFICACIÓN ZCH o ZT</td>
+                        <!-- <td colspan="4" class="bg-blue">IDENTIFICACIÓN ZCH o ZT</td> -->
                     </tr>
                     <tr>
                         <td>URBANO</td>
@@ -250,7 +278,7 @@
                         <td class="text-center">{{ valoracion_atributos.valor_urbano_b }}</td>
                         <td class="text-center">{{ valoracion_atributos.valor_urbano_c }}</td>
                         <td class="text-center">{{ total_valor_urbano }}</td>
-                        <td class="text-center" colspan="4" rowspan="6">{{ valoracion_atributos.identificacion_zch }}</td>
+                        <!-- <td class="text-center" colspan="4" rowspan="6">{{ valoracion_atributos.identificacion_zch }}</td> -->
                     </tr>
                     <tr>
                         <td>ARQUITECTÓNICO</td>
@@ -374,17 +402,10 @@
                         <td class="text-center">{% if informacion_tecnica.regimen_propiedad|lower == "sucesion" %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
-                        <td colspan="5"><b>7.6 AFECTACIÓN ACTUAL</b></td>
-                        <td colspan="9"><b>7.7 OBSERVACIONES</b> </td>
+                        <td colspan="14"><b>OBSERVACIONES</b> </td>
                     </tr>
                     <tr>
-                        <td colspan="4">DECLARACIÓN DE UTILIDAD PÚBLICA</td>
-                        <td class="text-center">{% if informacion_tecnica.afectacion_actual|lower == "declaracion de utilidad publica" %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="9" rowspan="2"><p>{{ informacion_tecnica.observaciones }}</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">ANTEJARDÍN</td>
-                        <td class="text-center">{% if informacion_tecnica.afectacion_actual|lower == "antejardin" %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="14"><p>{{ informacion_tecnica.observaciones }}</p></td>
                     </tr>
                 </tbody>
             </table>
@@ -393,17 +414,40 @@
         </br>
 
         <!-- Sección 8 -->
+
         <section>
             <table>
                 <tbody>
                     <tr>
-                        <td colspan="21" class="bg-blue">8. CARACTERÍSTICAS MORFOLÓGICAS Y ARQUITECTÓNICAS DEL INMUEBLE</td>
+                        <td colspan="6" class="bg-blue">8. RESUMEN VALORACIÓN DE ATRIBUTOS</td>
+                        <!-- <td colspan="4" class="bg-blue">INSERTO EN ZONA DE CONSERVACIÓN HISTÓRICA (LGUC) o ZONA TÍPICA (LEY 17.288)</td> -->
                     </tr>
                     <tr>
-                        <td colspan="5"><b>8.1 TIPOLOGÍA (Emplazamiento en manzana)</b></td>
-                        <td colspan="5" rowspan="2"><b>8.2 SISTEMA DE AGRUPAMIENTO</b></td>
-                        <td colspan="5" rowspan="2"><b>8.3 TIPO DE CUBIERTA</b></td>
-                        <td colspan="6" rowspan="2"><b>8.4 VOLUMETRÍA</b></td>
+                        <td colspan="2">Área no edificable</td>
+                        <td style="width: 30px;">{% if condicion_normativa.area_de_edificacion %}X{% else %}&nbsp;{% endif %}</td>
+                        <td colspan="2">Área de riesgo</td>
+                        <td style="width: 30px;">{% if condicion_normativa.area_de_riesgo %}X{% else %}&nbsp;{% endif %}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        </br>
+
+
+
+        <!-- Sección 9 -->
+        <section>
+            <table>
+                <tbody>
+                    <tr>
+                        <td colspan="21" class="bg-blue">9. CARACTERÍSTICAS MORFOLÓGICAS Y ARQUITECTÓNICAS DEL INMUEBLE</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5"><b>9.1 TIPOLOGÍA (Emplazamiento en manzana)</b></td>
+                        <td colspan="5" rowspan="2"><b>9.2 SISTEMA DE AGRUPAMIENTO</b></td>
+                        <td colspan="5" rowspan="2"><b>9.3 TIPO DE CUBIERTA</b></td>
+                        <td colspan="6" rowspan="2"><b>9.4 VOLUMETRÍA</b></td>
                     </tr>
                     <tr>
                         <td colspan="4">MANZANA</td>
@@ -456,14 +500,14 @@
                         <td class="text-center" >{% if caracteristicas_morfologicas.tipo_cubierta.otro %}X{% else %}&nbsp;{% endif %}</td> 
                     </tr>
                     <tr>
-                        <td colspan="5"><b>8.5 ELEMENTOS DE VALOR SIGNIFICATIVO</b></td>
+                        <td colspan="5"><b>9.5 ELEMENTOS DE VALOR SIGNIFICATIVO</b></td>
                         <td colspan="16"><b>INMUEBLE Y SU RELACIÓN CONTEXTUAL (Conjuntos de inmuebles)</b></td>
                     </tr>
                     <tr>
                         <td colspan="4">CORNISAMIENTOS</td>
                         <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.elementos_valor_significativo.cornisamientos %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="5"><b>8.6 EXPRESIÓN DE FACHADA</b></td>
-                        <td colspan="11"><b>8.7 CONTINUIDAD</b></td>
+                        <td colspan="5"><b>9.6 EXPRESIÓN DE FACHADA</b></td>
+                        <td colspan="11"><b>9.7 CONTINUIDAD</b></td>
                     </tr>
                     <tr>
                         <td colspan="4">ZÓCALOS</td>
@@ -515,7 +559,7 @@
                         <td colspan="3" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.otro %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
-                        <td colspan="21" ><b>8.8 FOTOGRAFÍAS DE DETALLES (Elementos de valor significativo – expresión de fachada – detalles constructivos)</b></td>
+                        <td colspan="21" ><b>9.8 FOTOGRAFÍAS DE DETALLES (Elementos de valor significativo – expresión de fachada – detalles constructivos)</b></td>
                     </tr>
                     <tr>
                         <td style="text-align: center;" colspan="7">
@@ -613,6 +657,12 @@
                         </td>
                     </tr>
                     <tr>
+                        <td style="text-align: center;" colspan="7" >{{ caracteristicas_morfologicas.observacion_fot_valor_significativo }}</td>
+                        <td style="text-align: center;" colspan="7" >{{ caracteristicas_morfologicas.observacion_fot_expresion_fachada }}</td>
+                        <td style="text-align: center;" colspan="7" >{{ caracteristicas_morfologicas.observacion_fot_detalles_constructivos }}</td>
+                    </tr>
+                    <tr>
+
                         <td style="text-align: center;" colspan="7">
                             {% if caracteristicas_morfologicas.fotografia_contexto_1 %}
                             <img src="{{ MEDIA_URL }}{{ caracteristicas_morfologicas.fotografia_contexto_1.url }}" alt="" style="width:300px;" height="325",width="300" />
@@ -711,8 +761,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="11"><b>8.9 SUPERFICIES Y DIMENSIONES</b></td>
-                        <td colspan="10"><b>8.10 MATERIALIDAD</b></td>
+                        <td style="text-align: center;" colspan="7" > {{ caracteristicas_morfologicas.observacion_contexto_1 }} </td>
+                        <td style="text-align: center;" colspan="7" > {{ caracteristicas_morfologicas.observacion_contexto_2 }} </td>
+                        <td style="text-align: center;" colspan="7" > {{ caracteristicas_morfologicas.observacion_contexto_3 }} </td>
+                    </tr>
+                    <tr>
+                        <td colspan="11"><b>9.9 SUPERFICIES Y DIMENSIONES</b></td>
+                        <td colspan="10"><b>9.10 MATERIALIDAD</b></td>
                     </tr>
                     <tr>
                         <td colspan="2">TERRENO</td>
@@ -743,7 +798,7 @@
                         <td colspan="2">{{ caracteristicas_morfologicas.antejardin_frente_2 }}</td>
                     </tr>
                     <tr>
-                        <td colspan="21"><b>8.11 DESCRIPCIÓN DEL INMUEBLES</b></td>
+                        <td colspan="21"><b>9.11 DESCRIPCIÓN DEL INMUEBLES</b></td>
                     </tr>
                     <tr> 
                         <td colspan="21">{{caracteristicas_morfologicas.descripcion_del_inmubebles}}</td>
@@ -754,14 +809,14 @@
 
         </br>
 
-        <!-- Sección 9 -->
+        <!-- Sección 10 -->
         <section>
             <table>
                 <tbody>
                     <tr>
-                        <td colspan="3" class="bg-blue">9. ESTADO DE CONSERVACIÓN</td>
-                        <td colspan="4" class="bg-blue">10. GRADO DE ALTERACIÓN</td>
-                        <td colspan="3" class="bg-blue">11. APTITUD DE REHABILITACIÓN</td>
+                        <td colspan="3" class="bg-blue">10. ESTADO DE CONSERVACIÓN</td>
+                        <td colspan="4" class="bg-blue">11. GRADO DE ALTERACIÓN</td>
+                        <td colspan="3" class="bg-blue">12. APTITUD DE REHABILITACIÓN</td>
                     </tr>
                     <tr>
                         <td style="width:60px;"></td>
@@ -825,7 +880,7 @@
 
         <!-- <p class="separator">&nbsp;<p> -->
 
-        <!-- Sección 12 -->
+        <!-- Sección 13 -->
         <section>
             <table>
                 <tbody>
@@ -833,13 +888,13 @@
                         <td colspan="14" class="bg-blue">ROL DE AVALÚO: {{ identificacion_inmueble.rol }}</td>
                     </tr>
                     <tr>
-                        <td colspan="14" class="bg-blue">12. RELACIÓN DEL INMUEBLE CON EL ENTORNO</td>
+                        <td colspan="14" class="bg-blue">13. RELACIÓN DEL INMUEBLE CON EL ENTORNO</td>
                     </tr>
                     <tr>
-                        <td colspan="4"><b>12.1 IMAGEN URBANA RELEVANTE</b></td>
-                        <td colspan="4"><b>12.2 FORMA PARTE DE UN CONJUNTO</b></td>
-                        <td colspan="3"><b>12.3 ESPACIO PÚBLICO</b></td>
-                        <td colspan="3"><b>12.4 PRESENCIA DE OTROS ELEMENTOS DE VALOR PATRIMONIAL</b></td>
+                        <td colspan="4"><b>13.1 IMAGEN URBANA RELEVANTE</b></td>
+                        <td colspan="4"><b>13.2 FORMA PARTE DE UN CONJUNTO</b></td>
+                        <td colspan="3"><b>13.3 ESPACIO PÚBLICO</b></td>
+                        <td colspan="3"><b>13.4 PRESENCIA DE OTROS ELEMENTOS DE VALOR PATRIMONIAL</b></td>
                     </tr>
                     <tr>
                         <td colspan="2">POR UBICACIÓN </td>
@@ -859,7 +914,7 @@
                         <td style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.espacio_publico|lower == "enfrenta" %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
-                        <td colspan="14"><b>12.5 INMUEBLES PATRIMONIALES CON PROTECCIÓN OFICIAL EN EL ENTORNO</b></td>
+                        <td colspan="14"><b>13.5 INMUEBLES PATRIMONIALES CON PROTECCIÓN OFICIAL EN EL ENTORNO</b></td>
                     </tr>
                     <tr>
                         <td colspan="7" ><b>MONUMENTOS HISTÓRICOS (Ley 17.288)</b></td>
@@ -890,7 +945,7 @@
                         <td colspan="3" style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.inm_con_his_relacion_visual %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
-                        <td colspan="14"><b>12.6 OBSERVACIONES CONTEXTO URBANO / CONDICIONES GEOGRÁFICAS</b></td>
+                        <td colspan="14"><b>13.6 OBSERVACIONES CONTEXTO URBANO / CONDICIONES GEOGRÁFICAS</b></td>
                     </tr>
                     <tr>
                         <td colspan="14">
@@ -898,7 +953,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="14" class="bg-blue">13. CATEGORÍA DE ACUERDO A SU USO</td>
+                        <td colspan="14" class="bg-blue">14. CATEGORÍA DE ACUERDO A SU USO</td>
                     </tr>
                     <tr>
                         <td colspan="14">
@@ -906,7 +961,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="14" class="bg-blue">14. CONCLUSIONES O RECOMENDACIONES PARA SU INTERVENCIÓN</td>
+                        <td colspan="14" class="bg-blue">15. CONCLUSIONES O RECOMENDACIONES PARA SU INTERVENCIÓN</td>
                     </tr>
                     <tr>
                         <td colspan="14">
@@ -914,7 +969,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="14" class="bg-blue">15. PLANIMETRÍA Y PLANOS DE LOS INMUEBLES</td>
+                        <td colspan="14" class="bg-blue">16. PLANIMETRÍA Y PLANOS DE LOS INMUEBLES</td>
                     </tr>
                     <tr>
                         <td colspan="7">
@@ -989,7 +1044,7 @@
                         <td colspan="14">{{ plano_y_planimetria.observaciones_planos }}</td>
                     </tr>
                     <tr>
-                        <td colspan="14" class="bg-blue">16. FUENTES REFERENCIALES Y BIBLIOGRÁFICAS</td>
+                        <td colspan="14" class="bg-blue">17. FUENTES REFERENCIALES Y BIBLIOGRÁFICAS</td>
                     </tr>
                     <tr>
                         <td colspan="14">Indicar si cuenta con antecedentes e información en Archivo Histórico y/o DOM.

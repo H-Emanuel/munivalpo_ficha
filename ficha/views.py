@@ -149,10 +149,6 @@ def crear_ficha(request):
         valor_economico_b = request.POST['valor_economico_b'] if request.POST['valor_economico_b'] != '' else '0'
 
         valor_social_a = request.POST['valor_social_a'] if request.POST['valor_social_a'] != '' else '0'
-
-       
-        zona_de_conservacion = request.POST['zona_de_conservacion']
-        identificacion_zch = request.POST['identificacion_zch']
         
         ValoracionAtributos.objects.create(id_plano = identificacioninmueble,
                                            valor_arquitecnico_a = valor_arquitecnico_a,
@@ -167,10 +163,7 @@ def crear_ficha(request):
                                            valor_economico_a = valor_economico_a,
                                            valor_economico_b = valor_economico_b,
                                            
-                                           valor_social_a = valor_social_a,
-                                       
-                                           zona_de_conservacion = zona_de_conservacion,
-                                           identificacion_zch = identificacion_zch)
+                                           valor_social_a = valor_social_a,)
 
         # Sección 7 
         piso_original_subterraneo = request.POST['piso_original_subterraneo']
@@ -187,7 +180,6 @@ def crear_ficha(request):
 
         regimen_propiedad = request.POST['regimen_propiedad'] 
         
-        afectacion_actual = request.POST['afectacion_actual'] 
 
         observaciones = request.POST['informacion_tecnica_observaciones']
         InformacionTecnica.objects.create(piso_original_subterraneo = piso_original_subterraneo,
@@ -200,11 +192,24 @@ def crear_ficha(request):
                                           tipo_propiedad = tipo_propiedad,
                                           tipo_usuario = tipo_usuario,
                                           regimen_propiedad = regimen_propiedad,
-                                          afectacion_actual = afectacion_actual,
                                           observaciones = observaciones,
                                           id_plano = identificacioninmueble)
         # Sección 8
-        print( request.POST.get('manzana'))
+        if  request.POST.get('area_de_edificacion'):
+            area_de_edificacion = True
+        else:
+            area_de_edificacion = False
+
+        if  request.POST.get('area_de_riesgo'):
+            area_de_riesgo = True
+        else:
+            area_de_riesgo = False
+        
+        CondicionNormativa.objects.create(id_plano = identificacioninmueble,
+                                          area_de_edificacion = area_de_edificacion,
+                                          area_de_riesgo = area_de_riesgo    
+                                         )
+        # Sección 9
         if  request.POST.get('manzana'):
             manzana = True
         else:
@@ -353,7 +358,6 @@ def crear_ficha(request):
                                                                 otro_texto = otro_texto_elementos_valor_significativ,
                                                                 torreon_en_esquina = torreon_en_esquina
         )
-        print("x")
         if  request.POST.get('fachada'):
             fachada   = True
         else:
@@ -444,7 +448,9 @@ def crear_ficha(request):
         except:
             fotografia_contexto_3  = ""
 
-
+        observacion_fot_valor_significativo = request.POST['observacion_fot_valor_significativo']
+        observacion_fot_expresion_fachada = request.POST['observacion_fot_expresion_fachada']
+        observacion_fot_detalles_constructivos = request.POST['observacion_fot_detalles_constructivos']
 
         terreno = request.POST['terreno']
         edificada = request.POST['edificada']
@@ -487,7 +493,10 @@ def crear_ficha(request):
                                                    materialidad_estructura = materialidad_estructura,
                                                    materialidad_cubierta = materialidad_cubierta,
                                                    materialidad_revestimientos = materialidad_revestimientos,
-                                                   descripcion_del_inmubebles = descripcion_del_inmubebles)
+                                                   descripcion_del_inmubebles = descripcion_del_inmubebles,
+                                                   observacion_fot_valor_significativo = observacion_fot_valor_significativo,
+                                                   observacion_fot_expresion_fachada = observacion_fot_expresion_fachada,
+                                                   observacion_fot_detalles_constructivos = observacion_fot_detalles_constructivos)
     # Sección 9
         inmueble = request.POST['inmueble']
         entorno = request.POST['entorno']
@@ -627,6 +636,22 @@ def crear_ficha(request):
         
         extra  = request.POST['observacion']
 
+        try:
+            plano_contexto_1  = request.FILES['plano_contexto_1']
+        except:
+            plano_contexto_1  = "" 
+        try:
+            plano_contexto_2  = request.FILES['plano_contexto_2']
+        except:
+            plano_contexto_2  = ""
+
+        observaciones_planos = request.POST['observaciones_planos']
+
+        Planoyplanimetria.objects.create( id_plano = identificacioninmueble,
+                                          plano_contexto_1 = plano_contexto_1,
+                                          plano_contexto_2 = plano_contexto_2,
+                                          observaciones_planos = observaciones_planos )
+
         observacion.objects.create(id_plano = identificacioninmueble,
                                    descripcion = extra)
         
@@ -658,7 +683,11 @@ def editar_ficha(request, id = 0):
     expresion_fachada = ExpresionDeFachada.objects.get(id_plano_id = id)
     
     continuidad_edificacion = ContinuidadDeEdificacion.objects.get(id_plano_id = id)
+
     plano_y_planimetria= Planoyplanimetria.objects.get(id_plano_id = id)
+    condicion_normativa, created = CondicionNormativa.objects.get_or_create(id_plano=identificacion_inmueble)
+
+
     extra = observacion.objects.get(id_plano_id = id)
 
     OPTIONS = {
@@ -775,9 +804,6 @@ def editar_ficha(request, id = 0):
                 
 
         valoracion_atributos.valor_social_a = request.POST.get('valor_social_a', '0')
-        
-        valoracion_atributos.zona_de_conservacion = request.POST.get('zona_de_conservacion')
-        valoracion_atributos.identificacion_zch = request.POST.get('identificacion_zch')
         valoracion_atributos.save()
 
         # Sección 7
@@ -791,11 +817,23 @@ def editar_ficha(request, id = 0):
         informacion_tecnica.tipo_propiedad = request.POST.get('tipo_propiedad')
         informacion_tecnica.tipo_usuario = request.POST.get('tipo_usuario')
         informacion_tecnica.regimen_propiedad = request.POST.get('regimen_propiedad')
-        informacion_tecnica.afectacion_actual = request.POST.get('afectacion_actual')
         informacion_tecnica.observaciones = request.POST.get('informacion_tecnica_observaciones')
         informacion_tecnica.save()
 
         # Sección 8
+        if not request.POST.get('area_de_edificacion'):
+            condicion_normativa.area_de_edificacion = False
+        elif request.POST.get('area_de_edificacion') and request.POST.get('area_de_edificacion') == '1':
+            condicion_normativa.area_de_edificacion = True
+
+        if not request.POST.get('area_de_riesgo'):
+            condicion_normativa.area_de_riesgo = False
+        elif request.POST.get('area_de_riesgo') and request.POST.get('area_de_riesgo') == '1':
+            condicion_normativa.area_de_riesgo = True
+        
+        condicion_normativa.save()
+
+        # Sección 9
 
         # Tipologia
         if not request.POST.get('manzana'):
@@ -987,6 +1025,14 @@ def editar_ficha(request, id = 0):
         if request.FILES.get('fotografia_contexto_3'):
             caracteristicas_morfologicas.fotografia_contexto_3 = request.FILES.get('fotografia_contexto_3')
 
+        caracteristicas_morfologicas.observacion_fot_valor_significativo = request.POST.get('observacion_fot_valor_significativo')
+        caracteristicas_morfologicas.observacion_fot_expresion_fachada = request.POST.get('observacion_fot_expresion_fachada')
+        caracteristicas_morfologicas.observacion_fot_detalles_constructivos = request.POST.get('observacion_fot_detalles_constructivos')
+        
+        caracteristicas_morfologicas.observacion_contexto_1 = request.POST.get('observacion_contexto_1')
+        caracteristicas_morfologicas.observacion_contexto_2 = request.POST.get('observacion_contexto_2')
+        caracteristicas_morfologicas.observacion_contexto_3 = request.POST.get('observacion_contexto_3')
+
         caracteristicas_morfologicas.terreno = request.POST.get('terreno')
         caracteristicas_morfologicas.edificada = request.POST.get('edificada')
         caracteristicas_morfologicas.protegida = request.POST.get('protegida')
@@ -1008,17 +1054,17 @@ def editar_ficha(request, id = 0):
 
         caracteristicas_morfologicas.save()
 
-        # Sección 9
+        # Sección 10
         estado_de_conservacion.inmueble = request.POST.get('inmueble')
         estado_de_conservacion.entorno = request.POST.get('entorno')
         estado_de_conservacion.save()
 
-        # Sección 10
+        # Sección 11
         grado_de_alteracion.fachada = request.POST.get('grado_de_alteracion_fachada')
         grado_de_alteracion.cubierta = request.POST.get('grado_de_alteracion_cubierta')
         grado_de_alteracion.save()
 
-        # Sección 11
+        # Sección 12
         if not request.POST.get('vivienda'):
             aptitud_de_rehabilitacion.vivienda = False
         elif request.POST.get('vivienda') and request.POST.get('vivienda') == '1':
@@ -1042,7 +1088,7 @@ def editar_ficha(request, id = 0):
         aptitud_de_rehabilitacion.otro_texto = request.POST.get('aptitud_de_rehabilitacion_otro_texto')
         aptitud_de_rehabilitacion.save()
 
-        # Sección 12
+        # Sección 13
         if not request.POST.get('imagen_urbana_relevante_por_ubicacion'):
             relacion_del_inmueble_con_el_terreno.imagen_urbana_relevante_por_ubicacion = False
         elif request.POST.get('imagen_urbana_relevante_por_ubicacion') and request.POST.get('imagen_urbana_relevante_por_ubicacion') == '1':
@@ -1062,7 +1108,7 @@ def editar_ficha(request, id = 0):
         # relacion_del_inmueble_con_el_terreno.monumentos_historicos = request.POST.get('monumentos_historicos')
         # relacion_del_inmueble_con_el_terreno.inmuebles_conservacion_historica = request.POST.get('inmuebles_conservacion_historica')
 
-        # 12.5 Monumentos históricos
+        # 13.5 Monumentos históricos
         if not request.POST.get('mon_his_predio_contiguo'):
             relacion_del_inmueble_con_el_terreno.mon_his_predio_contiguo = False
         elif request.POST.get('mon_his_predio_contiguo') and request.POST.get('mon_his_predio_contiguo') == '1':
@@ -1083,7 +1129,7 @@ def editar_ficha(request, id = 0):
         elif request.POST.get('mon_his_relacion_visual') and request.POST.get('mon_his_relacion_visual') == '1':
             relacion_del_inmueble_con_el_terreno.mon_his_relacion_visual = True
 
-        # 12.5 Inmuebles de conservación histórica
+        # 13.5 Inmuebles de conservación histórica
         if not request.POST.get('inm_con_his_predio_contiguo'):
             relacion_del_inmueble_con_el_terreno.inm_con_his_predio_contiguo = False
         elif request.POST.get('inm_con_his_predio_contiguo') and request.POST.get('inm_con_his_predio_contiguo') == '1':
@@ -1108,15 +1154,15 @@ def editar_ficha(request, id = 0):
         relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial = request.POST.get('Otros_elementos_patrimonial')
         relacion_del_inmueble_con_el_terreno.save()
 
-        # Sección 13
+        # Sección 14
         categoria_de_acuerdo_a_su_uso.observaciones = request.POST.get('categoria_acuerdo_uso')
         categoria_de_acuerdo_a_su_uso.save()
 
-        # Sección 14
+        # Sección 15
         conclusiones.conclusiones = request.POST.get('conclusiones')
         conclusiones.save()
 
-        # Sección 15
+        # Sección 16
         if request.FILES.get('plano_contexto_1'):
             plano_y_planimetria.plano_contexto_1 = request.FILES.get('plano_contexto_1')
             plano_y_planimetria.save()
@@ -1129,7 +1175,7 @@ def editar_ficha(request, id = 0):
         plano_y_planimetria.save()
 
 
-        # Sección 16
+        # Sección 17
         fuentes_referenciales_y_bibliograficas.fuentes_referenciales_y_bibliograficas = request.POST.get('fuentes_referenciales_y_bibliograficas')
         fuentes_referenciales_y_bibliograficas.save()
         
@@ -1159,6 +1205,7 @@ def editar_ficha(request, id = 0):
         'expresion_fachada': expresion_fachada,
         'plano_y_planimetria':plano_y_planimetria,
         'continuidad_edificacion': continuidad_edificacion,
+        'condicion_normativa':condicion_normativa,
        
         'OPTIONS': OPTIONS,
 
@@ -1237,7 +1284,9 @@ def exportar_pdf(request, id):
     elementos_valor_significativo = ElementosValorSignificativo.objects.get(id_plano_id = id)
     expresion_fachada = ExpresionDeFachada.objects.get(id_plano_id = id)
     continuidad_edificacion = ContinuidadDeEdificacion.objects.get(id_plano_id = id)
+    condicion_normativa, created = CondicionNormativa.objects.get_or_create(id_plano=identificacion_inmueble)
 
+    
     # Sección 6
     total_valor_urbano = valoracion_atributos.valor_urbano_a + valoracion_atributos.valor_urbano_b + valoracion_atributos.valor_urbano_c
     total_valor_arquitecnico = valoracion_atributos.valor_arquitecnico_a + valoracion_atributos.valor_arquitecnico_b + valoracion_atributos.valor_arquitecnico_c
@@ -1266,6 +1315,8 @@ def exportar_pdf(request, id):
         'conclusiones': conclusiones,
         'fuentes_referenciales_y_bibliograficas': fuentes_referenciales_y_bibliograficas,
         'plano_y_planimetria':plano_y_planimetria,
+        'condicion_normativa':condicion_normativa,
+
 
         'tipologia': tipologia,
         'tipo_cubierta': tipo_cubierta,
@@ -1462,7 +1513,7 @@ def actualizar_observacion_staff(request, id_plano):
             obs = observacion.objects.get(id_plano_id=id_plano)
             obs.aprobado = False
             obs.usuario_revisor = request.user
-            obs.estado = "OBJECTADO"
+            obs.estado = "OBJETADO"
             obs.save()
 
     return redirect('ver_fichas')

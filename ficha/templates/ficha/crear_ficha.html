@@ -100,13 +100,9 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="plan_cerro_poblacion"><b>Plan/Cerro/Población</b></label>
-                                        <select class="form-control" id="plan_cerro_poblacion" name="plan_cerro_poblacion" >
-                                            <option value="{{ identificacion_inmueble.plan_cerro_poblacion }}" selected>{{ identificacion_inmueble.plan_cerro_poblacion }}</option>
-                                            {% for plan_cerro_poblacion in OPTIONS.PLAN_CERRO_POBLACION %}
-                                                <option value="{{ plan_cerro_poblacion.0 }}">{{ plan_cerro_poblacion.1 }}</option>
-                                            {% endfor %}
-                                        </select>
+                                        <label class="form-label" for="plan_cerro_poblacion"><b>Plan/ Cerro/ Localidad</b></label>
+                                        <input type="text" class="form-control" id="plan_cerro_poblacion" name="plan_cerro_poblacion" value="{{ identificacion_inmueble.plan_cerro_poblacion }}" >
+
                                     </div>
                                 </div>
                             </div>
@@ -145,8 +141,8 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="plano_ubicacion"><b>2.- Plano Ubicación</b></label>
-                                        <input type="file" class="form-control" id="imagen_plano" name="imagen_plano" accept="image/*">
+                                        <label class="form-label" for="plano_ubicacion"><b>Plano Ubicación</b></label>
+                                        <input type="file" class="form-control" id="imagen_plano" name="imagen_plano" accept="image/*, .pdf">
                                         <br>
                                         {% if plano_ubicacion.imagen_plano %}
                                             <img src="{{ plano_ubicacion.imagen_plano.url }}" alt="imagen_plano" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_plano_ubicacion">
@@ -219,7 +215,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="imagen_fotografia"><b>3.- Fotografía de general</b></label>
+                                        <label class="form-label" for="imagen_fotografia"><b>Fotografía de general</b></label>
                                         <input type="file" class="form-control" id="imagen_fotografia" name="imagen_fotografia" accept="image/*">
                                         <br>
                                         {% if fotografia_general.imagen_fotografia %}
@@ -271,7 +267,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="registro_fotografico_1"><b>4.- Fotografía de contexto 1</b></label>
+                                        <label class="form-label" for="registro_fotografico_1"><b>Fotografía de contexto 1</b></label>
                                         <input type="file" class="form-control" id="registro_fotografico_1" name="registro_fotografico_1" accept="image/*">
                                         <br>
                                         {% if fotografia_contexto.registro_fotografico_1 %}
@@ -369,7 +365,8 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="valor_urbano"><b>5.1 Valor Urbano</b></label>
-                                        <textarea class="form-control" id="valor_urbano" name="valor_urbano" rows="3">{{ resena_patrimonial.valor_urbano }}</textarea>
+                                        <textarea class="form-control limit-characters" id="valor_urbano" name="valor_urbano" rows="3"  maxlength="1000">{{ resena_patrimonial.valor_urbano }}</textarea>
+                                        <span class="text-muted character-counter">Caracteres restantes: 1000</span>
                                     </div>
                                 </div>
                             </div>
@@ -377,7 +374,8 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="valor_arquitecnico"><b>5.2 Valor Arquitectónico</b></label>
-                                        <textarea class="form-control" id="valor_arquitecnico" name="valor_arquitecnico" rows="3">{{ resena_patrimonial.valor_arquitecnico }}</textarea>
+                                        <textarea class="form-control limit-characters" id="valor_arquitecnico" name="valor_arquitecnico" rows="3"  maxlength="1000">{{ resena_patrimonial.valor_arquitecnico }}</textarea>
+                                        <span class="text-muted character-counter">Caracteres restantes: 1000</span>
                                     </div>
                                 </div>
                             </div>
@@ -385,15 +383,17 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="valor_historico"><b>5.3 Valor Histórico</b></label>
-                                        <textarea class="form-control" id="valor_historico" name="valor_historico" rows="3">{{ resena_patrimonial.valor_historico }}</textarea>
+                                        <textarea class="form-control limit-characters" id="valor_historico" name="valor_historico" rows="3"  maxlength="1000">{{ resena_patrimonial.valor_historico }}</textarea>
+                                        <span class="text-muted character-counter">Caracteres restantes: 1000</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="valor_economico"><b>5.4 Valor Económico</b></label>
-                                        <textarea class="form-control" id="valor_economico" name="valor_economico" rows="3"></textarea>
+                                        <label class="form-label" for="valor_economico"><b>5.4 Valor Económico </b></label>
+                                        <textarea class="form-control limit-characters" id="valor_economico" name="valor_economico" rows="3" maxlength="1000">{{ resena_patrimonial.valor_economico }}</textarea>
+                                        <span class="text-muted character-counter">Caracteres restantes: 1000</span>
                                     </div>
                                 </div>
                             </div>
@@ -401,7 +401,8 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="valor_social"><b>5.5 Valor Social</b></label>
-                                        <textarea class="form-control" id="valor_social" name="valor_social" rows="3"></textarea>
+                                        <textarea class="form-control limit-characters" id="valor_social" name="valor_social" rows="3" maxlength="1000">{{ resena_patrimonial.valor_social }}</textarea>
+                                        <span class="text-muted character-counter">Caracteres restantes: 1000</span>
                                     </div>
                                 </div>
                             </div>
@@ -430,6 +431,7 @@
                                                     URBANO
                                                 </button>
                                                 </h2>
+                                                <!-- quitar el negrito a los atributos -->
                                                 <div id = "Urbano" class=" accordion-collapse collapse" aria-labelledby="Headurbano" data-bs-target="#Urbano">
                                                     <div class="accordion-body">
                                                         <div class="row">
@@ -437,73 +439,71 @@
                                                                 <div class="form-group">
                                                                 <table class="table table-bordered table-sm">
                                                                 <tr>
-                                                                    <th colspan="11">CONCEPTOS - IMAGEN (A) </th>
+                                                                    <th st colspan="11">ATRIBUTOS - IMAGEN (A) </th>
                                                                     <th colspan="1">PUNTOS </th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Se Destasca por su aporte a la estructura, paisaje urbano.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Se destaca por su aporte a la estructura o paisaje urbano.</th>
                                                                     <th class="text-center">2</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Contribuye a la estructura o paisaje urbano.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Contribuye a la estructura o paisaje urbano.</th>
                                                                     <th class="text-center">1</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">No aporta a la estructura o imagen Urbana.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">No aporta a la estructura o imagen urbana.</th>
                                                                     <th class="text-center">0</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
-                                                                    <th>
-                                                                        <input type="text" class="form-control" id="valor_urbano_a" name="valor_urbano_a" maxlength="1" oninput="this.value = this.value.replace(/[^0-2]/g, '');" value="0">
-                                                                    </th>
+                                                                    <th><input type="number" class="form-control" id="valor_urbano_a" name="valor_urbano_a" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_urbano_a }}"></th>
                                                                 </tr>
                                                                 </table>
                                                                 <table class="table table-bordered table-sm">
                                                                     <tr>
-                                                                        <th colspan="11">CONCEPTOS - CONJUNTO (B)  </th>
+                                                                        <th colspan="11">ATRIBUTOS - CONJUNTO (B)  </th>
                                                                         <th colspan="1">PUNTOS </th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Articula y es determinante en un conjunto o zona de valor patrimonial.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Articula y es determinante en un conjunto o zona de valor patrimonial.</th>
                                                                         <th class="text-center">2</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Forma parte de un conjunto o zona de valor patrimonial.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Forma parte de un conjunto o zona de valor patrimonial.</th>
                                                                         <th class="text-center">1</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">No forma parte de un conjunto o zona de valor patrimonial.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">No forma parte de un conjunto o zona de valor patrimonial.</th>
                                                                         <th class="text-center">0</th>
                                                                     </tr>
                                                                     <tr>
                                                                         <th colspan="11">Respuesta</th>
                                                                         <th>
-                                                                            <input type="number" class="form-control" id="valor_urbano_b" name="valor_urbano_b" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="0">
-                                                                        </tr>
+                                                                            <input type="number" class="form-control" id="valor_urbano_b" name="valor_urbano_b" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_urbano_b }}">                                                                        </th>
+                                                                    </tr>
                                                                     </table>
 
                                                                     <table class="table table-bordered table-sm">
                                                                         <tr>
-                                                                            <th colspan="11">CONCEPTOS - ENTORNO PATRIMONIAL (C)  </th>
+                                                                            <th colspan="11">ATRIBUTOS - ENTORNO PATRIMONIAL (C)  </th>
                                                                             <th colspan="1">PUNTOS </th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Se Destasca por valorizar al inmueble.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">Se destaca por valorizar al inmueble.</th>
                                                                             <th class="text-center">2</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">No afecta al inmueble.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">No afecta al inmueble.</th>
                                                                             <th class="text-center">1</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Desvaloriza el inmueble.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">Desvaloriza el inmueble.</th>
                                                                             <th class="text-center">0</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Respuesta</th>
+                                                                            <th stcolspan="11">Respuesta</th>
                                                                             <th>
-                                                                                <input type="number" class="form-control" id="valor_urbano_c" name="valor_urbano_c" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="0">                                                                            </th>
+                                                                                <input type="number" class="form-control" id="valor_urbano_c" name="valor_urbano_c" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_urbano_c }}">                                                                            </th>
                                                                         </tr>
                                                                         </table>
         
@@ -527,74 +527,74 @@
                                                                 <div class="form-group">
                                                                 <table class="table table-bordered table-sm">
                                                                 <tr>
-                                                                    <th colspan="11">CONCEPTOS - REPRESENTATIVIDAD (A) </th>
+                                                                    <th colspan="11">ATRIBUTOS - REPRESENTATIVIDAD (A) </th>
                                                                     <th colspan="1">PUNTOS </th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Es un referente o es plonero de un estilo o tipología arquitectónica, o es obra de un autor reconocido.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Es un referente o es pionero de un estilo o tipología arquitectónica o es obra de un autor reconocido.</th>
                                                                     <th class="text-center">2</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Es característico de un estilo o tipología.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Es característico de un estilo o tipología.</th>
                                                                     <th class="text-center">1</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">No es característica de un estilo o tipología.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">No es característico de un estilo o tipología.</th>
                                                                     <th class="text-center">0</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
                                                                     <th>
-                                                                        <input type="number" class="form-control" id="valor_arquitecnico_a" name="valor_arquitecnico_a" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="0">
+                                                                        <input type="number" class="form-control" id="valor_arquitecnico_a" name="valor_arquitecnico_a" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_arquitecnico_a }}">
                                                                     </th>
                                                                 </tr>
                                                                 </table>
                                                                 <table class="table table-bordered table-sm">
                                                                     <tr>
-                                                                        <th colspan="11">CONCEPTOS - SINGULARIDAD (B)  </th>
+                                                                        <th colspan="11">ATRIBUTOS - SINGULARIDAD (B)  </th>
                                                                         <th colspan="1">PUNTOS </th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Es un inmueble único es su estilo o tipología.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Es un inmueble único en su estilo o tipología.</th>
                                                                         <th class="text-center">2</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Es un ejemplo escaso de un estilo o tipología.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Es un ejemplo escaso en un estilo o tipología.</th>
                                                                         <th class="text-center">1</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">No es singular.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">No es singular.</th>
                                                                         <th class="text-center">0</th>
                                                                     </tr>
                                                                     <tr>
                                                                         <th colspan="11">Respuesta</th>
                                                                         <th>
-                                                                            <input type="number" class="form-control" id="valor_arquitecnico_b" name="valor_arquitecnico_b" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="0">
+                                                                            <input type="number" class="form-control" id="valor_arquitecnico_b" name="valor_arquitecnico_b" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_arquitecnico_b }}">
                                                                         </th>
                                                                     </tr>
                                                                     </table>
 
                                                                     <table class="table table-bordered table-sm">
                                                                         <tr>
-                                                                            <th colspan="11">CONCEPTOS - MORFOLOGIA (C)  </th>
+                                                                            <th colspan="11">ATRIBUTOS - MORFOLOGÍA (C)  </th>
                                                                             <th colspan="1">PUNTOS </th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Es un inmueble de gran calidad estética y arquitectónica.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">Es un inmueble de gran calidad estética y arquitectónica.</th>
                                                                             <th class="text-center">2</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Es un inmueble de calidad estética y arquitectónica.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">Es un inmueble de calidad estética y arquitectónica.</th>
                                                                             <th class="text-center">1</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">No es un inmueble de calidad estética y arquitectónica.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">No es un inmueble de calidad estética y arquitectónica.</th>
                                                                             <th class="text-center">0</th>
                                                                         </tr>
                                                                         <tr>
                                                                             <th colspan="11">Respuesta</th>
                                                                             <th>
-                                                                                <input type="number" class="form-control" id="valor_arquitecnico_c" name="valor_arquitecnico_c" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="0">
+                                                                                <input type="number" class="form-control" id="valor_arquitecnico_c" name="valor_arquitecnico_c" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_arquitecnico_c }}">
                                                                             </th>
                                                                         </tr>
                                                                         </table>
@@ -619,77 +619,75 @@
                                                                 <div class="form-group">
                                                                 <table class="table table-bordered table-sm">
                                                                 <tr>
-                                                                    <th colspan="11">CONCEPTOS - REVELANCIA (A) </th>
+                                                                    <th colspan="11">ATRIBUTOS - RELEVANCIA (A) </th>
                                                                     <th colspan="1">PUNTOS </th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Vinculado a un acontecimiento histórico relevante de la historia nacional.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Vinculado a un acontecimiento histórico relevante de la historia nacional.</th>
                                                                     <th class="text-center">2</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Vinculado a un acontecimiento de la historia local</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Vinculado a un acontecimiento de la historia local.</th>
                                                                     <th class="text-center">1</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">No está vinculado a hechos históricos.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">No está vinculado a hechos históricos.</th>
                                                                     <th class="text-center">0</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
-                                                                    <th><input type="number" class="form-control" id="valor_historico_a" name="valor_historico_a" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="0"></th>
+                                                                    <th><input type="number" class="form-control" id="valor_historico_a" name="valor_historico_a" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_historico_a }}"></th>
                                                                 </tr>
                                                                 </table>
                                                                 <table class="table table-bordered table-sm">
                                                                     <tr>
-                                                                        <th colspan="11">CONCEPTOS - PROTECCION LEGAL (B) </th>
+                                                                        <th colspan="11">ATRIBUTOS - PROTECCIÓN LEGAL (B) </th>
                                                                         <th colspan="1">PUNTOS </th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Se encuentra inserto en una zona típica.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Se encuentra inserto en una zona típica.</th>
                                                                         <th class="text-center">2</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Se encuentra inserto en una zona con conservación histórica.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Se encuentra inserto en una zona con conservación histórica.</th>
                                                                         <th class="text-center">1</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">No se localiza en una zona patrimonial con protección oficial.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">No se localiza en una zona patrimonial con protección oficial.</th>
                                                                         <th class="text-center">0</th>
                                                                     </tr>
                                                                     <tr>
                                                                         <th colspan="11">Respuesta</th>
                                                                         <th>
-                                                                            <input type="number" class="form-control" id="valor_historico_b" name="valor_historico_b" min="0" max="2"  oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="0">                                                                  
-                                                                        </tr>
+                                                                            <input type="number" class="form-control" id="valor_historico_b" name="valor_historico_b" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_historico_b }}">                                                                  </tr>
                                                                         </th>    
                                                                         </table>
 
                                                                     <table class="table table-bordered table-sm">
                                                                         <tr>
-                                                                            <th colspan="11">CONCEPTOS - REGISTRADO POR ESPECIALISTA (C)  </th>
+                                                                            <th colspan="11">ATRIBUTOS - REGISTRADO POR ESPECIALISTA (C)  </th>
                                                                             <th colspan="1">PUNTOS </th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Inmueble que por la calidad relevante de su tipología y/o sistema constructivo, está publicado
-                                                                                (libros, revista, entre otros), o puede contribuira genera estudio o investigaciones.
+                                                                            <th colspan="11" style="font-weight: normal;">Inmueble que por la calidad relevante de su tipología y/o sistema constructivo, está publicado
+                                                                                (libros, revista, entre otros) o puede contribuir a generar estudios o investigaciones.
                                                                             </th>
                                                                             <th class="text-center">2</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Inmueble que al presentar alguna característica formal significativa, puede contribuira generar
+                                                                            <th colspan="11" style="font-weight: normal;">Inmueble que al presentar alguna característica formal significativa, puede contribuir a generar
                                                                                 estudios o investigaciones.
                                                                             </th>
                                                                             <th class="text-center">1</th>
                                                                         </tr>
                                                                         <tr>
-                                                                            <th colspan="11">Conjunto que no presenta interes alguno para su estudio.</th>
+                                                                            <th colspan="11" style="font-weight: normal;">Conjunto que no presenta interés alguno para su estudio.</th>
                                                                             <th class="text-center">0</th>
                                                                         </tr>
                                                                         <tr>
                                                                             <th colspan="11">Respuesta</th>
                                                                             <th>
-                                                                                <input type="number" class="form-control" id="valor_historico_c" name="valor_historico_c" min="0" max="2"  oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="0">                                                                        
-                                                                            </tr>
+                                                                                <input type="number" class="form-control" id="valor_historico_c" name="valor_historico_c" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_historico_c }}">                                                                        </tr>
                                                                         </table>
         
                                                                 </div>
@@ -712,51 +710,51 @@
                                                                 <div class="form-group">
                                                                 <table class="table table-bordered table-sm">
                                                                 <tr>
-                                                                    <th colspan="11">CONCEPTOS - IMPACTO DEL INMUEBLE EN EL ENTORNO (A)</th>
+                                                                    <th colspan="11">ATRIBUTOS - IMPACTO DEL INMUEBLE EN EL ENTORNO (A)</th>
                                                                     <th colspan="1">PUNTOS </th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Inmuebel que independiente de su estado de conservación, genera un alto impacto positivo en su entorno inmediato, el 
+                                                                    <th colspan="11" style="font-weight: normal;">Inmueble que independiente de su estado de conservación, genera un alto impacto positivo en su entorno inmediato, el 
                                                                         cual puede propiciar acciones para su recuperación o revitalización.
                                                                     </th>
                                                                     <th class="text-center">2</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Inmueble que independiente de su estado de conservación, genera un impacto positivo en su entorno inmediato.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Inmueble que independiente de su estado de conservación, genera un impacto positivo en su entorno inmediato.</th>
                                                                     <th class="text-center">1</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">No genera impacto positivo en su entorno.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">No genera impacto positivo en su entorno.</th>
                                                                     <th class="text-center">0</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
-                                                                    <th><input type="number" class="form-control" id="valor_economico_a" name="valor_economico_a" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="0"></th>
+                                                                    <th><input type="number" class="form-control" id="valor_economico_a" name="valor_economico_a" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_economico_a }}"></th>
                                                                 </tr>
                                                                 </table>
                                                                 <table class="table table-bordered table-sm">
                                                                     <tr>
-                                                                        <th colspan="11">CONCEPTOS - ESTADO DE CONSERVACION DEL ENTORNO (B)</th>
+                                                                        <th colspan="11">ATRIBUTOS - ESTADO DE CONSERVACIÓN DEL ENTORNO (B)</th>
                                                                         <th colspan="1">PUNTOS </th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Las construcciones que se encuentra en su entorno inmediato estan en buen estado de conservación, y pueden contribuir a 
+                                                                        <th colspan="11" style="font-weight: normal;">Las construcciones que se encuentran en su entorno inmediato están en buen estado de conservación y pueden contribuir a 
                                                                         potenciar el valor patrimonial del Inmueble.
                                                                         </th>
                                                                         <th class="text-center">2</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Las construcciones que se encuentran en su entorno inmediato, independiente de su estado de convervación, son susceptibles a procesos de recuperacíon rentable.
+                                                                        <th colspan="11" style="font-weight: normal;">Las construcciones que se encuentran en su entorno inmediato, independiente de su estado de convervación, son susceptibles a procesos de recuperación rentable.
                                                                         </th>
                                                                         <th class="text-center">1</th>
                                                                     </tr>
                                                                     <tr>
-                                                                        <th colspan="11">Las contrucciones que se encuentran en su entorno inmediato, presentan un gran deterioro y su recuperacíon no es rentable.</th>
+                                                                        <th colspan="11" style="font-weight: normal;">Las contrucciones que se encuentran en su entorno inmediato, presentan un gran deterioro y su recuperación no es rentable.</th>
                                                                         <th class="text-center">0</th>
                                                                     </tr>
                                                                     <tr>
                                                                         <th colspan="11">Respuesta</th>
-                                                                        <th><input type="number" class="form-control" id="valor_economico_b" name="valor_economico_b" min="0" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="0"></tr>
+                                                                        <th><input type="number" class="form-control" id="valor_economico_b" name="valor_economico_b" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_economico_b }}"></tr>
                                                                     
                                                                     </table>
                                                                 </div>
@@ -779,25 +777,25 @@
                                                                 <div class="form-group">
                                                                 <table class="table table-bordered table-sm">
                                                                 <tr>
-                                                                    <th colspan="11">CONCEPTOS - PERCEPCION DE LA COMUNIDAD (A) </th>
+                                                                    <th colspan="11">ATRIBUTOS - PERCEPCIÓN DE LA COMUNIDAD (A) </th>
                                                                     <th colspan="1">PUNTOS </th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Es identificado y valorado como patrimonio importante.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Es identificado y valorado como patrimonio importante.</th>
                                                                     <th class="text-center">2</th>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th colspan="11">Es mencionado como patrimonio.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">Es mencionado como patrimonio.</th>
                                                                     <th class="text-center">1</th>
                                                                 </tr>   
                                                                 <tr>
-                                                                    <th colspan="11">No es mencionado.</th>
+                                                                    <th colspan="11" style="font-weight: normal;">No es mencionado.</th>
                                                                     <th class="text-center">0</th>
                                                                 </tr>
                                                                 <tr>
                                                                     <th colspan="11">Respuesta</th>
                                                                     <th>
-                                                                        <input type="number" class="form-control" id="valor_social_a" name="valor_social_a" min="0" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="0">                                                                    </th>
+                                                                        <input type="number" class="form-control" id="valor_social_a" name="valor_social_a" min="0" max="2" oninput="this.value = this.value.replace(/[^0-2]/g, '').substring(0, 1);" value="{{ valoracion_atributos.valor_social_a }}">                                                                    </th>
                                                                 </tr>
                                                                 </table>
                                                           
@@ -814,7 +812,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+
+                                <!-- <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label class="form-label" for="zona_conservacion"><b>Inserto en Zona de Conservación Histórica (LGUC) o Zona Típica (Ley 17.288)</b></label>
@@ -829,10 +828,11 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label class="form-label" for="valor_urbano"><b>Identificación ZCH o ZT</b></label>
-                                            <input type="text" class="form-control" id="identificacion_zch" name="identificacion_zch" value="0">
+                                            <input type="text" class="form-control" id="identificacion_zch" name="identificacion_zch" value="{{ valoracion_atributos.identificacion_zch }}">
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
+                                
                           </div>
                         </div>
                     </div>
@@ -841,7 +841,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-5">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-5" aria-expanded="false" aria-controls="collapse-5">
-                                7.- Información técnicas
+                                7.- Información técnica
                           </button>
                         </h2>
                         <div id="collapse-5" class="accordion-collapse collapse " aria-labelledby="heading-5" data-bs-parent="#accordionExample">
@@ -959,7 +959,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label class="form-label" for="regimen_propiedad"><b>7.5 Regimen de Propiedad</b></label>
+                                            <label class="form-label" for="regimen_propiedad"><b>7.5 Régimen de Propiedad</b></label>
                                             <select class="form-control" id="regimen_propiedad" name="regimen_propiedad" >
                                                 <option value="{{ informacion_tecnica.regimen_propiedad }}" selected>{{ informacion_tecnica.regimen_propiedad }}</option>
                                                 {% for tipo_regimen in OPTIONS.REGIMEN_PROPIEDAD %}
@@ -971,7 +971,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                
+                                <!-- <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label class="form-label" for="afectacion_actual"><b>7.6 Afectación Actual</b></label>
@@ -983,12 +984,15 @@
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
+
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <label class="form-label" for="informacion_tecnica_observaciones"><b>7.7 Observaciones</b></label>
-                                            <textarea class="form-control" id="informacion_tecnica_observaciones" name="informacion_tecnica_observaciones" rows="3"></textarea>
+                                            <label class="form-label" for="informacion_tecnica_observaciones"><b>7.6 Observaciones</b></label>
+                                            <textarea class="form-control limit-characters" id="informacion_tecnica_observaciones" name="informacion_tecnica_observaciones" rows="3" maxlength="500">{{ informacion_tecnica.observaciones }}</textarea>
+                                            <span class="text-muted character-counter">Caracteres restantes: 500</span>
+
                                         </div>
                                     </div>
                                 </div>
@@ -996,11 +1000,52 @@
                         </div>
                     </div>
 
-                    <!-- 8.- Caracteristicas morfológicas -->
+                    
+                    <!-- 8.- Condición normativa vigente según PRC -->
+                     <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-80">
+                            <button  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-80" aria-expanded="false" aria-controls="collapse-80">
+                                8.- Condición normativa vigente según PRC
+                            </button>
+                        </h2>
+                        <div id="collapse-80" class="accordion-collapse collapse" aria-labelledby="heading-80" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+
+                            <div class="row bg-light">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>Área no edificable:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="area_de_edificacion" name="area_de_edificacion" value="1" {% if condicion_normativa.area_de_edificacion %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Área de riesgo:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="area_de_riesgo" name="area_de_riesgo" value="1" {% if condicion_normativa.area_de_riesgo %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <!-- 9.- Caracteristicas morfológicas -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-6">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-6" aria-expanded="false" aria-controls="collapse-6">
-                                8.- Caracteristicas morfológicas
+                                9.- Características morfológicas
                           </button>
                         </h2>
                         <div id="collapse-6" class="accordion-collapse collapse" aria-labelledby="heading-6" data-bs-parent="#accordionExample">
@@ -1008,7 +1053,7 @@
                             <div class="row bg-light">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="tipologia"><b>8.1 Tipología (Emplazamiento en manzana)</b></label>
+                                        <label class="form-label" for="tipologia"><b>9.1 Tipología (Emplazamiento en manzana)</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
                                                 <td>Manzana:</td>
@@ -1073,7 +1118,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="sistema_agrupamiento"><b>8.2 Sistema de Agrupamiento</b></label>
+                                        <label class="form-label" for="sistema_agrupamiento"><b>9.2 Sistema de Agrupamiento</b></label>
                                         <select class="form-control" id="sistema_agrupamiento" name="sistema_agrupamiento" >
                                             <option value="{{ caracteristicas_morfologicas.sistema_agrupamiento }}" selected>{{ caracteristicas_morfologicas.sistema_agrupamiento }}</option>
                                             {% for sistema_agrupamiento in OPTIONS.SISTEMA_AGRUPAMIENTO %}
@@ -1086,7 +1131,7 @@
                             <div class="row bg-light">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="tipo_cubierta"><b>8.3 Tipo de Cubierta</b></label>
+                                        <label class="form-label" for="tipo_cubierta"><b>9.3 Tipo de Cubierta</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
                                                 <td>Horizontal:</td>
@@ -1123,7 +1168,10 @@
                                             <tr>
                                                 <td>Otro Texto:</td>
                                                 <td>
-                                                    <input type="text" class="form-control" id="tipo_cubierta_otro_texto" name="tipo_cubierta_otro_texto" value="{{ tipo_cubierta.otro_texto }}">
+                                                    <input type="text" class="form-control limit-characters" id="tipo_cubierta_otro_texto" name="tipo_cubierta_otro_texto" maxlength="200" value="{{ tipo_cubierta.otro_texto }}">
+                                                    <span class="text-muted character-counter">Caracteres restantes: 200</span>
+
+
                                                 </td>
                                             </tr>
                                         </table>
@@ -1133,7 +1181,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="volumetria"><b>8.4 Volumetría</b></label>
+                                        <label class="form-label" for="volumetria"><b>9.4 Volumetría</b></label>
                                         <select class="form-control" id="volumetria" name="volumetria">
                                             <option value="{{ caracteristicas_morfologicas.volumetria }}" selected>{{ caracteristicas_morfologicas.volumetria }}</option>
                                             {% for volumetria in OPTIONS.VOLUMETRIA %}
@@ -1146,7 +1194,7 @@
                             <div class="row bg-light">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="elementos_valor_significativo"><b>8.5 Elementos de Valor Significativo</b></label>
+                                        <label class="form-label" for="elementos_valor_significativo"><b>9.5 Elementos de Valor Significativo</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
                                                 <td>Cornisamientos:</td>
@@ -1199,7 +1247,9 @@
                                             <tr>
                                                 <td>Otro Texto:</td>
                                                 <td>
-                                                    <input type="text" class="form-control" id="elementos_valor_significativo_otro_texto" name="elementos_valor_significativo_otro_texto" value="{{ elementos_valor_significativo.otro_texto }}">
+                                                    <input type="text" class="form-control limit-characters" id="elementos_valor_significativo_otro_texto" name="elementos_valor_significativo_otro_texto" maxlength="200" value="{{ elementos_valor_significativo.otro_texto }}">
+                                                    <span class="text-muted character-counter">Caracteres restantes: 200</span>
+
                                                 </td>
                                             </tr>
                                         </table>
@@ -1209,10 +1259,10 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="expresion_fachada"><b>8.6 Expresión de Fachada</b></label>
+                                        <label class="form-label" for="expresion_fachada"><b>9.6 Expresión de Fachada</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
-                                                <td>Lenguaje de vanos comun:</td>
+                                                <td>Lenguaje de vanos común:</td>
                                                 <td>
                                                     <div class="form-check d-flex justify-content-center">
                                                         <input type="checkbox" class="form-check-input" id="lenguaje_de_vanos_comun" name="lenguaje_de_vanos_comun" value="1" {% if expresion_fachada.lenguaje_de_vanos_comun %}checked{% endif %}>
@@ -1254,7 +1304,9 @@
                                             <tr>
                                                 <td>Otro Texto:</td>
                                                 <td>
-                                                    <input type="text" class="form-control" id="expresion_fachada_otro_texto" name="expresion_fachada_otro_texto" value="{{ expresion_fachada.otro_texto }}">
+                                                    <input type="text" class="form-control limit-characters" id="expresion_fachada_otro_texto" name="expresion_fachada_otro_texto" maxlength="200" value="{{ expresion_fachada.otro_texto }}">
+                                                    <span class="text-muted character-counter">Caracteres restantes: 200</span>
+
                                                 </td>
                                             </tr>
                                         </table>
@@ -1264,7 +1316,7 @@
                             <div class="row bg-light">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="continuidad_edificacion"><b>8.7 Continuidad de Edificación</b></label>
+                                        <label class="form-label" for="continuidad_edificacion"><b>9.7 Continuidad de Edificación</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
                                                 <td>Fachada:</td>
@@ -1325,7 +1377,9 @@
                                             <tr>
                                                 <td>Otro Texto:</td>
                                                 <td>
-                                                    <input type="text" class="form-control" id="continuidad_edificacion_otro_texto" name="continuidad_edificacion_otro_texto" value="{{ continuidad_edificacion.otro_texto }}">
+                                                    <input type="text" class="form-control limit-characters" id="continuidad_edificacion_otro_texto" name="continuidad_edificacion_otro_texto" maxlength="200" value="{{ continuidad_edificacion.otro_texto }}">
+                                                    <span class="text-muted character-counter">Caracteres restantes: 200</span>
+
                                                 </td>
                                             </tr>
                                         </table>
@@ -1336,7 +1390,9 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="caracteristicas_morfologicas_observaciones"><b>Observaciones</b></label>
-                                        <textarea class="form-control" id="caracteristicas_morfologicas_observaciones" name="caracteristicas_morfologicas_observaciones" rows="3">{{ caracteristicas_morfologicas.observaciones }}</textarea>
+                                        <textarea class="form-control limit-characters" id="caracteristicas_morfologicas_observaciones" name="caracteristicas_morfologicas_observaciones" rows="3" maxlength="500">{{ caracteristicas_morfologicas.observaciones }}</textarea>
+                                        <span class="text-muted character-counter">Caracteres restantes: 500</span>
+
                                     </div>
                                 </div>
                             </div>
@@ -1374,10 +1430,23 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="observacion_fot_valor_significativo"><b>Observaciones Fotográfico Valor Significativo</b></label>
+                                                    <input class="form-control limit-characters" id="observacion_fot_valor_significativo" name="observacion_fot_valor_significativo" rows="3"  maxlength="30"></input>
+                                                    <span class="text-muted character-counter">Caracteres restantes: 30</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <!-- Modal Registro Fotográfico Valor Significativo -->
                                     </div>
                                 </div>
                             </div>
+
+                            <br><br>
+
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -1412,10 +1481,23 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="observacion_fot_expresion_fachada"><b>Observaciones Expresión Fachada</b></label>
+                                                    <input class="form-control limit-characters" id="observacion_fot_expresion_fachada" name="observacion_fot_expresion_fachada" rows="3"  maxlength="30" value="{{ caracteristicas_morfologicas.observacion_fot_expresion_fachada }}"></input>
+                                                    <span class="text-muted character-counter">Caracteres restantes: 30</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <!-- Modal Registro Fotográfico Expresión Fachada -->
                                     </div>
                                 </div>
                             </div>
+
+                            <br><br>
+
                             <div class="row bg-light">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -1432,7 +1514,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Registro Fotográfico Detalles constructivos</h5>
+                                                        <h5 class="modal-title">Registro Fotográfico Detalles constructivos 1</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -1450,15 +1532,28 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="observacion_fot_detalles_constructivos"><b>Observaciones Detalles constructivos</b></label>
+                                                    <input class="form-control limit-characters" id="observacion_fot_detalles_constructivos" name="observacion_fot_detalles_constructivos" rows="3"  maxlength="30" value="{{ caracteristicas_morfologicas.observacion_fot_detalles_constructivos }}"></input>
+                                                    <span class="text-muted character-counter">Caracteres restantes: 30</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <!-- Modal Registro Fotográfico Detalles constructivos -->
                                     </div>
                                 </div>
                             </div>
-                            
+
+                            <br><br>
+
                             <div class="row bg-light">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="fotografia_contexto_1"><b>Registro Fotográfico Contexto 1</b></label>
+                                        <label class="form-label" for="fotografia_contexto_1"><b>Registro Fotográfico Detalles constructivos 2</b></label>
                                         <input type="file" class="form-control" id="fotografia_contexto_1" name="fotografia_contexto_1" accept="image/*">
                                         <br>
                                         {% if caracteristicas_morfologicas.fotografia_contexto_1 %}
@@ -1471,7 +1566,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Registro Fotográfico Contexto 1</h5>
+                                                        <h5 class="modal-title">Registro Fotográfico Detalles constructivos 3</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -1489,7 +1584,21 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Modal Registro Fotográfico Detalles constructivos -->
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="observacion_contexto_1"><b>Observaciones foto 1</b></label>
+                                                    <input class="form-control limit-characters" id="observacion_contexto_1" name="observacion_contexto_1" maxlength="30" value="{{ caracteristicas_morfologicas.observacion_contexto_1 }}"></input>
+                                                    <span class="text-muted character-counter">Caracteres restantes: 30</span>
+            
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <br>
+                                        <br>
+
                                     </div>
                                 </div>
                             </div>
@@ -1498,7 +1607,7 @@
                             <div class="row bg-light">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="fotografia_contexto_2"><b>Registro Fotográfico Contexto 2</b></label>
+                                        <label class="form-label" for="fotografia_contexto_2"><b>Registro Fotográfico Detalles constructivos 4</b></label>
                                         <input type="file" class="form-control" id="fotografia_contexto_2" name="fotografia_contexto_2" accept="image/*">
                                         <br>
                                         {% if caracteristicas_morfologicas.fotografia_contexto_2 %}
@@ -1506,7 +1615,7 @@
                                         {% else %}
                                             <img src="https://via.placeholder.com/150" alt="fotografia_contexto_2" class="img-fluid">
                                         {% endif %}
-                                        <!-- Modal Registro Fotográfico Contexto 2 -->
+                                        <!-- Modal Registro Fotográfico Detalles constructivos -->
                                         <div class="modal" tabindex="-1" id="modal_fotografia_contexto_2" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
@@ -1529,10 +1638,24 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="observacion_contexto_2"><b>Observaciones foto 2</b></label>
+                                                    <input class="form-control limit-characters" id="observacion_contexto_2" name="observacion_contexto_2" maxlength="30" value="{{ caracteristicas_morfologicas.observacion_contexto_2 }}"></input>
+                                                    <span class="text-muted character-counter">Caracteres restantes: 30</span>
+            
+                                                </div>
+                                            </div>
+                                        </div>
                                         <!-- Modal Registro Fotográfico Detalles constructivos -->
                                     </div>
                                 </div>
                             </div>
+
+                            <br>
+                            <br>
 
                             <div class="row bg-light">
                                 <div class="col-12">
@@ -1545,7 +1668,7 @@
                                         {% else %}
                                             <img src="https://via.placeholder.com/150" alt="fotografia_contexto_3" class="img-fluid">
                                         {% endif %}
-                                        <!-- Modal Registro Fotográfico Contexto 3 -->
+                                        <!-- Modal Registro Fotográfico Detalles constructivos -->
                                         <div class="modal" tabindex="-1" id="fotografia_contexto_3" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
@@ -1568,15 +1691,30 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="observacion_contexto_3"><b>Observaciones foto 3</b></label>
+                                                    <input class="form-control limit-characters" id="observacion_contexto_3" name="observacion_contexto_3" rows="3"  maxlength="30" value="{{ caracteristicas_morfologicas.observacion_contexto_3 }}"></input>
+                                                    <span class="text-muted character-counter">Caracteres restantes: 30</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                      
+
                                         <!-- Modal Registro Fotográfico Detalles constructivos -->
                                     </div>
                                 </div>
                             </div>
+
+                            <br>
                             
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="continuidad_edificacion"><b>8.9 Superficies y Dimensiones</b></label>
+                                        <label class="form-label" for="continuidad_edificacion"><b>9.9 Superficies y Dimensiones</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
                                                 <td>Terreno</td>
@@ -1633,7 +1771,7 @@
                             <div class="row bg-light">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="materialidad"><b>8.10 Materialidad</b></label>
+                                        <label class="form-label" for="materialidad"><b>9.10 Materialidad</b></label>
                                         <table class="table table-bordered table-sm">
                                             <tr>
                                                 <td>Estructura</td>
@@ -1686,20 +1824,23 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="descripcion_del_inmubebles"><b>8.11 descripcion del inmubebles</b></label>
-                                        <textarea class="form-control" id="descripcion_del_inmubebles" name="descripcion_del_inmubebles" rows="3">{{ caracteristicas_morfologicas.descripcion_del_inmubebles}}</textarea>
+                                        <label class="form-label" for="descripcion_del_inmubebles"><b>9.11 Descripción del Inmueble</b></label>
+                                        <textarea class="form-control limit-characters" id="descripcion_del_inmubebles" name="descripcion_del_inmubebles" rows="3" maxlength="500">{{ caracteristicas_morfologicas.descripcion_del_inmubebles}}</textarea>
+                                        <span class="text-muted character-counter">Caracteres restantes: 500</span>
+
                                     </div>
                                 </div>
                             </div>
                           </div>
                         </div>
                     </div>
+                    
 
-                    <!-- 9.- Estado de conservación -->
+                    <!-- 10.- Estado de conservación -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-7">
                           <button  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-7" aria-expanded="false" aria-controls="collapse-7">
-                                9.- Estado de conservación
+                                10.- Estado de conservación
                           </button>
                         </h2>
                         <div id="collapse-7" class="accordion-collapse collapse" aria-labelledby="heading-7" data-bs-parent="#accordionExample">
@@ -1734,11 +1875,11 @@
                         </div>
                     </div>
 
-                    <!-- 10.- Grado de alteración -->
+                    <!-- 11.- Grado de alteración -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-8">
                           <button  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-8" aria-expanded="false" aria-controls="collapse-8">
-                                10.- Grado de alteración
+                                11.- Grado de alteración
                           </button>
                         </h2>
                         <div id="collapse-8" class="accordion-collapse collapse" aria-labelledby="heading-8" data-bs-parent="#accordionExample">
@@ -1773,11 +1914,11 @@
                         </div>
                     </div>
 
-                    <!-- 11.- Aptitud de rehabilitación -->
+                    <!-- 12.- Aptitud de rehabilitación -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-9">
                           <button  class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-9" aria-expanded="false" aria-controls="collapse-9">
-                                11.- Aptitud de rehabilitación
+                                12.- Aptitud de rehabilitación
                           </button>
                         </h2>
                         <div id="collapse-9" class="accordion-collapse collapse" aria-labelledby="heading-9" data-bs-parent="#accordionExample">
@@ -1822,7 +1963,8 @@
                                             <tr>
                                                 <td>Otro Texto:</td>
                                                 <td>
-                                                    <input type="text" class="form-control" id="aptitud_de_rehabilitacion_otro_texto" name="aptitud_de_rehabilitacion_otro_texto" value="{{ aptitud_de_rehabilitacion.otro_texto }}">
+                                                    <input type="text" class="form-control limit-characters" id="aptitud_de_rehabilitacion_otro_texto" name="aptitud_de_rehabilitacion_otro_texto" maxlength="200" value="{{ aptitud_de_rehabilitacion.otro_texto }}">
+                                                    <span class="text-muted character-counter">Caracteres restantes: 200</span>
                                                 </td>
                                             </tr>
                                         </table>
@@ -1833,11 +1975,11 @@
                         </div>
                     </div>
 
-                    <!-- 12.- Relación del inmueble con el entorno -->
+                    <!-- 13.- Relación del inmueble con el entorno -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-10">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-10" aria-expanded="false" aria-controls="collapse-10">
-                                12.- Relación del inmueble con el entorno
+                                13.- Relación del inmueble con el entorno
                           </button>
                         </h2>
                         <div id="collapse-10" class="accordion-collapse collapse" aria-labelledby="heading-10" data-bs-parent="#accordionExample">
@@ -1845,7 +1987,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="grado_de_alteracion_cubierta"><b>12.1 Imagen Urbana Relevante</b></label>
+                                        <label class="form-label" for="grado_de_alteracion_cubierta"><b>13.1 Imagen Urbana Relevante</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
                                                 <td>Por ubicación:</td>
@@ -1856,7 +1998,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Por Singularidad:</td>
+                                                <td>Por singularidad:</td>
                                                 <td>
                                                     <div class="form-check d-flex justify-content-center">
                                                         <input type="checkbox" class="form-check-input" id="imagen_urbana_relevante_por_singularidad" name="imagen_urbana_relevante_por_singularidad" value="1" {% if relacion_del_inmueble_con_el_terreno.imagen_urbana_relevante_por_singularidad %}checked{% endif %}>
@@ -1870,10 +2012,10 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="grado_de_alteracion_cubierta"><b>12.2 Forma Parte de un Conjunto</b></label>
+                                        <label class="form-label" for="grado_de_alteracion_cubierta"><b>13.2 Forma parte de un Conjunto</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
-                                                <td>Forma Parte de un Conjunto:</td>
+                                                <td>Forma parte de un Conjunto:</td>
                                                 <td>
                                                     <div class="form-check d-flex justify-content-center">
                                                         <input type="checkbox" class="form-check-input" id="forma_parte_de_un_conjunto" name="forma_parte_de_un_conjunto" value="1" {% if relacion_del_inmueble_con_el_terreno.forma_parte_de_un_conjunto %}checked{% endif %}>
@@ -1887,7 +2029,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="espacio_publico"><b>12.3 Espacio Público</b></label>
+                                        <label class="form-label" for="espacio_publico"><b>13.3 Espacio Público</b></label>
                                         <select class="form-control" id="espacio_publico" name="espacio_publico" >
                                             <option value="{{ relacion_del_inmueble_con_el_terreno.espacio_publico }}" selected>{{ relacion_del_inmueble_con_el_terreno.espacio_publico }}</option>
                                             {% for espacio_publico in OPTIONS.ESPACIO_PUBLICO %}
@@ -1900,7 +2042,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="Otros_elementos_patrimonial"><b>12.4 Otros elementos de valor patrimonial</b></label>
+                                        <label class="form-label" for="Otros_elementos_patrimonial"><b>13.4 Otros elementos de Valor Patrimonial</b></label>
                                         <select class="form-control" id="Otros_elementos_patrimonial" name="Otros_elementos_patrimonial" >
                                             <option value="{{ relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial }}" selected>{{ relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial }}</option>
                                             {% for Otros_elementos_patrimonial in OPTIONS.PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL %}
@@ -1913,7 +2055,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label"><b>12.5 Monumentos Históricos</b></label>
+                                        <label class="form-label"><b>A. 13.5 Monumentos Históricos</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
                                                 <td>Predio contiguo:</td>
@@ -1954,7 +2096,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label"><b>12.5 Inmuebles de Conservación Histórica</b></label>
+                                        <label class="form-label"><b>B. 13.5 Inmuebles de Conservación Histórica</b></label>
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
                                                 <td>Predio contiguo:</td>
@@ -1996,8 +2138,10 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="espacio_publico_observaciones"><b>12.6 Observaciones Contexto Urbano / Condiciones Geográficas</b></label>
-                                        <textarea class="form-control" id="espacio_publico_observaciones" name="espacio_publico_observaciones" rows="3">{{ relacion_del_inmueble_con_el_terreno.observaciones }}</textarea>
+                                        <label class="form-label" for="espacio_publico_observaciones"><b>13.6 Observaciones de Contexto Urbano / Condiciones Geográficas</b></label>
+                                        <textarea class="form-control limit-characters" id="espacio_publico_observaciones" name="espacio_publico_observaciones" rows="3"  maxlength="1000">{{ relacion_del_inmueble_con_el_terreno.observaciones }}</textarea>
+                                        <span class="text-muted character-counter">Caracteres restantes: 1000</span>
+
                                     </div>
                                 </div>
                             </div>
@@ -2009,7 +2153,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-11">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-11" aria-expanded="false" aria-controls="collapse-11">
-                                13.- Categoría de acuerdo a su uso
+                                14.- Categoría de acuerdo a su uso
                           </button>
                         </h2>
                         <div id="collapse-11" class="accordion-collapse collapse" aria-labelledby="heading-11" data-bs-parent="#accordionExample">
@@ -2019,23 +2163,24 @@
                                     <div class="form-group">
                                         <label class="form-label" for="categoria_acuerdo_uso"><b>Categoría de acuerdo de uso</b></label>
                                         <select class="form-control" id="categoria_acuerdo_uso" name="categoria_acuerdo_uso">
-                                            <option value="1">CONJUNTOS DE INMUEBLES/ VIVIENDAS UNIFAMILIARES</option>
-                                            <option value="2">COPROPIEDADES / VIVIENDAS PLURIFAMILIARES</option>
-                                            <option value="3">EDIFICACIONES DE EDUCACIÓN</option>
-                                            <option value="4">IGLESIAS / CONJUNTOS RELIGIOSOS</option>
-                                            <option value="5">INDUSTRIAS Y BODEGAS</option>
-                                            <option value="6">POBLACIONES DE VIVIENDAS/ VIVIENDAS UNIFAMILIARES</option>
-                                            <option value="7">VILLAS, PALACIOS Y CASONAS / VIVIENDAS UNIFAMILIARES</option>
-                                            <option value="8">VIVIENDAS COLECTIVAS / VIVIENDAS PLURIFAMILIARES</option>
-                                            <option value="9">TEATROS / EDIFICIOS EMBLEMÁTICOS</option>
-                                            <option value="10">ANTIGUOS HOTELES /RESTAURANTES /CAFES</option>
-                                            <option value="11">EDIFICACIONES DE SALUD</option>
-                                            <option value="12">EDIFICIOS DE SERVICIOS PUBLICOS</option>
-                                            <option value="13">GRANDES EMPRESAS Y OFICINAS</option>
-                                            <option value="14">INSTALACIONES  DEPORTIVAS</option>
-                                            <option value="15">INSTALACIONES MILITARES Y DE DEFENSA</option>
-                                            <option value="16">LUGARES DE VALOR SOCIAL / SIMBOLICO O HISTORICO</option>
-                                            <option value="17">MERCADOS</option>
+                                            <option value="{{ categoria_de_acuerdo_a_su_uso.observaciones }}" selected>{{ categoria_de_acuerdo_a_su_uso.observaciones }}</option>
+                                            <option value="CONJUNTOS DE INMUEBLES/ VIVIENDAS UNIFAMILIARES">CONJUNTOS DE INMUEBLES/ VIVIENDAS UNIFAMILIARES</option>
+                                            <option value="COPROPIEDADES/ VIVIENDAS PLURIFAMILIARES">COPROPIEDADES/ VIVIENDAS PLURIFAMILIARES</option>
+                                            <option value="EDIFICACIONES DE EDUCACIÓN">EDIFICACIONES DE EDUCACIÓN</option>
+                                            <option value="IGLESIAS/ CONJUNTOS RELIGIOSOS">IGLESIAS/ CONJUNTOS RELIGIOSOS</option>
+                                            <option value="INDUSTRIAS Y BODEGAS">INDUSTRIAS Y BODEGAS</option>
+                                            <option value="POBLACIONES DE VIVIENDAS/ VIVIENDAS UNIFAMILIARES">POBLACIONES DE VIVIENDAS/ VIVIENDAS UNIFAMILIARES</option>
+                                            <option value="VILLAS, PALACIOS Y CASONAS/ VIVIENDAS UNIFAMILIARES">VILLAS, PALACIOS Y CASONAS/ VIVIENDAS UNIFAMILIARES</option>
+                                            <option value="VIVIENDAS COLECTIVAS/ VIVIENDAS PLURIFAMILIARES">VIVIENDAS COLECTIVAS/ VIVIENDAS PLURIFAMILIARES</option>
+                                            <option value="TEATROS/ EDIFICIOS EMBLEMÁTICOS">TEATROS/ EDIFICIOS EMBLEMÁTICOS</option>
+                                            <option value="ANTIGUOS HOTELES/ RESTAURANTES/ CAFÉS">ANTIGUOS HOTELES/ RESTAURANTES /CAFÉS</option>
+                                            <option value="EDIFICACIONES DE SALUD">EDIFICACIONES DE SALUD</option>
+                                            <option value="EDIFICIOS DE SERVICIOS PÚBLICOS">EDIFICIOS DE SERVICIOS PÚBLICOS</option>
+                                            <option value="GRANDES EMPRESAS Y OFICINAS">GRANDES EMPRESAS Y OFICINAS</option>
+                                            <option value="INSTALACIONES DEPORTIVAS">INSTALACIONES DEPORTIVAS</option>
+                                            <option value="INSTALACIONES MILITARES Y DE DEFENSA">INSTALACIONES MILITARES Y DE DEFENSA</option>
+                                            <option value="LUGARES DE VALOR SOCIAL/ SIMBÓLICO O HISTÓRICO">LUGARES DE VALOR SOCIAL/ SIMBÓLICO O HISTÓRICO</option>
+                                            <option value="MERCADOS">MERCADOS</option>
                                         </select>
                                     </div>
                                 </div>
@@ -2044,11 +2189,11 @@
                         </div>
                     </div>
 
-                    <!-- 14.- Conclusiones o remendaciones para su intervencion -->
+                    <!-- 15.- Conclusiones o remendaciones para su intervencion -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-12">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-12" aria-expanded="false" aria-controls="collapse-12">
-                                14.- Conclusiones o remendaciones para su intervención
+                                15.- Conclusiones o Recomendaciones para su intervención
                           </button>
                         </h2>
                         <div id="collapse-12" class="accordion-collapse collapse" aria-labelledby="heading-12" data-bs-parent="#accordionExample">
@@ -2056,20 +2201,120 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="conclusiones"><b>Conclusiones o remendaciones para su intervención</b></label>
-                                        <textarea class="form-control" id="conclusiones" name="conclusiones" rows="3">{{ conclusiones.conclusiones }}</textarea>
+                                        <label class="form-label" for="conclusiones"><b>Conclusiones o Recomendaciones para su intervención</b></label>
+                                        <textarea class="form-control limit-characters" id="conclusiones" name="conclusiones" rows="3" maxlength="1000">{{ conclusiones.conclusiones }}</textarea>
+                                        <span class="text-muted character-counter">Caracteres restantes: 1000</span>
+
                                     </div>
                                 </div>
                             </div>
                           </div>
                         </div>
                     </div>
+                    <!-- 16.- Fuentes referenciales y bibliográficas -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading-20">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-20" aria-expanded="false" aria-controls="collapse-20">
+                              16.- Planimetría y planos de los inmuebles
+                          </button>
+                        </h2>
+                        <div id="collapse-20" class="accordion-collapse collapse" aria-labelledby="heading-20" data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="plano_contexto_1"><b>Planimetría</b></label>
+                                        <input type="file" class="form-control" id="plano_contexto_1" name="plano_contexto_1" accept="image/*">
+                                        <br>
+                                        {% if plano_y_planimetria.plano_contexto_1 %}
+                                            <img src="{{ plano_y_planimetria.plano_contexto_1.url }}" alt="plano_contexto_1" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_registro_fotografico_2">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="plano_contexto_1" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                        <div class="modal" tabindex="-1" id="modal_plano_contexto_1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Planimetría</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if plano_y_planimetria.plano_contexto_1 %}
+                                                                <img src="{{ plano_y_planimetria.plano_contexto_1.url }}" alt="plano_contexto_1" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="plano_contexto_1" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="plano_contexto_2"><b>Plano del inmueble </b></label>
+                                        <input type="file" class="form-control" id="plano_contexto_2" name="plano_contexto_2" accept="image/*">
+                                        <br>
+                                        {% if plano_y_planimetria.plano_contexto_2 %}
+                                            <img src="{{ plano_y_planimetria.plano_contexto_2.url }}" alt="plano_contexto_2" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_registro_fotografico_2">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="plano_contexto_2" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                        <div class="modal" tabindex="-1" id="plano_contexto_2" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Plano del inmueble</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if fotografia_contexto.registro_fotografico_2 %}
+                                                                <img src="{{ plano_y_planimetria.registro_fotografico_2.url }}" alt="plano_contexto_2" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="plano_contexto_2" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="observaciones_planos"><b>Indicar si hay consideraciones importantes u observaciones generales.</b></label>
+                                        <textarea class="form-control limit-characters" id="observaciones_planos" name="observaciones_planos" rows="3" maxlength="500">{{ plano_y_planimetria.observaciones_planos }}</textarea>
+                                        <span class="text-muted character-counter">Caracteres restantes: 500</span>
 
-                    <!-- 15.- Fuentes referenciales y bibliográficas -->
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <!-- 17.- Fuentes referenciales y bibliográficas -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-13">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-13" aria-expanded="false" aria-controls="collapse-13">
-                                15.- Fuentes referenciales y bibliográficas
+                                17.- Fuentes referenciales y bibliográficas
                           </button>
                         </h2>
                         <div id="collapse-13" class="accordion-collapse collapse" aria-labelledby="heading-13" data-bs-parent="#accordionExample">
@@ -2078,14 +2323,14 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="fuentes_referenciales_y_bibliograficas"><b>Indicar si cuenta con antecedentes e información en Archivo Histórico y/o DOM</b></label>
-                                        <textarea class="form-control" id="fuentes_referenciales_y_bibliograficas" name="fuentes_referenciales_y_bibliograficas" rows="3">{{ fuentes_referenciales_y_bibliograficas.fuentes_referenciales_y_bibliograficas }}</textarea>
+                                        <textarea class="form-control" id="fuentes_referenciales_y_bibliograficas" name="fuentes_referenciales_y_bibliograficas" rows="3" >{{ fuentes_referenciales_y_bibliograficas.fuentes_referenciales_y_bibliograficas }}</textarea>
+
                                     </div>
                                 </div>
                             </div>
                           </div>
                         </div>
                     </div>
-
                     <!-- Extra.- Observaciones -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-19">
@@ -2099,13 +2344,15 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label class="form-label" for="observacion"><b>Indicar si hay consideraciones importantes u observaciones generales (no es necesario completar esta sección). </b></label>
-                                        <textarea class="form-control" id="observacion" name="observacion" rows="3">{{ observacion.observacion }}</textarea>
+                                        <textarea class="form-control limit-characters" id="observacion" name="observacion" rows="3" maxlength="500">{{ observacion.descripcion }}</textarea>
+                                        <span class="text-muted character-counter">Caracteres restantes: 500</span>
                                     </div>
                                 </div>
                             </div>
                           </div>
                         </div>
                     </div>
+
                     <div class="row m-3">
                         <div class="col-12">
                             <button hr class="btn btn-primary" type="submit">Crear ficha nueva</button>
@@ -2194,5 +2441,28 @@ function Verificar_rol(){
     })
 };
 </script>
-
+<script>
+    var textareas = document.querySelectorAll('.limit-characters');
+    
+    textareas.forEach(function(textarea) {
+        var contador = textarea.nextElementSibling;
+    
+        function actualizarContador() {
+            var caracteresActuales = textarea.value.length;
+            var caracteresMaximos = textarea.getAttribute('maxlength');
+            var caracteresRestantes = caracteresMaximos - caracteresActuales;
+            contador.textContent = 'Caracteres restantes: ' + caracteresRestantes;
+    
+            if (caracteresRestantes < 0) {
+                contador.style.color = 'red';
+            } else {
+                contador.style.color = 'black';
+            }
+        }
+    
+        textarea.addEventListener('input', actualizarContador);
+    
+        actualizarContador(); // Actualiza el contador al cargar la página con datos previos
+    });
+</script>  
 {% endblock custom_js %}

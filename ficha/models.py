@@ -148,8 +148,9 @@ class ValoracionAtributos(models.Model):
     valor_social_a = models.PositiveSmallIntegerField(default=0, blank=True)
     
     valor_resumen  = models.PositiveSmallIntegerField(default=0, blank=True)
-    zona_de_conservacion = models.CharField(max_length=255, blank=True, default='')
-    identificacion_zch = models.CharField(max_length=100, blank=True, default='')
+
+    
+
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -227,7 +228,6 @@ class InformacionTecnica(models.Model):
 
     regimen_propiedad = models.CharField(max_length=50, choices=REGIMEN_PROPIEDAD, default='INDIVIDUAL', blank=True)
 
-    afectacion_actual = models.CharField(max_length=50, choices=AFECTACION_ACTUAL, default='DECLARACION DE UTILIDAD PUBLICA', blank=True)
 
     observaciones = models.TextField(blank=True, default='')
 
@@ -240,6 +240,22 @@ class InformacionTecnica(models.Model):
         verbose_name_plural = "informaciones_tecnicas"
 
 # Sección 8
+
+class CondicionNormativa(models.Model):
+   
+    area_de_edificacion = models.BooleanField(default=False)
+    area_de_riesgo = models.BooleanField(default=False)
+
+
+    id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "informacion_tecnica"
+        verbose_name_plural = "informaciones_tecnicas"
+
+# Sección 9
 SISTEMA_AGRUPAMIENTO = [
     ('AISLADO', 'Aislado'),
     ('PAREADO', 'Pareado'),
@@ -399,19 +415,28 @@ class CaracteristicasMorfologicas(models.Model):
     sistema_agrupamiento = models.CharField(max_length=50, choices=SISTEMA_AGRUPAMIENTO, default='AISLADO', blank=True)
     tipo_cubierta = models.ForeignKey(TipoCubierta, on_delete=models.CASCADE)
     volumetria = models.CharField(max_length=50, choices=VOLUMETRIA, default='SIMPLE', blank=True)
+
     elementos_valor_significativo = models.ForeignKey(ElementosValorSignificativo, on_delete=models.CASCADE)
     expresion_de_fachada = models.ForeignKey(ExpresionDeFachada, on_delete=models.CASCADE)
     continuidad_de_edificacion = models.ForeignKey(ContinuidadDeEdificacion, on_delete=models.CASCADE)
+    
     observaciones = models.TextField(blank=True, default='')
 
     fotografia_valor_significativo = models.ImageField(upload_to=content_file_name_significativo, blank=True, null=True)
     fotografia_expresion_fachada = models.ImageField(upload_to=content_file_name_fachada, blank=True, null=True)
     fotografia_detalles_constructivos = models.ImageField(upload_to=content_file_name_constructivos, blank=True, null=True)
 
+    observacion_fot_valor_significativo = models.CharField(max_length=30,  default='', blank=True)
+    observacion_fot_expresion_fachada = models.CharField(max_length=30,  default='', blank=True)
+    observacion_fot_detalles_constructivos = models.CharField(max_length=30,  default='', blank=True)
+    
     fotografia_contexto_1 = models.ImageField(upload_to=content_file_name_contexto_1, blank=True, null=True)
     fotografia_contexto_2 = models.ImageField(upload_to=content_file_name_contexto_2, blank=True, null=True)
     fotografia_contexto_3 = models.ImageField(upload_to=content_file_name_contexto_3, blank=True, null=True)
 
+    observacion_contexto_1 = models.CharField(max_length=30,  default='', blank=True)
+    observacion_contexto_2 = models.CharField(max_length=30,  default='', blank=True)
+    observacion_contexto_3 = models.CharField(max_length=30,  default='', blank=True)
 
     terreno = models.FloatField(default=0, blank=True)
     edificada = models.FloatField(default=0, blank=True)
@@ -435,7 +460,7 @@ class CaracteristicasMorfologicas(models.Model):
         verbose_name = "caracteristica_morfologica"
         verbose_name_plural = "caracteristicas_morfologicas"
 
-# Sección 9
+# Sección 10
 ESTADO_CONSERVACION = [
     ('BUENO', 'Bueno'),
     ('REGULAR', 'Regular'),
@@ -454,7 +479,7 @@ class EstadoDeConservacion(models.Model):
         verbose_name = "estado_de_conservacion"
         verbose_name_plural = "estados_de_conservacion"
     
-# Sección 10
+# Sección 11
 GRADO_ALTERACION = [
     ('SIN MODIFICACIÓN', 'Sin modificación'),
     ('POCO MODIFICADO', 'Poco modificado'),
@@ -473,7 +498,7 @@ class GradoDeAlteracion(models.Model):
         verbose_name = "grado_de_alteracion"
         verbose_name_plural = "grados_de_alteracion"
 
-# Sección 11
+# Sección 12
 class AptitudDeRehabilitacion(models.Model):
     vivienda = models.BooleanField(default=False)
     equipamiento = models.BooleanField(default=False)
@@ -489,7 +514,7 @@ class AptitudDeRehabilitacion(models.Model):
         verbose_name = "aptitud_de_rehabilitacion"
         verbose_name_plural = "aptitudes_de_rehabilitacion"
 
-# Sección 12
+# Sección 13
 ESPACIO_PUBLICO = [
     ('COLINDA', 'Colinda'),
     ('ENFRENTA', 'Enfrenta'),
@@ -541,7 +566,7 @@ class RelacionDelInmuebleConElTerreno(models.Model):
         verbose_name = "relacion_del_inmueble_con_el_terreno"
         verbose_name_plural = "relaciones_de_inmueble_con_el_terreno"
 
-# Sección 13
+# Sección 14
 class CategoriaDeAcuerdoASuUso(models.Model):
     observaciones = models.TextField(blank=True, default='')
 
@@ -553,7 +578,7 @@ class CategoriaDeAcuerdoASuUso(models.Model):
         verbose_name = "categoria_de_acuerdo_a_su_uso"
         verbose_name_plural = "categorias_de_acuerdo_a_su_uso"
 
-# Sección 14
+# Sección 15
 class Conclusiones(models.Model):
     conclusiones = models.TextField(blank=True, default='')
 
@@ -565,7 +590,7 @@ class Conclusiones(models.Model):
         verbose_name = "conclusiones"
         verbose_name_plural = "conclusiones"
 
-# Sección 15
+# Sección 16
 def content_file_name_plano_1(instance, filename):
     ext = filename.split('.')[-1]
     filename = "%s.%s" % ('plano_1', ext)
@@ -592,7 +617,7 @@ class Planoyplanimetria(models.Model):
         verbose_name_plural = "Planos_y_Planimetrias"
 
 
-# Sección 16
+# Sección 17
 class FuentesReferencialesYBibliograficas(models.Model):
     fuentes_referenciales_y_bibliograficas = models.TextField(blank=True, default='')
 
@@ -608,7 +633,7 @@ class FuentesReferencialesYBibliograficas(models.Model):
 class observacion(models.Model):
     aprobado = models.BooleanField(blank=True, default=False)
     aprobado_revisor = models.BooleanField(blank=True, default=False)
-    estado = models.CharField(max_length=25, blank=True, default='pediente')
+    estado = models.CharField(max_length=25, blank=True, default='Pendiente')
 
     descripcion = models.TextField(blank=True ,default="")
 
@@ -646,3 +671,4 @@ auditlog.register(CategoriaDeAcuerdoASuUso)
 auditlog.register(Conclusiones)
 auditlog.register(FuentesReferencialesYBibliograficas)
 auditlog.register(observacion)
+auditlog.register(CondicionNormativa)
