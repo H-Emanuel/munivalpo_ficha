@@ -1023,7 +1023,7 @@
                                     <div class="form-group">
                                         <table class="table table-bordered table-hover table-sm">
                                             <tr>
-                                                <td>Área no edificable:</td>
+                                                <td>8.1  Área no edificable :</td>
                                                 <td>
                                                     <div class="form-check d-flex justify-content-center">
                                                         <input type="checkbox" class="form-check-input" id="area_de_edificacion" name="area_de_edificacion" value="1" {% if condicion_normativa.area_de_edificacion %}checked{% endif %}>
@@ -1031,7 +1031,7 @@
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td>Área de riesgo:</td>
+                                                <td>8.2  Área de riesgo:</td>
                                                 <td>
                                                     <div class="form-check d-flex justify-content-center">
                                                         <input type="checkbox" class="form-check-input" id="area_de_riesgo" name="area_de_riesgo" value="1" {% if condicion_normativa.area_de_riesgo %}checked{% endif %}>
@@ -1042,6 +1042,113 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="declaracion_de_utilidad"><b>8.3 Declaracion de utilidad</b></label>
+                                        <select class="form-control" id="declaracion_de_utilidad" name="declaracion_de_utilidad" >
+                                            <option value="{{ condicion_normativa.declaracion_de_utilidad }}" selected>{{ condicion_normativa.declaracion_de_utilidad }}</option>
+                                            {% for normativa in OPTIONS.DECLARACION_DE_UTILIDAD %}
+                                                <option value="{{ normativa.0 }}">{{ normativa.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="row bg-light">
+                                <div class="col-12">
+                                    <div class="form-group">
+
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>8.4 Permiso edificación:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="permiso_edificacion" name="permiso_edificacion" value="1" {% if condicion_normativa.permiso_edificacion %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>N°:</td>
+                                                <td>
+                                                    <input type="text" class="form-control limit-characters" id="numero_permiso_edificacion" name="numero_permiso_edificacion" maxlength="50" value="{{ condicion_normativa.numero_permiso_edificacion }}">
+                                                    <span class="text-muted character-counter">Caracteres restantes: 50</span>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>8.5 recepcion definitiva:</td>
+                                                <td>
+                                                    <div class="form-check d-flex justify-content-center">
+                                                        <input type="checkbox" class="form-check-input" id="recepcion_definitiva" name="recepcion_definitiva" value="1" {% if condicion_normativa.recepcion_definitiva %}checked{% endif %}>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>N°:</td>
+                                                <td>
+                                                    <input type="text" class="form-control limit-characters" id="numero_recepcion_definitiva" name="numero_recepcion_definitiva" maxlength="50" value="{{ condicion_normativa.numero_recepcion_definitiva }}">
+                                                    <span class="text-muted character-counter">Caracteres restantes: 50</span>
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="grado_de_alteracion_cubierta"></label>
+
+                                        <table class="table table-bordered table-hover table-sm">
+                                            <tr>
+                                                <td>8.6 Zona PRC :</td>
+                                                <td>
+                                                    <input type="text" class="form-control limit-characters" id="zona_prc" name="zona_prc" maxlength="50" value="{{ condicion_normativa.zona_prc }}">
+                                                    <span class="text-muted character-counter">Caracteres restantes: 50</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>8.7 Año Construcción:</td>
+                                                <td>
+                                                    <input type="text" class="form-control limit-characters" id="years_contracion" name="years_contracion" maxlength="50" value="{{ condicion_normativa.years_contracion }}">
+                                                    <span class="text-muted character-counter">Caracteres restantes: 50</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>8.8 Antejardín (m2):</td>
+                                                <td>
+                                                    <input type="text" class="form-control limit-characters" id="antejardin" name="antejardin" maxlength="50" value="{{ condicion_normativa.antejardin }}">
+                                                    <span class="text-muted character-counter">Caracteres restantes: 50</span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="tipo_de_cuidad"><b>8.9 Tipo de cuidad(N° Hab./ según ddu N° 227 - ART .1.3)</b></label>
+                                        <select class="form-control" id="tipo_de_cuidad" name="tipo_de_cuidad" >
+                                            <option value="{{ condicion_normativa.tipo_de_cuidad }}" selected>{{ condicion_normativa.tipo_de_cuidad }}</option>
+                                            {% for cuidad in OPTIONS.TIPO_DE_CUIDAD %}
+                                                <option value="{{ cuidad.0 }}">{{ cuidad.1 }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
 
                             </div>
                         </div>
@@ -1889,8 +1996,10 @@
                                 11.- Grado de alteración
                           </button>
                         </h2>
+
                         <div id="collapse-8" class="accordion-collapse collapse" aria-labelledby="heading-8" data-bs-parent="#accordionExample">
                           <div class="accordion-body">
+                            
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -1904,6 +2013,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -2156,7 +2266,7 @@
                         </div>
                     </div>
 
-                    <!-- 13.- Categoría de acuerdo a su uso -->
+                    <!-- 14.- Categoría de acuerdo a su uso -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="heading-11">
                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-11" aria-expanded="false" aria-controls="collapse-11">
@@ -2227,10 +2337,11 @@
                         </h2>
                         <div id="collapse-20" class="accordion-collapse collapse" aria-labelledby="heading-20" data-bs-parent="#accordionExample">
                           <div class="accordion-body">
-                            <div class="row">
+
+                            <div class="row bg-light">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="plano_contexto_1"><b>Planimetría</b></label>
+                                        <label class="form-label" for="plano_contexto_1"><b>Planimetría 1</b></label>
                                         <input type="file" class="form-control" id="plano_contexto_1" name="plano_contexto_1" accept="image/*">
                                         <br>
                                         {% if plano_y_planimetria.plano_contexto_1 %}
@@ -2239,19 +2350,20 @@
                                             <img src="https://via.placeholder.com/150" alt="plano_contexto_1" class="img-fluid">
                                         {% endif %}
                                         <!-- Modal Fotografía Contexto 2 -->
-                                        <div class="modal" tabindex="-1" id="modal_plano_contexto_1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        
+                                        <div class="modal" tabindex="-1" id="modal_plano_ubicacion" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Planimetría</h5>
+                                                        <h5 class="modal-title">Planimetría 1</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <p>
                                                             {% if plano_y_planimetria.plano_contexto_1 %}
-                                                                <img src="{{ plano_y_planimetria.plano_contexto_1.url }}" alt="plano_contexto_1" class="img-fluid">
+                                                                <img src="{{ plano_y_planimetria.plano_contexto_1.url }}" alt="plano_ubicacion" class="img-fluid">
                                                             {% else %}
-                                                                <img src="https://via.placeholder.com/150" alt="plano_contexto_1" class="img-fluid">
+                                                                <img src="https://via.placeholder.com/150" alt="plano_ubicacion" class="img-fluid">
                                                             {% endif %}
                                                         </p>
                                                     </div>
@@ -2265,10 +2377,23 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="plano_contexto_2"><b>Plano del inmueble </b></label>
+                                        <label class="form-label" for="observacion_fot_expresion_fachada"><b>Observaciones Expresión Fachada</b></label>
+                                        <input class="form-control limit-characters" id="observaciones_contexto_1" name="observaciones_contexto_1" rows="3"  maxlength="30" value="{{ plano_y_planimetria.observaciones_contexto_1 }}"></input>
+                                        <span class="text-muted character-counter">Caracteres restantes: 30</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+                            
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="plano_contexto_2"><b>Planimetría 2 </b></label>
                                         <input type="file" class="form-control" id="plano_contexto_2" name="plano_contexto_2" accept="image/*">
                                         <br>
                                         {% if plano_y_planimetria.plano_contexto_2 %}
@@ -2281,7 +2406,7 @@
                                             <div class="modal-dialog modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Plano del inmueble</h5>
+                                                        <h5 class="modal-title">Planimetría 2</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
@@ -2303,17 +2428,121 @@
                                     </div>
                                 </div>
                             </div>
-                            <br>
+
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label class="form-label" for="observaciones_planos"><b>Indicar si hay consideraciones importantes u observaciones generales.</b></label>
-                                        <textarea class="form-control limit-characters" id="observaciones_planos" name="observaciones_planos" rows="3" maxlength="500">{{ plano_y_planimetria.observaciones_planos }}</textarea>
-                                        <span class="text-muted character-counter">Caracteres restantes: 500</span>
-
+                                        <label class="form-label" for="observaciones_contexto_2"><b>Observaciones Expresión Fachada</b></label>
+                                        <input class="form-control limit-characters" id="observaciones_contexto_2" name="observaciones_contexto_2" rows="3"  maxlength="30" value="{{ plano_y_planimetria.observaciones_contexto_2 }}"></input>
+                                        <span class="text-muted character-counter">Caracteres restantes: 30</span>
                                     </div>
                                 </div>
                             </div>
+                                
+                            <br>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="plano_contexto_3"><b>Plano del inmueble 1</b></label>
+                                        <input type="file" class="form-control" id="plano_contexto_3" name="plano_contexto_3" accept="image/*">
+                                        <br>
+                                        {% if plano_y_planimetria.plano_contexto_3 %}
+                                            <img src="{{ plano_y_planimetria.plano_contexto_3.url }}" alt="plano_contexto_3" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_registro_fotografico_2">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="plano_contexto_3" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                                                                <div class="modal" tabindex="-1" id="modal_plano_ubicacion" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                        <div class="modal" tabindex="-1" id="modal_plano_contexto_3" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Plano del inmueble 1</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if plano_y_planimetria.plano_contexto_3 %}
+                                                                <img src="{{ plano_y_planimetria.plano_contexto_3.url }}" alt="plano_contexto_3" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="plano_contexto_3" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="observaciones_contexto_3"><b>Observaciones Expresión Fachada</b></label>
+                                        <input class="form-control limit-characters" id="observaciones_contexto_3" name="observaciones_contexto_3" rows="3"  maxlength="30" value="{{ plano_y_planimetria.observaciones_contexto_3 }}"></input>
+                                        <span class="text-muted character-counter">Caracteres restantes: 30</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <br>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="plano_contexto_4"><b>Plano del inmueble 2</b></label>
+                                        <input type="file" class="form-control" id="plano_contexto_4" name="plano_contexto_4" accept="image/*">
+                                        <br>
+                                        {% if plano_y_planimetria.plano_contexto_4 %}
+                                            <img src="{{ plano_y_planimetria.plano_contexto_4.url }}" alt="plano_contexto_4" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_registro_fotografico_2">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="plano_contexto_4" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                        <div class="modal" tabindex="-1" id="modal_plano_contexto_4" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Plano del inmueble 2</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if fotografia_contexto.plano_contexto_4 %}
+                                                                <img src="{{ plano_y_planimetria.plano_contexto_4.url }}" alt="plano_contexto_4" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="plano_contexto_4" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Fotografía Contexto 2 -->
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="observaciones_contexto_4"><b>Observaciones Expresión Fachada</b></label>
+                                        <input class="form-control limit-characters" id="observaciones_contexto_4" name="observaciones_contexto_4" rows="3"  maxlength="30" value="{{ plano_y_planimetria.observaciones_contexto_4 }}"></input>
+                                        <span class="text-muted character-counter">Caracteres restantes: 30</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
                           </div>
                         </div>
                     </div>

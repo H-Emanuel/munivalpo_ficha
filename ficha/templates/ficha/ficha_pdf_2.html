@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <style>
             table , td, th {
-                border: 1px solid #595959;
+                border: 1px solid #000000;
                 border-collapse: collapse;
                 line-height: 1;
                 vertical-align: middle;
@@ -217,31 +217,31 @@
                         <td colspan="9"><b>5.1 VALOR URBANO</b></td>
                     </tr>
                     <tr>
-                        <td colspan="9">{{ resena_patrimonial.valor_urbano }}</td>
+                        <td colspan="9">{{ resena_patrimonial.valor_urbano }} <br><br> </td>
                     </tr>
                     <tr>
                         <td colspan="9"><b>5.2 VALOR ARQUITECTÓNICO</b></td>
                     </tr>
                     <tr>
-                        <td colspan="9">{{ resena_patrimonial.valor_arquitecnico }}</td>
+                        <td colspan="9">{{ resena_patrimonial.valor_arquitecnico }} <br><br> </td>
                     </tr>
                     <tr>
                         <td colspan="9"><b>5.3 VALOR HISTÓRICO</b></td>
                     </tr>
                     <tr>
-                        <td colspan="9">{{ resena_patrimonial.valor_historico }}</td>
+                        <td colspan="9">{{ resena_patrimonial.valor_historico }} <br><br> </td>
                     </tr>
                     <tr>
                         <td colspan="9"><b>5.4 VALOR ECONÓMICO</b></td>
                     </tr>
                     <tr>
-                        <td colspan="9">{{ resena_patrimonial.valor_economico }}</td>
+                        <td colspan="9">{{ resena_patrimonial.valor_economico }} <br><br> </td>
                     </tr>
                     <tr>
                         <td colspan="9"><b>5.5 VALOR SOCIAL</b></td>
                     </tr>
                     <tr>
-                        <td colspan="9">{{ resena_patrimonial.valor_social }}</td>
+                        <td colspan="9">{{ resena_patrimonial.valor_social }} <br><br> </td>
                     </tr>
                 </tbody>
             </table>
@@ -316,8 +316,7 @@
             </table>
         </section>
 
-        </br>
-
+        <br>
        <!--  <p class="separator">&nbsp;<p> -->
 
         <!-- Sección 7 -->
@@ -419,15 +418,99 @@
             <table>
                 <tbody>
                     <tr>
-                        <td colspan="6" class="bg-blue">8. RESUMEN VALORACIÓN DE ATRIBUTOS</td>
-                        <!-- <td colspan="4" class="bg-blue">INSERTO EN ZONA DE CONSERVACIÓN HISTÓRICA (LGUC) o ZONA TÍPICA (LEY 17.288)</td> -->
+                        <td colspan="13" class="bg-blue">8. CONDICIÓN NORMATIVA VIGENTE SEGÚN PLAN REGULADOR</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Área no edificable</td>
+                        <td rowspan="2" colspan="5">8.1 
+                            <br>
+                            <br>
+                            ÁREA NO EDIFICABLE</td>
+                        <td>Si
+
+                        </td>
                         <td style="width: 30px;">{% if condicion_normativa.area_de_edificacion %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="2">Área de riesgo</td>
+                        <td rowspan="2" colspan="4">8.2
+                            ÁREA DE RIESGO</td>
+                        <td>Si</td>
                         <td style="width: 30px;">{% if condicion_normativa.area_de_riesgo %}X{% else %}&nbsp;{% endif %}</td>
+
                     </tr>
+                <tr>
+                    <td>No </td>
+                    <td style="width: 30px;">{% if not condicion_normativa.area_de_edificacion %}X{% else %}&nbsp;{% endif %}</td>
+
+                    <td>No</td>
+                    <td style="width: 30px;">{% if not condicion_normativa.area_de_riesgo %}X{% else %}&nbsp;{% endif %}</td>
+                </tr>
+
+                <tr>
+                    <td rowspan="3" colspan="3">8.3 
+                        DECLARACÍON DE UTILIDAD PÚBLICA</td>
+                    <td style="width: 90px;">CIRCULACION</td> 
+                    <td style="width: 30px;">{% if condicion_normativa.declaracion_de_utilidad == "CIRCULACION" %}X{% else %}&nbsp;{% endif %}</td>
+                    
+                    <td rowspan="3" colspan="2" >8.4 PERMISO EDIFICACIÓN</td>
+                    <td>Si</td>
+                    <td style="width: 30px;">{% if condicion_normativa.permiso_edificacion %}X{% else %}&nbsp;{% endif %}</td>
+
+                    <td rowspan="3" colspan="2" >8.5 RECEPCIÓN DEFINITIVA</td>
+                    <td>Si</td>
+                    <td style="width: 30px;">{% if condicion_normativa.recepcion_definitiva %}X{% else %}&nbsp;{% endif %}</td>
+                </tr>
+                <tr>
+                    <td>PLAZA  </td>
+                    <td style="width: 30px;">{% if condicion_normativa.declaracion_de_utilidad == "PLAZA" %}X{% else %}&nbsp;{% endif %}</td>
+
+                    <td>No</td>
+                    <td style="width: 30px;">{% if not condicion_normativa.permiso_edificacion %}X{% else %}&nbsp;{% endif %}</td>
+
+                    <td>No </td>
+                    <td style="width: 30px;">{% if not condicion_normativa.recepcion_definitiva %}X{% else %}&nbsp;{% endif %}</td>
+                </tr>
+                
+                <tr>
+                    <td>PARQUE </td>
+                    <td style="width: 30px;">{% if condicion_normativa.declaracion_de_utilidad == "PARQUE" %}X{% else %}&nbsp;{% endif %}</td>
+
+                    <td >N°</td>
+                    <td style="width: 80px;" > </td>
+
+
+                    <td >N°</td>
+                    <td  style="width: 80px;" > </td>
+                </tr>
+                
+                <tr>
+                    <td colspan="3">ZONA PRC </td>
+                    <td >{{ condicion_normativa.zona_prc }} </td>
+
+                    <td colspan="9">TIPO DE CUIDAD(N° HAB. / SEGÚN DDUN N° 227 - ART. 13)</td>
+
+                </tr>
+                <tr>
+                    <td colspan="3">AÑO CONSTRUCCIÓN </td>
+                    <td  >{{ condicion_normativa.years_contracion }} </td>
+
+                    <td colspan="4">PEQUEÑA</td>
+                    <td style="width: 30px;">{% if condicion_normativa.tipo_de_cuidad == "PEQUEÑA" %}X{% else %}&nbsp;{% endif %}</td>
+
+                    <td colspan="3">INTERMEDIA</td>
+                    <td style="width: 30px;">{% if condicion_normativa.tipo_de_cuidad == "INTERMEDIA" %}X{% else %}&nbsp;{% endif %}</td>
+
+                </tr>
+                <tr>
+                    <td colspan="3">ANTEJARDÍN </td>
+                    <td  >{{ condicion_normativa.antejardin }}m2 </td>
+
+                    <td colspan="4">MENORES</td>
+                    <td style="width: 30px;">{% if condicion_normativa.tipo_de_cuidad == "MENORES" %}X{% else %}&nbsp;{% endif %}</td>
+
+                    <td colspan="3">Á. METROPOLITANAS</td>
+                    <td style="width: 30px;">{% if condicion_normativa.tipo_de_cuidad == "Á. METROPOLITANAS" %}X{% else %}&nbsp;{% endif %}</td>
+
+
+                </tr>
+
                 </tbody>
             </table>
         </section>
@@ -1038,11 +1121,80 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="14"><b>OBSERVACIONES</b> </td>
+                        <td colspan="7">{{ plano_y_planimetria.observaciones_contexto_1 }}</td>
+                        <td colspan="7">{{ plano_y_planimetria.observaciones_contexto_2 }} </td>
                     </tr>
                     <tr>
-                        <td colspan="14">{{ plano_y_planimetria.observaciones_planos }}</td>
+                        <td colspan="7">
+                            {% if plano_y_planimetria.plano_contexto_3 %}
+                            <img src="{{ MEDIA_URL }}{{ plano_y_planimetria.plano_contexto_3.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            {% else %}
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           {% endif %}
+                        </td>
+                        <td colspan="7">
+                            {% if plano_y_planimetria.plano_contexto_4 %}
+                            <img src="{{ MEDIA_URL }}{{ plano_y_planimetria.plano_contexto_4.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            {% else %}
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           <br>
+                           {% endif %}
+                        </td>
                     </tr>
+                    <tr>
+                        <td colspan="7">{{ plano_y_planimetria.observaciones_contexto_3 }}</td>
+                        <td colspan="7">{{ plano_y_planimetria.observaciones_contexto_4 }}</td>
+                    </tr>
+                    
                     <tr>
                         <td colspan="14" class="bg-blue">17. FUENTES REFERENCIALES Y BIBLIOGRÁFICAS</td>
                     </tr>

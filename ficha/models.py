@@ -209,7 +209,8 @@ REGIMEN_PROPIEDAD = [
 ]
 
 AFECTACION_ACTUAL = [
-    ('DECLARACION DE UTILIDAD PUBLICA', 'Declaración de Utilidad Pública'),
+    ('DECLARACION DE UTILIDAD PUBLICA', 
+     'Declaración de Utilidad Pública'),
     ('ANTEJARDÍN', 'Antejardín'),
 ]
 
@@ -241,13 +242,41 @@ class InformacionTecnica(models.Model):
 
 # Sección 8
 
+DECLARACION_DE_UTILIDAD = [
+    ('CIRCULACIÓN', 'CIRCULACIÓN'),
+    ('PLAZA', 'PLAZA'),
+    ('PARQUE', 'PARQUE'),
+]
+TIPO_DE_CUIDAD = [
+    ('PEQUEÑA', 'PEQUEÑA'),
+    ('MENORES', 'MENORES'),
+    ('INTERMEDIA', 'INTERMEDIA'),
+    ('Á. METROPOLITANAS', 'Á. METROPOLITANAS'),
+]
+
+
 class CondicionNormativa(models.Model):
    
     area_de_edificacion = models.BooleanField(default=False)
     area_de_riesgo = models.BooleanField(default=False)
 
+    permiso_edificacion = models.BooleanField(default=False)
+    recepcion_definitiva = models.BooleanField(default=False)
+
+    numero_permiso_edificacion = models.CharField(max_length=255, blank=True, default='')
+
+    numero_recepcion_definitiva = models.CharField(max_length=255, blank=True,default='')
+
+    declaracion_de_utilidad = models.CharField(max_length=50, choices=DECLARACION_DE_UTILIDAD, default='CIRCULACIÓN', blank=True)
+    
+    tipo_de_cuidad = models.CharField(max_length=50, choices=TIPO_DE_CUIDAD, default='PEQUEÑA', blank=True)
+
+    zona_prc = models.CharField(max_length=50, default='', blank=True)
+    years_contracion = models.CharField(max_length=50,  default='', blank=True)
+    antejardin = models.CharField(max_length=50, default='', blank=True)
 
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -603,11 +632,31 @@ def content_file_name_plano_2(instance, filename):
     folder = "assets_ficha/" + str(instance.id_plano.id_plano)
     return os.path.join(folder, filename)
 
+def content_file_name_plano_3(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % ('plano_3', ext)
+    folder = "assets_ficha/" + str(instance.id_plano.id_plano)
+    return os.path.join(folder, filename)
+
+def content_file_name_plano_4(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % ('plano_4', ext)
+    folder = "assets_ficha/" + str(instance.id_plano.id_plano)
+    return os.path.join(folder, filename)
+
 class Planoyplanimetria(models.Model):    
     plano_contexto_1 = models.ImageField(upload_to=content_file_name_plano_1, blank=True, null=True)
     plano_contexto_2 = models.ImageField(upload_to=content_file_name_plano_2, blank=True, null=True)
+    plano_contexto_3 = models.ImageField(upload_to=content_file_name_plano_3, blank=True, null=True)
+    plano_contexto_4 = models.ImageField(upload_to=content_file_name_plano_4, blank=True, null=True)
 
-    observaciones_planos = models.TextField(blank=True,default='')
+
+    observaciones_contexto_1 = models.TextField(blank=True,default='')
+    observaciones_contexto_2 = models.TextField(blank=True,default='')
+    observaciones_contexto_3 = models.TextField(blank=True,default='')
+    observaciones_contexto_4 = models.TextField(blank=True,default='')
+
+
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True,null=True)
     updated = models.DateTimeField(auto_now=True,null=True)

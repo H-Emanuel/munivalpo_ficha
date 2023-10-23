@@ -52,6 +52,9 @@ def crear_ficha(request):
         'INMUEBLES_PATRIMONIALES': INMUEBLES_PATRIMONIALES,
         'PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL': PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL,
         'MATERIALIDAD_REVESTIMIENTO': MATERIALIDAD_REVESTIMIENTO,
+        'DECLARACION_DE_UTILIDAD':DECLARACION_DE_UTILIDAD,
+        'TIPO_DE_CUIDAD':TIPO_DE_CUIDAD,
+
     }
     data = {'OPTIONS': OPTIONS,
             'id_plano':last_id}
@@ -714,6 +717,8 @@ def editar_ficha(request, id = 0):
         'INMUEBLES_PATRIMONIALES': INMUEBLES_PATRIMONIALES,
         'PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL': PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL,
         'MATERIALIDAD_REVESTIMIENTO': MATERIALIDAD_REVESTIMIENTO,
+        'DECLARACION_DE_UTILIDAD':DECLARACION_DE_UTILIDAD,
+        'TIPO_DE_CUIDAD':TIPO_DE_CUIDAD,
     }
 
     # Sección 6
@@ -831,6 +836,31 @@ def editar_ficha(request, id = 0):
         elif request.POST.get('area_de_riesgo') and request.POST.get('area_de_riesgo') == '1':
             condicion_normativa.area_de_riesgo = True
         
+        if not request.POST.get('permiso_edificacion'):
+            condicion_normativa.permiso_edificacion = False
+        elif request.POST.get('permiso_edificacion') and request.POST.get('permiso_edificacion') == '1':
+            condicion_normativa.permiso_edificacion = True
+
+        if not request.POST.get('recepcion_definitiva'):
+            condicion_normativa.recepcion_definitiva = False
+        elif request.POST.get('recepcion_definitiva') and request.POST.get('recepcion_definitiva') == '1':
+            condicion_normativa.recepcion_definitiva = True
+
+        
+        
+        condicion_normativa.numero_permiso_edificacion = request.POST.get('numero_permiso_edificacion')
+        condicion_normativa.numero_recepcion_definitiva = request.POST.get('numero_recepcion_definitiva')
+
+        condicion_normativa.declaracion_de_utilidad = request.POST.get('declaracion_de_utilidad')
+        
+
+        condicion_normativa.zona_prc = request.POST.get('zona_prc')
+        condicion_normativa.years_contracion = request.POST.get('years_contracion')
+
+        condicion_normativa.antejardin = request.POST.get('antejardin')
+        condicion_normativa.tipo_de_cuidad = request.POST.get('tipo_de_cuidad')
+
+
         condicion_normativa.save()
 
         # Sección 9
@@ -1171,7 +1201,18 @@ def editar_ficha(request, id = 0):
             plano_y_planimetria.plano_contexto_2 = request.FILES.get('plano_contexto_2')
             plano_y_planimetria.save()
         
-        plano_y_planimetria.observaciones_planos = request.POST.get('observaciones_planos')
+        if request.FILES.get('plano_contexto_3'):
+            plano_y_planimetria.plano_contexto_3 = request.FILES.get('plano_contexto_3')
+            plano_y_planimetria.save()
+        
+        if request.FILES.get('plano_contexto_4'):
+            plano_y_planimetria.plano_contexto_4 = request.FILES.get('plano_contexto_4')
+            plano_y_planimetria.save()
+
+        plano_y_planimetria.observaciones_contexto_1 = request.POST.get('observaciones_contexto_1')
+        plano_y_planimetria.observaciones_contexto_2 = request.POST.get('observaciones_contexto_2')
+        plano_y_planimetria.observaciones_contexto_3 = request.POST.get('observaciones_contexto_3')
+        plano_y_planimetria.observaciones_contexto_4 = request.POST.get('observaciones_contexto_4')
         plano_y_planimetria.save()
 
 
