@@ -391,11 +391,8 @@ def crear_ficha(request):
 
         if  request.POST.get('zocalo_de_mamposteria'):
             zocalo_de_mamposteria = True
-            print("dasdsadsa")
         else:
             zocalo_de_mamposteria = False
-            print("falso")
-
         if  request.POST.get('continuidad_edificacion_otro'):
             otro  = True
         else:
@@ -648,12 +645,13 @@ def crear_ficha(request):
         except:
             plano_contexto_2  = ""
 
+        
         observaciones_planos = request.POST['observaciones_planos']
 
         Planoyplanimetria.objects.create( id_plano = identificacioninmueble,
                                           plano_contexto_1 = plano_contexto_1,
                                           plano_contexto_2 = plano_contexto_2,
-                                          observaciones_planos = observaciones_planos )
+                                          observaciones_contexto_1 = observaciones_planos )
 
         observacion.objects.create(id_plano = identificacioninmueble,
                                    descripcion = extra)
