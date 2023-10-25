@@ -1890,8 +1890,8 @@
                                             <tr>
                                                 <td>Estructura</td>
                                                 <td>Cubierta</td>
-                                                <td>
-                                                    Revestimientos</td>
+                                                <td>Revestimientos</td>
+                                                <td>Muros interiores</td>
                                             </tr>
                                             <tr>
                                                 <td>
@@ -1928,6 +1928,13 @@
                                                     Otro
                                                     <input type="text" class="form-control" id="materialidad_revestimientos_text" name="materialidad_revestimientos_text" value="{{ caracteristicas_morfologicas.materialidad_revestimientos}}" disabled>
 
+                                                </div>
+                                                </td>
+
+                                                <td>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control limit-characters" id="materialidad_muros_interiores" name="materialidad_muros_interiores" maxlength="30" value="{{ caracteristicas_morfologicas.materialidad_muros_interiores }}">
+                                                    <span class="text-muted character-counter">Caracteres restantes: 30</span>
                                                 </div>
                                                 </td>
                                             </tr>
@@ -2252,6 +2259,89 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="relacion_del_inmueble_con_el_terreno"><b>Fotografía Contexto Urbano </b></label>
+                                        <input type="file" class="form-control" id="fotografia_urbano" name="fotografia_urbano" accept="image/*, .pdf">
+                                        <br>
+                                        {% if relacion_del_inmueble_con_el_terreno.fotografia_urbano %}
+                                            <img src="{{ relacion_del_inmueble_con_el_terreno.fotografia_urbano.url }}" alt="fotografia_urbano" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_plano_ubicacion">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="fotografia_urbano" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Plano ubicacion -->
+                                        <div class="modal" tabindex="-1" id="modal_relacion_del_inmueble_con_el_terreno" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Fotografía Contexto Urbano  </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if relacion_del_inmueble_con_el_terreno.fotografia_urbano %}
+                                                                <img src="{{ relacion_del_inmueble_con_el_terreno.fotografia_urbano.url }}" alt="relacion_del_inmueble_con_el_terreno" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="relacion_del_inmueble_con_el_terreno" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Plano ubicacion -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="relacion_del_inmueble_con_el_terreno"><b>Fotografía Espacio Urbano </b></label>
+                                        <input type="file" class="form-control" id="fotografia_espacio_urbano" name="fotografia_espacio_urbano" accept="image/*, .pdf">
+                                        <br>
+                                        {% if relacion_del_inmueble_con_el_terreno.fotografia_espacio_urbano %}
+                                            <img src="{{ relacion_del_inmueble_con_el_terreno.fotografia_espacio_urbano.url }}" alt="fotografia_espacio_urbano" width="100px" class="img-thumbnail" data-bs-toggle="modal" data-bs-target="#modal_plano_ubicacion">
+                                        {% else %}
+                                            <img src="https://via.placeholder.com/150" alt="fotografia_espacio_urbano" class="img-fluid">
+                                        {% endif %}
+                                        <!-- Modal Plano ubicacion -->
+                                        <div class="modal" tabindex="-1" id="modal_relacion_del_inmueble_con_el_terreno" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Fotografía Espacio Urbano</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>
+                                                            {% if relacion_del_inmueble_con_el_terreno.fotografia_espacio_urbano %}
+                                                                <img src="{{ relacion_del_inmueble_con_el_terreno.fotografia_espacio_urbano.url }}" alt="plano_ubicacion" class="img-fluid">
+                                                            {% else %}
+                                                                <img src="https://via.placeholder.com/150" alt="relacion_del_inmueble_con_el_terreno" class="img-fluid">
+                                                            {% endif %}
+                                                        </p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Modal Plano ubicacion -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">

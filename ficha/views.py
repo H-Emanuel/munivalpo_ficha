@@ -1071,7 +1071,7 @@ def editar_ficha(request, id = 0):
 
         caracteristicas_morfologicas.materialidad_estructura = request.POST.get('materialidad_estructura')
         caracteristicas_morfologicas.materialidad_cubierta = request.POST.get('materialidad_cubierta')
-
+        caracteristicas_morfologicas.materialidad_muros_interiores = request.POST.get('materialidad_muros_interiores')
         
         if request.POST.get('materialidad_revestimientos') == "OTRO":
             caracteristicas_morfologicas.materialidad_revestimientos =  request.POST.get('materialidad_revestimientos_text')
@@ -1180,6 +1180,16 @@ def editar_ficha(request, id = 0):
 
         relacion_del_inmueble_con_el_terreno.observaciones = request.POST.get('espacio_publico_observaciones')
         relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial = request.POST.get('Otros_elementos_patrimonial')
+        
+        
+        if request.FILES.get('fotografia_urbano'):
+            relacion_del_inmueble_con_el_terreno.fotografia_urbano = request.FILES.get('fotografia_urbano')
+
+        if request.FILES.get('fotografia_espacio_urbano'):
+            relacion_del_inmueble_con_el_terreno.fotografia_espacio_urbano = request.FILES.get('fotografia_espacio_urbano')
+
+        
+        
         relacion_del_inmueble_con_el_terreno.save()
 
         # Sección 14

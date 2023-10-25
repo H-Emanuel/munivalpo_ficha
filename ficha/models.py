@@ -478,6 +478,8 @@ class CaracteristicasMorfologicas(models.Model):
     materialidad_estructura = models.CharField(max_length=50, choices=MATERIALIDAD_ESTRUCTURA, default='ACERO', blank=True)
     materialidad_cubierta = models.CharField(max_length=50, choices=MATERIALIDAD_CUBIERTA, default='ACERO', blank=True)
     materialidad_revestimientos = models.CharField(max_length=255,choices= MATERIALIDAD_REVESTIMIENTO, default='ENLUCIDO/ESTUCO', blank=True)
+    materialidad_muros_interiores = models.CharField(max_length=30,  default='', blank=True)
+
 
     descripcion_del_inmubebles= models.TextField(blank=True, default='')
 
@@ -562,6 +564,17 @@ PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL = [
     ('MONUMENTOS PÚBLICOS', 'Monumentos públicos'),
     ('RELACIÓN VISUAL', 'Relación visual'),
 ]
+def content_file_name_urbano_1(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % ('urbano_1', ext)
+    folder = "assets_ficha/" + str(instance.id_plano.id_plano)
+    return os.path.join(folder, filename)
+
+def content_file_name_urbano_2(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % ('urbano_2', ext)
+    folder = "assets_ficha/" + str(instance.id_plano.id_plano)
+    return os.path.join(folder, filename)
 
 class RelacionDelInmuebleConElTerreno(models.Model):
     imagen_urbana_relevante_por_ubicacion = models.BooleanField(default=False)
@@ -585,7 +598,11 @@ class RelacionDelInmuebleConElTerreno(models.Model):
     inm_con_his_manzana_enfrente = models.BooleanField(default=False)
     inm_con_his_relacion_visual = models.BooleanField(default=False)
     Otros_elementos_patrimonial = models.TextField(blank=True, default='PLACA EN FACHADA',choices=PRESENCIA_ELEMENTOS_VALOR_PATRIMONIAL)
+    
     observaciones = models.TextField(blank=True, default='')
+
+    fotografia_urbano = models.ImageField(upload_to=content_file_name_urbano_1, blank=True, null=True)
+    fotografia_espacio_urbano =models.ImageField(upload_to=content_file_name_urbano_2, blank=True, null=True)
 
     id_plano = models.OneToOneField(IdentificacionInmueble, on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now_add=True)
