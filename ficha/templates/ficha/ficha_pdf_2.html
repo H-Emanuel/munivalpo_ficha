@@ -418,73 +418,71 @@
             <table>
                 <tbody>
                     <tr>
-                        <td colspan="13" class="bg-blue">8. CONDICIÓN NORMATIVA VIGENTE SEGÚN PLAN REGULADOR</td>
+                        <td colspan="15" class="bg-blue">8. CONDICIÓN NORMATIVA VIGENTE SEGÚN PLAN REGULADOR</td>
                     </tr>
                     <tr>
                         <td rowspan="2" colspan="5">8.1 
-                            <br>
-                            <br>
                             ÁREA NO EDIFICABLE</td>
                         <td>Si
 
                         </td>
-                        <td style="width: 30px;">{% if condicion_normativa.area_de_edificacion %}X{% else %}&nbsp;{% endif %}</td>
-                        <td rowspan="2" colspan="4">8.2
+                        <td >{% if condicion_normativa.area_de_edificacion %}X{% else %}&nbsp;{% endif %}</td>
+                        <td rowspan="2" colspan="6">8.2
                             ÁREA DE RIESGO</td>
                         <td>Si</td>
-                        <td style="width: 30px;">{% if condicion_normativa.area_de_riesgo %}X{% else %}&nbsp;{% endif %}</td>
+                        <td>{% if condicion_normativa.area_de_riesgo %}X{% else %}&nbsp;{% endif %}</td>
 
                     </tr>
                 <tr>
                     <td>No </td>
-                    <td style="width: 30px;">{% if not condicion_normativa.area_de_edificacion %}X{% else %}&nbsp;{% endif %}</td>
+                    <td >{% if not condicion_normativa.area_de_edificacion %}X{% else %}&nbsp;{% endif %}</td>
 
                     <td>No</td>
-                    <td style="width: 30px;">{% if not condicion_normativa.area_de_riesgo %}X{% else %}&nbsp;{% endif %}</td>
+                    <td>{% if not condicion_normativa.area_de_riesgo %}X{% else %}&nbsp;{% endif %}</td>
                 </tr>
 
                 <tr>
                     <td rowspan="3" colspan="3">8.3 
                         DECLARACÍON DE UTILIDAD PÚBLICA</td>
-                    <td style="width: 90px;">CIRCULACION</td> 
-                    <td style="width: 30px;">{% if condicion_normativa.declaracion_de_utilidad == "CIRCULACION" %}X{% else %}&nbsp;{% endif %}</td>
+                    <td style="width: 80px;">CIRCULACION</td> 
+                    <td >{% if condicion_normativa.declaracion_de_utilidad == "CIRCULACION" %}X{% else %}&nbsp;{% endif %}</td>
                     
                     <td rowspan="3" colspan="2" >8.4 PERMISO EDIFICACIÓN</td>
                     <td>Si</td>
-                    <td style="width: 30px;">{% if condicion_normativa.permiso_edificacion %}X{% else %}&nbsp;{% endif %}</td>
+                    <td >{% if condicion_normativa.permiso_edificacion %}X{% else %}&nbsp;{% endif %}</td>
 
                     <td rowspan="3" colspan="2" >8.5 RECEPCIÓN DEFINITIVA</td>
                     <td>Si</td>
-                    <td style="width: 30px;">{% if condicion_normativa.recepcion_definitiva %}X{% else %}&nbsp;{% endif %}</td>
+                    <td colspan="3">{% if condicion_normativa.recepcion_definitiva %}X{% else %}&nbsp;{% endif %}</td>
                 </tr>
                 <tr>
                     <td>PLAZA  </td>
-                    <td style="width: 30px;">{% if condicion_normativa.declaracion_de_utilidad == "PLAZA" %}X{% else %}&nbsp;{% endif %}</td>
+                    <td >{% if condicion_normativa.declaracion_de_utilidad == "PLAZA" %}X{% else %}&nbsp;{% endif %}</td>
 
                     <td>No</td>
-                    <td style="width: 30px;">{% if not condicion_normativa.permiso_edificacion %}X{% else %}&nbsp;{% endif %}</td>
+                    <td >{% if not condicion_normativa.permiso_edificacion %}X{% else %}&nbsp;{% endif %}</td>
 
                     <td>No </td>
-                    <td style="width: 30px;">{% if not condicion_normativa.recepcion_definitiva %}X{% else %}&nbsp;{% endif %}</td>
+                    <td colspan="3">{% if not condicion_normativa.recepcion_definitiva %}X{% else %}&nbsp;{% endif %}</td>
                 </tr>
                 
                 <tr>
                     <td>PARQUE </td>
-                    <td style="width: 30px;">{% if condicion_normativa.declaracion_de_utilidad == "PARQUE" %}X{% else %}&nbsp;{% endif %}</td>
+                    <td>{% if condicion_normativa.declaracion_de_utilidad == "PARQUE" %}X{% else %}&nbsp;{% endif %}</td>
 
                     <td >N°</td>
-                    <td style="width: 80px;" > </td>
+                    <td style="width: 80px;"> {{ condicion_normativa.numero_permiso_edificacion }} </td>
 
 
                     <td >N°</td>
-                    <td  style="width: 80px;" > </td>
+                    <td colspan="3">{{ condicion_normativa.numero_recepcion_definitiva }}</td>
                 </tr>
                 
                 <tr>
                     <td colspan="3">ZONA PRC </td>
                     <td >{{ condicion_normativa.zona_prc }} </td>
 
-                    <td colspan="9">TIPO DE CIUDAD(N° HAB. / SEGÚN DDUN N° 227 - ART. 13)</td>
+                    <td colspan="11">TIPO DE CIUDAD(N° HAB. / SEGÚN DDUN N° 227 - ART. 13)</td>
 
                 </tr>
                 <tr>
@@ -492,10 +490,10 @@
                     <td  >{{ condicion_normativa.years_contracion }} </td>
 
                     <td colspan="4">PEQUEÑA</td>
-                    <td style="width: 30px;">{% if condicion_normativa.tipo_de_cuidad == "PEQUEÑA" %}X{% else %}&nbsp;{% endif %}</td>
+                    <td >{% if condicion_normativa.tipo_de_cuidad == "PEQUEÑA" %}X{% else %}&nbsp;{% endif %}</td>
 
-                    <td colspan="3">INTERMEDIA</td>
-                    <td style="width: 30px;">{% if condicion_normativa.tipo_de_cuidad == "INTERMEDIA" %}X{% else %}&nbsp;{% endif %}</td>
+                    <td colspan="5">INTERMEDIA</td>
+                    <td >{% if condicion_normativa.tipo_de_cuidad == "INTERMEDIA" %}X{% else %}&nbsp;{% endif %}</td>
 
                 </tr>
                 <tr>
@@ -503,10 +501,10 @@
                     <td  >{{ condicion_normativa.antejardin }}m2 </td>
 
                     <td colspan="4">MENORES</td>
-                    <td style="width: 30px;">{% if condicion_normativa.tipo_de_cuidad == "MENORES" %}X{% else %}&nbsp;{% endif %}</td>
+                    <td >{% if condicion_normativa.tipo_de_cuidad == "MENORES" %}X{% else %}&nbsp;{% endif %}</td>
 
-                    <td colspan="3">Á. METROPOLITANAS</td>
-                    <td style="width: 30px;">{% if condicion_normativa.tipo_de_cuidad == "Á. METROPOLITANAS" %}X{% else %}&nbsp;{% endif %}</td>
+                    <td colspan="5">Á. METROPOLITANAS</td>
+                    <td >{% if condicion_normativa.tipo_de_cuidad == "Á. METROPOLITANAS" %}X{% else %}&nbsp;{% endif %}</td>
 
 
                 </tr>
