@@ -1345,7 +1345,9 @@ def exportar_pdf(request, id):
 
     now = datetime.now()
     current_time = now.strftime("%d-%m-%Y_%H-%M-%S")
-    current_user = request.user
+    current_user = identificacion_inmueble.usuario
+    current_user_rev = obs.usuario_revisor
+
 
     data = {
         'identificacion_inmueble': identificacion_inmueble,
@@ -1384,6 +1386,7 @@ def exportar_pdf(request, id):
 
         'current_time': now,
         'current_user': current_user,
+        'current_user_rev':current_user_rev,
     }
     
     nombre_ficha = "ficha_" + str(identificacion_inmueble.id_plano) + "_" + current_time

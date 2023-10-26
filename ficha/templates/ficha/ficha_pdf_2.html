@@ -738,9 +738,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align: center;" colspan="9" >{{ caracteristicas_morfologicas.observacion_fot_valor_significativo }}</td>
-                        <td style="text-align: center;" colspan="9" >{{ caracteristicas_morfologicas.observacion_fot_expresion_fachada }}</td>
-                        <td style="text-align: center;" colspan="9" >{{ caracteristicas_morfologicas.observacion_fot_detalles_constructivos }}</td>
+                        <td style="text-align: center;" colspan="9" >Fachada: {{ caracteristicas_morfologicas.observacion_fot_valor_significativo }}</td>
+                        <td style="text-align: center;" colspan="9" >Fachada: {{ caracteristicas_morfologicas.observacion_fot_expresion_fachada }}</td>
+                        <td style="text-align: center;" colspan="9" >Detalles constructivo relevante: {{ caracteristicas_morfologicas.observacion_fot_detalles_constructivos }}</td>
                     </tr>
                     <tr>
 
@@ -842,9 +842,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align: center;" colspan="9" > {{ caracteristicas_morfologicas.observacion_contexto_1 }} </td>
-                        <td style="text-align: center;" colspan="9" > {{ caracteristicas_morfologicas.observacion_contexto_2 }} </td>
-                        <td style="text-align: center;" colspan="9" > {{ caracteristicas_morfologicas.observacion_contexto_3 }} </td>
+                        <td style="text-align: center;" colspan="9" >Detalles ornamental relevante: {{ caracteristicas_morfologicas.observacion_contexto_1 }} </td>
+                        <td style="text-align: center;" colspan="9" >Detalles interior: {{ caracteristicas_morfologicas.observacion_contexto_2 }} </td>
+                        <td style="text-align: center;" colspan="9" >Otros destacados: {{ caracteristicas_morfologicas.observacion_contexto_3 }} </td>
                     </tr>
                     <tr>
                         <td colspan="12"><b>9.9 SUPERFICIES Y DIMENSIONES</b></td>
@@ -1273,11 +1273,14 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="7" rowspan="2"></td>
+                        <td colspan="7" rowspan="3"></td>
                         <td colspan="7">Fecha de elaboración ficha: {{ current_time }}</td>
                     </tr>
                     <tr>
                         <td colspan="7">Nombre autor: {{ current_user.first_name }} {{ current_user.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="7">Nombre Revisor: {{ current_user_rev.first_name }} {{ current_user_rev.last_name }}</td>
                     </tr>
                 </tbody>
             </table>

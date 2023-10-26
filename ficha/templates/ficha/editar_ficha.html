@@ -1926,7 +1926,8 @@
                                                     </select>
                                                     <br>
                                                     Otro
-                                                    <input type="text" class="form-control" id="materialidad_revestimientos_text" name="materialidad_revestimientos_text" value="{{ caracteristicas_morfologicas.materialidad_revestimientos}}" disabled>
+                                                    <input type="text" class="form-control limit-characters" id="materialidad_revestimientos_text" name="materialidad_revestimientos_text" maxlength="30" value="{{ caracteristicas_morfologicas.materialidad_revestimientos}}" disabled>
+                                                    <span class="text-muted character-counter">Caracteres restantes: 30</span>
 
                                                 </div>
                                                 </td>
