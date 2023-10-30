@@ -423,46 +423,46 @@
                     <tr>
                         <td rowspan="2" colspan="5">8.1 
                             ÁREA NO EDIFICABLE</td>
-                        <td>Si
+                        <td>SI
 
                         </td>
                         <td >{% if condicion_normativa.area_de_edificacion %}X{% else %}&nbsp;{% endif %}</td>
                         <td rowspan="2" colspan="6">8.2
                             ÁREA DE RIESGO</td>
-                        <td>Si</td>
+                        <td>SI</td>
                         <td>{% if condicion_normativa.area_de_riesgo %}X{% else %}&nbsp;{% endif %}</td>
 
                     </tr>
                 <tr>
-                    <td>No </td>
+                    <td>NO </td>
                     <td >{% if not condicion_normativa.area_de_edificacion %}X{% else %}&nbsp;{% endif %}</td>
 
-                    <td>No</td>
+                    <td>NO</td>
                     <td>{% if not condicion_normativa.area_de_riesgo %}X{% else %}&nbsp;{% endif %}</td>
                 </tr>
 
                 <tr>
                     <td rowspan="3" colspan="3">8.3 
-                        DECLARACÍON DE UTILIDAD PÚBLICA</td>
-                    <td style="width: 80px;">CIRCULACION</td> 
+                        DECLARACIÓN DE UTILIDAD PÚBLICA</td>
+                    <td style="width: 80px;">CIRCULACIÓN</td> 
                     <td >{% if condicion_normativa.declaracion_de_utilidad == "CIRCULACION" %}X{% else %}&nbsp;{% endif %}</td>
                     
                     <td rowspan="3" colspan="2" >8.4 PERMISO EDIFICACIÓN</td>
-                    <td>Si</td>
+                    <td>SI</td>
                     <td >{% if condicion_normativa.permiso_edificacion %}X{% else %}&nbsp;{% endif %}</td>
 
                     <td rowspan="3" colspan="2" >8.5 RECEPCIÓN DEFINITIVA</td>
-                    <td>Si</td>
+                    <td>SI</td>
                     <td colspan="3">{% if condicion_normativa.recepcion_definitiva %}X{% else %}&nbsp;{% endif %}</td>
                 </tr>
                 <tr>
                     <td>PLAZA  </td>
                     <td >{% if condicion_normativa.declaracion_de_utilidad == "PLAZA" %}X{% else %}&nbsp;{% endif %}</td>
 
-                    <td>No</td>
+                    <td>NO</td>
                     <td >{% if not condicion_normativa.permiso_edificacion %}X{% else %}&nbsp;{% endif %}</td>
 
-                    <td>No </td>
+                    <td>NO </td>
                     <td colspan="3">{% if not condicion_normativa.recepcion_definitiva %}X{% else %}&nbsp;{% endif %}</td>
                 </tr>
                 
@@ -482,7 +482,7 @@
                     <td colspan="3">ZONA PRC </td>
                     <td >{{ condicion_normativa.zona_prc }} </td>
 
-                    <td colspan="11">TIPO DE CIUDAD(N° HAB. / SEGÚN DDUN N° 227 - ART. 13)</td>
+                    <td colspan="11">TIPO DE CIUDAD (N° HAB. / SEGÚN DDU N° 227 - ART. 13)</td>
 
                 </tr>
                 <tr>
@@ -593,7 +593,7 @@
                     <tr>
                         <td colspan="4">ZÓCALOS</td>
                         <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.elementos_valor_significativo.zocalos %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="4">LENGUAJE DE VANOS COMÚN</td>
+                        <td colspan="4">LENGUAJE DE VANOS COMÚN</td> 
                         <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.expresion_de_fachada.lenguaje_de_vanos_comun %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="14">FACHADA</td>
                         <td colspan="3" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.fachada %}X{% else %}&nbsp;{% endif %}</td>
@@ -603,7 +603,7 @@
                         <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.elementos_valor_significativo.molduras_relevantes_en_yeso %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="4">SIMETRÍA</td>
                         <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.expresion_de_fachada.simetria %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="14">LINEA DE REMATE SUPERIOR</td>
+                        <td colspan="14">LÍNEA DE REMATE SUPERIOR</td>
                         <td colspan="3" style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_remate_superior %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
@@ -738,9 +738,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align: center;" colspan="9" >Fachada: {{ caracteristicas_morfologicas.observacion_fot_valor_significativo }}</td>
-                        <td style="text-align: center;" colspan="9" >Fachada: {{ caracteristicas_morfologicas.observacion_fot_expresion_fachada }}</td>
-                        <td style="text-align: center;" colspan="9" >Detalles constructivo relevante: {{ caracteristicas_morfologicas.observacion_fot_detalles_constructivos }}</td>
+                        <td style="text-align: center;" colspan="9" >{{ caracteristicas_morfologicas.observacion_fot_valor_significativo }}</td>
+                        <td style="text-align: center;" colspan="9" >{{ caracteristicas_morfologicas.observacion_fot_expresion_fachada }}</td>
+                        <td style="text-align: center;" colspan="9" >{{ caracteristicas_morfologicas.observacion_fot_detalles_constructivos }}</td>
                     </tr>
                     <tr>
 
@@ -842,9 +842,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align: center;" colspan="9" >Detalles ornamental relevante: {{ caracteristicas_morfologicas.observacion_contexto_1 }} </td>
-                        <td style="text-align: center;" colspan="9" >Detalles interior: {{ caracteristicas_morfologicas.observacion_contexto_2 }} </td>
-                        <td style="text-align: center;" colspan="9" >Otros destacados: {{ caracteristicas_morfologicas.observacion_contexto_3 }} </td>
+                        <td style="text-align: center;" colspan="9" >{{ caracteristicas_morfologicas.observacion_contexto_1 }} </td>
+                        <td style="text-align: center;" colspan="9" >{{ caracteristicas_morfologicas.observacion_contexto_2 }} </td>
+                        <td style="text-align: center;" colspan="9" >{{ caracteristicas_morfologicas.observacion_contexto_3 }} </td>
                     </tr>
                     <tr>
                         <td colspan="12"><b>9.9 SUPERFICIES Y DIMENSIONES</b></td>
