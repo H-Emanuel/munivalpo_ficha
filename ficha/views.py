@@ -71,6 +71,7 @@ def crear_ficha(request):
         
         autor = request.POST['autor']
         identificacioninmueble  = IdentificacionInmueble.objects.create(
+                                              id_plano = 2238,
                                               rol = rol,
                                               unidad_vecinal = unidad_vecinal,
                                               region = region,
