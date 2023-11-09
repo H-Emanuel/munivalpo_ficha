@@ -15,6 +15,13 @@
                 padding: 3px;
             }
 
+            .expandable-cell {
+                height: 80px; /* Ajusta la altura según tus necesidades */
+                overflow: auto; /* Agrega barras de desplazamiento si el contenido es demasiado grande para mostrar */
+                white-space: pre-line; /* Mantiene los saltos de línea en el texto */
+                vertical-align: top; /* Alinea el contenido al principio de la celda */
+            }
+
             table {
                 width: 100%;
             }
@@ -216,32 +223,36 @@
                     <tr>
                         <td colspan="9"><b>5.1 VALOR URBANO</b></td>
                     </tr>
-                    <tr>
-                        <td colspan="9">{{ resena_patrimonial.valor_urbano }} <br><br> </td>
+                  <tr>
+                        <td colspan="9" class="expandable-cell">
+                            {{ resena_patrimonial.valor_urbano }}
+                        </td>
                     </tr>
+
                     <tr>
                         <td colspan="9"><b>5.2 VALOR ARQUITECTÓNICO</b></td>
                     </tr>
                     <tr>
-                        <td colspan="9">{{ resena_patrimonial.valor_arquitecnico }} <br><br> </td>
+                        <td colspan="9" class="expandable-cell">
+                        {{ resena_patrimonial.valor_arquitecnico }}</td>
                     </tr>
                     <tr>
                         <td colspan="9"><b>5.3 VALOR HISTÓRICO</b></td>
                     </tr>
                     <tr>
-                        <td colspan="9">{{ resena_patrimonial.valor_historico }} <br><br> </td>
+                        <td colspan="9" class="expandable-cell">{{ resena_patrimonial.valor_historico }}  </td>
                     </tr>
                     <tr>
                         <td colspan="9"><b>5.4 VALOR ECONÓMICO</b></td>
                     </tr>
                     <tr>
-                        <td colspan="9">{{ resena_patrimonial.valor_economico }} <br><br> </td>
+                        <td colspan="9" class="expandable-cell">{{ resena_patrimonial.valor_economico }} <br><br> </td>
                     </tr>
                     <tr>
                         <td colspan="9"><b>5.5 VALOR SOCIAL</b></td>
                     </tr>
                     <tr>
-                        <td colspan="9">{{ resena_patrimonial.valor_social }} <br><br> </td>
+                        <td colspan="9"  class="expandable-cell">{{ resena_patrimonial.valor_social }} <br><br> </td>
                     </tr>
                 </tbody>
             </table>
@@ -1277,7 +1288,7 @@
                         <td colspan="7">Fecha de elaboración ficha: {{ current_time }}</td>
                     </tr>
                     <tr>
-                        <td colspan="7">Nombre autor: {{ current_user.first_name }} {{ current_user.last_name }}</td>
+                        <td colspan="7">Nombre Fichero: {{ current_user.first_name }} {{ current_user.last_name }}</td>
                     </tr>
                     <tr>
                         <td colspan="7">Nombre Revisor: {{ current_user_rev.first_name }} {{ current_user_rev.last_name }}</td>
@@ -1288,3 +1299,20 @@
     <br>
     </body>
 </html>
+
+{% block custom_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+        var caracteresPorLinea = 143;
+        var valorUrbanoCell = document.getElementById('valor-urbano-cell');
+        var contenido = valorUrbanoCell.innerHTML;
+        var contenidoConSaltos = '-';
+
+        for (var i = 0; i < contenido.length; i += caracteresPorLinea) {
+            contenidoConSaltos += contenido.slice(i, i + caracteresPorLinea) + '<br>';
+        }
+
+        valorUrbanoCell.innerHTML = contenidoConSaltos;
+    });
+</script>
+{% endblock custom_js %}

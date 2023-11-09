@@ -1339,9 +1339,10 @@ def exportar_pdf(request, id):
     # Sección 6
     total_valor_urbano = valoracion_atributos.valor_urbano_a + valoracion_atributos.valor_urbano_b + valoracion_atributos.valor_urbano_c
     total_valor_arquitecnico = valoracion_atributos.valor_arquitecnico_a + valoracion_atributos.valor_arquitecnico_b + valoracion_atributos.valor_arquitecnico_c
-    total_valor_historico = valoracion_atributos.valor_historico_a + valoracion_atributos.valor_historico_b
+    total_valor_historico = valoracion_atributos.valor_historico_a + valoracion_atributos.valor_historico_b + valoracion_atributos.valor_historico_c
     total_valor_economico = valoracion_atributos.valor_economico_a + valoracion_atributos.valor_economico_b 
-    total_valoracion = total_valor_urbano + total_valor_arquitecnico + total_valor_historico + total_valor_economico + valoracion_atributos.valor_urbano_a
+    
+    total_valoracion = total_valor_urbano + total_valor_arquitecnico + total_valor_historico + total_valor_economico +valoracion_atributos.valor_social_a
 
     now = datetime.now()
     current_time = now.strftime("%d-%m-%Y_%H-%M-%S")
@@ -1499,8 +1500,8 @@ def test_pdf(request, id):
         'total_valor_arquitecnico': total_valor_arquitecnico,
         'total_valor_historico': total_valor_historico,
         'total_valor_economico': total_valor_economico,
-        'total_valoracion': total_valoracion,
-
+        'total_valoracion': total_valoracion,     
+          
         'MEDIA_URL': request.build_absolute_uri('/')[:-1],
     }
 
