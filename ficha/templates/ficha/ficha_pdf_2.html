@@ -994,18 +994,18 @@
                         <td colspan="3"><b>13.4 PRESENCIA DE OTROS ELEMENTOS DE VALOR PATRIMONIAL</b></td>
                     </tr>
                     <tr>
-                        <td colspan="2">POR UBICACIÓN </td>
+                        <td colspan="3">POR UBICACIÓN </td>
                         <td style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.imagen_urbana_relevante_por_ubicacion %}X{% else %}&nbsp;{% endif %}</td>
-                        <td>SI</td>
+                        <td colspan="3">SI</td>
                         <td style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.forma_parte_de_un_conjunto %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="2">COLINDA</td>
                         <td style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.espacio_publico|lower == "colinda" %}X{% else %}&nbsp;{% endif %}</td>
-                        <td colspan="6" rowspan="2">{{ relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial }}</td>
+                        <td colspan="3" rowspan="2">{{ relacion_del_inmueble_con_el_terreno.Otros_elementos_patrimonial }}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">POR SINGULARIDAD </td>
+                        <td colspan="3">POR SINGULARIDAD </td>
                         <td style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.imagen_urbana_relevante_por_singularidad %}X{% else %}&nbsp;{% endif %}</td>
-                        <td>NO</td>
+                        <td colspan="3" >NO</td>
                         <td style="width: 30px;" class="text-center">{% if not relacion_del_inmueble_con_el_terreno.forma_parte_de_un_conjunto %}X{% else %}&nbsp;{% endif %}</td>
                         <td colspan="2">ENFRENTA </td>
                         <td style="width: 30px;" class="text-center">{% if relacion_del_inmueble_con_el_terreno.espacio_publico|lower == "enfrenta" %}X{% else %}&nbsp;{% endif %}</td>
