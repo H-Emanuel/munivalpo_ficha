@@ -37,6 +37,7 @@ class IdentificacionInmueble(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True )
 
     observacion_revisor = models.TextField(blank=True, default='')
+    vigente = models.BooleanField(default=False)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -199,7 +200,7 @@ TIPO_USUARIO = [
 
 REGIMEN_PROPIEDAD = [
     ('INDIVIDUAL', [
-        ('PERSONA NATURAL', 'Persona Natural'),
+        ('PERSONA NATURAL',  'Persona Natural'),
         ('PERSONA JURÍDICA', 'Persona Jurídica'),
     ]),
     ('COLECTIVA', [
@@ -254,14 +255,20 @@ TIPO_DE_CUIDAD = [
     ('Á. METROPOLITANAS', 'Á. METROPOLITANAS'),
 ]
 
+TIPO_DE_RESPUESTA = [
+    (' ', ' '),
+    ('SI', 'SI'),
+    ('NO', 'NO'),
+]
+
 
 class CondicionNormativa(models.Model):
    
-    area_de_edificacion = models.BooleanField(default=False)
-    area_de_riesgo = models.BooleanField(default=False)
+    area_de_edificacion = models.CharField(max_length=50, choices=TIPO_DE_RESPUESTA, default=' ', blank=True)
+    area_de_riesgo = models.CharField(max_length=50, choices=TIPO_DE_RESPUESTA, default=' ', blank=True)
 
-    permiso_edificacion = models.BooleanField(default=False)
-    recepcion_definitiva = models.BooleanField(default=False)
+    permiso_edificacion = models.CharField(max_length=50, choices=TIPO_DE_RESPUESTA, default=' ', blank=True)
+    recepcion_definitiva = models.CharField(max_length=50, choices=TIPO_DE_RESPUESTA, default=' ', blank=True)
 
     numero_permiso_edificacion = models.CharField(max_length=255, blank=True, default='')
 
@@ -512,7 +519,7 @@ class EstadoDeConservacion(models.Model):
     
 # Sección 11
 GRADO_ALTERACION = [
-    ('SIN MODIFICACIÓN', 'Sin modificación'),
+    ('SIN MODIFICACION', 'Sin modificacion'),
     ('POCO MODIFICADO', 'Poco modificado'),
     ('MUY MODIFICADO', 'Muy modificado'),
 ]
@@ -547,6 +554,7 @@ class AptitudDeRehabilitacion(models.Model):
 
 # Sección 13
 ESPACIO_PUBLICO = [
+    (' ', ' '),
     ('COLINDA', 'Colinda'),
     ('ENFRENTA', 'Enfrenta'),
 ]

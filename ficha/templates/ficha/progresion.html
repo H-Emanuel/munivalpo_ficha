@@ -1,0 +1,140 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block main_content%}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<section class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="p-2 mb-4 mt-3 bg-light">
+                <div class="container-fluid py-5">
+                    <h1 class="display-5 fw-bold">FICHA DE VALORACIÓN INMUEBLE DE CONSERVACIÓN HISTÓRICA</h1>
+                    <p class="col-md-8 fs-4">Progrecion de las fichas vigentes</p>
+                    <p class="col-md-8 fs-4">La cantidad actuales de ficha vigente son: {{ cantidad_identificaciones_vigentes }}</p>
+                </div>
+            </div>
+        </div>
+       
+        <div class="row">
+            <div class="col-12">
+                <canvas id="graficoCircular" width="600" height="400"></canvas>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-12">
+                <div class="p-2 mb-4 mt-3 bg-light">
+                    <div class="container-fluid py-5">
+                        <p class="col-md-8 fs-4">Progrecion de los revisores</p>
+                        <p class="col-md-8 fs-4">La cantidad de revisores en la ficha vigente: {{ cantidad_usuarios_revisores }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <canvas id="graficoBarrasApiladas" width="600" height="400"></canvas>
+                </div>
+            </div>
+            
+        
+    </div>
+</section>
+{% block extra_scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var ctx = document.getElementById('graficoBarrasApiladas').getContext('2d');
+
+        var fichasAprobadasPorRevisor = JSON.parse('{{ fichas_aprobadas_por_revisor_json|escapejs|safe }}');
+        var fichasObjetadasPorRevisor = JSON.parse('{{ fichas_objetadas_por_revisor_json|escapejs|safe }}');
+        
+        var usuariosRevisores = Object.keys(fichasAprobadasPorRevisor); // Obtener los nombres de los usuarios revisores
+
+        var datos = {
+            labels: usuariosRevisores,
+            datasets: [
+                {
+                    label: 'Fichas Aprobadas',
+                    backgroundColor: 'rgba(54, 162, 235, 1)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    data: Object.values(fichasAprobadasPorRevisor)
+                },
+                {
+                    label: 'Fichas Objetadas',
+                    backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    data: Object.values(fichasObjetadasPorRevisor)
+                }
+            ]
+        };
+
+        var opciones = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: { stacked: true },
+                y: { stacked: true }
+            }
+        };
+
+        var graficoBarrasApiladas = new Chart(ctx, {
+            type: 'bar',
+            data: datos,
+            options: opciones
+        });
+
+        // Gráfico circular
+        var ctxCircular = document.getElementById('graficoCircular').getContext('2d');
+        
+        // Obtener la cantidad de identificaciones vigentes
+        var identificacionesVigentes = parseInt("{{ cantidad_identificaciones_vigentes }}");
+
+        // Obtener la cantidad de fichas en diferentes estados
+        var fichasAprobadas = parseInt("{{ fichas_aprobada }}");
+        var fichasObjetadas = parseInt("{{ fichas_objetada }}");
+        var fichasEnEspera = parseInt("{{ fichas_en_espera }}");
+
+        // Calcular la cantidad de fichas pendientes
+        var fichasPendientes = identificacionesVigentes - (fichasAprobadas + fichasObjetadas + fichasEnEspera);
+        console.log('fichasObjetadas:', fichasObjetadas);
+        console.log('fichasEnEspera:', fichasEnEspera);
+
+        var datosCircular = {
+            labels: ['Aprobadas', 'Objetadas', 'En espera', 'Pendientes'],
+            datasets: [{
+                data: [fichasAprobadas, fichasObjetadas, fichasEnEspera, fichasPendientes],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(37, 36, 34, 1)'
+                ]
+            }]
+        };
+
+        // Configuración del gráfico
+        var opcionesCircular = {
+            responsive: true,
+            maintainAspectRatio: false
+        };
+
+        // Crear el gráfico circular
+        var graficoCircular = new Chart(ctxCircular, {
+            type: 'doughnut', // Tipo de gráfico circular
+            data: datosCircular,
+            options: opcionesCircular
+        });
+    });
+</script>
+
+
+
+{% endblock %}
+{% endblock %}
+
+

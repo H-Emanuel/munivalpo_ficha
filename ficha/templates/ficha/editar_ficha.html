@@ -1025,17 +1025,27 @@
                                             <tr>
                                                 <td>8.1  Área no edificable :</td>
                                                 <td>
-                                                    <div class="form-check d-flex justify-content-center">
-                                                        <input type="checkbox" class="form-check-input" id="area_de_edificacion" name="area_de_edificacion" value="1" {% if condicion_normativa.area_de_edificacion %}checked{% endif %}>
-                                                    </div>
+                                                <select class="form-control" id="area_de_edificacion" name="area_de_edificacion" >
+                                                    <option value="{{ condicion_normativa.area_de_edificacion }}" selected>{{ condicion_normativa.area_de_edificacion }}</option>
+                                                    {% for respuesta in OPTIONS.TIPO_DE_RESPUESTA %}
+                                                        <option value="{{ respuesta.0 }}">{{ respuesta.1 }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                                </td>
+
+                                                <td>
+                                                
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>8.2  Área de riesgo:</td>
                                                 <td>
-                                                    <div class="form-check d-flex justify-content-center">
-                                                        <input type="checkbox" class="form-check-input" id="area_de_riesgo" name="area_de_riesgo" value="1" {% if condicion_normativa.area_de_riesgo %}checked{% endif %}>
-                                                    </div>
+                                                    <select class="form-control" id="area_de_riesgo" name="area_de_riesgo" >
+                                                        <option value="{{ condicion_normativa.area_de_riesgo }}" selected>{{ condicion_normativa.area_de_riesgo }}</option>
+                                                        {% for respuesta_2 in OPTIONS.TIPO_DE_RESPUESTA %}
+                                                            <option value="{{ respuesta_2.0 }}">{{ respuesta_2.1 }}</option>
+                                                        {% endfor %}
+                                                    </select>
                                                 </td>
                                             </tr>
                                         </table>
@@ -1067,9 +1077,11 @@
                                             <tr>
                                                 <td>8.4 Permiso edificación:</td>
                                                 <td>
-                                                    <div class="form-check d-flex justify-content-center">
-                                                        <input type="checkbox" class="form-check-input" id="permiso_edificacion" name="permiso_edificacion" value="1" {% if condicion_normativa.permiso_edificacion %}checked{% endif %}>
-                                                    </div>
+                                                    <select class="form-control" id="permiso_edificacion" name="permiso_edificacion" >
+                                                            <option value="{{ condicion_normativa.permiso_edificacion }}" selected>{{ condicion_normativa.permiso_edificacion }}</option>
+                                                            {% for respuesta_2 in OPTIONS.TIPO_DE_RESPUESTA %}
+                                                                <option value="{{ respuesta_2.0 }}">{{ respuesta_2.1 }}</option>
+                                                            {% endfor %}
                                                 </td>
                                             </tr>
 
@@ -1084,9 +1096,11 @@
                                             <tr>
                                                 <td>8.5 recepcion definitiva:</td>
                                                 <td>
-                                                    <div class="form-check d-flex justify-content-center">
-                                                        <input type="checkbox" class="form-check-input" id="recepcion_definitiva" name="recepcion_definitiva" value="1" {% if condicion_normativa.recepcion_definitiva %}checked{% endif %}>
-                                                    </div>
+                                                        <select class="form-control" id="recepcion_definitiva" name="recepcion_definitiva" >
+                                                            <option value="{{ condicion_normativa.recepcion_definitiva }}" selected>{{ condicion_normativa.recepcion_definitiva }}</option>
+                                                            {% for respuesta_2 in OPTIONS.TIPO_DE_RESPUESTA %}
+                                                                <option value="{{ respuesta_2.0 }}">{{ respuesta_2.1 }}</option>
+                                                            {% endfor %}
                                                 </td>
                                             </tr>
 

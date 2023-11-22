@@ -12,6 +12,10 @@ from datetime import date
 from django.http import JsonResponse,HttpResponseBadRequest
 import fitz
 from django.core.files.base import ContentFile
+from PIL import Image
+from django.db.models import Q
+from collections import defaultdict
+import json
 
 
 # Create your views here.
@@ -717,6 +721,7 @@ def editar_ficha(request, id = 0):
         'MATERIALIDAD_REVESTIMIENTO': MATERIALIDAD_REVESTIMIENTO,
         'DECLARACION_DE_UTILIDAD':DECLARACION_DE_UTILIDAD,
         'TIPO_DE_CUIDAD':TIPO_DE_CUIDAD,
+        'TIPO_DE_RESPUESTA':TIPO_DE_RESPUESTA,
     }
 
     # Sección 6
@@ -824,28 +829,12 @@ def editar_ficha(request, id = 0):
         informacion_tecnica.save()
 
         # Sección 8
-        if not request.POST.get('area_de_edificacion'):
-            condicion_normativa.area_de_edificacion = False
-        elif request.POST.get('area_de_edificacion') and request.POST.get('area_de_edificacion') == '1':
-            condicion_normativa.area_de_edificacion = True
+        condicion_normativa.area_de_edificacion = request.POST.get('area_de_edificacion')
+        condicion_normativa.area_de_riesgo = request.POST.get('area_de_riesgo')
 
-        if not request.POST.get('area_de_riesgo'):
-            condicion_normativa.area_de_riesgo = False
-        elif request.POST.get('area_de_riesgo') and request.POST.get('area_de_riesgo') == '1':
-            condicion_normativa.area_de_riesgo = True
-        
-        if not request.POST.get('permiso_edificacion'):
-            condicion_normativa.permiso_edificacion = False
-        elif request.POST.get('permiso_edificacion') and request.POST.get('permiso_edificacion') == '1':
-            condicion_normativa.permiso_edificacion = True
-
-        if not request.POST.get('recepcion_definitiva'):
-            condicion_normativa.recepcion_definitiva = False
-        elif request.POST.get('recepcion_definitiva') and request.POST.get('recepcion_definitiva') == '1':
-            condicion_normativa.recepcion_definitiva = True
-
-        
-        
+        condicion_normativa.permiso_edificacion = request.POST.get('permiso_edificacion')
+        condicion_normativa.recepcion_definitiva = request.POST.get('recepcion_definitiva') 
+    
         condicion_normativa.numero_permiso_edificacion = request.POST.get('numero_permiso_edificacion')
         condicion_normativa.numero_recepcion_definitiva = request.POST.get('numero_recepcion_definitiva')
 
@@ -1349,7 +1338,21 @@ def exportar_pdf(request, id):
     current_user = identificacion_inmueble.usuario
     current_user_rev = obs.usuario_revisor
 
+    corregir_orientacion_imagen(fotografia_general.imagen_fotografia)
+    corregir_orientacion_imagen(fotografia_contexto.registro_fotografico_1)
+    corregir_orientacion_imagen(fotografia_contexto.registro_fotografico_2)
 
+    corregir_orientacion_imagen(caracteristicas_morfologicas.fotografia_valor_significativo)
+    corregir_orientacion_imagen(caracteristicas_morfologicas.fotografia_expresion_fachada)
+    corregir_orientacion_imagen(caracteristicas_morfologicas.fotografia_detalles_constructivos)
+    
+    corregir_orientacion_imagen(caracteristicas_morfologicas.fotografia_contexto_1)
+    corregir_orientacion_imagen(caracteristicas_morfologicas.fotografia_contexto_2)
+    corregir_orientacion_imagen(caracteristicas_morfologicas.fotografia_contexto_3)
+
+
+
+    
     data = {
         'identificacion_inmueble': identificacion_inmueble,
         'plano_ubicacion': plano_ubicacion,
@@ -1388,9 +1391,9 @@ def exportar_pdf(request, id):
         'current_time': now,
         'current_user': current_user,
         'current_user_rev':current_user_rev,
-    }
+       }
     
-    nombre_ficha = "ficha_" + str(identificacion_inmueble.id_plano) + "_" + current_time
+    nombre_ficha = "ficha_" + str(identificacion_inmueble.id_plano) + "_" + str(identificacion_inmueble.rol)
 
     file_name, status = save_pdf_2(data, nombre_ficha)
 
@@ -1580,3 +1583,80 @@ def guarda_observaciones(request, id):
 
 
     return redirect('ver_fichas')
+
+def progresion(request):
+    cantidad_identificaciones_vigentes = IdentificacionInmueble.objects.filter(vigente=True).count()
+    fichas_aprobada = observacion.objects.filter(id_plano__vigente=True, estado='APROBADO').count()
+    fichas_objetada = observacion.objects.filter(id_plano__vigente=True, estado='OBJETADO').count()
+    fichas_en_espera = observacion.objects.filter(id_plano__vigente=True, estado='En espera de revision').count()
+
+    observaciones_vigentes = observacion.objects.filter(id_plano__vigente=True)
+    
+    # Contadores iniciales
+    fichas_por_revisor = defaultdict(int)
+    fichas_aprobadas_por_revisor = defaultdict(int)
+    fichas_objetadas_por_revisor = defaultdict(int)
+
+    # Obtener usuarios revisores únicos con observaciones
+    usuarios_revisores = User.objects.filter(observaciones_revisor__in=observaciones_vigentes).distinct()
+
+    # Calcular conteo de fichas por usuario revisor
+    for usuario in usuarios_revisores:
+        observaciones_usuario = observaciones_vigentes.filter(usuario_revisor=usuario)
+
+        # Contar fichas aprobadas y objetadas por usuario revisor
+        fichas_aprobadas = observaciones_usuario.filter(estado='APROBADO').count()
+        fichas_objetadas = observaciones_usuario.filter(estado='OBJETADO').count()
+
+        # Almacenar conteos por usuario revisor
+        fichas_por_revisor[usuario.username] = observaciones_usuario.count()
+        fichas_aprobadas_por_revisor[usuario.username] = fichas_aprobadas
+        fichas_objetadas_por_revisor[usuario.username] = fichas_objetadas
+
+    cantidad_usuarios_revisores = len(usuarios_revisores)
+
+    # Formatear los datos como JSON
+    fichas_por_revisor_json = json.dumps(dict(fichas_por_revisor))
+    fichas_aprobadas_por_revisor_json = json.dumps(dict(fichas_aprobadas_por_revisor))
+    fichas_objetadas_por_revisor_json = json.dumps(dict(fichas_objetadas_por_revisor))
+
+
+    data = {
+        'cantidad_identificaciones_vigentes': cantidad_identificaciones_vigentes,
+        'fichas_aprobada': fichas_aprobada,
+        'fichas_objetada': fichas_objetada,
+        'fichas_en_espera': fichas_en_espera,
+
+        'cantidad_usuarios_revisores': cantidad_usuarios_revisores,
+        'fichas_por_revisor_json': fichas_por_revisor_json,
+        'fichas_aprobadas_por_revisor_json': fichas_aprobadas_por_revisor_json,
+        'fichas_objetadas_por_revisor_json': fichas_objetadas_por_revisor_json,
+
+        
+    }
+
+    return render(request, 'ficha/progresion.html', data)
+
+    
+def corregir_orientacion_imagen(imagen_fotografia):
+    if imagen_fotografia:
+        try:
+            imagen = Image.open(imagen_fotografia.path)
+            if hasattr(imagen, '_getexif') and imagen._getexif():
+                exif = dict(imagen._getexif().items())
+                if exif.get(0x0112) == 3:
+                    imagen = imagen.rotate(180, expand=True)
+                elif exif.get(0x0112) == 6:
+                    imagen = imagen.rotate(-90, expand=True)
+                elif exif.get(0x0112) == 8:
+                    imagen = imagen.rotate(90, expand=True)
+
+                imagen.save(imagen_fotografia.path, 'JPEG', quality=90)
+                # Aquí podrías continuar con la lógica adicional si es necesario
+                # ...
+
+        except (FileNotFoundError, IOError) as e:
+            print(f"Advertencia: Error al procesar la imagen - {e}")
+            # Manejo de la excepción o simplemente omitir el procesamiento
+
+# Llamada directa a la función con fotografia_general.imagen_fotografia
