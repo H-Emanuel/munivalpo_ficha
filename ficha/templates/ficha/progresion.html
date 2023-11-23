@@ -50,21 +50,21 @@
 
         var fichasAprobadasPorRevisor = JSON.parse('{{ fichas_aprobadas_por_revisor_json|escapejs|safe }}');
         var fichasObjetadasPorRevisor = JSON.parse('{{ fichas_objetadas_por_revisor_json|escapejs|safe }}');
-        
-        var usuariosRevisores = Object.keys(fichasAprobadasPorRevisor); // Obtener los nombres de los usuarios revisores
+
+        var usuariosRevisores = Object.keys(fichasAprobadasPorRevisor);
 
         var datos = {
             labels: usuariosRevisores,
             datasets: [
                 {
-                    label: 'Fichas Aprobadas',
+                    label: 'Fichas Aprobadas (%)',
                     backgroundColor: 'rgba(54, 162, 235, 1)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1,
                     data: Object.values(fichasAprobadasPorRevisor)
                 },
                 {
-                    label: 'Fichas Objetadas',
+                    label: 'Fichas Objetadas (%)',
                     backgroundColor: 'rgba(255, 99, 132, 0.5)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1,
@@ -79,6 +79,20 @@
             scales: {
                 x: { stacked: true },
                 y: { stacked: true }
+            },
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            var label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            label += context.parsed.y.toFixed(2) + '%';
+                            return label;
+                        }
+                    }
+                }
             }
         };
 
@@ -86,7 +100,7 @@
             type: 'bar',
             data: datos,
             options: opciones
-        });
+        });        
 
         // Gráfico circular
         var ctxCircular = document.getElementById('graficoCircular').getContext('2d');
@@ -98,34 +112,53 @@
         var fichasAprobadas = parseInt("{{ fichas_aprobada }}");
         var fichasObjetadas = parseInt("{{ fichas_objetada }}");
         var fichasEnEspera = parseInt("{{ fichas_en_espera }}");
+        var fichasPendientes = identificacionesVigentes - (fichasAprobadas + fichasObjetadas + fichasEnEspera);
 
         // Calcular la cantidad de fichas pendientes
-        var fichasPendientes = identificacionesVigentes - (fichasAprobadas + fichasObjetadas + fichasEnEspera);
-        console.log('fichasObjetadas:', fichasObjetadas);
-        console.log('fichasEnEspera:', fichasEnEspera);
+        var totalFichas = fichasAprobadas + fichasObjetadas + fichasEnEspera + fichasPendientes;
 
-        var datosCircular = {
-            labels: ['Aprobadas', 'Objetadas', 'En espera', 'Pendientes'],
-            datasets: [{
-                data: [fichasAprobadas, fichasObjetadas, fichasEnEspera, fichasPendientes],
-                backgroundColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(37, 36, 34, 1)'
-                ]
-            }]
-        };
+        var porcentajeAprobadas = ((fichasAprobadas / totalFichas) * 100).toFixed(2);
+        var porcentajeObjetadas = ((fichasObjetadas / totalFichas) * 100).toFixed(2);
+        var porcentajeEnEspera = ((fichasEnEspera / totalFichas) * 100).toFixed(2);
+        var porcentajePendientes = ((fichasPendientes / totalFichas) * 100).toFixed(2);
+
+            var datosCircular = {
+        labels: ['Aprobadas', 'Objetadas', 'En espera', 'Pendientes'],
+        datasets: [{
+            data: [porcentajeAprobadas, porcentajeObjetadas, porcentajeEnEspera, porcentajePendientes],
+            backgroundColor: [
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(37, 36, 34, 1)'
+                    ]
+                }]
+            };
 
         // Configuración del gráfico
         var opcionesCircular = {
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            var label = context.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            label += context.parsed + '%';
+                            return label;
+                        }
+                    }
+                }
+            }
         };
+
 
         // Crear el gráfico circular
         var graficoCircular = new Chart(ctxCircular, {
-            type: 'doughnut', // Tipo de gráfico circular
+            type: 'pie', // Tipo de gráfico circular
             data: datosCircular,
             options: opcionesCircular
         });
