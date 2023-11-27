@@ -11,12 +11,17 @@
                 
             }
            
+            td.no-border-design {
+                border: none !important; /* Elimina el borde para esta celda en particular */
+            }
+
+
             td, th {
                 padding: 3px;
             }
 
             .expandable-cell {
-                height: 120px; /* Ajusta la altura según tus necesidades */
+                height: 125px; /* Ajusta la altura según tus necesidades */
                 overflow: auto; /* Agrega barras de desplazamiento si el contenido es demasiado grande para mostrar */
                 white-space: pre-line; /* Mantiene los saltos de línea en el texto */
                 vertical-align: top; /* Alinea el contenido al principio de la celda */
@@ -87,16 +92,20 @@
             <table class="special">
                 <tbody>
                     <tr>
-                        <td colspan="3" rowspan="5" class="bg-blue text-center">
-                                <img src="media/image/ico_ficha.png" style="height: 55px; width: 95px;">
-                                <span>
-                                    FICHA DE VALORACIÓN INMUEBLE DE CONSERVACIÓN HISTÓRICA <br>
-                                    Plan Regulador Comunal de Valparaíso
-                                </span>
+                        <td colspan="2" rowspan="5" class="bg-blue text-center no-border-design" style="width: 10px;">
+                            <img src="media/image/ico_ficha.png" style="float: left; height: 50px; width: auto; vertical-align: top;">
                         </td>
-                        
-
-                        <td colspan="2" class="bg-blue text-center">ROL DE AVALÚO</td>
+                        <td  rowspan="5"  class="bg-blue text-center no-border-design">
+                            <span>
+                                FICHA DE VALORACIÓN INMUEBLE DE CONSERVACIÓN <br><br>
+                                HISTÓRICA 
+                                <br>
+                                <br>
+                                <br>
+                                Plan Regulador Comunal de Valparaíso
+                            </span>
+                        </td>
+                        <td  colspan="2" class="bg-blue text-center">ROL DE AVALÚO</td>
                     </tr>
                     <tr>
                         <td colspan="2">{{ identificacion_inmueble.rol }}</td>
@@ -110,7 +119,7 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td class="bg-blue text-center">UNIDAD VECINAL</td>
+                        <td class="bg-blue text-center">UV</td>
                         <td>{{ identificacion_inmueble.unidad_vecinal }}</td>
                     </tr>
                     <tr>
@@ -120,14 +129,14 @@
                     <tr>
                         <td style="width: 180px;"><b>REGIÓN</b></td>
                         <td style="width: 180px;"><b>COMUNA</b></td>
-                        <td style="width: 1800px;"><b>CALLE</b></td>
+                        <td style="width: 650px;"><b>CALLE</b></td>
                         <td style="width: 250px;"><b>NÚMERO</b></td>
                         <td ><b>PLAN/ CERRO/ LOCALIDAD</b></td>
                     </tr>
                     <tr>
                         <td style="width: 180px;">{{ identificacion_inmueble.region }}</td>
                         <td style="width: 180px;">{{ identificacion_inmueble.comuna }}</td>
-                        <td style="width: 1800px;">{{ identificacion_inmueble.calle }}</td>
+                        <td style="width: 650px;">{{ identificacion_inmueble.calle }}</td>
                         <td style="width: 250px;">{{ identificacion_inmueble.numero }}</td>
                         <td >{{ identificacion_inmueble.plan_cerro_poblacion }}</td>
                     </tr>
@@ -656,9 +665,9 @@
                         <td style="width: 30px;" class="text-center">{% if caracteristicas_morfologicas.continuidad_de_edificacion.linea_de_zocalo_continuo %}X{% else %}&nbsp;{% endif %}</td>
                     </tr>
                     <tr>
-                        <td rowspan="2" colspan="5" style=" vertical-align: top;">OTRO: {{ caracteristicas_morfologicas.elementos_valor_significativo.otro_texto }}</td>
-                        <td rowspan="2" colspan="5" style=" vertical-align: top;">OTRO: {{ caracteristicas_morfologicas.expresion_de_fachada.otro_texto }}</td>
-                        <td rowspan="2" colspan="17">OBSERVACIONES: En este campo indicar si tiene publicidad, por ej. <p>{{ caracteristicas_morfologicas.observaciones }}</p></td>
+                        <td rowspan="2" colspan="6" style=" vertical-align: top;">OTRO: {{ caracteristicas_morfologicas.elementos_valor_significativo.otro_texto }}</td>
+                        <td rowspan="2" colspan="7" style=" vertical-align: top;">OTRO: {{ caracteristicas_morfologicas.expresion_de_fachada.otro_texto }}</td>
+                        <td rowspan="2" colspan="14">OBSERVACIONES: En este campo indicar si tiene publicidad, por ej. <p>{{ caracteristicas_morfologicas.observaciones }}</p></td>
 
                     </tr>
 
@@ -1057,9 +1066,9 @@
                         <td colspan="14"><b> FOTOGRAFÍA CONTEXTO URBANO </b> </td>
                     </tr>
                     <tr>
-                        <td colspan="7">
+                        <td colspan="7" style="text-align: center;">
                             {% if relacion_del_inmueble_con_el_terreno.fotografia_urbano %}
-                            <img src="{{ MEDIA_URL }}{{ relacion_del_inmueble_con_el_terreno.fotografia_urbano.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            <img src="{{ MEDIA_URL }}{{ relacion_del_inmueble_con_el_terreno.fotografia_urbano.url }}" alt="" style="width:340px;" height="325",width="325"  />
                             {% else %}
                            <br>
                            <br>
@@ -1089,9 +1098,9 @@
                            <br>
                            {% endif %}
                         </td>
-                        <td colspan="7">
+                        <td colspan="7" style="text-align: center;">
                             {% if relacion_del_inmueble_con_el_terreno.fotografia_espacio_urbano %}
-                            <img src="{{ MEDIA_URL }}{{ relacion_del_inmueble_con_el_terreno.fotografia_espacio_urbano.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            <img src="{{ MEDIA_URL }}{{ relacion_del_inmueble_con_el_terreno.fotografia_espacio_urbano.url }}" alt="" style="width:340px;" height="325",width="325" />
                             {% else %}
                            <br>
                            <br>
@@ -1148,9 +1157,9 @@
                         <td colspan="14" class="bg-blue">16. PLANIMETRÍA Y PLANOS DE LOS INMUEBLES</td>
                     </tr>
                     <tr>
-                        <td colspan="7">
+                        <td colspan="7" style="text-align: center;">
                             {% if plano_y_planimetria.plano_contexto_1 %}
-                            <img src="{{ MEDIA_URL }}{{ plano_y_planimetria.plano_contexto_1.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            <img src="{{ MEDIA_URL }}{{ plano_y_planimetria.plano_contexto_1.url }}" alt="" style="width:340px;" height="325",width="325"  />
                             {% else %}
                            <br>
                            <br>
@@ -1180,9 +1189,9 @@
                            <br>
                            {% endif %}
                         </td>
-                        <td colspan="7">
+                        <td colspan="7" style="text-align: center;">
                             {% if plano_y_planimetria.plano_contexto_2 %}
-                            <img src="{{ MEDIA_URL }}{{ plano_y_planimetria.plano_contexto_2.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            <img src="{{ MEDIA_URL }}{{ plano_y_planimetria.plano_contexto_2.url }}" alt="" style="width:340px;" height="325",width="325"  />
                             {% else %}
                            <br>
                            <br>
@@ -1218,9 +1227,9 @@
                         <td colspan="7">{{ plano_y_planimetria.observaciones_contexto_2 }} </td>
                     </tr>
                     <tr>
-                        <td colspan="7">
+                        <td colspan="7" style="text-align: center;">
                             {% if plano_y_planimetria.plano_contexto_3 %}
-                            <img src="{{ MEDIA_URL }}{{ plano_y_planimetria.plano_contexto_3.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            <img src="{{ MEDIA_URL }}{{ plano_y_planimetria.plano_contexto_3.url }}" alt="" style="width:340px;" height="325",width="325"  />
                             {% else %}
                            <br>
                            <br>
@@ -1250,9 +1259,9 @@
                            <br>
                            {% endif %}
                         </td>
-                        <td colspan="7">
+                        <td colspan="7" style="text-align: center;">
                             {% if plano_y_planimetria.plano_contexto_4 %}
-                            <img src="{{ MEDIA_URL }}{{ plano_y_planimetria.plano_contexto_4.url }}" alt="" style="width:300px;" height="325",width="300"  />
+                            <img src="{{ MEDIA_URL }}{{ plano_y_planimetria.plano_contexto_4.url }}" alt="" style="width:340px;" height="325",width="325"  />
                             {% else %}
                            <br>
                            <br>
