@@ -19,9 +19,17 @@
         </div>
        
         <div class="row">
-            <div class="col-12">
+            <div class="col-6">
                 <canvas id="graficoCircular" width="600" height="400"></canvas>
             </div>
+            <div class="col-6">
+                <div class="container-fluid py-5">
+                    <p class="col-md-8 fs-4">fichas Aprobadas:  <span style="color: rgb(0, 140, 255);">  {{ fichas_aprobada   }}  </span></p>
+                    <p class="col-md-8 fs-4">fichas Objetada:   <span style="color: red;">  {{ fichas_objetada   }}   </span></p>
+                    <p class="col-md-8 fs-4">fichas En espera:  <span style="color: rgb(255, 208, 0);">  {{ fichas_en_espera  }} </span></p>
+                    <p class="col-md-8 fs-4">fichas Pendientes: <span style="color: rgb(0, 0, 0);">{{ fichas_pendientes }}</span></p>
+
+                </div>
         </div>
     
         <div class="row">
@@ -48,8 +56,11 @@
     document.addEventListener('DOMContentLoaded', function () {
         var ctx = document.getElementById('graficoBarrasApiladas').getContext('2d');
 
-        var fichasAprobadasPorRevisor = JSON.parse('{{ fichas_aprobadas_por_revisor_json|escapejs|safe }}');
-        var fichasObjetadasPorRevisor = JSON.parse('{{ fichas_objetadas_por_revisor_json|escapejs|safe }}');
+    var fichasAprobadasPorRevisor = JSON.parse('{{ fichas_aprobadas_por_revisor_json|escapejs|safe }}');
+    var fichasObjetadasPorRevisor = JSON.parse('{{ fichas_objetadas_por_revisor_json|escapejs|safe }}');
+    
+        var fichasAprobadas = parseInt("{{ fichas_aprobada }}");
+        var fichasObjetadas = parseInt("{{ fichas_objetada }}");
 
         var usuariosRevisores = Object.keys(fichasAprobadasPorRevisor);
 
@@ -61,17 +72,26 @@
                     backgroundColor: 'rgba(54, 162, 235, 1)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1,
-                    data: Object.values(fichasAprobadasPorRevisor)
+                    data: usuariosRevisores.map(revisor => {
+                        var fichasAprobadasPorEsteRevisor = fichasAprobadasPorRevisor[revisor];
+                        var porcentaje = (fichasAprobadasPorEsteRevisor / fichasAprobadas) * 100;
+                        return porcentaje.toFixed(2); // Redondea a dos decimales
+                    })
                 },
                 {
                     label: 'Fichas Objetadas (%)',
                     backgroundColor: 'rgba(255, 99, 132, 0.5)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1,
-                    data: Object.values(fichasObjetadasPorRevisor)
+                    data: usuariosRevisores.map(revisor => {
+                        var fichasObjetadasPorEsteRevisor = fichasObjetadasPorRevisor[revisor];
+                        var porcentaje = (fichasObjetadasPorEsteRevisor / fichasObjetadas) * 100;
+                        return porcentaje.toFixed(2); // Redondea a dos decimales
+                })
                 }
             ]
         };
+
 
         var opciones = {
             responsive: true,
@@ -96,11 +116,12 @@
             }
         };
 
+
         var graficoBarrasApiladas = new Chart(ctx, {
             type: 'bar',
             data: datos,
             options: opciones
-        });        
+        });      
 
         // Gráfico circular
         var ctxCircular = document.getElementById('graficoCircular').getContext('2d');
@@ -129,7 +150,7 @@
             backgroundColor: [
                 'rgba(54, 162, 235, 1)',
                 'rgba(255, 99, 132, 1)',
-                'rgba(255, 206, 86, 1)',
+                'rgba(255, 208, 0, 1)',
                 'rgba(37, 36, 34, 1)'
                     ]
                 }]

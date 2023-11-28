@@ -1589,7 +1589,9 @@ def progresion(request):
     fichas_aprobada = observacion.objects.filter(id_plano__vigente=True, estado='APROBADO').count()
     fichas_objetada = observacion.objects.filter(id_plano__vigente=True, estado='OBJETADO').count()
     fichas_en_espera = observacion.objects.filter(id_plano__vigente=True, estado='En espera de revision').count()
+    fichas_pendientes = cantidad_identificaciones_vigentes - (fichas_aprobada + fichas_objetada + fichas_en_espera)
 
+   
     observaciones_vigentes = observacion.objects.filter(id_plano__vigente=True)
     
     # Contadores iniciales
@@ -1626,6 +1628,7 @@ def progresion(request):
         'fichas_aprobada': fichas_aprobada,
         'fichas_objetada': fichas_objetada,
         'fichas_en_espera': fichas_en_espera,
+        'fichas_pendientes':fichas_pendientes,
 
         'cantidad_usuarios_revisores': cantidad_usuarios_revisores,
         'fichas_por_revisor_json': fichas_por_revisor_json,

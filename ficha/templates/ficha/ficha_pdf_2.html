@@ -21,7 +21,7 @@
             }
 
             .expandable-cell {
-                height: 125px; /* Ajusta la altura según tus necesidades */
+                height: 120px; /* Ajusta la altura según tus necesidades */
                 overflow: auto; /* Agrega barras de desplazamiento si el contenido es demasiado grande para mostrar */
                 white-space: pre-line; /* Mantiene los saltos de línea en el texto */
                 vertical-align: top; /* Alinea el contenido al principio de la celda */
@@ -92,13 +92,12 @@
             <table class="special">
                 <tbody>
                     <tr>
-                        <td colspan="2" rowspan="5" class="bg-blue text-center no-border-design" style="width: 10px;">
+                        <td  rowspan="5" colspan="2" class="bg-blue text-center no-border-design" style="width: 10px;">
                             <img src="media/image/ico_ficha.png" style="float: left; height: 50px; width: auto; vertical-align: top;">
                         </td>
-                        <td  rowspan="5"  class="bg-blue text-center no-border-design">
+                        <td  rowspan="5"  class="bg-blue text-center no-border-design" style="width: 150px;">
                             <span>
-                                FICHA DE VALORACIÓN INMUEBLE DE CONSERVACIÓN <br><br>
-                                HISTÓRICA 
+                                FICHA DE VALORACIÓN INMUEBLE <br> DE CONSERVACIÓN HISTÓRICA 
                                 <br>
                                 <br>
                                 <br>
@@ -166,7 +165,7 @@
                         <td style="text-align: center;" colspan="4">
                             <!-- Fotografía Plano -->
                             {% if plano_ubicacion.imagen_plano %}
-                            <img src="{{ MEDIA_URL }}{{ plano_ubicacion.imagen_plano.url }}" alt="" style="width:300px;" height="300",width="300" class="center"/>
+                            <img src="{{ MEDIA_URL }}{{ plano_ubicacion.imagen_plano.url }}" alt="" style="width:290;" height="300",width="290" class="center"/>
                             {% else %}
                             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                             {% endif %}
@@ -220,9 +219,8 @@
                 </tbody>
             </table>
         </section>
-
-        </br>
-
+        
+        <br>
         <!-- Sección 5 -->
         <section>
             <table>
