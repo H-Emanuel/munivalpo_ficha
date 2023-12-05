@@ -1283,9 +1283,6 @@ def ver_fichas(request):
 
     return render(request, 'ficha/ver_fichas.html', data)
 
-
-
-
 @login_required(login_url='/login/')
 def ver_ficha(request, id):
     identificacion_inmueble = IdentificacionInmueble.objects.get(id_plano = id)
@@ -1414,22 +1411,31 @@ def exportar_pdf_valoracion(request, id):
     
     valoracion_atributos = ValoracionAtributos.objects.get(id_plano = id)
     
+    total_valor_urbano = valoracion_atributos.valor_urbano_a + valoracion_atributos.valor_urbano_b + valoracion_atributos.valor_urbano_c
+    total_valor_arquitecnico = valoracion_atributos.valor_arquitecnico_a + valoracion_atributos.valor_arquitecnico_b + valoracion_atributos.valor_arquitecnico_c
+    total_valor_historico = valoracion_atributos.valor_historico_a + valoracion_atributos.valor_historico_b + valoracion_atributos.valor_historico_c
+    total_valor_economico = valoracion_atributos.valor_economico_a + valoracion_atributos.valor_economico_b 
+    total_valor_social = valoracion_atributos.valor_social_a 
+    
+    total_valoracion = total_valor_urbano + total_valor_arquitecnico + total_valor_historico + total_valor_economico + total_valor_social
 
     # Sección 6
 
     now = datetime.now()
-    current_time = now.strftime("%d-%m-%Y_%H-%M-%S")
     current_user = request.user
 
     data = {
+        'identificacion_inmueble':identificacion_inmueble,
         'valoracion_atributos':valoracion_atributos,
         'MEDIA_URL': request.build_absolute_uri('/')[:-1],
 
+        'total_valoracion':total_valoracion,
         'current_time': now,
         'current_user': current_user,
     }
     
-    nombre_ficha = "tabla_" + str(identificacion_inmueble.id_plano) + "_" + current_time
+    nombre_ficha = "ficha_valoracion_" + str(identificacion_inmueble.id_plano) + "_" + str(identificacion_inmueble.rol)
+
 
     file_name, status = save_pdf_3(data, nombre_ficha)
 
@@ -1639,8 +1645,7 @@ def progresion(request):
     }
 
     return render(request, 'ficha/progresion.html', data)
-
-    
+  
 def corregir_orientacion_imagen(imagen_fotografia):
     if imagen_fotografia:
         try:
