@@ -1631,8 +1631,8 @@ def progresion(request):
     fichas_objetadas_por_revisor_json = json.dumps(dict(fichas_objetadas_por_revisor))
 
  # Obtener todos los estados únicos de observaciones para dinamizar el proceso
-    estados_unicos = observacion.objects.filter(id_plano__vigente=True).values_list('estado', flat=True).distinct()
-    estados_unicos.sort()
+    estados_unicos = observacion.objects.filter(id_plano__vigente=True).values_list('estado', flat=True).distinct().order_by('estado')
+    
     # Obtener la cantidad de observaciones por estado y por usuario
     observaciones_por_estado_por_usuario = observacion.objects.filter(id_plano__vigente=True).values('id_plano__usuario', 'estado').annotate(cantidad=Count('id'))
 
