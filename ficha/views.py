@@ -13,7 +13,7 @@ from django.http import JsonResponse,HttpResponseBadRequest
 import fitz
 from django.core.files.base import ContentFile
 from PIL import Image
-from django.db.models import Q
+from django.db.models import Q,Count
 from collections import defaultdict
 import json
 
@@ -1596,7 +1596,9 @@ def progresion(request):
     fichas_objetada = observacion.objects.filter(id_plano__vigente=True, estado='OBJETADO').count()
     fichas_en_espera = observacion.objects.filter(id_plano__vigente=True, estado='En espera de revision').count()
     fichas_pendientes = cantidad_identificaciones_vigentes - (fichas_aprobada + fichas_objetada + fichas_en_espera)
-
+    
+    fichas_levantada = fichas_aprobada + fichas_en_espera
+    fichas_sin_levantar = cantidad_identificaciones_vigentes - fichas_levantada
    
     observaciones_vigentes = observacion.objects.filter(id_plano__vigente=True)
     
@@ -1617,9 +1619,9 @@ def progresion(request):
         fichas_objetadas = observaciones_usuario.filter(estado='OBJETADO').count()
 
         # Almacenar conteos por usuario revisor
-        fichas_por_revisor[usuario.username] = observaciones_usuario.count()
-        fichas_aprobadas_por_revisor[usuario.username] = fichas_aprobadas
-        fichas_objetadas_por_revisor[usuario.username] = fichas_objetadas
+        fichas_por_revisor[usuario.first_name + " " + usuario.last_name] = observaciones_usuario.count()
+        fichas_aprobadas_por_revisor[usuario.first_name + " " + usuario.last_name] = fichas_aprobadas
+        fichas_objetadas_por_revisor[usuario.first_name + " " + usuario.last_name] = fichas_objetadas
 
     cantidad_usuarios_revisores = len(usuarios_revisores)
 
@@ -1628,6 +1630,26 @@ def progresion(request):
     fichas_aprobadas_por_revisor_json = json.dumps(dict(fichas_aprobadas_por_revisor))
     fichas_objetadas_por_revisor_json = json.dumps(dict(fichas_objetadas_por_revisor))
 
+ # Obtener todos los estados únicos de observaciones para dinamizar el proceso
+    estados_unicos = observacion.objects.filter(id_plano__vigente=True).values_list('estado', flat=True).distinct()
+
+    # Obtener la cantidad de observaciones por estado y por usuario
+    observaciones_por_estado_por_usuario = observacion.objects.filter(id_plano__vigente=True).values('id_plano__usuario', 'estado').annotate(cantidad=Count('id'))
+
+    # Estructurar los datos en un diccionario con los nombres de usuario y la cantidad de observaciones por estado
+    datos_grafico = defaultdict(lambda: {estado: 0 for estado in estados_unicos})
+    for obs in observaciones_por_estado_por_usuario:
+        usuario_id = obs['id_plano__usuario']
+        user = User.objects.get(pk=usuario_id) 
+        usuario = f"{user.first_name} {user.last_name}" 
+        estado = obs['estado']
+        datos_grafico[usuario][estado] += obs['cantidad']
+
+    print( dict(datos_grafico))
+
+    print(estados_unicos)
+    datos_serializados = json.dumps(dict(datos_grafico))
+    estados_serializados = json.dumps(list(estados_unicos))
 
     data = {
         'cantidad_identificaciones_vigentes': cantidad_identificaciones_vigentes,
@@ -1635,13 +1657,15 @@ def progresion(request):
         'fichas_objetada': fichas_objetada,
         'fichas_en_espera': fichas_en_espera,
         'fichas_pendientes':fichas_pendientes,
+        'fichas_levantada':fichas_levantada,
+        'fichas_sin_levantar':fichas_sin_levantar,
 
         'cantidad_usuarios_revisores': cantidad_usuarios_revisores,
         'fichas_por_revisor_json': fichas_por_revisor_json,
         'fichas_aprobadas_por_revisor_json': fichas_aprobadas_por_revisor_json,
         'fichas_objetadas_por_revisor_json': fichas_objetadas_por_revisor_json,
-
-        
+        'datos_serializados': datos_serializados,
+        'estados_serializados': estados_serializados,
     }
 
     return render(request, 'ficha/progresion.html', data)

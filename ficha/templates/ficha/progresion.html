@@ -3,6 +3,13 @@
 {% load static %}
 
 {% block main_content%}
+<style>
+    #myChart {
+        max-width: 950px; /* Ajusta el ancho máximo según tus preferencias */
+        max-height: 500px;
+    }
+</style>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
@@ -12,7 +19,7 @@
             <div class="p-2 mb-4 mt-3 bg-light">
                 <div class="container-fluid py-5">
                     <h1 class="display-5 fw-bold">FICHA DE VALORACIÓN INMUEBLE DE CONSERVACIÓN HISTÓRICA</h1>
-                    <p class="col-md-8 fs-4">Progresión de las fichas vigentes</p>
+                    <h1 class="display-5 fw-bold">Progresión de fichas vigentes Por estados</h1>
                     <p class="col-md-8 fs-4">Número de fichas vigentes: {{ cantidad_identificaciones_vigentes }}</p>
                 </div>
             </div>
@@ -24,20 +31,39 @@
             </div>
             <div class="col-6">
                 <div class="container-fluid py-5">
-                    <p class="col-md-8 fs-4">fichas Aprobadas:  <span style="color: rgb(0, 140, 255);">  {{ fichas_aprobada   }}  </span></p>
-                    <p class="col-md-8 fs-4">fichas Objetada:   <span style="color: red;">  {{ fichas_objetada   }}   </span></p>
-                    <p class="col-md-8 fs-4">fichas En espera:  <span style="color: rgb(255, 208, 0);">  {{ fichas_en_espera  }} </span></p>
-                    <p class="col-md-8 fs-4">fichas Pendientes: <span style="color: rgb(0, 0, 0);">{{ fichas_pendientes }}</span></p>
-
+                    <p class="col-md-8 fs-4">Fichas Aprobadas:  <span style="color: rgb(0, 140, 255);">  {{ fichas_aprobada   }}  </span></p>
+                    <p class="col-md-8 fs-4">Fichas Objetada:   <span style="color: red;">  {{ fichas_objetada   }}   </span></p>
+                    <p class="col-md-8 fs-4">Fichas En espera:  <span style="color: rgb(255, 208, 0);">  {{ fichas_en_espera  }} </span></p>
+                    <p class="col-md-8 fs-4">Fichas Sin levantar: <span style="color: rgb(0, 0, 0);">{{ fichas_pendientes }}</span></p>
                 </div>
         </div>
-    
+
+        <div class="row">
+            <div class="col-12">
+                <div class="p-2 mb-4 mt-3 bg-light">
+                    <div class="container-fluid py-5">
+                        <h1 class="display-5 fw-bold">Progresión de fichas vigentes levantadas</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <canvas id="graficoCircular_2" width="600" height="400"></canvas>
+            </div>
+            <div class="col-6">
+                <div class="container-fluid py-5">
+                    <p class="col-md-8 fs-4">Fichas Sin levantar: <span style="color: rgb(0, 0, 0);">{{ fichas_sin_levantar }}</span></p>
+                    <p class="col-md-8 fs-4">Fichas Levantadas: <span style="color: rgb(15, 245, 8);">{{ fichas_levantada }}</span></p>
+                </div>
+        </div>
+
         <div class="row">
             <div class="col-12">
                 <div class="p-2 mb-4 mt-3 bg-light">
                     <div class="container-fluid py-5">
                         <p class="col-md-8 fs-4">Progresión de los revisores</p>
-                        <p class="col-md-8 fs-4">Detalles de fichas aprobadas por revisor: {{ cantidad_usuarios_revisores }}</p>
                     </div>
                 </div>
             </div>
@@ -48,13 +74,27 @@
                 </div>
             </div>
             
+            <div class="row">
+                <div class="col-12">
+                    <div class="p-2 mb-4 mt-3 bg-light">
+                        <div class="container-fluid py-5">
+                            <p class="col-md-8 fs-4">Progresión de los ficheros</p>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <canvas id="myChart" width="50" height="50"></canvas>
+                </div>
+            </div>
         
     </div>
 </section>
 {% block extra_scripts %}
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        var ctx = document.getElementById('graficoBarrasApiladas').getContext('2d');
+    var ctx = document.getElementById('graficoBarrasApiladas').getContext('2d');
 
     var fichasAprobadasPorRevisor = JSON.parse('{{ fichas_aprobadas_por_revisor_json|escapejs|safe }}');
     var fichasObjetadasPorRevisor = JSON.parse('{{ fichas_objetadas_por_revisor_json|escapejs|safe }}');
@@ -68,25 +108,25 @@
             labels: usuariosRevisores,
             datasets: [
                 {
-                    label: 'Fichas Aprobadas (%)',
+                    label: 'Fichas Aprobadas',
                     backgroundColor: 'rgba(54, 162, 235, 1)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1,
                     data: usuariosRevisores.map(revisor => {
                         var fichasAprobadasPorEsteRevisor = fichasAprobadasPorRevisor[revisor];
                         var porcentaje = (fichasAprobadasPorEsteRevisor / fichasAprobadas) * 100;
-                        return porcentaje.toFixed(2); // Redondea a dos decimales
+                        return fichasAprobadasPorEsteRevisor; // Redondea a dos decimales
                     })
                 },
                 {
-                    label: 'Fichas Objetadas (%)',
+                    label: 'Fichas Objetadas',
                     backgroundColor: 'rgba(255, 99, 132, 0.5)',
                     borderColor: 'rgba(255, 99, 132, 1)',
                     borderWidth: 1,
                     data: usuariosRevisores.map(revisor => {
                         var fichasObjetadasPorEsteRevisor = fichasObjetadasPorRevisor[revisor];
                         var porcentaje = (fichasObjetadasPorEsteRevisor / fichasObjetadas) * 100;
-                        return porcentaje.toFixed(2); // Redondea a dos decimales
+                        return fichasObjetadasPorEsteRevisor; // Redondea a dos decimales
                 })
                 }
             ]
@@ -108,7 +148,7 @@
                             if (label) {
                                 label += ': ';
                             }
-                            label += context.parsed.y.toFixed(2) + '%';
+                            label += context.parsed.y;
                             return label;
                         }
                     }
@@ -143,7 +183,7 @@
         var porcentajeEnEspera = ((fichasEnEspera / totalFichas) * 100).toFixed(2);
         var porcentajePendientes = ((fichasPendientes / totalFichas) * 100).toFixed(2);
 
-            var datosCircular = {
+        var datosCircular = {
         labels: ['Aprobadas', 'Objetadas', 'En espera', 'Pendientes'],
         datasets: [{
             data: [porcentajeAprobadas, porcentajeObjetadas, porcentajeEnEspera, porcentajePendientes],
@@ -181,9 +221,107 @@
         var graficoCircular = new Chart(ctxCircular, {
             type: 'pie', // Tipo de gráfico circular
             data: datosCircular,
-            options: opcionesCircular
-        });
+            options: opcionesCircular});
+
+
+        var ctxCircular_2 = document.getElementById('graficoCircular_2').getContext('2d');
+        
+        // Obtener la cantidad de identificaciones vigentes
+
+        // Obtener la cantidad de fichas en diferentes estados
+        var fichaslevantada = parseInt("{{ fichas_levantada }}");
+        var fichassinlevantar = parseInt("{{ fichas_sin_levantar }}");
+
+        var datosCircular = {
+        labels: ['Levantada', 'Sin levantar'],
+        datasets: [{
+            data: [fichaslevantada,fichassinlevantar ],
+            backgroundColor: [
+                'rgba(15, 245, 8, 1)',
+                'rgba(37, 36, 34, 1)',
+
+                    ]
+                }]
+            };
+
+        // Configuración del gráfico
+        var opcionesCircular = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            var label = context.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            label += context.parsed;
+                            return label;
+                        }
+                    }
+                }
+            }
+        };
+
+
+        // Crear el gráfico circular
+        var graficoCircular = new Chart(ctxCircular_2, {
+            type: 'pie', // Tipo de gráfico circular
+            data: datosCircular,
+            options: opcionesCircular});
+
+
+var datos = JSON.parse('{{ datos_serializados|escapejs }}');
+var estados = JSON.parse('{{ estados_serializados|escapejs }}');
+
+
+// Obtener nombres de usuarios y cantidades de observaciones por cada estado
+// Obtener los datos desde el backend
+var datos = JSON.parse('{{ datos_serializados|escapejs }}');
+var estados = JSON.parse('{{ estados_serializados|escapejs }}');
+
+// Definir una lista predefinida de colores
+var colores = ['#36A2EB', '#E6BB00', '#F20404', '#303030', '#9966FF']; // Puedes añadir o quitar colores según necesites
+
+// Obtener nombres de usuarios y cantidades de observaciones por cada estado
+var nombres = Object.keys(datos);
+var datasets = [];
+
+estados.forEach(function(estado, index) {
+    var observacionesEstado = nombres.map(function(usuario) {
+        return datos[usuario][estado] || 0;
     });
+
+    datasets.push({
+        label: 'Ficha ' + estado,
+        data: observacionesEstado,
+        backgroundColor: colores[index % colores.length],
+        borderColor: colores[index % colores.length],
+        borderWidth: 1
+    });
+});
+
+// Configurar el gráfico con múltiples datasets
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: nombres,
+        datasets: datasets
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+            }
+        }
+    }
+});
+
+});
+
+
 </script>
 
 
