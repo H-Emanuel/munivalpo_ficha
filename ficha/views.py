@@ -1639,11 +1639,16 @@ def progresion(request):
     # Estructurar los datos en un diccionario con los nombres de usuario y la cantidad de observaciones por estado
     datos_grafico = defaultdict(lambda: {estado: 0 for estado in estados_unicos})
     for obs in observaciones_por_estado_por_usuario:
+
         usuario_id = obs['id_plano__usuario']
-        user = User.objects.get(pk=usuario_id) 
-        usuario = f"{user.first_name} {user.last_name}" 
-        estado = obs['estado']
-        datos_grafico[usuario][estado] += obs['cantidad']
+        try:
+            user = User.objects.get(pk=usuario_id)
+            usuario = f"{user.first_name} {user.last_name}"  # Nombre completo del usuario
+            estado = obs['estado']
+            datos_grafico[usuario][estado] += obs['cantidad']
+        except User.DoesNotExist:
+            # Manejar la situación en la que el usuario no existe
+            pass
 
     print( dict(datos_grafico))
 
