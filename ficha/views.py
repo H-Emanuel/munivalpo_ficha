@@ -1632,7 +1632,7 @@ def progresion(request):
 
  # Obtener todos los estados únicos de observaciones para dinamizar el proceso
     estados_unicos = observacion.objects.filter(id_plano__vigente=True).values_list('estado', flat=True).distinct()
-
+    estados_unicos.sort()
     # Obtener la cantidad de observaciones por estado y por usuario
     observaciones_por_estado_por_usuario = observacion.objects.filter(id_plano__vigente=True).values('id_plano__usuario', 'estado').annotate(cantidad=Count('id'))
 
@@ -1647,7 +1647,7 @@ def progresion(request):
             estado = obs['estado']
             datos_grafico[usuario][estado] += obs['cantidad']
         except User.DoesNotExist:
-            # Manejar la situación en la que el usuario no existe
+
             pass
 
     print( dict(datos_grafico))
