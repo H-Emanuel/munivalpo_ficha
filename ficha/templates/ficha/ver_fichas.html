@@ -122,10 +122,7 @@
     </div>
 
     {% if user.is_staff  %}
-    <br>
-    <br>
-    <div class="row">
-        <p>solo staff puede ver esta opción</p>
+    <div class="row"> 
         <div class="col-12 pt-3">
             <a href="{% url 'exportar_pdf_pogresion' %}" class="mi-enlace" target="_blank" role="button">Informe de fichas vigentes</a>
         </div>
