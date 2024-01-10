@@ -254,7 +254,6 @@ TIPO_DE_CUIDAD = [
     ('INTERMEDIA', 'INTERMEDIA'),
     ('Á. METROPOLITANAS', 'Á. METROPOLITANAS'),
 ]
-
 TIPO_DE_RESPUESTA = [
     (' ', ' '),
     ('SI', 'SI'),
@@ -344,6 +343,7 @@ class Tipologias(models.Model):
     class Meta:
         verbose_name = "tipologia"
         verbose_name_plural = "tipologias"
+
 class TipoCubierta(models.Model):
     horizontal = models.BooleanField(default=False)
     inclinada = models.BooleanField(default=False)
@@ -689,7 +689,6 @@ class Planoyplanimetria(models.Model):
     class Meta:
         verbose_name = "Plano_y_Planimetria"
         verbose_name_plural = "Planos_y_Planimetrias"
-
 
 # Sección 17
 class FuentesReferencialesYBibliograficas(models.Model):

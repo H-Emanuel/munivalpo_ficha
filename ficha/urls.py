@@ -16,5 +16,6 @@ urlpatterns = [
     path('exportar_pdf_valoracion/<int:id>/', views.exportar_pdf_valoracion, name="exportar_pdf_valoracion"),
     path('guarda_observaciones/<int:id>/', views.guarda_observaciones, name="guarda_observaciones"),
     path('progresion/', views.progresion, name="progresion"),
+    path('exportar_pdf_pogresion/', views.exportar_pdf_pogresion, name="exportar_pdf_pogresion"),
 
 ]

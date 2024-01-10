@@ -16,6 +16,9 @@ from PIL import Image
 from django.db.models import Q,Count
 from collections import defaultdict
 import json
+from django.db.models import Max
+from openpyxl import Workbook
+from openpyxl.styles import Alignment
 
 
 # Create your views here.
@@ -1650,8 +1653,6 @@ def progresion(request):
 
             pass
 
-    print( dict(datos_grafico))
-
     print(estados_unicos)
     datos_serializados = json.dumps(dict(datos_grafico))
     estados_serializados = json.dumps(list(estados_unicos))
@@ -1696,4 +1697,55 @@ def corregir_orientacion_imagen(imagen_fotografia):
             print(f"Advertencia: Error al procesar la imagen - {e}")
             # Manejo de la excepción o simplemente omitir el procesamiento
 
-# Llamada directa a la función con fotografia_general.imagen_fotografia
+def exportar_pdf_pogresion(request):
+    observaciones_vigentes = observacion.objects.filter(id_plano__vigente=True).values_list('id_plano', 'estado', 'updated')
+
+    # Crear un libro y una hoja en Excel
+    libro = Workbook()
+    hoja = libro.active
+    
+    hoja.title = "Informe"
+       # Establecer los encabezados en las celdas deseadas
+    hoja['A1'] = "ID"
+    hoja['B1'] = "Estado"
+    hoja['C1'] = "Fecha de Aprobación"
+    hoja['D1'] = "Usuario"
+
+    # Agregar datos a la hoja de Excel
+    for idx, (observacion_id, estado, fecha_modificacion) in enumerate(observaciones_vigentes, start=2):
+        hoja[f'A{idx}'] = observacion_id
+        hoja[f'B{idx}'] = estado
+        if estado == 'APROBADO':
+            hoja[f'C{idx}'] = fecha_modificacion.strftime("%Y-%m-%d") if fecha_modificacion else ""  # Mostrar la fecha si el estado es APROBADO
+        else:
+            hoja[f'C{idx}'] = ""  # Dejar la celda vacía si el estado no es APROBADO
+    
+        # Obtener el nombre de usuario relacionado con la ID de IdentificacionInmueble
+        usuario = User.objects.filter(identificacioninmueble__id_plano=observacion_id).first()
+        if usuario:
+            nombre_usuario = f"{usuario.first_name} {usuario.last_name}"
+            hoja[f'D{idx}'] = nombre_usuario
+        else:
+            hoja[f'D{idx}'] = "Nombre no encontrado"
+
+    for col in ['A', 'B', 'C','D']:
+        for cell in hoja[f"{col}:{col}"]:
+            cell.alignment = Alignment(horizontal='center', vertical='center')
+
+    hoja.column_dimensions['A'].width = 20
+    hoja.column_dimensions['B'].width = 30
+    hoja.column_dimensions['C'].width = 30
+    hoja.column_dimensions['D'].width = 30
+
+    # Definir el nombre del archivo
+    nombre_archivo = "Informe_de_fichas_vigentes.xlsx"
+
+    # Configurar la respuesta del archivo Excel
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = f'attachment; filename="{nombre_archivo}"'
+
+    # Guardar el libro de Excel y enviar la respuesta
+    libro.save(response)
+    return response
+
+    
