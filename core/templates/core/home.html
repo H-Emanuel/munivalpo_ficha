@@ -3,6 +3,33 @@
 {% load static %}
 
 {% block main_content%}
+<style>
+    .mi-enlace {
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 25px;
+      background-color: #ff9800;
+      color: #fff;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease, color 0.2s ease; /* Agregamos color a la transición */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Estilo al pasar el mouse por encima */
+    .mi-enlace:hover {
+      background-color: #ffba68;
+      transform: translateY(-2px);
+    }
+    
+    /* Estilo cuando se hace clic */
+    .mi-enlace:active {
+      transform: translateY(0);
+      box-shadow: none;
+      color: #fff; /* Mantenemos el color del texto como blanco al hacer clic */
+    }
+    
+    </style>  
 <section class="container">
     <div class="row">
         <div class="col-12">
@@ -21,6 +48,19 @@
             <div class="d-grid gap-2 col-6">
                 <a href="{% url 'ver_fichas' %}" target="_self" class="btn btn-primary btn-lg" type="button">Ver fichas</a>
                 <a href="{% url 'crear_ficha' %}" target="_self" class="btn btn-primary btn-lg" type="submit">Crear ficha nueva</a>
+            </div>
+        </div>
+        
+        <div class="col-12 mx-auto d-flex flex-column justify-content-center align-items-center">
+            <br>
+        <br>
+        <br>
+            <p>
+                <h4>Administración de datos</h4>
+            </p>
+            <div class="d-grid gap-2 col-6">
+                <a href="{% url 'progresion' %}" target="_self" class="btn btn-warning btn-lg" type="button">Progresión de ficha vigente</a>
+                <a href="{% url 'exportar_pdf_pogresion' %}" class="btn btn-info btn-lg" target="_blank" role="button">Detalle de levantamiento</a>
             </div>
         </div>
         
