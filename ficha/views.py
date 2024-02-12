@@ -525,6 +525,7 @@ def crear_ficha(request):
             vivienda   = True
         else:
             vivienda   = False
+        
         if  request.POST.get('equipamiento'):
             equipamiento     = True
         else:
@@ -1088,7 +1089,7 @@ def editar_ficha(request, id = 0):
         if not request.POST.get('vivienda'):
             aptitud_de_rehabilitacion.vivienda = False
         elif request.POST.get('vivienda') and request.POST.get('vivienda') == '1':
-            aptitud_de_rehabilitacion.otro = True
+            aptitud_de_rehabilitacion.vivienda = True
 
         if not request.POST.get('equipamiento'):
             aptitud_de_rehabilitacion.equipamiento = False
